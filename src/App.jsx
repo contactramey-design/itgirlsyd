@@ -192,8 +192,8 @@ Best regards,
                 <div className="flex flex-col md:flex-row gap-6 items-center">
                   <div className="relative">
                     <div className={`absolute inset-0 bg-gradient-to-r ${category.color} blur-xl opacity-60 group-hover:opacity-90 transition-opacity`} />
-                    <div className={`relative bg-gradient-to-r ${category.color} p-6 rounded-2xl transform group-hover:scale-110 transition-all duration-300`}>
-                      <category.icon className="w-16 h-16 text-white" />
+                    <div className={`relative bg-gradient-to-r ${category.color} p-4 rounded-2xl transform group-hover:scale-110 transition-all duration-300`}>
+                      <category.icon className="w-10 h-10 text-white" />
                     </div>
                   </div>
                   <div className="flex-1">
@@ -887,6 +887,191 @@ function HomeHavenPage({ onBack }) {
           <p className="text-gray-600 text-sm">
             Making memories, one cozy moment at a time 🏡✨
           </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Business & Tech Guides - Free Resource Page
+function BusinessTechGuides({ onBack }) {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const toolCategories = [
+    {
+      category: 'AI & Automation',
+      icon: Brain,
+      color: 'from-purple-500 to-indigo-600',
+      tools: [
+        { name: 'ChatGPT', description: 'AI assistant for content creation & problem solving', url: 'https://chat.openai.com', icon: Sparkles },
+        { name: 'Microsoft Copilot', description: 'Integrated AI across Microsoft apps', url: 'https://copilot.microsoft.com', icon: Zap },
+        { name: 'Scribed.ai', description: 'Auto-generate step-by-step guides & tutorials', url: 'https://scribed.ai', icon: FileText }
+      ]
+    },
+    {
+      category: 'Development & Code',
+      icon: Code,
+      color: 'from-cyan-500 to-blue-600',
+      tools: [
+        { name: 'Cursor', description: 'AI-powered code editor for rapid development', url: 'https://cursor.sh', icon: Terminal },
+        { name: 'GitHub', description: 'Version control & code collaboration platform', url: 'https://github.com', icon: Globe },
+        { name: 'Vercel', description: 'Deploy & host websites instantly', url: 'https://vercel.com', icon: Rocket }
+      ]
+    },
+    {
+      category: 'Design & Creative',
+      icon: Palette,
+      color: 'from-pink-500 to-rose-600',
+      tools: [
+        { name: 'Canva', description: 'Easy graphic design for social media & more', url: 'https://canva.com', icon: Wand2 },
+        { name: 'Adobe Creative Cloud', description: 'Professional creative suite', url: 'https://adobe.com', icon: Palette },
+        { name: 'Figma', description: 'Collaborative interface design tool', url: 'https://figma.com', icon: Gem }
+      ]
+    },
+    {
+      category: 'Video & Content',
+      icon: Video,
+      color: 'from-orange-500 to-red-600',
+      tools: [
+        { name: 'Adobe Premiere Pro', description: 'Professional video editing', url: 'https://adobe.com/products/premiere.html', icon: Video },
+        { name: 'CapCut', description: 'Easy video editing for TikTok & social', url: 'https://capcut.com', icon: Scissors },
+        { name: 'Descript', description: 'Video editing through text transcription', url: 'https://descript.com', icon: Edit3 }
+      ]
+    },
+    {
+      category: 'Organization & Productivity',
+      icon: Briefcase,
+      color: 'from-green-500 to-emerald-600',
+      tools: [
+        { name: 'Notion', description: 'All-in-one workspace for notes & projects', url: 'https://notion.so', icon: FileText },
+        { name: 'Trello', description: 'Visual project management boards', url: 'https://trello.com', icon: Target },
+        { name: 'Airtable', description: 'Spreadsheet-database hybrid for organization', url: 'https://airtable.com', icon: Database }
+      ]
+    },
+    {
+      category: 'Social Media Management',
+      icon: TrendingUp,
+      color: 'from-indigo-500 to-purple-600',
+      tools: [
+        { name: 'Hootsuite', description: 'Schedule & manage all social platforms', url: 'https://hootsuite.com', icon: Activity },
+        { name: 'Later', description: 'Visual social media planner', url: 'https://later.com', icon: Instagram },
+        { name: 'Linktree', description: 'One link for all your content', url: 'https://linktr.ee', icon: LinkIcon }
+      ]
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900 relative overflow-hidden">
+      {/* Tech Grid Background */}
+      <div className="fixed inset-0 bg-[linear-gradient(rgba(99,102,241,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
+      
+      {/* Glowing orbs */}
+      <div className="fixed top-20 right-20 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-pulse" />
+      <div className="fixed bottom-20 left-20 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-12">
+        {/* Header */}
+        <button
+          onClick={onBack}
+          className="group mb-8 flex items-center gap-2 bg-white/10 border-2 border-indigo-500/50 px-6 py-3 rounded-lg hover:bg-white/20 transition-all"
+        >
+          <ArrowLeft className="w-5 h-5 text-indigo-400 group-hover:-translate-x-1 transition-transform" />
+          <span className="text-indigo-400 font-bold">Back to Business Hub</span>
+        </button>
+
+        <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          {/* Title Section */}
+          <div className="text-center mb-12">
+            <div className="inline-block bg-gradient-to-r from-indigo-600 to-purple-600 p-4 rounded-2xl mb-6">
+              <Sparkles className="w-16 h-16 text-white" />
+            </div>
+            <h1 className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 mb-4">
+              Business & Tech Guides
+            </h1>
+            <p className="text-xl text-indigo-200 max-w-3xl mx-auto">
+              My complete toolkit of apps, tools, and resources I use to create content, build websites, and run my business. All free to access! 🚀
+            </p>
+          </div>
+
+          {/* Tool Categories */}
+          <div className="space-y-12">
+            {toolCategories.map((category, catIndex) => (
+              <div 
+                key={catIndex}
+                className="bg-white/5 backdrop-blur-xl border-2 border-indigo-500/30 rounded-2xl p-8 shadow-2xl"
+                style={{ 
+                  transitionDelay: `${catIndex * 100}ms`,
+                  opacity: isVisible ? 1 : 0,
+                  transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                  transition: 'all 1s ease-out'
+                }}
+              >
+                {/* Category Header */}
+                <div className="flex items-center gap-4 mb-6">
+                  <div className={`bg-gradient-to-r ${category.color} p-3 rounded-xl`}>
+                    <category.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <h2 className="text-3xl font-bold text-white">{category.category}</h2>
+                </div>
+
+                {/* Tools Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {category.tools.map((tool, toolIndex) => (
+                    <a
+                      key={toolIndex}
+                      href={tool.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group bg-white/5 hover:bg-white/10 border border-indigo-400/30 hover:border-indigo-400 rounded-xl p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-indigo-500/50"
+                    >
+                      <div className="flex items-start gap-3 mb-3">
+                        <div className={`bg-gradient-to-r ${category.color} p-2 rounded-lg flex-shrink-0`}>
+                          <tool.icon className="w-5 h-5 text-white" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-lg font-bold text-white group-hover:text-indigo-300 transition-colors truncate">
+                            {tool.name}
+                          </h3>
+                        </div>
+                        <ArrowLeft className="w-5 h-5 text-indigo-400 rotate-180 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                      </div>
+                      <p className="text-sm text-gray-300 leading-relaxed">
+                        {tool.description}
+                      </p>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA Section */}
+          <div className="mt-12 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-center">
+            <h3 className="text-3xl font-bold text-white mb-4">Need Help Getting Started?</h3>
+            <p className="text-lg text-indigo-100 mb-6 max-w-2xl mx-auto">
+              These are the exact tools I use daily to create content, build websites, and grow my business. Start with the basics and expand your toolkit as you grow!
+            </p>
+            <div className="flex gap-4 justify-center flex-wrap">
+              <a
+                href="mailto:sydney@itgirlsydcontent.com?subject=Tech Tools Consulting"
+                className="bg-white text-indigo-600 px-8 py-4 rounded-xl font-bold hover:bg-indigo-50 transition-all shadow-lg flex items-center gap-2"
+              >
+                <Mail className="w-5 h-5" />
+                Get 1-on-1 Consulting
+              </a>
+              <button
+                onClick={onBack}
+                className="bg-indigo-700 text-white px-8 py-4 rounded-xl font-bold hover:bg-indigo-800 transition-all border-2 border-white/30 flex items-center gap-2"
+              >
+                <ArrowLeft className="w-5 h-5" />
+                Back to Business Hub
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1596,7 +1781,7 @@ function ModaPitchDeck({ onBack }) {
 }
 
 // Business Hub Component - Hacker/Gaming Theme
-function BusinessHubPage({ onBack, onNavigateToModa, onNavigateToContentForm }) {
+function BusinessHubPage({ onBack, onNavigateToModa, onNavigateToContentForm, onNavigateToTechGuides }) {
   const [isVisible, setIsVisible] = useState(false);
   const [typedText, setTypedText] = useState('');
   const [unlocked, setUnlocked] = useState(false);
@@ -1674,10 +1859,10 @@ function BusinessHubPage({ onBack, onNavigateToModa, onNavigateToContentForm }) 
     {
       title: 'Business & Tech Guides (FREE)',
       icon: FileText,
-      description: 'Free access to Scribed.ai - create step-by-step guides & tutorials',
+      description: 'Complete toolkit - AI tools, code editors, design apps & more',
       color: 'from-cyan-400 to-blue-500',
       glowColor: 'group-hover:shadow-cyan-500/50',
-      url: 'https://scribed.ai'
+      url: '#tech-guides'
     },
     {
       title: 'Content Creation Services',
@@ -1774,10 +1959,11 @@ function BusinessHubPage({ onBack, onNavigateToModa, onNavigateToContentForm }) 
           {businessServices.map((service, index) => {
             const isModaLink = service.url === '#moda';
             const isContentFormLink = service.url === '#content-form';
-            const isSpecialLink = isModaLink || isContentFormLink;
+            const isTechGuidesLink = service.url === '#tech-guides';
+            const isSpecialLink = isModaLink || isContentFormLink || isTechGuidesLink;
             const Element = isSpecialLink ? 'button' : 'a';
             const elementProps = isSpecialLink 
-              ? { onClick: isModaLink ? onNavigateToModa : onNavigateToContentForm }
+              ? { onClick: isModaLink ? onNavigateToModa : isContentFormLink ? onNavigateToContentForm : onNavigateToTechGuides }
               : { 
                   href: service.url,
                   target: service.url.startsWith('mailto:') ? '_self' : '_blank',
@@ -1817,152 +2003,6 @@ function BusinessHubPage({ onBack, onNavigateToModa, onNavigateToContentForm }) 
               </Element>
             );
           })}
-        </div>
-
-        {/* Unlock Productivity Tools Section */}
-        <div className={`mb-12 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="bg-gradient-to-br from-gray-900 via-purple-900/50 to-gray-900 border-2 border-cyan-500/30 rounded-2xl p-8 shadow-2xl relative overflow-hidden">
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(34,211,238,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.03)_1px,transparent_1px)] bg-[size:20px_20px]" />
-            
-            <div className="relative z-10">
-              {!unlocked ? (
-                /* Locked State */
-                <div className="text-center">
-                  <div className="flex items-center justify-center gap-3 mb-4">
-                    <Lock className="w-12 h-12 text-cyan-400 animate-pulse" />
-                    <Code className="w-12 h-12 text-purple-400" />
-                  </div>
-                  <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 mb-4 font-mono">
-                    UNLOCK_PRODUCTIVITY_STACK.exe
-                  </h2>
-                  <p className="text-gray-300 mb-6 max-w-2xl mx-auto font-mono text-sm">
-                    {'// '}Access my complete productivity toolkit
-                    <br />
-                    {'// '}The exact apps & tools I use to create content, code, and automate my workflow
-                  </p>
-                  
-                  <div className="bg-black/40 backdrop-blur-sm rounded-xl p-6 mb-6 max-w-md mx-auto border border-cyan-500/30">
-                    <h3 className="text-cyan-400 font-bold mb-4 font-mono">{'> '}PACKAGE_INCLUDES:</h3>
-                    <ul className="text-left text-gray-300 space-y-2 text-sm font-mono">
-                      <li className="flex items-start gap-2">
-                        <Terminal className="w-4 h-4 text-cyan-400 mt-1 flex-shrink-0" />
-                        <span>6 essential productivity & development tools</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <Zap className="w-4 h-4 text-cyan-400 mt-1 flex-shrink-0" />
-                        <span>Direct links & setup guides</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <Brain className="w-4 h-4 text-cyan-400 mt-1 flex-shrink-0" />
-                        <span>How I use each tool in my workflow</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="max-w-md mx-auto">
-                    <div className="bg-cyan-500/10 backdrop-blur-sm rounded-lg p-4 mb-4 border-2 border-cyan-500/30">
-                      <div className="flex items-center justify-between font-mono">
-                        <span className="text-cyan-400 text-sm">{'> '}PRICE:</span>
-                        <div className="flex items-baseline gap-1">
-                          <span className="text-5xl font-black text-green-400">$1.99</span>
-                        </div>
-                      </div>
-                    </div>
-                    <input
-                      type="email"
-                      placeholder="ENTER_EMAIL_ADDRESS"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="w-full px-6 py-4 rounded-lg bg-black/60 border-2 border-cyan-500/30 text-green-400 font-mono focus:outline-none focus:border-cyan-400 transition-all mb-4 placeholder:text-gray-600"
-                    />
-                    <a
-                      href="https://paypal.me/SydneyRamey894/1.99"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 text-black px-8 py-4 rounded-lg font-mono font-black hover:from-cyan-400 hover:to-purple-400 transition-all hover:scale-105 shadow-lg shadow-cyan-500/50 flex items-center justify-center gap-2"
-                    >
-                      <DollarSign className="w-5 h-5" />
-                      {'> '}PURCHASE_ACCESS_$1.99
-                      <Terminal className="w-5 h-5" />
-                    </a>
-                    <p className="text-cyan-400 text-xs mt-3 font-mono">
-                      {'// '}SECURE_PAYPAL_CHECKOUT • EMAIL_ME_AFTER: sydney@itgirlsydcontent.com
-                    </p>
-                    <p className="text-green-400 text-xs mt-2 font-mono">
-                      {'// '}ACCESS_WITHIN_24_HOURS 💕
-                    </p>
-                  </div>
-                </div>
-              ) : (
-                /* Unlocked State */
-                <div>
-                  <div className="text-center mb-8">
-                    <div className="inline-block bg-green-500 text-black px-4 py-2 rounded-lg mb-4 font-mono font-bold flex items-center gap-2">
-                      <Terminal className="w-5 h-5" />
-                      <span>ACCESS_GRANTED</span>
-                    </div>
-                    <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 mb-3 font-mono">
-                      PRODUCTIVITY_STACK
-                    </h2>
-                    <p className="text-gray-300 font-mono text-sm">
-                      {'> '}My essential tools for content creation & development
-                    </p>
-                  </div>
-
-                  {/* Productivity Tools Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {productivityTools.map((tool, index) => (
-                      <a
-                        key={index}
-                        href={tool.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group bg-black/60 backdrop-blur-sm border-2 border-cyan-500/30 rounded-xl p-5 hover:border-cyan-400 transition-all hover:-translate-y-1 shadow-lg hover:shadow-cyan-500/30"
-                      >
-                        <div className="relative mb-4">
-                          <div className={`absolute inset-0 bg-gradient-to-r ${tool.color} blur-lg opacity-40 group-hover:opacity-60 transition-opacity`} />
-                          <div className={`relative bg-gradient-to-r ${tool.color} p-3 rounded-lg inline-block`}>
-                            <Code className="w-8 h-8 text-white" />
-                          </div>
-                        </div>
-                        
-                        <h4 className="text-white font-bold text-lg mb-1 group-hover:text-cyan-400 transition-colors font-mono">
-                          {'> '}{tool.name}
-                        </h4>
-                        <p className="text-cyan-400 text-xs mb-2 font-mono">{tool.category}</p>
-                        <p className="text-gray-400 text-sm">
-                          {tool.description}
-                        </p>
-                        
-                        <div className="mt-4 flex items-center gap-2 text-cyan-400 text-sm font-mono">
-                          <Terminal className="w-4 h-4" />
-                          <span className="opacity-0 group-hover:opacity-100 transition-opacity">LAUNCH_APP</span>
-                        </div>
-                      </a>
-                    ))}
-                  </div>
-
-                  <div className="mt-8 bg-purple-900/30 border border-purple-500/30 rounded-xl p-6">
-                    <h4 className="text-purple-300 font-bold mb-3 font-mono flex items-center gap-2">
-                      <Zap className="w-5 h-5" />
-                      {'> '}PRO_TIP
-                    </h4>
-                    <p className="text-gray-300 text-sm font-mono leading-relaxed">
-                      {'// '}I use Cursor for coding landing pages like this one
-                      <br />
-                      {'// '}ChatGPT for content ideation & scripting
-                      <br />
-                      {'// '}Adobe Premiere for professional video editing
-                      <br />
-                      {'// '}Scribed.ai for creating tutorials & documentation
-                      <br />
-                      {'// '}Microsoft Copilot for automation & productivity
-                    </p>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
         </div>
 
         {/* Featured Section - MODA Info */}
@@ -2014,7 +2054,7 @@ export default function CreatorLandingPage() {
   const [activeSection, setActiveSection] = useState('');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [notification, setNotification] = useState('');
-  const [currentPage, setCurrentPage] = useState('home'); // 'home', 'business', 'beauty', 'gym', 'homehaven', 'mediakit', 'partnerships', 'moda', or 'content-form'
+  const [currentPage, setCurrentPage] = useState('home'); // 'home', 'business', 'beauty', 'gym', 'homehaven', 'mediakit', 'partnerships', 'moda', 'content-form', or 'tech-guides'
   const [showSupportPopup, setShowSupportPopup] = useState(false);
 
   useEffect(() => {
@@ -2114,6 +2154,7 @@ export default function CreatorLandingPage() {
       onBack={navigateHome} 
       onNavigateToModa={() => setCurrentPage('moda')} 
       onNavigateToContentForm={() => setCurrentPage('content-form')} 
+      onNavigateToTechGuides={() => setCurrentPage('tech-guides')}
     />;
   }
 
@@ -2125,6 +2166,11 @@ export default function CreatorLandingPage() {
   // Render Content Creation Form Page
   if (currentPage === 'content-form') {
     return <ContentCreationForm onBack={() => setCurrentPage('business')} />;
+  }
+
+  // Render Business & Tech Guides Page
+  if (currentPage === 'tech-guides') {
+    return <BusinessTechGuides onBack={() => setCurrentPage('business')} />;
   }
 
   // Render Gym Page
