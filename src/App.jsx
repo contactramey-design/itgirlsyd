@@ -1320,12 +1320,12 @@ export default function CreatorLandingPage() {
   }, [currentPage]);
 
   const socialLinks = [
-    { name: 'TikTok', icon: Video, url: 'https://tiktok.com/@itgirlsyd19', color: 'from-black via-gray-900 to-cyan-400', iconColor: 'text-white', followers: '22K' },
-    { name: 'Instagram', icon: Instagram, url: 'https://instagram.com/itgirlsyd19', color: 'from-purple-600 via-pink-500 to-orange-400', iconColor: 'text-white', followers: '9.5K' },
-    { name: 'Pinterest', icon: TrendingUp, url: 'https://pinterest.com/itgirlsyd19', color: 'from-red-600 to-red-500', iconColor: 'text-white', followers: '23K' },
-    { name: 'Threads', icon: Activity, url: 'https://threads.net/@itgirlsyd19', color: 'from-black to-gray-900', iconColor: 'text-white', followers: '1.2K' },
-    { name: 'Twitter', icon: Twitter, url: 'https://twitter.com/itgirlsyd19', color: 'from-blue-400 to-blue-500', iconColor: 'text-white', followers: '850' },
-    { name: 'Email', icon: Mail, url: 'mailto:sydney@itgirlsydcontent.com', color: 'from-pink-500 to-rose-500', iconColor: 'text-white', followers: '' }
+    { name: 'TikTok', icon: Video, url: 'https://tiktok.com/@itgirlsyd19', color: 'from-black via-gray-900 to-cyan-400', iconColor: 'text-white' },
+    { name: 'Instagram', icon: Instagram, url: 'https://instagram.com/itgirlsyd19', color: 'from-purple-600 via-pink-500 to-orange-400', iconColor: 'text-white' },
+    { name: 'Pinterest', icon: TrendingUp, url: 'https://pinterest.com/itgirlsyd19', color: 'from-red-600 to-red-500', iconColor: 'text-white' },
+    { name: 'Threads', icon: Activity, url: 'https://threads.net/@itgirlsyd19', color: 'from-black to-gray-900', iconColor: 'text-white' },
+    { name: 'Twitter', icon: Twitter, url: 'https://twitter.com/itgirlsyd19', color: 'from-blue-400 to-blue-500', iconColor: 'text-white' },
+    { name: 'Email', icon: Mail, url: 'mailto:sydney@itgirlsydcontent.com', color: 'from-pink-500 to-rose-500', iconColor: 'text-white' }
   ];
 
   const contentCategories = [
@@ -1548,16 +1548,13 @@ export default function CreatorLandingPage() {
                 rel="noopener noreferrer"
                 onClick={() => handleLinkClick(social.name)}
                 className="group bg-white rounded-2xl p-4 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100 hover:border-pink-300 relative flex flex-col items-center gap-2"
-                title={`${social.name}${social.followers ? ' - ' + social.followers : ''}`}
+                title={social.name}
               >
                 <div className={`bg-gradient-to-br ${social.color} rounded-xl p-3 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                   <social.icon className={`w-6 h-6 ${social.iconColor}`} />
                 </div>
                 <div className="text-center">
                   <span className="text-xs font-bold text-gray-700 block">{social.name}</span>
-                  {social.followers && (
-                    <span className="text-xs text-gray-500">{social.followers}</span>
-                  )}
                 </div>
               </a>
             ))}
