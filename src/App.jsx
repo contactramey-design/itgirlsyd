@@ -296,7 +296,9 @@ Best regards,
                       className="w-full px-6 py-4 rounded-xl text-gray-800 focus:outline-none focus:ring-4 focus:ring-purple-400/50 transition-all mb-4"
                     />
                     <a
-                      href={`mailto:sydney@itgirlsydcontent.com?subject=Unlock Beauty Brand Contacts - $1.99&body=Email: ${email}%0D%0A%0D%0AI'd like to purchase access to the Hair Brand Contact Directory for $1.99. Please send payment instructions.`}
+                      href="https://paypal.me/SydneyRamey894/1.99"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-xl font-bold hover:from-purple-400 hover:to-pink-400 transition-all hover:scale-105 shadow-lg flex items-center justify-center gap-2"
                     >
                       <Crown className="w-5 h-5" />
@@ -304,10 +306,10 @@ Best regards,
                       <Sparkles className="w-5 h-5" />
                     </a>
                     <p className="text-purple-300 text-xs mt-3">
-                      Instant access after payment • Secure checkout • Money-back guarantee
+                      Secure PayPal checkout • Email me after payment with your email: sydney@itgirlsydcontent.com
                     </p>
                     <p className="text-purple-400 text-xs mt-2">
-                      Payment via Venmo, PayPal, or Zelle available
+                      I'll send you access within 24 hours! 💕
                     </p>
                   </div>
                 </div>
@@ -1160,7 +1162,9 @@ function BusinessHubPage({ onBack }) {
                       className="w-full px-6 py-4 rounded-lg bg-black/60 border-2 border-cyan-500/30 text-green-400 font-mono focus:outline-none focus:border-cyan-400 transition-all mb-4 placeholder:text-gray-600"
                     />
                     <a
-                      href={`mailto:sydney@itgirlsydcontent.com?subject=Purchase Productivity Tools Access - $1.99&body=Email: ${email}%0D%0A%0D%0AI'd like to purchase access to the Productivity Tools Stack for $1.99. Please send payment instructions.`}
+                      href="https://paypal.me/SydneyRamey894/1.99"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 text-black px-8 py-4 rounded-lg font-mono font-black hover:from-cyan-400 hover:to-purple-400 transition-all hover:scale-105 shadow-lg shadow-cyan-500/50 flex items-center justify-center gap-2"
                     >
                       <DollarSign className="w-5 h-5" />
@@ -1168,10 +1172,10 @@ function BusinessHubPage({ onBack }) {
                       <Terminal className="w-5 h-5" />
                     </a>
                     <p className="text-cyan-400 text-xs mt-3 font-mono">
-                      {'// '}SECURE_PAYMENT • INSTANT_ACCESS • MONEY_BACK_GUARANTEE
+                      {'// '}SECURE_PAYPAL_CHECKOUT • EMAIL_ME_AFTER: sydney@itgirlsydcontent.com
                     </p>
                     <p className="text-green-400 text-xs mt-2 font-mono">
-                      {'// '}PAYMENT: VENMO | PAYPAL | ZELLE
+                      {'// '}ACCESS_WITHIN_24_HOURS 💕
                     </p>
                   </div>
                 </div>
