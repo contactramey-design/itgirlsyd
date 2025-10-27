@@ -1384,51 +1384,51 @@ function ModaPitchDeck({ onBack }) {
   const pitchSlides = [
     {
       title: 'MODA',
-      subtitle: 'The Future of AI-Powered Content Creation',
+      subtitle: '3D Avatar Fashion & Virtual Try-On Platform',
       icon: Rocket,
-      content: 'Transforming how creators build their digital empire through intelligent automation and innovation.'
+      content: 'Revolutionizing online shopping with AI-powered 3D avatars and personalized outfit inspiration.'
     },
     {
       title: 'The Problem',
-      subtitle: 'Content Creators Face Overwhelming Challenges',
+      subtitle: 'Online Fashion Shopping is Broken',
       icon: Target,
       points: [
-        'Managing multiple platforms is time-consuming and complex',
-        'Creating consistent, quality content requires extensive resources',
-        'Monetization strategies are fragmented and inefficient',
-        'Technical barriers prevent creators from scaling their business'
+        'Can\'t visualize how clothes will look on YOUR body type',
+        '60% of online fashion returns due to poor fit visualization',
+        'Generic mannequins don\'t represent real body diversity',
+        'No personalized outfit inspiration for your unique style'
       ]
     },
     {
       title: 'Our Solution',
-      subtitle: 'AI-Powered Creator Platform',
+      subtitle: 'AI-Powered 3D Avatar & Outfit Inspiration',
       icon: Zap,
       points: [
-        'Unified dashboard for multi-platform content management',
-        'AI-driven content generation and optimization',
-        'Integrated monetization tools (subscriptions, digital products, sponsorships)',
-        'No-code tools for building landing pages, media kits, and stores'
+        'Generate YOUR personalized 3D avatar from photos',
+        'Virtual try-on - see clothes on YOUR body before buying',
+        'AI-curated outfit recommendations based on your style',
+        'Mix & match outfits with items you already own'
       ]
     },
     {
       title: 'Market Opportunity',
-      subtitle: 'Massive & Growing Market',
+      subtitle: 'Explosive Growth in Fashion Tech',
       icon: TrendingUp,
       stats: [
-        { label: 'Creator Economy Size', value: '$250B+', sublabel: 'Global market valuation 2024' },
-        { label: 'Content Creators Worldwide', value: '300M+', sublabel: 'And growing 20% YoY' },
-        { label: 'Target Market', value: '$15B', sublabel: 'Creator tools & SaaS' },
-        { label: 'Avg Creator Spending', value: '$500/mo', sublabel: 'On tools & services' }
+        { label: 'Online Fashion Market', value: '$765B', sublabel: 'Global e-commerce fashion 2024' },
+        { label: 'Virtual Try-On Market', value: '$14.9B', sublabel: 'Expected by 2028 (31% CAGR)' },
+        { label: 'Return Rate Problem', value: '60%', sublabel: 'Fashion returns cost retailers $550B/year' },
+        { label: 'Gen Z Fashion Shoppers', value: '1.2B+', sublabel: 'Primary target demographic' }
       ]
     },
     {
       title: 'Technology',
-      subtitle: 'Built on Modern AI Stack',
+      subtitle: 'Cutting-Edge 3D & AI Stack',
       icon: Cpu,
       tech: [
-        { name: 'AI/ML', items: ['GPT-4 Integration', 'Custom Content Models', 'Automated Optimization'] },
-        { name: 'Platform', items: ['React/Next.js', 'Real-time Analytics', 'Multi-platform APIs'] },
-        { name: 'Infrastructure', items: ['Cloud-native', 'Scalable Architecture', 'Security-first Design'] }
+        { name: '3D Avatar Generation', items: ['AI Body Scanning', 'Photogrammetry', 'Custom Avatar Creation'] },
+        { name: 'Virtual Try-On Engine', items: ['Real-time 3D Rendering', 'Clothing Physics Simulation', 'AR Integration'] },
+        { name: 'AI Styling', items: ['Computer Vision', 'Style Recommendation Engine', 'Outfit Combination AI'] }
       ]
     },
     {
@@ -1436,22 +1436,23 @@ function ModaPitchDeck({ onBack }) {
       subtitle: 'Multiple Revenue Streams',
       icon: DollarSign,
       revenue: [
-        { model: 'SaaS Subscriptions', price: '$29-199/mo', description: 'Tiered pricing for creators at all levels' },
-        { model: 'Transaction Fees', price: '5-10%', description: 'Commission on digital product sales & sponsorships' },
-        { model: 'Enterprise', price: 'Custom', description: 'White-label solutions for agencies & brands' },
-        { model: 'Marketplace', price: '15%', description: 'Template & tool marketplace commission' }
+        { model: 'Freemium Subscriptions', price: '$0-29/mo', description: 'Free basic avatars, Premium for advanced features & unlimited outfits' },
+        { model: 'Affiliate Commissions', price: '5-15%', description: 'Revenue share when users purchase recommended items' },
+        { model: 'Brand Partnerships', price: 'Custom', description: 'Fashion brands pay for virtual product placement & try-ons' },
+        { model: 'Premium Features', price: '$1-5', description: 'One-time purchases for special avatars, styles, & filters' }
       ]
     },
     {
       title: 'Traction',
-      subtitle: 'Early Success & Validation',
+      subtitle: 'MVP Development & Validation',
       icon: Award,
       traction: [
-        'MVP launched with positive user feedback',
-        'Built complete landing page system (this site!)',
-        'Validated with 35K+ social media following',
-        'Early revenue from digital products',
-        'Strong engagement metrics across platforms'
+        '3D avatar generation system in development',
+        'Virtual try-on engine prototype completed',
+        'AI outfit recommendation algorithm built',
+        'Validated demand with 35K+ fashion-focused followers',
+        'Strong fashion content engagement (35% of content portfolio)',
+        'Early user testing with positive feedback'
       ]
     },
     {
@@ -1461,9 +1462,10 @@ function ModaPitchDeck({ onBack }) {
       investment: {
         amount: '$250K - $500K',
         use: [
-          { category: 'Product Development', percentage: '50%', description: 'AI features, platform expansion' },
-          { category: 'Marketing & Growth', percentage: '30%', description: 'User acquisition, brand building' },
-          { category: 'Team & Operations', percentage: '20%', description: 'Key hires, infrastructure' }
+          { category: '3D Avatar Technology', percentage: '45%', description: 'Advanced avatar generation, body scanning AI, rendering engine' },
+          { category: 'Virtual Try-On Engine', percentage: '25%', description: 'Clothing physics, fit simulation, AR integration' },
+          { category: 'Marketing & User Acquisition', percentage: '20%', description: 'Influencer partnerships, app store optimization, brand awareness' },
+          { category: 'Team & Infrastructure', percentage: '10%', description: '3D engineers, cloud infrastructure, operations' }
         ],
         timeline: '12-18 months to Series A'
       }
@@ -1510,10 +1512,10 @@ function ModaPitchDeck({ onBack }) {
                   MODA
                 </h1>
                 <p className="text-3xl text-purple-200 font-bold mb-4">
-                  The Future of AI-Powered Content Creation
+                  3D Avatar Fashion & Virtual Try-On Platform
                 </p>
                 <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                  Transforming how creators build their digital empire through intelligent automation and innovation.
+                  Revolutionizing online shopping with AI-powered 3D avatars and personalized outfit inspiration. Try before you buy - on YOUR body.
                 </p>
                 <div className="mt-12 flex items-center justify-center gap-4">
                   <div className="bg-purple-500/20 px-6 py-3 rounded-full border border-purple-400/50">
@@ -2019,7 +2021,9 @@ function BusinessHubPage({ onBack, onNavigateToModa, onNavigateToContentForm, on
             </div>
             
             <p className="text-gray-300 text-center mb-6 font-mono text-sm max-w-3xl mx-auto">
-              {'// '}MODA is my innovative tech venture combining AI, automation, and digital transformation.
+              {'// '}MODA: 3D Avatar Fashion Platform - Try clothes on YOUR virtual body before buying
+              <br />
+              {'// '}AI-powered outfit inspiration & virtual try-on technology
               <br />
               {'// '}Interested in learning more or discussing investment opportunities?
             </p>
