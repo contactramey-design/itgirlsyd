@@ -1297,6 +1297,7 @@ export default function CreatorLandingPage() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [notification, setNotification] = useState('');
   const [currentPage, setCurrentPage] = useState('home'); // 'home', 'business', 'beauty', 'gym', 'homehaven', 'mediakit', or 'partnerships'
+  const [showSupportPopup, setShowSupportPopup] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
@@ -1594,59 +1595,8 @@ export default function CreatorLandingPage() {
           </div>
         </div>
 
-        {/* Support My Creativity Section */}
-        <div className={`mb-12 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="relative bg-gradient-to-br from-pink-500 via-rose-500 to-purple-600 rounded-3xl p-8 shadow-2xl overflow-hidden">
-            {/* Animated sparkles background */}
-            <div className="absolute inset-0 pointer-events-none">
-              {[...Array(30)].map((_, i) => (
-                <Star
-                  key={i}
-                  className="absolute text-white/20 animate-pulse"
-                  style={{
-                    left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`,
-                    animationDelay: `${Math.random() * 2}s`,
-                    fontSize: `${Math.random() * 15 + 8}px`
-                  }}
-                />
-              ))}
-            </div>
-            
-            <div className="relative z-10 text-center text-white">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <Heart className="w-12 h-12 fill-white animate-pulse" />
-                <Sparkles className="w-10 h-10 animate-pulse" />
-              </div>
-              
-              <h2 className="text-4xl font-bold mb-4">Support My Creativity</h2>
-              
-              <p className="text-lg mb-6 max-w-2xl mx-auto text-white/90">
-                Love what I create? Your support helps me continue making amazing content! 
-                Every contribution means the world to me. 💕✨
-              </p>
-              
-              <a
-                href="https://paypal.me/SydneyRamey894"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => handleLinkClick('PayPal Support')}
-                className="group inline-flex items-center gap-3 bg-white text-pink-600 px-10 py-5 rounded-full font-bold text-lg hover:bg-pink-50 transition-all hover:scale-110 shadow-2xl hover:shadow-pink-900/50 transform hover:-translate-y-1"
-              >
-                <DollarSign className="w-7 h-7 group-hover:rotate-12 transition-transform" />
-                Send Support via PayPal
-                <Heart className="w-7 h-7 fill-pink-600 group-hover:scale-125 transition-transform" />
-              </a>
-              
-              <p className="mt-6 text-sm text-white/80">
-                🙏 Thank you for believing in my journey! Every bit of support fuels my passion.
-              </p>
-            </div>
-          </div>
-        </div>
-
         {/* Compact Work With Me Section */}
-        <div className={`mb-12 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className={`mb-12 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-900 rounded-2xl p-8 shadow-2xl border border-purple-500/30 text-center">
             <div className="flex items-center justify-center gap-3 mb-4">
               <Briefcase className="w-10 h-10 text-purple-400" />
@@ -1688,7 +1638,7 @@ export default function CreatorLandingPage() {
         </div>
 
         {/* Newsletter Section */}
-        <div className={`mb-12 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className={`mb-12 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-3xl p-8 shadow-2xl text-white text-center">
             <Sparkles className="w-12 h-12 mx-auto mb-4" />
             <h2 className="text-3xl font-bold mb-4">Join My VIP List</h2>
@@ -1713,7 +1663,7 @@ export default function CreatorLandingPage() {
         </div>
 
         {/* Footer */}
-        <div className={`text-center transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className={`text-center transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <p className="text-gray-600 mb-4">
             Made with <Heart className="inline w-4 h-4 text-pink-500 fill-pink-500" /> by Sydney @itgirlsyd19
           </p>
@@ -1722,6 +1672,78 @@ export default function CreatorLandingPage() {
           </p>
         </div>
       </div>
+
+      {/* Floating Support Button */}
+      <button
+        onClick={() => setShowSupportPopup(true)}
+        className="fixed bottom-8 right-8 z-40 bg-gradient-to-r from-pink-500 to-purple-600 text-white p-4 rounded-full shadow-2xl hover:shadow-pink-500/50 hover:scale-110 transition-all duration-300 flex items-center gap-2 group"
+      >
+        <Heart className="w-6 h-6 fill-white group-hover:animate-pulse" />
+        <span className="font-bold hidden sm:inline">Support Me</span>
+      </button>
+
+      {/* Support Popup Modal */}
+      {showSupportPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300">
+          <div className="relative bg-gradient-to-br from-pink-500 via-rose-500 to-purple-600 rounded-3xl p-8 shadow-2xl max-w-md w-full animate-in zoom-in duration-300">
+            {/* Close Button */}
+            <button
+              onClick={() => setShowSupportPopup(false)}
+              className="absolute top-4 right-4 bg-white/20 hover:bg-white/30 text-white rounded-full p-2 transition-all hover:rotate-90 duration-300"
+            >
+              <span className="text-2xl leading-none">×</span>
+            </button>
+
+            {/* Animated sparkles background */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl">
+              {[...Array(20)].map((_, i) => (
+                <Star
+                  key={i}
+                  className="absolute text-white/20 animate-pulse"
+                  style={{
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 100}%`,
+                    animationDelay: `${Math.random() * 2}s`,
+                    fontSize: `${Math.random() * 12 + 8}px`
+                  }}
+                />
+              ))}
+            </div>
+            
+            <div className="relative z-10 text-center text-white">
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <Heart className="w-10 h-10 fill-white animate-pulse" />
+                <Sparkles className="w-8 h-8 animate-pulse" />
+              </div>
+              
+              <h2 className="text-3xl font-bold mb-3">Support My Creativity</h2>
+              
+              <p className="text-base mb-6 text-white/90">
+                Love what I create? Your support helps me continue making amazing content! 💕✨
+              </p>
+              
+              <a
+                href="https://paypal.me/SydneyRamey894"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  handleLinkClick('PayPal Support');
+                  setShowSupportPopup(false);
+                }}
+                className="group inline-flex items-center gap-2 bg-white text-pink-600 px-8 py-4 rounded-full font-bold hover:bg-pink-50 transition-all hover:scale-105 shadow-2xl"
+              >
+                <DollarSign className="w-6 h-6 group-hover:rotate-12 transition-transform" />
+                Send Support via PayPal
+                <Heart className="w-6 h-6 fill-pink-600 group-hover:scale-125 transition-transform" />
+              </a>
+              
+              <p className="mt-4 text-sm text-white/80">
+                Thank you for believing in my journey! 🙏
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
