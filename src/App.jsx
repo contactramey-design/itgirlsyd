@@ -1494,12 +1494,7 @@ export default function CreatorLandingPage() {
 
         {/* TikTok Live Battle Feature */}
         <div className={`mb-8 transition-all duration-1000 delay-150 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <a
-            href="https://www.tiktok.com/@itgirlsyd19/live"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block relative bg-gradient-to-r from-black via-pink-600 to-cyan-400 rounded-2xl p-6 shadow-2xl hover:shadow-pink-500/50 transition-all duration-300 hover:scale-105 overflow-hidden group"
-          >
+          <div className="relative bg-gradient-to-r from-black via-pink-600 to-cyan-400 rounded-2xl p-6 shadow-2xl overflow-hidden">
             {/* Animated background */}
             <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.1)_50%,transparent_75%)] bg-[length:250%_250%] animate-pulse" />
             
@@ -1518,17 +1513,27 @@ export default function CreatorLandingPage() {
               </div>
               
               <div className="flex gap-3">
-                <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-xl border-2 border-white/30 group-hover:border-white/60 transition-all">
+                <a
+                  href="https://www.tiktok.com/@itgirlsyd19/live"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-xl border-2 border-white/30 hover:border-white/60 hover:bg-white/30 transition-all cursor-pointer"
+                >
                   <p className="text-white font-bold text-sm">Join Battle</p>
                   <p className="text-pink-200 text-xs">Go Live Now →</p>
-                </div>
-                <div className="bg-cyan-500/20 backdrop-blur-sm px-6 py-3 rounded-xl border-2 border-cyan-400/30 group-hover:border-cyan-400/60 transition-all">
+                </a>
+                <a
+                  href="https://www.tiktok.com/coin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-cyan-500/20 backdrop-blur-sm px-6 py-3 rounded-xl border-2 border-cyan-400/30 hover:border-cyan-400/60 hover:bg-cyan-500/30 transition-all cursor-pointer"
+                >
                   <p className="text-white font-bold text-sm">Get Coins</p>
                   <p className="text-cyan-200 text-xs">Discount Available</p>
-                </div>
+                </a>
               </div>
             </div>
-          </a>
+          </div>
         </div>
 
         {/* Compact Social Media Section */}
