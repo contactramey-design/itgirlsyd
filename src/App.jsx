@@ -189,27 +189,27 @@ Best regards,
             >
               {category.featured ? (
                 /* Featured Look Layout */
-                <div className="flex flex-col md:flex-row gap-6 items-center">
-                  <div className="relative">
-                    <div className={`absolute inset-0 bg-gradient-to-r ${category.color} blur-xl opacity-60 group-hover:opacity-90 transition-opacity`} />
-                    <div className={`relative bg-gradient-to-r ${category.color} p-4 rounded-2xl transform group-hover:scale-110 transition-all duration-300`}>
-                      <category.icon className="w-10 h-10 text-white" />
+                <div className="flex flex-col md:flex-row gap-4 items-center">
+                  <div className="relative flex-shrink-0">
+                    <div className={`absolute inset-0 bg-gradient-to-r ${category.color} blur-lg opacity-50 group-hover:opacity-75 transition-opacity`} />
+                    <div className={`relative bg-gradient-to-r ${category.color} p-3 rounded-xl transform group-hover:scale-105 transition-all duration-300`}>
+                      <category.icon className="w-8 h-8 text-white" />
                     </div>
                   </div>
                   <div className="flex-1">
-                    <div className="inline-block bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-3">
+                    <div className="inline-block bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-2">
                       FEATURED LOOK
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-800 mb-2 group-hover:text-amber-600 transition-colors">
+                    <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-amber-600 transition-colors">
                       {category.title}
                     </h3>
-                    <p className="text-gray-600 mb-4">
+                    <p className="text-gray-600 text-sm mb-3">
                       {category.description}
                     </p>
-                    <div className={`inline-flex items-center gap-2 bg-gradient-to-r ${category.color} text-white px-6 py-3 rounded-full font-semibold group-hover:shadow-lg transition-all`}>
-                      <ShoppingBag className="w-5 h-5" />
+                    <div className={`inline-flex items-center gap-2 bg-gradient-to-r ${category.color} text-white px-5 py-2 rounded-full text-sm font-semibold group-hover:shadow-lg transition-all`}>
+                      <ShoppingBag className="w-4 h-4" />
                       <span>Shop This Look</span>
-                      <Sparkles className="w-5 h-5" />
+                      <Sparkles className="w-4 h-4" />
                     </div>
                   </div>
                 </div>
