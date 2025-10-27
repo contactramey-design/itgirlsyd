@@ -188,31 +188,31 @@ Best regards,
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               {category.featured ? (
-                /* Featured Look Layout - Same Size as Regular */
+                /* Featured Look Layout - Smaller & More Compact */
                 <>
-                  <div className="relative mb-4">
-                    <div className={`absolute inset-0 bg-gradient-to-r ${category.color} blur-xl opacity-60 group-hover:opacity-90 transition-opacity`} />
-                    <div className={`relative bg-gradient-to-r ${category.color} p-3 rounded-xl inline-block transform group-hover:scale-110 transition-all duration-300`}>
-                      <category.icon className="w-8 h-8 text-white" />
+                  <div className="relative mb-3">
+                    <div className={`absolute inset-0 bg-gradient-to-r ${category.color} blur-lg opacity-50 group-hover:opacity-70 transition-opacity`} />
+                    <div className={`relative bg-gradient-to-r ${category.color} p-2 rounded-lg inline-block transform group-hover:scale-105 transition-all duration-300`}>
+                      <category.icon className="w-6 h-6 text-white" />
                     </div>
                   </div>
 
-                  <div className="inline-block bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded-full mb-2">
+                  <div className="inline-block bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full mb-2">
                     FEATURED
                   </div>
 
-                  <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-amber-600 transition-colors">
+                  <h3 className="text-base font-bold text-gray-800 mb-1 group-hover:text-amber-600 transition-colors">
                     {category.title}
                   </h3>
 
-                  <p className="text-gray-600 text-sm mb-4">
+                  <p className="text-gray-600 text-xs mb-3 leading-tight">
                     {category.description}
                   </p>
 
-                  <div className={`flex items-center justify-center gap-2 bg-gradient-to-r ${category.color} text-white px-4 py-2 rounded-full text-sm font-semibold group-hover:shadow-lg transition-all`}>
-                    <ShoppingBag className="w-4 h-4" />
-                    <span>Shop Now</span>
-                    <Sparkles className="w-4 h-4" />
+                  <div className={`flex items-center justify-center gap-1.5 bg-gradient-to-r ${category.color} text-white px-3 py-1.5 rounded-full text-xs font-semibold group-hover:shadow-lg transition-all`}>
+                    <ShoppingBag className="w-3 h-3" />
+                    <span>Shop</span>
+                    <Sparkles className="w-3 h-3" />
                   </div>
                 </>
               ) : (
