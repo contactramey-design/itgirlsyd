@@ -69,7 +69,7 @@ export default function MediaKit() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center gap-8">
             <img
-              src="/profile.jpg"
+              src="/profile.png"
               alt="Sydney"
               className="w-32 h-32 rounded-full border-4 border-white shadow-2xl object-cover"
             />
