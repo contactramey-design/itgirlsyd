@@ -970,12 +970,12 @@ function BusinessHubPage({ onBack }) {
 
   const businessServices = [
     {
-      title: 'Business & Tech Guides',
+      title: 'Business & Tech Guides (FREE)',
       icon: FileText,
-      description: 'AI tools, automation, digital transformation & empire building',
+      description: 'Free access to Scribed.ai - create step-by-step guides & tutorials',
       color: 'from-cyan-400 to-blue-500',
       glowColor: 'group-hover:shadow-cyan-500/50',
-      url: '#'
+      url: 'https://scribed.ai'
     },
     {
       title: 'Content Creation Services',
