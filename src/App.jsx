@@ -172,74 +172,61 @@ Best regards,
           </p>
         </div>
 
-        {/* Beauty Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {beautyCategories.map((category, index) => (
+        {/* Featured Looks - Small Bubbles on Top */}
+        <div className={`mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h3 className="text-center text-gray-600 font-medium mb-4 text-sm">✨ Shop Featured Looks</h3>
+          <div className="flex flex-wrap justify-center gap-3">
+            {beautyCategories.filter(cat => cat.featured).map((category, index) => (
+              <a
+                key={index}
+                href={category.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`group bg-gradient-to-r ${category.color} text-white px-5 py-2.5 rounded-full shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2`}
+              >
+                <category.icon className="w-4 h-4" />
+                <span className="font-semibold text-sm">{category.title.replace('Shop the Look: ', '').replace('Hair Goals: ', '')}</span>
+                <ShoppingBag className="w-3.5 h-3.5" />
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Main Beauty Categories - Large Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {beautyCategories.filter(cat => !cat.featured).map((category, index) => (
             <a
               key={index}
               href={category.url}
               target={category.url.startsWith('http') ? '_blank' : '_self'}
               rel="noopener noreferrer"
-              className={`group bg-white/80 backdrop-blur-sm border-3 rounded-2xl p-6 hover:border-pink-400 transition-all duration-300 hover:-translate-y-2 shadow-lg hover:shadow-2xl hover:shadow-pink-300/50 ${
-                category.featured 
-                  ? 'border-amber-400 bg-gradient-to-br from-white to-amber-50' 
-                  : 'border-pink-200'
-              } ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-              style={{ transitionDelay: `${index * 100}ms` }}
+              className={`group bg-white/80 backdrop-blur-sm border-3 border-pink-200 rounded-2xl p-6 hover:border-pink-400 transition-all duration-300 hover:-translate-y-2 shadow-lg hover:shadow-2xl hover:shadow-pink-300/50 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+              style={{ transitionDelay: `${(index + 2) * 100}ms` }}
             >
-              {category.featured ? (
-                /* Featured Look Layout - Smaller & More Compact */
-                <>
-                  <div className="relative mb-3">
-                    <div className={`absolute inset-0 bg-gradient-to-r ${category.color} blur-lg opacity-50 group-hover:opacity-70 transition-opacity`} />
-                    <div className={`relative bg-gradient-to-r ${category.color} p-2 rounded-lg inline-block transform group-hover:scale-105 transition-all duration-300`}>
-                      <category.icon className="w-6 h-6 text-white" />
-                    </div>
-                  </div>
+              {/* Category icon */}
+              <div className="relative mb-4">
+                <div className={`absolute inset-0 bg-gradient-to-r ${category.color} blur-xl opacity-60 group-hover:opacity-90 transition-opacity`} />
+                <div className={`relative bg-gradient-to-r ${category.color} p-5 rounded-2xl inline-block transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
+                  <category.icon className="w-10 h-10 text-white" />
+                </div>
+              </div>
 
-                  <div className="inline-block bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full mb-2">
-                    FEATURED
-                  </div>
+              {/* Category title */}
+              <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-pink-600 transition-colors">
+                {category.title}
+              </h3>
 
-                  <h3 className="text-base font-bold text-gray-800 mb-1 group-hover:text-amber-600 transition-colors">
-                    {category.title}
-                  </h3>
+              {/* Category description */}
+              <p className="text-gray-600 text-sm mb-4">
+                {category.description}
+              </p>
 
-                  <p className="text-gray-600 text-xs mb-3 leading-tight">
-                    {category.description}
-                  </p>
-
-                  <div className={`flex items-center justify-center gap-1.5 bg-gradient-to-r ${category.color} text-white px-3 py-1.5 rounded-full text-xs font-semibold group-hover:shadow-lg transition-all`}>
-                    <ShoppingBag className="w-3 h-3" />
-                    <span>Shop</span>
-                    <Sparkles className="w-3 h-3" />
-                  </div>
-                </>
-              ) : (
-                /* Regular Category Layout */
-                <>
-                  <div className="relative mb-4">
-                    <div className={`absolute inset-0 bg-gradient-to-r ${category.color} blur-xl opacity-60 group-hover:opacity-90 transition-opacity`} />
-                    <div className={`relative bg-gradient-to-r ${category.color} p-5 rounded-2xl inline-block transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
-                      <category.icon className="w-10 h-10 text-white" />
-                    </div>
-                  </div>
-
-                  <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-pink-600 transition-colors">
-                    {category.title}
-                  </h3>
-
-                  <p className="text-gray-600 text-sm mb-4">
-                    {category.description}
-                  </p>
-
-                  <div className={`flex items-center justify-center gap-2 bg-gradient-to-r ${category.color} text-white px-4 py-2 rounded-full text-sm font-semibold group-hover:shadow-lg transition-all`}>
-                    <Sparkles className="w-4 h-4" />
-                    <span>Explore</span>
-                    <Heart className="w-4 h-4 fill-white" />
-                  </div>
-                </>
-              )}
+              {/* View button */}
+              <div className={`flex items-center justify-center gap-2 bg-gradient-to-r ${category.color} text-white px-4 py-2 rounded-full text-sm font-semibold group-hover:shadow-lg transition-all`}>
+                <Sparkles className="w-4 h-4" />
+                <span>Explore</span>
+                <Heart className="w-4 h-4 fill-white" />
+              </div>
             </a>
           ))}
         </div>
