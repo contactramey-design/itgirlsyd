@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Heart, Instagram, Youtube, Twitter, Mail, ShoppingBag, Crown, Sparkles, Star, Link as LinkIcon, Lock, TrendingUp, Palette, Briefcase, Activity, Home, Cookie, Scissors, Brain, Dumbbell, UtensilsCrossed, Terminal, Code, Zap, Rocket, DollarSign, FileText, Edit3, Users, ArrowLeft, Cpu, Database, Globe, Shirt, Smile, Gem, Wand2, Camera, Video, Target, Award } from 'lucide-react';
 import MediaKit from './MediaKit.jsx';
 import PartnershipsPage from './Partnerships.jsx';
+import ShopPage from './ShopPage.jsx';
 
 // Beauty Closet Component - Pink Fitting Room Theme
 function BeautyClosetPage({ onBack }) {
@@ -86,18 +87,18 @@ Best regards,
       featured: true
     },
     {
-      title: 'Fashion Hauls & GRWM',
+      title: 'Fashion & Style',
       icon: Shirt,
-      description: 'Try-ons, outfit styling & full get-ready-with-me videos',
+      description: 'GRWM videos, outfit hauls, try-ons, styling tips & fashion inspiration',
       color: 'from-pink-400 to-rose-500',
-      url: '#'
+      url: 'https://www.tiktok.com/@itgirlsyd19'
     },
     {
-      title: 'Beauty Tutorials',
+      title: 'Makeup & Hair',
       icon: Palette,
-      description: 'Makeup looks, skincare routines & product reviews',
-      color: 'from-fuchsia-400 to-pink-500',
-      url: '#'
+      description: 'Makeup tutorials, hair styling videos, product reviews & beauty tips',
+      color: 'from-fuchsia-400 to-purple-500',
+      url: 'https://www.tiktok.com/@itgirlsyd19'
     },
     {
       title: 'Shop My Favorites',
@@ -412,7 +413,7 @@ Best regards,
           <div className="flex items-center justify-center gap-2 mb-3">
             <Heart className="w-5 h-5 text-pink-500 fill-pink-500 animate-pulse" />
             <p className="text-pink-600 font-semibold">
-              Made with love by Sydney
+              Made with love by IT GIRL
             </p>
             <Heart className="w-5 h-5 text-pink-500 fill-pink-500 animate-pulse" />
           </div>
@@ -673,7 +674,7 @@ function HealthGymPage({ onBack }) {
   );
 }
 
-// Home & Living Component - Cozy Holiday Theme
+// Travel & Events Component - Adventure Theme
 function HomeHavenPage({ onBack }) {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -681,48 +682,48 @@ function HomeHavenPage({ onBack }) {
     setIsVisible(true);
   }, []);
 
-  const homeCategories = [
+  const travelCategories = [
     {
-      title: 'Home Decor & Seasonal',
-      icon: Home,
-      description: 'Room tours, fall & Christmas decorating, cozy styling',
-      color: 'from-amber-600 to-orange-600',
+      title: 'Sporting Events',
+      icon: Activity,
+      description: 'Game day vlogs, stadium experiences & sports adventures',
+      color: 'from-blue-500 to-indigo-600',
+      url: 'https://www.tiktok.com/@itgirlsyd19/video/7580173848411213070'
+    },
+    {
+      title: 'Concerts & Festivals',
+      icon: Sparkles,
+      description: 'Music events, festival fits & live show experiences',
+      color: 'from-purple-500 to-pink-600',
       url: '#'
     },
     {
-      title: 'Baking & Recipes',
-      icon: Cookie,
-      description: 'Sweet treats, holiday cookies & comfort food',
-      color: 'from-red-600 to-pink-600',
-      url: '#'
-    },
-    {
-      title: 'Lifestyle Vlogs',
+      title: 'Travel Vlogs',
       icon: Camera,
-      description: 'Day in the life, routines & cozy living moments',
-      color: 'from-orange-600 to-amber-700',
+      description: 'Destination guides, travel tips & adventure content',
+      color: 'from-cyan-500 to-blue-600',
       url: '#'
     },
     {
-      title: 'Shop Home Essentials',
-      icon: ShoppingBag,
-      description: 'Decor, kitchen tools & cozy must-haves',
-      color: 'from-amber-700 to-orange-800',
-      url: 'https://www.amazon.com/shop/itgirlsyd19'
+      title: 'Local Adventures',
+      icon: Target,
+      description: 'Hidden gems, city guides & fun activities near you',
+      color: 'from-green-500 to-teal-600',
+      url: '#'
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 relative overflow-hidden">
-      {/* Warm texture overlay */}
-      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-orange-100/40 via-transparent to-transparent" />
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 relative overflow-hidden">
+      {/* Sky texture overlay */}
+      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-100/40 via-transparent to-transparent" />
       
       {/* Subtle sparkle effects */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         {[...Array(15)].map((_, i) => (
           <Star
             key={i}
-            className={`absolute ${i % 3 === 0 ? 'text-orange-300' : i % 3 === 1 ? 'text-red-300' : 'text-amber-300'} animate-pulse`}
+            className={`absolute ${i % 3 === 0 ? 'text-blue-300' : i % 3 === 1 ? 'text-purple-300' : 'text-pink-300'} animate-pulse`}
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -734,62 +735,62 @@ function HomeHavenPage({ onBack }) {
         ))}
       </div>
 
-      {/* Warm glowing orbs */}
+      {/* Glowing orbs */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-20 w-96 h-96 bg-orange-300 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" />
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-red-300 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-amber-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-20 left-20 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" />
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-12">
         {/* Back Button */}
         <button
           onClick={onBack}
-          className="group mb-8 flex items-center gap-2 bg-white/80 backdrop-blur-sm border-2 border-amber-300 px-6 py-3 rounded-full hover:border-amber-400 hover:shadow-lg hover:shadow-amber-300/50 transition-all duration-300"
+          className="group mb-8 flex items-center gap-2 bg-white/80 backdrop-blur-sm border-2 border-blue-300 px-6 py-3 rounded-full hover:border-blue-400 hover:shadow-lg hover:shadow-blue-300/50 transition-all duration-300"
         >
-          <ArrowLeft className="w-5 h-5 text-amber-600 group-hover:-translate-x-1 transition-transform" />
-          <span className="text-amber-700 font-semibold">Back to Main</span>
+          <ArrowLeft className="w-5 h-5 text-blue-600 group-hover:-translate-x-1 transition-transform" />
+          <span className="text-blue-700 font-semibold">Back to Main</span>
         </button>
 
         {/* Header Section */}
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
-          {/* Home Header */}
+          {/* Travel Header */}
           <div className="relative inline-block mb-8">
-            <div className="absolute inset-0 bg-gradient-to-r from-amber-400 via-orange-400 to-red-400 rounded-2xl blur-2xl opacity-40" />
-            <div className="relative bg-white border border-amber-300 rounded-2xl p-8 shadow-2xl">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-2xl blur-2xl opacity-40" />
+            <div className="relative bg-white border border-blue-300 rounded-2xl p-8 shadow-2xl">
               <div className="flex items-center justify-center gap-8 mb-6">
-                <Home className="w-16 h-16 text-amber-600" />
-                <Cookie className="w-20 h-20 text-orange-600" />
-                <Sparkles className="w-16 h-16 text-red-600" />
+                <Globe className="w-16 h-16 text-blue-600" />
+                <Camera className="w-20 h-20 text-purple-600" />
+                <Sparkles className="w-16 h-16 text-pink-600" />
               </div>
-              <h1 className="text-5xl font-bold bg-gradient-to-r from-amber-700 via-orange-600 to-red-700 bg-clip-text text-transparent mb-3">
-                Home & Living
+              <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-3">
+                Travel & Events
               </h1>
-              <p className="text-amber-700 font-semibold text-lg">
-                Seasonal Decor • Baking • Lifestyle
+              <p className="text-blue-700 font-semibold text-lg">
+                Adventures • Events • Experiences
               </p>
             </div>
           </div>
 
-          <p className="text-xl text-amber-800 font-semibold mb-4">
-            Your Seasonal Home & Kitchen Inspiration
+          <p className="text-xl text-blue-800 font-semibold mb-4">
+            Come Along on My Adventures! ✈️
           </p>
           
           <p className="text-gray-700 max-w-2xl mx-auto leading-relaxed">
-            Discover holiday decorating ideas, delicious baking recipes, and cozy lifestyle content.
-            From autumn aesthetics to festive Christmas decor.
+            From sporting events to concerts, travel vlogs to local discoveries - 
+            join me as I explore amazing places and experiences.
           </p>
         </div>
 
-        {/* Home Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {homeCategories.map((category, index) => (
+        {/* Travel Categories Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          {travelCategories.map((category, index) => (
             <a
               key={index}
               href={category.url}
               target={category.url.startsWith('http') ? '_blank' : '_self'}
               rel="noopener noreferrer"
-              className={`group bg-white/90 backdrop-blur-sm border-3 border-amber-200 rounded-2xl p-6 hover:border-amber-400 transition-all duration-300 hover:-translate-y-2 shadow-lg hover:shadow-2xl hover:shadow-amber-300/50 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+              className={`group bg-white/90 backdrop-blur-sm border-3 border-blue-200 rounded-2xl p-6 hover:border-purple-400 transition-all duration-300 hover:-translate-y-2 shadow-lg hover:shadow-2xl hover:shadow-purple-300/50 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               {/* Category icon */}
@@ -820,15 +821,15 @@ function HomeHavenPage({ onBack }) {
           ))}
         </div>
 
-        {/* Seasonal Featured Section */}
+        {/* Featured Video Section */}
         <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="relative bg-gradient-to-r from-red-700 via-green-700 to-red-700 rounded-3xl p-8 shadow-2xl text-white text-center overflow-hidden">
-            {/* Holiday sparkles */}
+          <div className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-3xl p-8 shadow-2xl text-white text-center overflow-hidden">
+            {/* Sparkles */}
             <div className="absolute inset-0 pointer-events-none">
               {[...Array(25)].map((_, i) => (
                 <Star
                   key={i}
-                  className="absolute text-yellow-200/40 animate-pulse"
+                  className="absolute text-white/30 animate-pulse"
                   style={{
                     left: `${Math.random() * 100}%`,
                     top: `${Math.random() * 100}%`,
@@ -841,24 +842,24 @@ function HomeHavenPage({ onBack }) {
             
             <div className="relative z-10">
               <div className="flex items-center justify-center gap-4 mb-4">
-                <Cookie className="w-14 h-14" />
-                <Home className="w-16 h-16" />
-                <ShoppingBag className="w-14 h-14" />
+                <Globe className="w-14 h-14" />
+                <Camera className="w-16 h-16" />
+                <Video className="w-14 h-14" />
               </div>
-              <h2 className="text-3xl font-bold mb-4">Seasonal Essentials</h2>
+              <h2 className="text-3xl font-bold mb-4">Latest Adventure</h2>
               <p className="mb-6 text-lg">
-                Premium home decor and kitchen tools for creating 
-                beautiful spaces and delicious memories.
+                Check out my latest event coverage and travel content!
+                New adventures dropping every week.
               </p>
               <a
-                href="https://www.amazon.com/shop/itgirlsyd19"
+                href="https://www.tiktok.com/@itgirlsyd19"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-white text-red-700 px-8 py-4 rounded-full font-bold hover:bg-amber-50 transition-all hover:scale-105 shadow-2xl"
+                className="inline-flex items-center gap-3 bg-white text-purple-700 px-8 py-4 rounded-full font-bold hover:bg-purple-50 transition-all hover:scale-105 shadow-2xl"
               >
-                <ShoppingBag className="w-5 h-5" />
-                Shop Home & Kitchen
-                <Heart className="w-5 h-5 fill-red-700" />
+                <Video className="w-5 h-5" />
+                Watch on TikTok
+                <Heart className="w-5 h-5 fill-purple-700" />
               </a>
             </div>
           </div>
@@ -867,14 +868,14 @@ function HomeHavenPage({ onBack }) {
         {/* Footer */}
         <div className="mt-16 text-center">
           <div className="flex items-center justify-center gap-2 mb-3">
-            <Heart className="w-5 h-5 text-amber-600 fill-amber-600 animate-pulse" />
-            <p className="text-amber-700 font-semibold">
-              Home is where the heart is
+            <Heart className="w-5 h-5 text-purple-600 fill-purple-600 animate-pulse" />
+            <p className="text-purple-700 font-semibold">
+              Adventure awaits!
             </p>
-            <Heart className="w-5 h-5 text-amber-600 fill-amber-600 animate-pulse" />
+            <Heart className="w-5 h-5 text-purple-600 fill-purple-600 animate-pulse" />
           </div>
           <p className="text-gray-600 text-sm">
-            Making memories, one cozy moment at a time 🏡✨
+            Making memories, one adventure at a time ✈️✨
           </p>
         </div>
       </div>
@@ -936,7 +937,7 @@ function BusinessTechGuides({ onBack }) {
       icon: Briefcase,
       color: 'from-green-500 to-emerald-600',
       tools: [
-        { name: 'Notion', description: 'All-in-one workspace for notes & projects', url: 'https://notion.so', icon: FileText },
+        { name: 'Scribed.ai', description: 'All-in-one business management & CRM', url: 'https://scribed.ai', icon: FileText },
         { name: 'Trello', description: 'Visual project management boards', url: 'https://trello.com', icon: Target },
         { name: 'Airtable', description: 'Spreadsheet-database hybrid for organization', url: 'https://airtable.com', icon: Database }
       ]
@@ -1171,6 +1172,19 @@ Please respond with a custom quote and invoice.
 
         {!isSubmitted ? (
           <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            {/* Fiverr Quick Hire Banner */}
+            <div className="flex justify-end mb-6">
+              <a
+                href="https://www.fiverr.com/s/EgZbkBq"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 bg-green-500 hover:bg-green-400 text-white px-5 py-2.5 rounded-full font-semibold transition-all hover:scale-105 shadow-lg"
+              >
+                <span className="text-sm">On Fiverr?</span>
+                <span className="bg-white/20 px-2 py-0.5 rounded-full text-xs">Hire me there →</span>
+              </a>
+            </div>
+
             {/* Title Section */}
             <div className="text-center mb-12">
               <div className="inline-block bg-gradient-to-r from-purple-600 to-pink-600 p-4 rounded-2xl mb-6">
@@ -1832,17 +1846,10 @@ function BusinessHubPage({ onBack, onNavigateToModa, onNavigateToContentForm, on
     },
     {
       name: 'Scribed.ai',
-      category: 'AI Documentation',
-      description: 'Auto-generate step-by-step guides & tutorials',
+      category: 'Business CRM',
+      description: 'All-in-one business management, CRM & team collaboration',
       url: 'https://scribed.ai',
-      color: 'from-orange-400 to-red-500'
-    },
-    {
-      name: 'Notion',
-      category: 'Organization',
-      description: 'All-in-one workspace for content planning',
-      url: 'https://notion.so',
-      color: 'from-gray-700 to-gray-900'
+      color: 'from-orange-500 to-red-600'
     }
   ];
 
@@ -1870,14 +1877,6 @@ function BusinessHubPage({ onBack, onNavigateToModa, onNavigateToContentForm, on
       color: 'from-green-400 to-emerald-500',
       glowColor: 'group-hover:shadow-green-500/50',
       url: 'https://notarize.la'
-    },
-    {
-      title: 'MODA Investment Info',
-      icon: Rocket,
-      description: 'Tech venture opportunities & investor relations',
-      color: 'from-yellow-400 to-amber-500',
-      glowColor: 'group-hover:shadow-yellow-500/50',
-      url: '#moda'
     }
   ];
 
@@ -1916,7 +1915,7 @@ function BusinessHubPage({ onBack, onNavigateToModa, onNavigateToContentForm, on
               <div className="w-3 h-3 rounded-full bg-red-500" />
               <div className="w-3 h-3 rounded-full bg-yellow-500" />
               <div className="w-3 h-3 rounded-full bg-green-500" />
-              <span className="ml-4 text-green-400 font-mono text-sm">terminal@sydney:~$</span>
+              <span className="ml-4 text-green-400 font-mono text-sm">terminal@itgirl:~$</span>
             </div>
             <div className="font-mono text-2xl text-green-400">
               <span className="text-purple-400">{'>'}</span> {typedText}
@@ -1943,6 +1942,66 @@ function BusinessHubPage({ onBack, onNavigateToModa, onNavigateToContentForm, on
             <br />
             {'// '}AI integration to investor relations - your one-stop solution.
           </p>
+        </div>
+
+        {/* Featured Partner - Scribed.ai */}
+        <div className={`mb-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <a 
+            href="https://scribed.ai" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="block group"
+          >
+            <div className="relative bg-gradient-to-r from-orange-600 via-red-600 to-orange-600 rounded-2xl p-1 shadow-2xl shadow-orange-500/30 hover:shadow-orange-500/50 transition-all hover:scale-[1.02]">
+              <div className="bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-xl p-8">
+                {/* Partner Badge */}
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-1.5 rounded-full text-xs font-bold tracking-wider shadow-lg flex items-center gap-2">
+                  <Star className="w-3 h-3 fill-white" />
+                  OFFICIAL PARTNER
+                  <Star className="w-3 h-3 fill-white" />
+                </div>
+                
+                <div className="flex flex-col md:flex-row items-center gap-6 mt-4">
+                  {/* Scribed Logo/Icon */}
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 blur-2xl opacity-60 group-hover:opacity-80 transition-opacity" />
+                    <div className="relative bg-gradient-to-br from-orange-500 to-red-600 p-6 rounded-2xl shadow-xl">
+                      <FileText className="w-16 h-16 text-white" />
+                    </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="flex-1 text-center md:text-left">
+                    <h2 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-red-400 to-orange-400 mb-3 font-mono">
+                      SCRIBED.AI
+                    </h2>
+                    <p className="text-xl text-gray-300 mb-4">
+                      The #1 All-in-One Business Management Tool
+                    </p>
+                    <p className="text-gray-400 text-sm mb-4 max-w-xl">
+                      CRM • Contact Management • Task Automation • Team Collaboration • 
+                      Step-by-Step Guides • Outreach Templates • Everything you need to run your creator business.
+                    </p>
+                    <div className="flex flex-wrap gap-2 justify-center md:justify-start">
+                      <span className="bg-orange-500/20 text-orange-400 px-3 py-1 rounded-full text-xs font-semibold">CRM</span>
+                      <span className="bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-xs font-semibold">Team Tools</span>
+                      <span className="bg-orange-500/20 text-orange-400 px-3 py-1 rounded-full text-xs font-semibold">Automation</span>
+                      <span className="bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-xs font-semibold">Guides</span>
+                    </div>
+                  </div>
+                  
+                  {/* CTA */}
+                  <div className="flex flex-col items-center gap-2">
+                    <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 rounded-xl font-bold group-hover:shadow-lg group-hover:shadow-orange-500/50 transition-all flex items-center gap-2">
+                      <Rocket className="w-5 h-5" />
+                      <span>Get Started Free</span>
+                    </div>
+                    <span className="text-gray-500 text-xs">Used in all my guides & templates</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
         </div>
 
         {/* Services Grid */}
@@ -1996,38 +2055,6 @@ function BusinessHubPage({ onBack, onNavigateToModa, onNavigateToContentForm, on
           })}
         </div>
 
-        {/* Featured Section - MODA Info */}
-        <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="bg-gradient-to-r from-purple-900/30 via-pink-900/30 to-purple-900/30 border-2 border-purple-500 rounded-2xl p-8 shadow-2xl shadow-purple-500/20">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <Database className="w-10 h-10 text-purple-400 animate-pulse" />
-              <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 font-mono">
-                MODA_PROJECT.init()
-              </h2>
-              <Globe className="w-10 h-10 text-pink-400 animate-pulse" />
-            </div>
-            
-            <p className="text-gray-300 text-center mb-6 font-mono text-sm max-w-3xl mx-auto">
-              {'// '}MODA: 3D Avatar Fashion Platform - Try clothes on YOUR virtual body before buying
-              <br />
-              {'// '}AI-powered outfit inspiration & virtual try-on technology
-              <br />
-              {'// '}Interested in learning more or discussing investment opportunities?
-            </p>
-
-            <div className="flex justify-center">
-              <a
-                href="mailto:sydney@itgirlsydcontent.com?subject=MODA Investment Inquiry"
-                className="group bg-gradient-to-r from-purple-600 to-pink-600 px-8 py-4 rounded-lg font-mono font-bold text-white hover:from-purple-500 hover:to-pink-500 transition-all duration-300 hover:scale-105 shadow-lg shadow-purple-500/50 flex items-center gap-3"
-              >
-                <Mail className="w-5 h-5" />
-                CONTACT_FOR_INVESTOR_INFO
-                <Rocket className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </div>
-          </div>
-        </div>
-
         {/* Footer */}
         <div className="mt-16 text-center">
           <p className="text-green-400 font-mono text-sm mb-2">
@@ -2071,8 +2098,7 @@ export default function CreatorLandingPage() {
     { name: 'Instagram', icon: Instagram, url: 'https://instagram.com/itgirlsyd19', color: 'from-purple-600 via-pink-500 to-orange-400', iconColor: 'text-white' },
     { name: 'Pinterest', icon: TrendingUp, url: 'https://pinterest.com/itgirlsyd19', color: 'from-red-600 to-red-500', iconColor: 'text-white' },
     { name: 'Threads', icon: Activity, url: 'https://threads.net/@itgirlsyd19', color: 'from-black to-gray-900', iconColor: 'text-white' },
-    { name: 'Twitter', icon: Twitter, url: 'https://twitter.com/itgirlsyd19', color: 'from-blue-400 to-blue-500', iconColor: 'text-white' },
-    { name: 'Email', icon: Mail, url: 'mailto:sydney@itgirlsydcontent.com', color: 'from-pink-500 to-rose-500', iconColor: 'text-white' }
+    { name: 'Twitter', icon: Twitter, url: 'https://twitter.com/itgirlsyd19', color: 'from-blue-400 to-blue-500', iconColor: 'text-white' }
   ];
 
   const contentCategories = [
@@ -2091,22 +2117,6 @@ export default function CreatorLandingPage() {
       color: 'from-purple-500 to-indigo-500',
       description: 'Tech tools, business guides, content creation & professional services',
       page: 'business'
-    },
-    {
-      title: 'Health & Wellness',
-      emoji: '💪',
-      icon: Dumbbell,
-      color: 'from-green-500 to-orange-500',
-      description: 'Fitness routines, nutrition tips, wellness practices & healthy recipes',
-      page: 'gym'
-    },
-    {
-      title: 'Home & Living',
-      emoji: '🏡',
-      icon: Home,
-      color: 'from-amber-600 to-red-600',
-      description: 'Seasonal decor, baking recipes, lifestyle vlogs & cozy home inspiration',
-      page: 'homehaven'
     }
   ];
 
@@ -2134,6 +2144,11 @@ export default function CreatorLandingPage() {
   // Render Partnerships Page
   if (currentPage === 'partnerships') {
     return <PartnershipsPage onBack={navigateHome} onViewMediaKit={() => setCurrentPage('mediakit')} />;
+  }
+
+  // Render Shop Page
+  if (currentPage === 'shop') {
+    return <ShopPage onBack={navigateHome} />;
   }
 
   // Render Beauty Closet Page
@@ -2226,7 +2241,7 @@ export default function CreatorLandingPage() {
           <div className="relative inline-block mb-6">
             <img
               src="/profile.png"
-              alt="Sydney"
+              alt="IT GIRL"
               className="w-32 h-32 rounded-full border-4 border-white shadow-2xl object-cover mx-auto"
             />
             <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full p-2 shadow-lg">
@@ -2235,7 +2250,7 @@ export default function CreatorLandingPage() {
           </div>
           
           <h1 className="text-5xl font-bold bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 bg-clip-text text-transparent mb-4">
-            Sydney
+            IT GIRL CONTENT
           </h1>
           
           <p className="text-xl text-gray-700 mb-6 font-medium">
@@ -2243,10 +2258,13 @@ export default function CreatorLandingPage() {
           </p>
           
           <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-lg">
-              <Heart className="w-5 h-5 text-pink-500 fill-pink-500" />
-              <span className="font-semibold text-gray-700">35K+ Community</span>
-            </div>
+            <button 
+              onClick={() => setCurrentPage('shop')}
+              className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-500 text-white px-5 py-2.5 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all cursor-pointer"
+            >
+              <ShoppingBag className="w-5 h-5" />
+              <span className="font-semibold">Shop</span>
+            </button>
             <div className="flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white px-4 py-2 rounded-full shadow-lg">
               <Sparkles className="w-5 h-5" />
               <span className="font-semibold">Verified Creator</span>
@@ -2442,8 +2460,16 @@ export default function CreatorLandingPage() {
 
         {/* Footer */}
         <div className={`text-center transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          {/* Quick Contact */}
+          <a
+            href="mailto:sydney@itgirlsydcontent.com"
+            className="inline-flex items-center gap-2 bg-gray-100 hover:bg-pink-100 text-gray-700 hover:text-pink-600 px-4 py-2 rounded-full text-sm font-medium mb-4 transition-all hover:scale-105"
+          >
+            <Mail className="w-4 h-4" />
+            sydney@itgirlsydcontent.com
+          </a>
           <p className="text-gray-600 mb-4">
-            Made with <Heart className="inline w-4 h-4 text-pink-500 fill-pink-500" /> by Sydney @itgirlsyd19
+            Made with <Heart className="inline w-4 h-4 text-pink-500 fill-pink-500" /> by IT GIRL CONTENT
           </p>
           <p className="text-sm text-gray-500">
             © 2025 All Rights Reserved • <a href="#" className="hover:text-pink-500 transition-colors">Privacy Policy</a> • <a href="#" className="hover:text-pink-500 transition-colors">Terms</a>

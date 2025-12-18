@@ -10,10 +10,9 @@ export default function MediaKit() {
   ];
 
   const contentPillars = [
-    { name: 'Beauty & Fashion', percentage: '35%', color: 'bg-pink-500' },
-    { name: 'Health & Wellness', percentage: '25%', color: 'bg-orange-500' },
-    { name: 'Home & Lifestyle', percentage: '20%', color: 'bg-amber-600' },
-    { name: 'Tech & Business', percentage: '20%', color: 'bg-purple-600' }
+    { name: 'Beauty & Fashion', percentage: '45%', color: 'bg-pink-500' },
+    { name: 'Tech & Business', percentage: '30%', color: 'bg-purple-600' },
+    { name: 'Miscellaneous', percentage: '25%', color: 'bg-amber-500' }
   ];
 
   const demographics = [
@@ -84,7 +83,7 @@ export default function MediaKit() {
                   Multi-Platform Creator
                 </div>
                 <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full font-semibold">
-                  Beauty • Wellness • Lifestyle
+                  Beauty • Fashion • Tech
                 </div>
               </div>
             </div>
@@ -101,13 +100,13 @@ export default function MediaKit() {
           </h2>
           <p className="text-gray-700 leading-relaxed mb-4">
             Sydney is a dynamic content creator with a passion for empowering her community through authentic, engaging content. 
-            Specializing in beauty, wellness, lifestyle, and business, she creates relatable content that resonates with her 
+            Specializing in beauty, fashion, and tech/business, she creates relatable content that resonates with her 
             predominantly female, millennial audience.
           </p>
           <p className="text-gray-700 leading-relaxed">
             With a combined reach of over 35,000 followers across multiple platforms, Sydney delivers genuine brand stories 
             that drive engagement and conversions. Her diverse content portfolio spans fashion hauls, beauty tutorials, 
-            fitness motivation, home decor, and business insights.
+            GRWM videos, creator tips, and business insights.
           </p>
         </section>
 
@@ -228,24 +227,24 @@ export default function MediaKit() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-gradient-to-br from-pink-50 to-rose-50 rounded-xl p-6 border-2 border-pink-200">
-              <h4 className="font-bold text-lg mb-2">Fashion & Beauty</h4>
-              <p className="text-gray-600 text-sm mb-3">Product reviews, hauls, tutorials & style guides</p>
+              <h4 className="font-bold text-lg mb-2">Beauty & Fashion</h4>
+              <p className="text-gray-600 text-sm mb-3">Product reviews, hauls, GRWM, tutorials & style guides</p>
               <div className="bg-pink-500 text-white px-3 py-1 rounded-full text-xs font-bold inline-block">
-                35% of content
+                45% of content
               </div>
             </div>
-            <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-6 border-2 border-orange-200">
-              <h4 className="font-bold text-lg mb-2">Health & Fitness</h4>
-              <p className="text-gray-600 text-sm mb-3">Workout routines, wellness tips & healthy recipes</p>
-              <div className="bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold inline-block">
-                25% of content
+            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border-2 border-purple-200">
+              <h4 className="font-bold text-lg mb-2">Tech & Business</h4>
+              <p className="text-gray-600 text-sm mb-3">Creator tips, business insights & tech reviews</p>
+              <div className="bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-bold inline-block">
+                30% of content
               </div>
             </div>
             <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-6 border-2 border-amber-200">
-              <h4 className="font-bold text-lg mb-2">Lifestyle & Home</h4>
-              <p className="text-gray-600 text-sm mb-3">Home decor, baking, seasonal content & vlogs</p>
-              <div className="bg-amber-600 text-white px-3 py-1 rounded-full text-xs font-bold inline-block">
-                20% of content
+              <h4 className="font-bold text-lg mb-2">Miscellaneous</h4>
+              <p className="text-gray-600 text-sm mb-3">Lifestyle, vlogs, day-in-my-life & trending content</p>
+              <div className="bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-bold inline-block">
+                25% of content
               </div>
             </div>
           </div>
@@ -300,12 +299,12 @@ export default function MediaKit() {
             {[
               'Clean Beauty',
               'Sustainable Fashion',
-              'Wellness Products',
-              'Tech Innovation',
-              'Home Essentials',
+              'Tech & Gadgets',
+              'Creator Tools',
               'Female Empowerment',
               'Quality Over Quantity',
-              'Authentic Storytelling'
+              'Authentic Storytelling',
+              'Lifestyle Brands'
             ].map((value, index) => (
               <div key={index} className="bg-gradient-to-r from-pink-50 to-purple-50 px-4 py-3 rounded-lg text-center border border-pink-200">
                 <span className="font-semibold text-gray-800 text-sm">{value}</span>

@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎉 Access Unlocked! - IT Girl Sydney</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 25%, #f5d0fe 50%, #e9d5ff 75%, #ddd6fe 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 25px 80px rgba(168, 85, 247, 0.15), 0 10px 30px rgba(236, 72, 153, 0.1);
+      overflow: hidden;
+    }
+    
+    /* Header Section */
+    .header {
+      background: linear-gradient(135deg, #9333ea 0%, #ec4899 50%, #f97316 100%);
+      padding: 50px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L35 20 L50 20 L38 30 L43 45 L30 35 L17 45 L22 30 L10 20 L25 20 Z' fill='%23ffffff' fill-opacity='0.1'/%3E%3C/svg%3E");
+      animation: shimmer 15s linear infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .sparkle-emoji {
+      font-size: 48px;
+      display: block;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .header p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.95);
+      font-weight: 400;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Main Content */
+    .content {
+      padding: 50px 40px;
+    }
+    
+    .welcome-message {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 30px;
+      background: linear-gradient(135deg, #fdf2f8 0%, #f5f3ff 100%);
+      border-radius: 20px;
+      border: 2px solid #f3e8ff;
+    }
+    
+    .welcome-message h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: #7c3aed;
+      margin-bottom: 12px;
+    }
+    
+    .welcome-message p {
+      color: #6b7280;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+    
+    /* Product Section */
+    .product-section {
+      margin-bottom: 40px;
+    }
+    
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #9333ea;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, #e9d5ff 0%, transparent 100%);
+    }
+    
+    .product-card {
+      background: linear-gradient(135deg, #f5f3ff 0%, #fdf2f8 100%);
+      border: 2px solid #e9d5ff;
+      border-radius: 20px;
+      padding: 28px;
+      margin-bottom: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(168, 85, 247, 0.15);
+      border-color: #c084fc;
+    }
+    
+    .product-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    
+    .product-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 4px;
+    }
+    
+    .product-category {
+      font-size: 13px;
+      color: #9333ea;
+      font-weight: 600;
+      background: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      display: inline-block;
+    }
+    
+    .product-badge {
+      background: linear-gradient(135deg, #fbbf24 0%, #f97316 100%);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .product-description {
+      color: #6b7280;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    .download-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #9333ea 0%, #ec4899 100%);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(147, 51, 234, 0.3);
+    }
+    
+    .download-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(147, 51, 234, 0.4);
+    }
+    
+    .download-button svg {
+      width: 20px;
+      height: 20px;
+    }
+    
+    /* Features List */
+    .features-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    
+    @media (max-width: 500px) {
+      .features-list {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #4b5563;
+    }
+    
+    .feature-check {
+      width: 18px;
+      height: 18px;
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 10px;
+      flex-shrink: 0;
+    }
+    
+    /* How to Access Section */
+    .how-to-section {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      border: 2px solid #fbbf24;
+      border-radius: 20px;
+      padding: 28px;
+      margin-bottom: 40px;
+    }
+    
+    .how-to-section h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #92400e;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .steps-list {
+      list-style: none;
+    }
+    
+    .steps-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 14px;
+      color: #78350f;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    
+    .step-number {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    
+    /* Support Section */
+    .support-section {
+      text-align: center;
+      padding: 30px;
+      background: #f9fafb;
+      border-radius: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .support-section h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 12px;
+    }
+    
+    .support-section p {
+      color: #6b7280;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+    
+    .support-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #9333ea;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    
+    .support-email:hover {
+      color: #7c3aed;
+    }
+    
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 30px 40px;
+      background: linear-gradient(135deg, #fdf2f8 0%, #f5f3ff 100%);
+      border-top: 2px solid #f3e8ff;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    
+    .social-link {
+      width: 44px;
+      height: 44px;
+      background: white;
+      border: 2px solid #e9d5ff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #9333ea;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .social-link:hover {
+      background: linear-gradient(135deg, #9333ea 0%, #ec4899 100%);
+      color: white;
+      border-color: transparent;
+      transform: translateY(-3px);
+    }
+    
+    .footer p {
+      color: #9ca3af;
+      font-size: 13px;
+    }
+    
+    .footer .brand {
+      font-weight: 700;
+      color: #9333ea;
+    }
+    
+    /* Confetti animation */
+    .confetti {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1000;
+      overflow: hidden;
+    }
+    
+    .confetti-piece {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #ec4899;
+      animation: confetti-fall 4s ease-out forwards;
+    }
+    
+    @keyframes confetti-fall {
+      0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+    
+    /* Responsive */
+    @media (max-width: 600px) {
+      .header {
+        padding: 40px 25px;
+      }
+      
+      .header h1 {
+        font-size: 32px;
+      }
+      
+      .content {
+        padding: 30px 25px;
+      }
+      
+      .product-header {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Confetti -->
+  <div class="confetti" id="confetti"></div>
+  
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <span class="sparkle-emoji">🎉✨💖</span>
+      <h1>Access Unlocked!</h1>
+      <p>Welcome to the IT Girl fam, babe! 💕</p>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="content">
+      <!-- Welcome Message -->
+      <div class="welcome-message">
+        <h2>Hey Queen! 👑</h2>
+        <p>
+          Thank you SO much for your purchase! I'm so excited you're here and ready to level up your creator journey. 
+          Everything you need to get started is right below. Let's make magic happen! ✨
+        </p>
+      </div>
+      
+      <!-- Your Products Section -->
+      <div class="product-section">
+        <div class="section-title">📦 Your Digital Products</div>
+        
+        <!-- Creator Business Toolkit -->
+        <div class="product-card">
+          <div class="product-header">
+            <div>
+              <div class="product-name">Creator Business Toolkit</div>
+              <span class="product-category">📚 Ebook + Templates</span>
+            </div>
+            <span class="product-badge">⭐ Bestseller</span>
+          </div>
+          <p class="product-description">
+            Your complete guide to building a profitable creator business - with outreach templates, pricing strategies, and growth tactics!
+          </p>
+          <div class="features-list">
+            <div class="feature-item"><span class="feature-check">✓</span> 50+ Page Comprehensive Guide</div>
+            <div class="feature-item"><span class="feature-check">✓</span> 10 Cold Outreach Templates</div>
+            <div class="feature-item"><span class="feature-check">✓</span> Pricing Calculator</div>
+            <div class="feature-item"><span class="feature-check">✓</span> Rate Card Template</div>
+            <div class="feature-item"><span class="feature-check">✓</span> Media Kit Template</div>
+            <div class="feature-item"><span class="feature-check">✓</span> Contract Checklist</div>
+          </div>
+          <a href="YOUR_CANVA_LINK_HERE" class="download-button" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Access Now
+          </a>
+        </div>
+        
+        <!-- Content Calendar Bundle -->
+        <div class="product-card">
+          <div class="product-header">
+            <div>
+              <div class="product-name">Content Calendar Bundle</div>
+              <span class="product-category">📅 Templates</span>
+            </div>
+          </div>
+          <p class="product-description">
+            Plan your content like a pro with our 90-day content calendar, posting schedules, and 100+ content ideas!
+          </p>
+          <div class="features-list">
+            <div class="feature-item"><span class="feature-check">✓</span> 90-Day Content Calendar</div>
+            <div class="feature-item"><span class="feature-check">✓</span> Weekly Posting Schedule</div>
+            <div class="feature-item"><span class="feature-check">✓</span> 100+ Content Ideas</div>
+            <div class="feature-item"><span class="feature-check">✓</span> Hashtag Research Template</div>
+          </div>
+          <a href="YOUR_CANVA_LINK_HERE" class="download-button" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Access Now
+          </a>
+        </div>
+        
+        <!-- UGC Starter Kit -->
+        <div class="product-card">
+          <div class="product-header">
+            <div>
+              <div class="product-name">UGC Starter Kit</div>
+              <span class="product-category">📷 Ebook + Templates</span>
+            </div>
+          </div>
+          <p class="product-description">
+            Everything you need to start your UGC career - from setting up your portfolio to landing your first brand deal!
+          </p>
+          <div class="features-list">
+            <div class="feature-item"><span class="feature-check">✓</span> UGC Beginner's Guide (40+ pages)</div>
+            <div class="feature-item"><span class="feature-check">✓</span> Portfolio Website Template</div>
+            <div class="feature-item"><span class="feature-check">✓</span> UGC Rate Card Template</div>
+            <div class="feature-item"><span class="feature-check">✓</span> Brand Outreach Scripts</div>
+          </div>
+          <a href="YOUR_CANVA_LINK_HERE" class="download-button" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Access Now
+          </a>
+        </div>
+        
+        <!-- Social Media Graphics Pack -->
+        <div class="product-card">
+          <div class="product-header">
+            <div>
+              <div class="product-name">Social Media Graphics Pack</div>
+              <span class="product-category">🎨 Templates</span>
+            </div>
+          </div>
+          <p class="product-description">
+            Ready-to-use Canva templates for Instagram, TikTok, and Pinterest. Just customize and post!
+          </p>
+          <div class="features-list">
+            <div class="feature-item"><span class="feature-check">✓</span> 50+ Instagram Post Templates</div>
+            <div class="feature-item"><span class="feature-check">✓</span> 30+ Story Templates</div>
+            <div class="feature-item"><span class="feature-check">✓</span> 20+ Reel Cover Templates</div>
+            <div class="feature-item"><span class="feature-check">✓</span> Pinterest Pin Templates</div>
+          </div>
+          <a href="YOUR_CANVA_LINK_HERE" class="download-button" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Access Now
+          </a>
+        </div>
+      </div>
+      
+      <!-- How to Access Section -->
+      <div class="how-to-section">
+        <h3>🔓 How to Access Your Products</h3>
+        <ol class="steps-list">
+          <li>
+            <span class="step-number">1</span>
+            <span>Click the "Access Now" button for each product you purchased</span>
+          </li>
+          <li>
+            <span class="step-number">2</span>
+            <span>You'll be taken to Canva - click "Use Template" to copy it to your account</span>
+          </li>
+          <li>
+            <span class="step-number">3</span>
+            <span>Customize with your info, brand colors, and details!</span>
+          </li>
+          <li>
+            <span class="step-number">4</span>
+            <span>Download as PDF or share directly - the templates are yours forever! 💖</span>
+          </li>
+        </ol>
+      </div>
+      
+      <!-- Support Section -->
+      <div class="support-section">
+        <h3>Need Help? I Got You! 💕</h3>
+        <p>If you have any questions or issues accessing your products, don't hesitate to reach out!</p>
+        <a href="mailto:sydney@itgirlsydcontent.com" class="support-email">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          sydney@itgirlsydcontent.com
+        </a>
+      </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer">
+      <div class="social-links">
+        <a href="https://instagram.com/itgirlsyd19" class="social-link" target="_blank" title="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://tiktok.com/@itgirlsyd" class="social-link" target="_blank" title="TikTok">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+        </a>
+        <a href="https://youtube.com/@itgirlsyd" class="social-link" target="_blank" title="YouTube">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+        </a>
+      </div>
+      <p>Made with 💖 by <span class="brand">IT Girl Sydney</span></p>
+      <p style="margin-top: 8px;">© 2024 IT Girl Content. All rights reserved.</p>
+    </div>
+  </div>
+  
+  <script>
+    // Create confetti on page load
+    function createConfetti() {
+      const confettiContainer = document.getElementById('confetti');
+      const colors = ['#ec4899', '#9333ea', '#f97316', '#fbbf24', '#10b981', '#06b6d4'];
+      
+      for (let i = 0; i < 50; i++) {
+        const piece = document.createElement('div');
+        piece.className = 'confetti-piece';
+        piece.style.left = Math.random() * 100 + '%';
+        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.animationDelay = Math.random() * 2 + 's';
+        piece.style.animationDuration = (Math.random() * 2 + 3) + 's';
+        piece.style.width = (Math.random() * 8 + 6) + 'px';
+        piece.style.height = (Math.random() * 8 + 6) + 'px';
+        piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+        confettiContainer.appendChild(piece);
+      }
+      
+      // Remove confetti after animation
+      setTimeout(() => {
+        confettiContainer.innerHTML = '';
+      }, 5000);
+    }
+    
+    createConfetti();
+  </script>
+</body>
+</html>
+
