@@ -36,12 +36,13 @@ export default function CreatorLandingPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentPage]);
 
+  // Social stats - UPDATE THESE MONTHLY with your current follower counts
   const socialLinks = [
-    { name: 'TikTok', icon: Video, url: 'https://tiktok.com/@itgirlsyd19', color: 'from-black via-gray-900 to-cyan-400', iconColor: 'text-white' },
-    { name: 'Instagram', icon: Instagram, url: 'https://instagram.com/itgirlsyd19', color: 'from-purple-600 via-pink-500 to-orange-400', iconColor: 'text-white' },
-    { name: 'Pinterest', icon: TrendingUp, url: 'https://pinterest.com/itgirlsyd19', color: 'from-red-600 to-red-500', iconColor: 'text-white' },
-    { name: 'Threads', icon: Activity, url: 'https://threads.net/@itgirlsyd19', color: 'from-black to-gray-900', iconColor: 'text-white' },
-    { name: 'Twitter', icon: Twitter, url: 'https://twitter.com/itgirlsyd19', color: 'from-blue-400 to-blue-500', iconColor: 'text-white' }
+    { name: 'TikTok', icon: Video, url: 'https://tiktok.com/@itgirlsyd19', color: 'from-black via-gray-900 to-cyan-400', iconColor: 'text-white', followers: '15.2K' },
+    { name: 'Instagram', icon: Instagram, url: 'https://instagram.com/itgirlsyd19', color: 'from-purple-600 via-pink-500 to-orange-400', iconColor: 'text-white', followers: '12.8K' },
+    { name: 'Pinterest', icon: TrendingUp, url: 'https://pinterest.com/itgirlsyd19', color: 'from-red-600 to-red-500', iconColor: 'text-white', followers: '5.1K' },
+    { name: 'Threads', icon: Activity, url: 'https://threads.net/@itgirlsyd19', color: 'from-black to-gray-900', iconColor: 'text-white', followers: '1.2K' },
+    { name: 'Twitter', icon: Twitter, url: 'https://twitter.com/itgirlsyd19', color: 'from-blue-400 to-blue-500', iconColor: 'text-white', followers: '2.3K' }
   ];
 
   const contentCategories = [
@@ -254,10 +255,11 @@ export default function CreatorLandingPage() {
           </div>
         </div>
 
-        {/* Compact Social Media Section */}
+        {/* Social Media Stats Section */}
         <div className={`mb-16 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="text-center text-gray-600 font-medium mb-4">Follow Me On</h3>
-          <div className="flex flex-wrap items-center justify-center gap-3">
+          <h3 className="text-center text-gray-600 font-medium mb-2">Follow Me On</h3>
+          <p className="text-center text-sm text-gray-400 mb-6">35K+ Total Community</p>
+          <div className="flex flex-wrap items-center justify-center gap-4">
             {socialLinks.map((social, index) => (
               <a
                 key={index}
@@ -265,17 +267,115 @@ export default function CreatorLandingPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => handleLinkClick(social.name)}
-                className="group bg-white rounded-2xl p-4 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100 hover:border-pink-300 relative flex flex-col items-center gap-2"
+                className="group bg-white rounded-2xl p-5 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-2 border-gray-100 hover:border-pink-300 relative flex flex-col items-center gap-3 min-w-[100px]"
                 title={social.name}
               >
                 <div className={`bg-gradient-to-br ${social.color} rounded-xl p-3 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                   <social.icon className={`w-6 h-6 ${social.iconColor}`} />
                 </div>
                 <div className="text-center">
-                  <span className="text-xs font-bold text-gray-700 block">{social.name}</span>
+                  <span className="text-lg font-black text-gray-900 block">{social.followers}</span>
+                  <span className="text-xs font-medium text-gray-500 block">{social.name}</span>
                 </div>
               </a>
             ))}
+          </div>
+        </div>
+
+        {/* Embedded Social Feeds */}
+        <div className={`mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="text-3xl font-bold text-center mb-3 bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
+            Latest Content
+          </h2>
+          <p className="text-center text-gray-600 mb-8">Check out what I've been creating ✨</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* TikTok Embed */}
+            <div className="bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-gradient-to-br from-black to-cyan-400 rounded-xl p-2">
+                  <Video className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-gray-800">TikTok</h3>
+                  <p className="text-xs text-gray-500">@itgirlsyd19</p>
+                </div>
+              </div>
+              <div className="aspect-[9/16] max-h-[400px] bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl overflow-hidden flex items-center justify-center">
+                <iframe
+                  src="https://www.tiktok.com/embed/@itgirlsyd19"
+                  className="w-full h-full"
+                  allowFullScreen
+                  allow="encrypted-media"
+                  title="TikTok Feed"
+                />
+              </div>
+              <a 
+                href="https://tiktok.com/@itgirlsyd19"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 w-full flex items-center justify-center gap-2 bg-black text-white px-4 py-3 rounded-xl font-semibold hover:bg-gray-800 transition-all"
+              >
+                <Video className="w-4 h-4" />
+                Follow on TikTok
+              </a>
+            </div>
+
+            {/* Instagram Embed */}
+            <div className="bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 rounded-xl p-2">
+                  <Instagram className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-gray-800">Instagram</h3>
+                  <p className="text-xs text-gray-500">@itgirlsyd19</p>
+                </div>
+              </div>
+              <div className="aspect-square bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl overflow-hidden flex items-center justify-center">
+                <iframe
+                  src="https://www.instagram.com/itgirlsyd19/embed"
+                  className="w-full h-full"
+                  allowFullScreen
+                  allow="encrypted-media"
+                  title="Instagram Feed"
+                />
+              </div>
+              <a 
+                href="https://instagram.com/itgirlsyd19"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 text-white px-4 py-3 rounded-xl font-semibold hover:opacity-90 transition-all"
+              >
+                <Instagram className="w-4 h-4" />
+                Follow on Instagram
+              </a>
+            </div>
+          </div>
+
+          {/* Pinterest Board Preview */}
+          <div className="mt-6 bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="bg-gradient-to-br from-red-600 to-red-500 rounded-xl p-2">
+                <TrendingUp className="w-5 h-5 text-white" />
+              </div>
+              <div>
+                <h3 className="font-bold text-gray-800">Pinterest</h3>
+                <p className="text-xs text-gray-500">itgirlsyd19</p>
+              </div>
+            </div>
+            <div className="bg-gradient-to-br from-red-50 to-pink-50 rounded-xl p-8 text-center">
+              <p className="text-gray-600 mb-4">Check out my curated boards for outfit inspo, recipes, workouts & more!</p>
+              <a 
+                href="https://pinterest.com/itgirlsyd19"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-red-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-red-700 transition-all"
+              >
+                <TrendingUp className="w-4 h-4" />
+                Browse My Pins
+              </a>
+            </div>
           </div>
         </div>
 
