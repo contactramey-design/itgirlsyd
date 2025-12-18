@@ -27,8 +27,8 @@ const ProductCard = ({ product, isDigital = true }) => {
   return (
     <>
       <div 
-        className={`group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 ${
-          product.bestseller ? 'border-yellow-400' : 'border-gray-100'
+        className={`group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border-3 ${
+          product.bestseller ? 'border-yellow-400 ring-4 ring-yellow-100' : 'border-purple-200'
         }`}
       >
         {/* Bestseller Badge */}
@@ -475,12 +475,12 @@ export default function ShopPage({ onBack }) {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 relative overflow-hidden">
-      {/* Background decorations */}
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-100 to-orange-100 relative overflow-hidden">
+      {/* Background decorations - subtle and positioned at edges */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-300/30 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-pink-300/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-orange-300/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute -top-20 -left-20 w-72 h-72 bg-purple-300/20 rounded-full blur-3xl" />
+        <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-pink-300/20 rounded-full blur-3xl" />
+        <div className="absolute top-1/3 -right-32 w-64 h-64 bg-orange-300/15 rounded-full blur-3xl" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-12">
@@ -581,16 +581,19 @@ export default function ShopPage({ onBack }) {
               </p>
             </div>
 
-            <div className={`max-w-lg mx-auto transition-all duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-              {PHYSICAL_PRODUCTS.map((product, index) => (
-                <div 
-                  key={product.id}
-                  style={{ transitionDelay: `${index * 100}ms` }}
-                  className={`transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-                >
-                  <ProductCard product={product} isDigital={false} />
-                </div>
-              ))}
+            {/* Merch Product - Full width card with better visibility */}
+            <div className={`max-w-2xl mx-auto transition-all duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+              <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-6 shadow-2xl border-4 border-pink-200">
+                {PHYSICAL_PRODUCTS.map((product, index) => (
+                  <div 
+                    key={product.id}
+                    style={{ transitionDelay: `${index * 100}ms` }}
+                    className={`transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                  >
+                    <ProductCard product={product} isDigital={false} />
+                  </div>
+                ))}
+              </div>
             </div>
           </>
         )}
