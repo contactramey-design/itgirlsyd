@@ -104,3 +104,286 @@ body {
   }
 }
 
+/* ============================================
+   PRINT STYLES - Beautiful Media Kit PDF
+   ============================================ */
+@media print {
+  /* Reset and base styles */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Soft pink/lavender gradient background */
+  body {
+    background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 25%, #f5d0fe 50%, #ede9fe 75%, #fdf2f8 100%) !important;
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+
+  html {
+    background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 25%, #f5d0fe 50%, #ede9fe 75%, #fdf2f8 100%) !important;
+  }
+
+  .min-h-screen {
+    background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 25%, #f5d0fe 50%, #ede9fe 75%, #fdf2f8 100%) !important;
+  }
+
+  /* Hide non-essential elements */
+  button,
+  .no-print,
+  nav {
+    display: none !important;
+  }
+
+  /* Page setup */
+  @page {
+    size: A4;
+    margin: 0.4in;
+    background: linear-gradient(135deg, #fdf2f8, #f5d0fe) !important;
+  }
+
+  /* Header styling - vibrant gradient */
+  .bg-gradient-to-r.from-pink-600 {
+    background: linear-gradient(to right, #ec4899, #a855f7, #6366f1) !important;
+    -webkit-print-color-adjust: exact;
+  }
+
+  /* Ensure backgrounds print */
+  .bg-gradient-to-br,
+  .bg-gradient-to-r,
+  .bg-pink-500,
+  .bg-purple-500,
+  .bg-purple-600,
+  .bg-amber-500,
+  .bg-amber-600,
+  .bg-orange-500,
+  .bg-blue-100,
+  .bg-gray-50 {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* White sections with pink tint */
+  .bg-white {
+    background: linear-gradient(135deg, #ffffff, #fdf2f8) !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+
+  /* Section spacing */
+  section {
+    page-break-inside: avoid;
+    margin-bottom: 16pt !important;
+    border: 2px solid #f472b6 !important;
+    border-radius: 16pt !important;
+    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.15) !important;
+  }
+
+  /* Profile image */
+  img {
+    max-width: 100% !important;
+    border-radius: 50% !important;
+    border: 4px solid white !important;
+  }
+
+  /* Typography - Better contrast */
+  h1 {
+    font-size: 28pt !important;
+    color: white !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
+  }
+
+  h2 {
+    font-size: 16pt !important;
+    color: #7c3aed !important;
+    border-bottom: 3px solid #ec4899 !important;
+    padding-bottom: 8pt !important;
+    margin-bottom: 12pt !important;
+    font-weight: 700 !important;
+  }
+
+  h3 {
+    font-size: 13pt !important;
+    color: #1f2937 !important;
+    font-weight: 700 !important;
+  }
+
+  h4 {
+    font-size: 12pt !important;
+    color: #1f2937 !important;
+    font-weight: 600 !important;
+  }
+
+  p, li {
+    font-size: 10pt !important;
+    color: #374151 !important;
+  }
+
+  span {
+    font-size: 10pt !important;
+  }
+
+  /* Stats cards - more vibrant */
+  .bg-gray-50 {
+    background: linear-gradient(135deg, #fdf2f8, #faf5ff) !important;
+    border: 2px solid #f9a8d4 !important;
+  }
+
+  /* Platform stat numbers - high contrast */
+  .text-3xl.font-black {
+    color: #1f2937 !important;
+    font-weight: 900 !important;
+  }
+
+  /* Engagement rate text */
+  .text-green-600 {
+    color: #059669 !important;
+    font-weight: 700 !important;
+  }
+
+  /* Progress bars - ensure they're visible */
+  .bg-pink-500 {
+    background-color: #ec4899 !important;
+  }
+  
+  .bg-purple-600 {
+    background-color: #9333ea !important;
+  }
+  
+  .bg-amber-500 {
+    background-color: #f59e0b !important;
+  }
+
+  /* Progress bar backgrounds */
+  .bg-gray-200 {
+    background-color: #e5e7eb !important;
+  }
+
+  /* Contact section - dark with good contrast */
+  .from-gray-900 {
+    background: linear-gradient(135deg, #1f2937, #111827) !important;
+  }
+
+  .from-gray-900 h2,
+  .from-gray-900 p {
+    color: white !important;
+  }
+
+  .from-gray-900 .text-gray-300 {
+    color: #d1d5db !important;
+  }
+
+  .from-gray-900 .text-pink-400 {
+    color: #f472b6 !important;
+  }
+
+  /* Why Partner section - ensure white text */
+  .from-purple-600.to-pink-600,
+  .bg-gradient-to-br.from-purple-600 {
+    background: linear-gradient(135deg, #9333ea, #ec4899) !important;
+  }
+
+  .from-purple-600 h2,
+  .from-purple-600 h4,
+  .from-purple-600 p {
+    color: white !important;
+  }
+
+  .from-purple-600 .text-sm {
+    color: rgba(255, 255, 255, 0.95) !important;
+  }
+
+  /* White/transparent boxes inside purple section */
+  .bg-white\/10 {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  }
+
+  /* Partnership packages */
+  .border-purple-500 {
+    border-color: #9333ea !important;
+    border-width: 3px !important;
+    background: linear-gradient(135deg, #faf5ff, #fdf2f8) !important;
+  }
+
+  /* Package prices - gradient text fallback */
+  .bg-clip-text {
+    color: #9333ea !important;
+    -webkit-text-fill-color: #9333ea !important;
+  }
+
+  /* Header badges/pills */
+  .bg-white\/20 {
+    background: rgba(255, 255, 255, 0.3) !important;
+    color: white !important;
+  }
+
+  /* Icon backgrounds on cards */
+  .bg-gradient-to-br.from-black {
+    background: linear-gradient(135deg, #1f2937, #06b6d4) !important;
+  }
+
+  .bg-gradient-to-br.from-purple-600 {
+    background: linear-gradient(135deg, #9333ea, #ec4899) !important;
+  }
+
+  .bg-gradient-to-br.from-red-600 {
+    background: linear-gradient(135deg, #dc2626, #ef4444) !important;
+  }
+
+  /* Content showcase cards */
+  .from-pink-50.to-rose-50 {
+    background: linear-gradient(135deg, #fdf2f8, #ffe4e6) !important;
+  }
+
+  .from-purple-50.to-pink-50 {
+    background: linear-gradient(135deg, #faf5ff, #fdf2f8) !important;
+  }
+
+  .from-amber-50.to-orange-50 {
+    background: linear-gradient(135deg, #fffbeb, #fff7ed) !important;
+  }
+
+  /* Brand alignment tags */
+  .from-pink-50.to-purple-50 {
+    background: linear-gradient(to right, #fdf2f8, #faf5ff) !important;
+    border: 1px solid #f9a8d4 !important;
+  }
+
+  /* Footer */
+  .text-center.mt-12 {
+    border-top: 3px solid #ec4899 !important;
+    padding-top: 15pt !important;
+    color: #6b7280 !important;
+  }
+
+  /* Links */
+  a {
+    text-decoration: none !important;
+    color: #9333ea !important;
+  }
+
+  /* Blue section icons */
+  .bg-blue-100 {
+    background: #dbeafe !important;
+  }
+
+  .text-blue-600 {
+    color: #2563eb !important;
+  }
+
+  /* Demographics section text */
+  .text-gray-600 {
+    color: #4b5563 !important;
+  }
+
+  .text-gray-700 {
+    color: #374151 !important;
+  }
+
+  .text-gray-800 {
+    color: #1f2937 !important;
+  }
+}
+
