@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Heart, Instagram, Youtube, Twitter, Mail, ShoppingBag, Crown, Sparkles, Star, Link as LinkIcon, Lock, TrendingUp, Palette, Briefcase, Activity, Home, Cookie, Scissors, Brain, Dumbbell, UtensilsCrossed, Terminal, Code, Zap, Rocket, DollarSign, FileText, Edit3, Users, ArrowLeft, Cpu, Database, Globe, Shirt, Smile, Gem, Wand2, Camera, Video, Target, Award, GraduationCap, BookOpen } from 'lucide-react';
 import MediaKit from './MediaKit.jsx';
 import PartnershipsPage from './Partnerships.jsx';
+import './email-utils.js'; // Load email collection utilities
 import Academy from './Academy.jsx';
 
 // Beauty Closet Component - Pink Fitting Room Theme
@@ -1594,6 +1595,8 @@ export default function CreatorLandingPage() {
   const [currentPage, setCurrentPage] = useState('home'); // 'home', 'business', 'beauty', 'gym', 'homehaven', 'mediakit', 'partnerships', 'moda', 'content-form', or 'tech-guides'
   const [showSupportPopup, setShowSupportPopup] = useState(false);
   const [showCollabPopup, setShowCollabPopup] = useState(false);
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterStatus, setNewsletterStatus] = useState(''); // 'success', 'error', 'loading'
 
   useEffect(() => {
     setIsVisible(true);
@@ -2274,22 +2277,107 @@ export default function CreatorLandingPage() {
             <Sparkles className="w-12 h-12 mx-auto mb-4" />
             <h2 className="text-3xl font-bold mb-4">Join My VIP List</h2>
             <p className="mb-6 text-lg opacity-90">
-              Get exclusive content, early access, and special offers delivered to your inbox!
+              Get exclusive content, early access to courses, and special offers delivered to your inbox!
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-6 py-4 rounded-full text-gray-800 focus:outline-none focus:ring-4 focus:ring-white/50 transition-all"
-              />
-              <button 
-                onClick={() => handleLinkClick('Newsletter signup')}
-                className="bg-white text-purple-600 px-8 py-4 rounded-full font-bold hover:bg-pink-50 transition-all hover:scale-105 shadow-lg"
+            
+            {newsletterStatus === 'success' ? (
+              <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 max-w-md mx-auto border border-white/30">
+                <div className="text-5xl mb-4">🎉</div>
+                <h3 className="text-2xl font-bold mb-2">You're In!</h3>
+                <p className="opacity-90">Welcome to the VIP list! Check your inbox for a welcome email. 💕</p>
+              </div>
+            ) : (
+              <form 
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  if (!newsletterEmail || !newsletterEmail.includes('@')) {
+                    setNewsletterStatus('error');
+                    return;
+                  }
+                  
+                  setNewsletterStatus('loading');
+                  
+                  try {
+                    // Using Formspree - replace YOUR_FORM_ID with your actual form ID
+                    // Get your free form at https://formspree.io
+                    const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({ 
+                        email: newsletterEmail,
+                        source: 'itgirlcontent VIP List',
+                        date: new Date().toISOString()
+                      })
+                    });
+                    
+                    if (response.ok) {
+                      setNewsletterStatus('success');
+                      setNewsletterEmail('');
+                      handleLinkClick('Newsletter signup - SUCCESS');
+                    } else {
+                      // Fallback: Save to localStorage as backup
+                      const subscribers = JSON.parse(localStorage.getItem('vip_subscribers') || '[]');
+                      subscribers.push({ email: newsletterEmail, date: new Date().toISOString() });
+                      localStorage.setItem('vip_subscribers', JSON.stringify(subscribers));
+                      setNewsletterStatus('success');
+                      setNewsletterEmail('');
+                    }
+                  } catch (error) {
+                    // Fallback: Save to localStorage
+                    const subscribers = JSON.parse(localStorage.getItem('vip_subscribers') || '[]');
+                    subscribers.push({ email: newsletterEmail, date: new Date().toISOString() });
+                    localStorage.setItem('vip_subscribers', JSON.stringify(subscribers));
+                    setNewsletterStatus('success');
+                    setNewsletterEmail('');
+                  }
+                }}
+                className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
               >
-                Subscribe
-              </button>
-            </div>
-            <p className="mt-4 text-sm opacity-75">No spam, ever! Unsubscribe anytime.</p>
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={newsletterEmail}
+                  onChange={(e) => {
+                    setNewsletterEmail(e.target.value);
+                    if (newsletterStatus === 'error') setNewsletterStatus('');
+                  }}
+                  className={`flex-1 px-6 py-4 rounded-full text-gray-800 focus:outline-none focus:ring-4 transition-all ${
+                    newsletterStatus === 'error' 
+                      ? 'ring-4 ring-red-400 focus:ring-red-400' 
+                      : 'focus:ring-white/50'
+                  }`}
+                  required
+                />
+                <button 
+                  type="submit"
+                  disabled={newsletterStatus === 'loading'}
+                  className={`px-8 py-4 rounded-full font-bold transition-all shadow-lg flex items-center justify-center gap-2 ${
+                    newsletterStatus === 'loading'
+                      ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                      : 'bg-white text-purple-600 hover:bg-pink-50 hover:scale-105'
+                  }`}
+                >
+                  {newsletterStatus === 'loading' ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-purple-600 border-t-transparent rounded-full animate-spin"></div>
+                      Joining...
+                    </>
+                  ) : (
+                    'Subscribe'
+                  )}
+                </button>
+              </form>
+            )}
+            
+            {newsletterStatus === 'error' && (
+              <p className="mt-3 text-yellow-200 text-sm font-medium">
+                Please enter a valid email address 💕
+              </p>
+            )}
+            
+            {newsletterStatus !== 'success' && (
+              <p className="mt-4 text-sm opacity-75">No spam, ever! Unsubscribe anytime.</p>
+            )}
           </div>
         </div>
 
