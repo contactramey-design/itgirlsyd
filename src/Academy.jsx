@@ -1,0 +1,806 @@
+import React, { useState, useEffect } from 'react';
+import { 
+  ArrowLeft, Play, BookOpen, FileText, CheckCircle, Lock, 
+  Star, Users, Clock, Award, ShoppingBag, Sparkles, Heart,
+  ChevronRight, Download, Video, Crown, Zap, Target, Camera,
+  Scissors, DollarSign, TrendingUp, Mail, Check, X
+} from 'lucide-react';
+
+// Course data structure
+const COURSES = [
+  {
+    id: 'creator-business-toolkit',
+    title: 'Creator Business Toolkit',
+    subtitle: 'Build Your Creator Empire',
+    price: 19.99,
+    originalPrice: 29.99,
+    image: '/creator business kit.jpg',
+    color: 'from-purple-600 to-pink-600',
+    icon: Crown,
+    description: 'The complete guide to turning your content into a real business. From finding your niche to landing $500+ brand deals.',
+    students: 847,
+    rating: 4.9,
+    duration: '2.5 hours',
+    lessons: 12,
+    bestseller: true,
+    modules: [
+      {
+        id: 'm1',
+        title: 'Module 1: Finding Your Niche',
+        lessons: [
+          { id: 'l1', title: 'How I Found My Voice', type: 'video', duration: '12:34', videoUrl: '', free: true },
+          { id: 'l2', title: 'Brand Identity Worksheet', type: 'template', downloadUrl: '/templates/brand-identity.pdf' },
+          { id: 'l3', title: 'Niche Discovery Quiz', type: 'quiz', questions: 5 }
+        ]
+      },
+      {
+        id: 'm2',
+        title: 'Module 2: Landing Brand Deals',
+        lessons: [
+          { id: 'l4', title: 'Cold Outreach That Actually Works', type: 'video', duration: '18:22', videoUrl: '' },
+          { id: 'l5', title: 'Email Scripts That Get Replies', type: 'template', downloadUrl: '/templates/email-scripts.pdf' },
+          { id: 'l6', title: 'Rate Card Template', type: 'template', downloadUrl: '/templates/rate-card.pdf' },
+          { id: 'l7', title: 'Finding Brand Contacts', type: 'video', duration: '8:45', videoUrl: '' }
+        ]
+      },
+      {
+        id: 'm3',
+        title: 'Module 3: Pricing Your Worth',
+        lessons: [
+          { id: 'l8', title: 'How I Charge $500+ Per Post', type: 'video', duration: '15:10', videoUrl: '' },
+          { id: 'l9', title: 'Pricing Calculator Spreadsheet', type: 'template', downloadUrl: '/templates/pricing-calculator.xlsx' },
+          { id: 'l10', title: 'Negotiation Scripts', type: 'template', downloadUrl: '/templates/negotiation.pdf' },
+          { id: 'l11', title: 'When to Say No', type: 'video', duration: '10:00', videoUrl: '' },
+          { id: 'l12', title: 'Final Quiz & Certificate', type: 'quiz', questions: 10 }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'ugc-starter-kit',
+    title: 'UGC Starter Kit',
+    subtitle: 'From Zero to Paid Creator',
+    price: 24.99,
+    originalPrice: 39.99,
+    image: '/ugc starter kit.jpg',
+    color: 'from-orange-500 to-red-500',
+    icon: Camera,
+    description: 'Everything you need to start your UGC career. Learn how to create content brands actually want to pay for.',
+    students: 1243,
+    rating: 4.8,
+    duration: '3 hours',
+    lessons: 16,
+    bestseller: false,
+    modules: [
+      {
+        id: 'm1',
+        title: 'Module 1: What is UGC?',
+        lessons: [
+          { id: 'l1', title: 'UGC vs Influencer Content', type: 'video', duration: '10:00', videoUrl: '', free: true },
+          { id: 'l2', title: 'Why Brands Pay for UGC', type: 'video', duration: '8:30', videoUrl: '' },
+          { id: 'l3', title: 'UGC Types Cheat Sheet', type: 'template', downloadUrl: '' }
+        ]
+      },
+      {
+        id: 'm2',
+        title: 'Module 2: Setting Up Your Portfolio',
+        lessons: [
+          { id: 'l4', title: 'Creating Your First Samples', type: 'video', duration: '15:00', videoUrl: '' },
+          { id: 'l5', title: 'Portfolio Website Template', type: 'template', downloadUrl: '' },
+          { id: 'l6', title: 'Filming on a Budget', type: 'video', duration: '12:00', videoUrl: '' },
+          { id: 'l7', title: 'Editing Tips & Tricks', type: 'video', duration: '14:00', videoUrl: '' }
+        ]
+      },
+      {
+        id: 'm3',
+        title: 'Module 3: Landing Your First Client',
+        lessons: [
+          { id: 'l8', title: 'Where to Find UGC Jobs', type: 'video', duration: '11:00', videoUrl: '' },
+          { id: 'l9', title: 'Platform Directory (50+ Brands)', type: 'template', downloadUrl: '' },
+          { id: 'l10', title: 'Application Templates', type: 'template', downloadUrl: '' },
+          { id: 'l11', title: 'My First $500 Deal Story', type: 'video', duration: '8:00', videoUrl: '' }
+        ]
+      },
+      {
+        id: 'm4',
+        title: 'Module 4: Scaling to $5K/Month',
+        lessons: [
+          { id: 'l12', title: 'Raising Your Rates', type: 'video', duration: '10:00', videoUrl: '' },
+          { id: 'l13', title: 'Client Retention Secrets', type: 'video', duration: '9:00', videoUrl: '' },
+          { id: 'l14', title: 'Contract & Invoice Templates', type: 'template', downloadUrl: '' },
+          { id: 'l15', title: 'Scaling Your Systems', type: 'video', duration: '12:00', videoUrl: '' },
+          { id: 'l16', title: 'Final Assessment', type: 'quiz', questions: 15 }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'hair-brand-outreach',
+    title: 'Hair Brand Outreach Kit',
+    subtitle: 'Land Hair & Beauty Collabs',
+    price: 14.99,
+    originalPrice: 24.99,
+    image: null,
+    color: 'from-pink-500 to-purple-500',
+    icon: Sparkles,
+    description: 'Specialized training for landing partnerships with hair care, beauty, and cosmetic brands. Includes real brand contacts!',
+    students: 456,
+    rating: 4.9,
+    duration: '1.5 hours',
+    lessons: 8,
+    bestseller: false,
+    isNew: true,
+    modules: [
+      {
+        id: 'm1',
+        title: 'Module 1: Hair Brand Landscape',
+        lessons: [
+          { id: 'l1', title: 'Top 20 Hair Brands Taking Creators', type: 'video', duration: '15:00', videoUrl: '', free: true },
+          { id: 'l2', title: 'Brand Contact Directory', type: 'template', downloadUrl: '' },
+          { id: 'l3', title: 'What Hair Brands Look For', type: 'video', duration: '10:00', videoUrl: '' }
+        ]
+      },
+      {
+        id: 'm2',
+        title: 'Module 2: Creating Hair Content',
+        lessons: [
+          { id: 'l4', title: 'Before/After Content Ideas', type: 'template', downloadUrl: '' },
+          { id: 'l5', title: 'Filming Hair Transformations', type: 'video', duration: '12:00', videoUrl: '' },
+          { id: 'l6', title: 'Hair Review Script Template', type: 'template', downloadUrl: '' }
+        ]
+      },
+      {
+        id: 'm3',
+        title: 'Module 3: Pitching Hair Brands',
+        lessons: [
+          { id: 'l7', title: 'Hair Brand Pitch Email Template', type: 'template', downloadUrl: '' },
+          { id: 'l8', title: 'My Hair Brand Success Stories', type: 'video', duration: '18:00', videoUrl: '' }
+        ]
+      }
+    ]
+  }
+];
+
+// Course Card Component
+function CourseCard({ course, onSelect, isPurchased }) {
+  const Icon = course.icon;
+  
+  return (
+    <div 
+      className={`group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-2 ${
+        course.bestseller ? 'border-yellow-400' : 'border-gray-100'
+      }`}
+    >
+      {/* Badges */}
+      <div className="absolute top-4 left-4 z-10 flex gap-2">
+        {course.bestseller && (
+          <span className="bg-gradient-to-r from-yellow-400 to-orange-400 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
+            <Star className="w-3 h-3 fill-white" />
+            BESTSELLER
+          </span>
+        )}
+        {course.isNew && (
+          <span className="bg-gradient-to-r from-green-400 to-emerald-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
+            <Zap className="w-3 h-3" />
+            NEW
+          </span>
+        )}
+        {isPurchased && (
+          <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
+            <CheckCircle className="w-3 h-3" />
+            OWNED
+          </span>
+        )}
+      </div>
+
+      {/* Course Image/Header */}
+      <div className={`relative h-48 bg-gradient-to-br ${course.color} flex items-center justify-center overflow-hidden`}>
+        {course.image ? (
+          <>
+            <img 
+              src={course.image} 
+              alt={course.title}
+              className="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+          </>
+        ) : (
+          <Icon className="w-24 h-24 text-white/80 group-hover:scale-110 transition-transform duration-300" />
+        )}
+        
+        {/* Play Preview Button */}
+        <button className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="bg-white/90 backdrop-blur-sm rounded-full p-4 shadow-xl hover:scale-110 transition-transform">
+            <Play className="w-8 h-8 text-purple-600 fill-purple-600" />
+          </div>
+        </button>
+      </div>
+
+      {/* Course Info */}
+      <div className="p-6">
+        <p className="text-sm font-semibold text-purple-600 mb-1">{course.subtitle}</p>
+        <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors">
+          {course.title}
+        </h3>
+        <p className="text-gray-600 text-sm mb-4 line-clamp-2">{course.description}</p>
+
+        {/* Stats */}
+        <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+          <span className="flex items-center gap-1">
+            <Users className="w-4 h-4" />
+            {course.students.toLocaleString()}
+          </span>
+          <span className="flex items-center gap-1">
+            <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+            {course.rating}
+          </span>
+          <span className="flex items-center gap-1">
+            <Clock className="w-4 h-4" />
+            {course.duration}
+          </span>
+          <span className="flex items-center gap-1">
+            <BookOpen className="w-4 h-4" />
+            {course.lessons} lessons
+          </span>
+        </div>
+
+        {/* Price & CTA */}
+        <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+          <div className="flex items-baseline gap-2">
+            <span className="text-2xl font-black text-gray-900">${course.price}</span>
+            {course.originalPrice && (
+              <span className="text-sm text-gray-400 line-through">${course.originalPrice}</span>
+            )}
+          </div>
+          
+          <button
+            onClick={() => onSelect(course)}
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold transition-all hover:scale-105 ${
+              isPurchased
+                ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white'
+                : 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:shadow-lg'
+            }`}
+          >
+            {isPurchased ? (
+              <>
+                <Play className="w-4 h-4" />
+                Continue
+              </>
+            ) : (
+              <>
+                <ShoppingBag className="w-4 h-4" />
+                Enroll Now
+              </>
+            )}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Course Viewer Component
+function CourseViewer({ course, onBack, onPurchase, isPurchased }) {
+  const [activeModule, setActiveModule] = useState(0);
+  const [activeLesson, setActiveLesson] = useState(null);
+  const [completedLessons, setCompletedLessons] = useState(() => {
+    const saved = localStorage.getItem(`progress-${course.id}`);
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [showPurchaseModal, setShowPurchaseModal] = useState(false);
+
+  const Icon = course.icon;
+
+  // Save progress to localStorage
+  useEffect(() => {
+    localStorage.setItem(`progress-${course.id}`, JSON.stringify(completedLessons));
+  }, [completedLessons, course.id]);
+
+  const markComplete = (lessonId) => {
+    if (!completedLessons.includes(lessonId)) {
+      setCompletedLessons([...completedLessons, lessonId]);
+    }
+  };
+
+  const totalLessons = course.modules.reduce((acc, m) => acc + m.lessons.length, 0);
+  const progressPercent = Math.round((completedLessons.length / totalLessons) * 100);
+
+  const handleLessonClick = (lesson, moduleIndex) => {
+    if (!isPurchased && !lesson.free) {
+      setShowPurchaseModal(true);
+      return;
+    }
+    setActiveLesson(lesson);
+    setActiveModule(moduleIndex);
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50">
+      {/* Header */}
+      <div className={`bg-gradient-to-r ${course.color} text-white`}>
+        <div className="max-w-7xl mx-auto px-6 py-8">
+          <button
+            onClick={onBack}
+            className="flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            Back to Academy
+          </button>
+
+          <div className="flex flex-col md:flex-row gap-8 items-start">
+            {/* Course Icon */}
+            <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6">
+              <Icon className="w-16 h-16 text-white" />
+            </div>
+
+            {/* Course Info */}
+            <div className="flex-1">
+              <p className="text-white/80 font-semibold mb-1">{course.subtitle}</p>
+              <h1 className="text-3xl md:text-4xl font-bold mb-3">{course.title}</h1>
+              <p className="text-white/90 mb-4 max-w-2xl">{course.description}</p>
+              
+              <div className="flex flex-wrap items-center gap-4 text-sm">
+                <span className="flex items-center gap-1 bg-white/20 px-3 py-1 rounded-full">
+                  <Users className="w-4 h-4" />
+                  {course.students.toLocaleString()} students
+                </span>
+                <span className="flex items-center gap-1 bg-white/20 px-3 py-1 rounded-full">
+                  <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  {course.rating} rating
+                </span>
+                <span className="flex items-center gap-1 bg-white/20 px-3 py-1 rounded-full">
+                  <Clock className="w-4 h-4" />
+                  {course.duration}
+                </span>
+                <span className="flex items-center gap-1 bg-white/20 px-3 py-1 rounded-full">
+                  <BookOpen className="w-4 h-4" />
+                  {course.lessons} lessons
+                </span>
+              </div>
+            </div>
+
+            {/* Progress / Purchase */}
+            <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 min-w-[200px]">
+              {isPurchased ? (
+                <>
+                  <p className="text-white/80 text-sm mb-2">Your Progress</p>
+                  <p className="text-4xl font-bold mb-2">{progressPercent}%</p>
+                  <div className="w-full bg-white/30 rounded-full h-2 mb-2">
+                    <div 
+                      className="bg-white rounded-full h-2 transition-all duration-500"
+                      style={{ width: `${progressPercent}%` }}
+                    />
+                  </div>
+                  <p className="text-white/80 text-xs">{completedLessons.length} of {totalLessons} complete</p>
+                </>
+              ) : (
+                <>
+                  <p className="text-white/80 text-sm mb-1">Enroll for</p>
+                  <div className="flex items-baseline gap-2 mb-3">
+                    <span className="text-3xl font-bold">${course.price}</span>
+                    {course.originalPrice && (
+                      <span className="text-white/60 line-through">${course.originalPrice}</span>
+                    )}
+                  </div>
+                  <button
+                    onClick={() => setShowPurchaseModal(true)}
+                    className="w-full bg-white text-purple-600 font-bold py-3 rounded-xl hover:bg-purple-50 transition-colors"
+                  >
+                    Enroll Now
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Course Content */}
+      <div className="max-w-7xl mx-auto px-6 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Sidebar - Module List */}
+          <div className="lg:col-span-1">
+            <h2 className="text-xl font-bold text-gray-800 mb-4">Course Content</h2>
+            <div className="space-y-3">
+              {course.modules.map((module, moduleIndex) => (
+                <div key={module.id} className="bg-white rounded-2xl shadow-lg overflow-hidden">
+                  <button
+                    onClick={() => setActiveModule(activeModule === moduleIndex ? -1 : moduleIndex)}
+                    className="w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
+                        module.lessons.every(l => completedLessons.includes(l.id))
+                          ? 'bg-green-500 text-white'
+                          : 'bg-purple-100 text-purple-600'
+                      }`}>
+                        {module.lessons.every(l => completedLessons.includes(l.id)) ? (
+                          <Check className="w-4 h-4" />
+                        ) : (
+                          moduleIndex + 1
+                        )}
+                      </div>
+                      <span className="font-semibold text-gray-800 text-left">{module.title}</span>
+                    </div>
+                    <ChevronRight className={`w-5 h-5 text-gray-400 transition-transform ${
+                      activeModule === moduleIndex ? 'rotate-90' : ''
+                    }`} />
+                  </button>
+                  
+                  {activeModule === moduleIndex && (
+                    <div className="border-t border-gray-100">
+                      {module.lessons.map((lesson) => (
+                        <button
+                          key={lesson.id}
+                          onClick={() => handleLessonClick(lesson, moduleIndex)}
+                          className={`w-full flex items-center gap-3 p-4 hover:bg-purple-50 transition-colors text-left ${
+                            activeLesson?.id === lesson.id ? 'bg-purple-50' : ''
+                          }`}
+                        >
+                          {/* Lesson Icon */}
+                          <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+                            completedLessons.includes(lesson.id)
+                              ? 'bg-green-100 text-green-600'
+                              : lesson.type === 'video' 
+                                ? 'bg-purple-100 text-purple-600'
+                                : lesson.type === 'template'
+                                  ? 'bg-blue-100 text-blue-600'
+                                  : 'bg-orange-100 text-orange-600'
+                          }`}>
+                            {completedLessons.includes(lesson.id) ? (
+                              <CheckCircle className="w-4 h-4" />
+                            ) : lesson.type === 'video' ? (
+                              <Play className="w-4 h-4" />
+                            ) : lesson.type === 'template' ? (
+                              <FileText className="w-4 h-4" />
+                            ) : (
+                              <Target className="w-4 h-4" />
+                            )}
+                          </div>
+                          
+                          <div className="flex-1">
+                            <p className="font-medium text-gray-800 text-sm">{lesson.title}</p>
+                            <p className="text-xs text-gray-500">
+                              {lesson.type === 'video' && lesson.duration}
+                              {lesson.type === 'template' && 'Downloadable'}
+                              {lesson.type === 'quiz' && `${lesson.questions} questions`}
+                            </p>
+                          </div>
+
+                          {/* Lock/Free indicator */}
+                          {!isPurchased && !lesson.free && (
+                            <Lock className="w-4 h-4 text-gray-400" />
+                          )}
+                          {lesson.free && !isPurchased && (
+                            <span className="text-xs bg-green-100 text-green-600 px-2 py-0.5 rounded-full font-semibold">
+                              FREE
+                            </span>
+                          )}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Main Content Area */}
+          <div className="lg:col-span-2">
+            {activeLesson ? (
+              <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+                {/* Video/Content Player */}
+                <div className={`aspect-video bg-gradient-to-br ${course.color} flex items-center justify-center`}>
+                  {activeLesson.type === 'video' ? (
+                    <div className="text-center text-white">
+                      <Play className="w-16 h-16 mx-auto mb-4 opacity-80" />
+                      <p className="text-xl font-bold">{activeLesson.title}</p>
+                      <p className="text-white/80">{activeLesson.duration}</p>
+                      <p className="text-white/60 text-sm mt-4">
+                        Video player will be here<br />
+                        (Upload your videos to YouTube/Vimeo and embed them)
+                      </p>
+                    </div>
+                  ) : activeLesson.type === 'template' ? (
+                    <div className="text-center text-white">
+                      <FileText className="w-16 h-16 mx-auto mb-4 opacity-80" />
+                      <p className="text-xl font-bold">{activeLesson.title}</p>
+                      <button className="mt-4 bg-white text-purple-600 px-6 py-3 rounded-xl font-bold flex items-center gap-2 mx-auto hover:bg-purple-50 transition-colors">
+                        <Download className="w-5 h-5" />
+                        Download Template
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="text-center text-white">
+                      <Target className="w-16 h-16 mx-auto mb-4 opacity-80" />
+                      <p className="text-xl font-bold">{activeLesson.title}</p>
+                      <p className="text-white/80">{activeLesson.questions} questions</p>
+                    </div>
+                  )}
+                </div>
+
+                {/* Lesson Info */}
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-2xl font-bold text-gray-800">{activeLesson.title}</h3>
+                    {!completedLessons.includes(activeLesson.id) && (
+                      <button
+                        onClick={() => markComplete(activeLesson.id)}
+                        className="flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-xl font-semibold hover:bg-green-600 transition-colors"
+                      >
+                        <Check className="w-4 h-4" />
+                        Mark Complete
+                      </button>
+                    )}
+                    {completedLessons.includes(activeLesson.id) && (
+                      <span className="flex items-center gap-2 text-green-600 font-semibold">
+                        <CheckCircle className="w-5 h-5" />
+                        Completed
+                      </span>
+                    )}
+                  </div>
+                  
+                  <p className="text-gray-600">
+                    {activeLesson.type === 'video' && 'Watch the video above to learn this lesson.'}
+                    {activeLesson.type === 'template' && 'Download the template and fill it out to apply what you\'ve learned.'}
+                    {activeLesson.type === 'quiz' && 'Test your knowledge with this quiz to make sure you\'re ready for the next module.'}
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div className="bg-white rounded-3xl shadow-xl p-12 text-center">
+                <BookOpen className="w-16 h-16 text-purple-300 mx-auto mb-4" />
+                <h3 className="text-2xl font-bold text-gray-800 mb-2">Welcome to {course.title}!</h3>
+                <p className="text-gray-600 mb-6">
+                  Select a lesson from the sidebar to get started.
+                </p>
+                {!isPurchased && (
+                  <button
+                    onClick={() => setShowPurchaseModal(true)}
+                    className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-3 rounded-xl font-bold hover:shadow-lg transition-all"
+                  >
+                    Enroll Now for ${course.price}
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Purchase Modal */}
+      {showPurchaseModal && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+          onClick={() => setShowPurchaseModal(false)}
+        >
+          <div 
+            className="relative bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className={`bg-gradient-to-r ${course.color} p-6 text-white text-center`}>
+              <Icon className="w-12 h-12 mx-auto mb-3" />
+              <h2 className="text-2xl font-bold">{course.title}</h2>
+              <p className="text-white/80">{course.lessons} lessons • {course.duration}</p>
+            </div>
+
+            <button
+              onClick={() => setShowPurchaseModal(false)}
+              className="absolute top-4 right-4 text-white/80 hover:text-white"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            <div className="p-6">
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <span className="text-4xl font-black text-gray-900">${course.price}</span>
+                {course.originalPrice && (
+                  <>
+                    <span className="text-xl text-gray-400 line-through">${course.originalPrice}</span>
+                    <span className="bg-green-100 text-green-700 px-2 py-1 rounded-full text-sm font-bold">
+                      Save ${(course.originalPrice - course.price).toFixed(2)}
+                    </span>
+                  </>
+                )}
+              </div>
+
+              <ul className="space-y-2 mb-6">
+                <li className="flex items-center gap-2 text-gray-700">
+                  <Check className="w-5 h-5 text-green-500" />
+                  Lifetime access to all lessons
+                </li>
+                <li className="flex items-center gap-2 text-gray-700">
+                  <Check className="w-5 h-5 text-green-500" />
+                  Downloadable templates & resources
+                </li>
+                <li className="flex items-center gap-2 text-gray-700">
+                  <Check className="w-5 h-5 text-green-500" />
+                  Certificate of completion
+                </li>
+                <li className="flex items-center gap-2 text-gray-700">
+                  <Check className="w-5 h-5 text-green-500" />
+                  Future updates included
+                </li>
+              </ul>
+
+              <button
+                onClick={() => {
+                  onPurchase(course.id);
+                  setShowPurchaseModal(false);
+                }}
+                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-4 rounded-xl font-bold text-lg hover:shadow-xl transition-all flex items-center justify-center gap-2"
+              >
+                <ShoppingBag className="w-5 h-5" />
+                Purchase Now
+              </button>
+
+              <p className="text-center text-gray-500 text-sm mt-4">
+                Secure checkout • Instant access
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Main Academy Component
+export default function Academy({ onBack }) {
+  const [isVisible, setIsVisible] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [purchasedCourses, setPurchasedCourses] = useState(() => {
+    const saved = localStorage.getItem('purchased-courses');
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  // Save purchases to localStorage
+  useEffect(() => {
+    localStorage.setItem('purchased-courses', JSON.stringify(purchasedCourses));
+  }, [purchasedCourses]);
+
+  const handlePurchase = (courseId) => {
+    // In production, this would integrate with Stripe
+    // For now, we'll simulate a purchase
+    if (!purchasedCourses.includes(courseId)) {
+      setPurchasedCourses([...purchasedCourses, courseId]);
+      alert('🎉 Course purchased! (Demo mode - in production this would use Stripe)');
+    }
+  };
+
+  // If viewing a course
+  if (selectedCourse) {
+    return (
+      <CourseViewer 
+        course={selectedCourse}
+        onBack={() => setSelectedCourse(null)}
+        onPurchase={handlePurchase}
+        isPurchased={purchasedCourses.includes(selectedCourse.id)}
+      />
+    );
+  }
+
+  // Main Academy Page
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-300/30 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-pink-300/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-12">
+        {/* Back Button */}
+        <button
+          onClick={onBack}
+          className="group mb-8 flex items-center gap-2 bg-white/80 backdrop-blur-sm border-2 border-purple-300 px-6 py-3 rounded-full hover:border-purple-400 hover:shadow-lg transition-all duration-300"
+        >
+          <ArrowLeft className="w-5 h-5 text-purple-500 group-hover:-translate-x-1 transition-transform" />
+          <span className="text-purple-600 font-semibold">Back to Main</span>
+        </button>
+
+        {/* Header */}
+        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
+          <div className="inline-flex items-center gap-4 mb-6">
+            <Award className="w-12 h-12 text-purple-500" />
+            <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-600 via-pink-500 to-orange-500 bg-clip-text text-transparent">
+              IT Girl Academy
+            </h1>
+            <Sparkles className="w-12 h-12 text-pink-500" />
+          </div>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Learn everything I know about building a successful creator business. 
+            Real strategies, templates, and secrets that actually work. 💕
+          </p>
+        </div>
+
+        {/* Stats Bar */}
+        <div className={`flex flex-wrap justify-center gap-8 mb-16 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-lg border border-purple-100">
+            <p className="text-3xl font-bold text-purple-600">2,500+</p>
+            <p className="text-gray-600 text-sm">Students Enrolled</p>
+          </div>
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-lg border border-purple-100">
+            <p className="text-3xl font-bold text-pink-600">4.9★</p>
+            <p className="text-gray-600 text-sm">Average Rating</p>
+          </div>
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-lg border border-purple-100">
+            <p className="text-3xl font-bold text-orange-500">36</p>
+            <p className="text-gray-600 text-sm">Total Lessons</p>
+          </div>
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-lg border border-purple-100">
+            <p className="text-3xl font-bold text-green-600">$50K+</p>
+            <p className="text-gray-600 text-sm">Student Earnings</p>
+          </div>
+        </div>
+
+        {/* Course Grid */}
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          {COURSES.map((course, index) => (
+            <div 
+              key={course.id}
+              style={{ transitionDelay: `${300 + index * 100}ms` }}
+              className={`transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+            >
+              <CourseCard 
+                course={course}
+                onSelect={setSelectedCourse}
+                isPurchased={purchasedCourses.includes(course.id)}
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Bundle Offer */}
+        <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 rounded-3xl p-8 md:p-12 text-white text-center shadow-2xl">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <Crown className="w-10 h-10" />
+              <h2 className="text-3xl md:text-4xl font-bold">Get All Courses Bundle</h2>
+              <Crown className="w-10 h-10" />
+            </div>
+            <p className="text-white/90 text-lg mb-6 max-w-2xl mx-auto">
+              Unlock everything for one special price. Lifetime access to all current and future courses!
+            </p>
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <span className="text-5xl font-black">$49.99</span>
+              <span className="text-2xl text-white/60 line-through">$89.97</span>
+              <span className="bg-white/20 px-3 py-1 rounded-full text-sm font-bold">Save 44%</span>
+            </div>
+            <button 
+              onClick={() => {
+                COURSES.forEach(c => {
+                  if (!purchasedCourses.includes(c.id)) {
+                    handlePurchase(c.id);
+                  }
+                });
+              }}
+              className="bg-white text-purple-600 px-10 py-4 rounded-xl font-bold text-lg hover:bg-purple-50 transition-all hover:scale-105 shadow-xl"
+            >
+              Get The Bundle
+            </button>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="mt-16 text-center">
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <Heart className="w-5 h-5 text-pink-500 fill-pink-500 animate-pulse" />
+            <p className="text-pink-600 font-semibold">
+              Invest in yourself - your future self will thank you!
+            </p>
+            <Heart className="w-5 h-5 text-pink-500 fill-pink-500 animate-pulse" />
+          </div>
+          <p className="text-gray-500 text-sm">
+            Questions? Email academy@itgirlsydcontent.com 💕
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+

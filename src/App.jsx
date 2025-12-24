@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Heart, Instagram, Youtube, Twitter, Mail, ShoppingBag, Crown, Sparkles, Star, Link as LinkIcon, Lock, TrendingUp, Palette, Briefcase, Activity, Home, Cookie, Scissors, Brain, Dumbbell, UtensilsCrossed, Terminal, Code, Zap, Rocket, DollarSign, FileText, Edit3, Users, ArrowLeft, Cpu, Database, Globe, Shirt, Smile, Gem, Wand2, Camera, Video, Target, Award } from 'lucide-react';
+import { Heart, Instagram, Youtube, Twitter, Mail, ShoppingBag, Crown, Sparkles, Star, Link as LinkIcon, Lock, TrendingUp, Palette, Briefcase, Activity, Home, Cookie, Scissors, Brain, Dumbbell, UtensilsCrossed, Terminal, Code, Zap, Rocket, DollarSign, FileText, Edit3, Users, ArrowLeft, Cpu, Database, Globe, Shirt, Smile, Gem, Wand2, Camera, Video, Target, Award, GraduationCap, BookOpen } from 'lucide-react';
 import MediaKit from './MediaKit.jsx';
 import PartnershipsPage from './Partnerships.jsx';
+import Academy from './Academy.jsx';
 
 // Beauty Closet Component - Pink Fitting Room Theme
 function BeautyClosetPage({ onBack }) {
@@ -1679,6 +1680,15 @@ export default function CreatorLandingPage() {
 
   const contentCategories = [
     {
+      title: 'IT Girl Academy',
+      emoji: '🎓',
+      icon: Award,
+      color: 'from-purple-600 to-pink-600',
+      description: 'Learn to build your creator business with courses, templates & real strategies',
+      page: 'academy',
+      featured: true
+    },
+    {
       title: 'Fashion & Beauty',
       emoji: '💄',
       icon: Palette,
@@ -1711,6 +1721,11 @@ export default function CreatorLandingPage() {
     setCurrentPage('home');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  // Render Academy Page
+  if (currentPage === 'academy') {
+    return <Academy onBack={navigateHome} />;
+  }
 
   // Render Media Kit Page
   if (currentPage === 'mediakit') {
