@@ -242,65 +242,76 @@ Best regards,
               {!unlocked ? (
                 /* Locked State */
                 <div className="text-center">
+                  {/* Pre-order Banner */}
+                  <div className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white py-2 px-4 rounded-full inline-flex items-center gap-2 mb-6 animate-pulse">
+                    <span className="text-lg">🚀</span>
+                    <span className="font-bold text-sm">PRE-ORDER • Releasing January 1st, 2026</span>
+                  </div>
+                  
                   <div className="flex items-center justify-center gap-3 mb-4">
                     <Lock className="w-12 h-12 text-purple-300" />
                     <Crown className="w-12 h-12 text-pink-300" />
                   </div>
-                  <h2 className="text-3xl font-bold text-white mb-4">Unlock Insider Access</h2>
+                  <h2 className="text-3xl font-bold text-white mb-4">Insider Access Kit</h2>
                   <p className="text-purple-200 mb-6 max-w-2xl mx-auto">
-                    Get exclusive access to my curated list of hair brand contacts + a proven email template 
-                    to land your own sponsorships and collaborations!
+                    Pre-order exclusive access to my curated hair brand contacts + proven email templates 
+                    delivered through your Scribed.ai workspace!
                   </p>
                   
                   <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 mb-6 max-w-md mx-auto border border-white/20">
-                    <h3 className="text-white font-bold mb-4">What You'll Get:</h3>
+                    <h3 className="text-white font-bold mb-4">What You'll Get on Jan 1st:</h3>
                     <ul className="text-left text-purple-100 space-y-2 text-sm">
                       <li className="flex items-start gap-2">
                         <Sparkles className="w-4 h-4 text-purple-300 mt-1 flex-shrink-0" />
-                        <span>6 verified hair brand partnership contacts</span>
+                        <span>6+ verified hair brand partnership contacts</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <Mail className="w-4 h-4 text-purple-300 mt-1 flex-shrink-0" />
-                        <span>Proven email template for brand outreach</span>
+                        <span>Proven email templates for brand outreach</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <Users className="w-4 h-4 text-purple-300 mt-1 flex-shrink-0" />
                         <span>Tips for successful collaborations</span>
                       </li>
+                      <li className="flex items-start gap-2">
+                        <Crown className="w-4 h-4 text-purple-300 mt-1 flex-shrink-0" />
+                        <span>Access via Scribed.ai workspace</span>
+                      </li>
                     </ul>
                   </div>
 
                   <div className="max-w-md mx-auto">
-                    <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 mb-4 border border-white/20">
+                    <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 backdrop-blur-sm rounded-xl p-4 mb-4 border border-cyan-400/30">
                       <div className="flex items-center justify-between">
-                        <span className="text-purple-200 text-sm">One-time access fee:</span>
-                        <div className="flex items-baseline gap-1">
+                        <span className="text-cyan-200 text-sm">Early Bird Price:</span>
+                        <div className="flex items-baseline gap-2">
                           <span className="text-4xl font-black text-white">$1.99</span>
+                          <span className="text-purple-300 line-through text-sm">$4.99</span>
                         </div>
                       </div>
                     </div>
                     <input
                       type="email"
-                      placeholder="Enter your email"
+                      placeholder="Enter your email for delivery"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full px-6 py-4 rounded-xl text-gray-800 focus:outline-none focus:ring-4 focus:ring-purple-400/50 transition-all mb-4"
+                      className="w-full px-6 py-4 rounded-xl text-gray-800 focus:outline-none focus:ring-4 focus:ring-cyan-400/50 transition-all mb-4"
                     />
                     <a
                       href="https://paypal.me/SydneyRamey894/1.99"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-xl font-bold hover:from-purple-400 hover:to-pink-400 transition-all hover:scale-105 shadow-lg flex items-center justify-center gap-2"
+                      className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-xl font-bold hover:from-blue-400 hover:to-cyan-400 transition-all hover:scale-105 shadow-lg flex items-center justify-center gap-2"
                     >
-                      <Crown className="w-5 h-5" />
-                      Purchase Access - $1.99
+                      <span className="text-lg">🚀</span>
+                      Pre-order Now - $1.99
                       <Sparkles className="w-5 h-5" />
                     </a>
-                    <p className="text-purple-300 text-xs mt-3">
-                      Secure PayPal checkout • Email me after payment with your email: sydney@itgirlsydcontent.com
+                    <p className="text-cyan-300 text-xs mt-3">
+                      Secure PayPal checkout • Delivered via Scribed.ai on January 1st, 2026
                     </p>
-                    <p className="text-purple-400 text-xs mt-2">
-                      I'll send you access within 24 hours! 💕
+                    <p className="text-purple-300 text-xs mt-2">
+                      Email sydney@itgirlsydcontent.com after payment with your email for Scribed invite! 💕
                     </p>
                   </div>
                 </div>
