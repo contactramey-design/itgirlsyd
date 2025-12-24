@@ -10,7 +10,7 @@ import { COURSE_SCRIPTS } from './CourseContent.js';
 import { redirectToCheckout, checkPurchaseSuccess, STRIPE_PAYMENT_LINKS } from './stripe-config.js';
 
 // Pre-order Release Date
-const RELEASE_DATE = new Date('2025-01-01T00:00:00');
+const RELEASE_DATE = new Date('2026-01-01T00:00:00');
 const IS_PREORDER = new Date() < RELEASE_DATE;
 
 // Course data structure
@@ -754,7 +754,7 @@ function CourseViewer({ course, onBack, onPurchase, isPurchased }) {
                     </span>
                   </div>
                   {course.preorder && IS_PREORDER && (
-                    <p className="text-cyan-300 text-xs font-medium mb-2">Early bird pricing ends Jan 1!</p>
+                    <p className="text-cyan-300 text-xs font-medium mb-2">Early bird pricing ends Jan 1st, 2026!</p>
                   )}
                   <button
                     onClick={() => setShowPurchaseModal(true)}
@@ -974,7 +974,7 @@ function CourseViewer({ course, onBack, onPurchase, isPurchased }) {
               {/* Pre-order Banner */}
               {course.preorder && IS_PREORDER && (
                 <div className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-center py-3 px-4 rounded-xl mb-4 animate-pulse">
-                  <p className="text-sm font-bold">🚀 PRE-ORDER • Releasing January 1st, 2025</p>
+                  <p className="text-sm font-bold">🚀 PRE-ORDER • Releasing January 1st, 2026</p>
                   <p className="text-xs opacity-90">Get early bird pricing before launch!</p>
                 </div>
               )}
@@ -1029,7 +1029,7 @@ function CourseViewer({ course, onBack, onPurchase, isPurchased }) {
 
               <p className="text-center text-gray-500 text-sm mt-4">
                 {course.preorder && IS_PREORDER 
-                  ? 'Secure checkout • Templates delivered via Scribed on Jan 1st'
+                  ? 'Secure checkout • Templates delivered via Scribed on Jan 1st, 2026'
                   : 'Secure checkout • Templates delivered via Scribed'}
               </p>
               <p className="text-center text-gray-400 text-xs mt-2">
@@ -1094,7 +1094,7 @@ export default function Academy({ onBack }) {
       if (!purchasedCourses.includes(courseId)) {
         setPurchasedCourses([...purchasedCourses, courseId]);
         if (IS_PREORDER) {
-          alert('🎉 Pre-order confirmed! (Demo mode)\n\n✨ Your course will unlock on January 1st, 2025!\n📧 Check your email for Scribed.ai workspace invite.\n\nTo enable real payments, add Stripe payment links.');
+          alert('🎉 Pre-order confirmed! (Demo mode)\n\n✨ Your course will unlock on January 1st, 2026!\n📧 Check your email for Scribed.ai workspace invite.\n\nTo enable real payments, add Stripe payment links.');
         } else {
           alert('🎉 Course purchased! (Demo mode)\n\nTo enable real payments:\n1. Create products in Stripe Dashboard\n2. Add payment links to stripe-config.js');
         }
@@ -1151,7 +1151,7 @@ export default function Academy({ onBack }) {
                   <span className="text-3xl">🎉</span>
                 </div>
                 <p className="text-lg text-white/90 mb-3">
-                  All courses release <span className="font-bold">January 1st, 2025</span>
+                  All courses release <span className="font-bold">January 1st, 2026</span>
                 </p>
                 <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
                   <span className="text-yellow-300 font-bold">✨ Early Bird Pricing</span>
@@ -1220,7 +1220,7 @@ export default function Academy({ onBack }) {
             {/* Pre-order banner */}
             {IS_PREORDER && (
               <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-yellow-400 to-orange-400 text-black py-2 text-sm font-bold animate-pulse">
-                🚀 PRE-ORDER SPECIAL • Releasing January 1st, 2025 • Early Bird Pricing!
+                🚀 PRE-ORDER SPECIAL • Releasing January 1st, 2026 • Early Bird Pricing!
               </div>
             )}
             
@@ -1233,7 +1233,7 @@ export default function Academy({ onBack }) {
             </div>
             <p className="text-white/90 text-lg mb-6 max-w-2xl mx-auto">
               {IS_PREORDER 
-                ? 'Lock in early bird pricing! All courses unlock on January 1st, 2025. Lifetime access to all current and future courses!'
+                ? 'Lock in early bird pricing! All courses unlock on January 1st, 2026. Lifetime access to all current and future courses!'
                 : 'Unlock everything for one special price. Lifetime access to all current and future courses!'}
             </p>
             <div className="flex items-center justify-center gap-4 mb-6">

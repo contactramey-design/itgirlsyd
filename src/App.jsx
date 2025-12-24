@@ -2167,7 +2167,7 @@ export default function CreatorLandingPage() {
 
                   {/* Pre-order Badge */}
                   <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-4 py-2 rounded-full text-sm font-bold mb-6 animate-pulse">
-                    🚀 Pre-Orders Open • Releasing Jan 1st!
+                    🚀 Pre-Orders Open • Releasing Jan 1st, 2026!
                   </div>
 
                   {/* CTA Button */}
