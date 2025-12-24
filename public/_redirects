@@ -1,0 +1,3 @@
+# Netlify redirects (if deploying to Netlify instead of Vercel)
+/*    /index.html   200
+

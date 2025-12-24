@@ -1,12 +1,16 @@
 {
-  "name": "creator-landing-page",
+  "name": "itgirlcontent",
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "homepage": "https://itgirlcontent.com",
+  "description": "IT Girl Content - Beauty, Fashion, Lifestyle & Creator Courses by Sydney",
+  "author": "Sydney Ramey",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "vite build && vercel --prod"
   },
   "dependencies": {
     "@stripe/stripe-js": "^8.6.0",

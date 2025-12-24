@@ -1,0 +1,10 @@
+# robots.txt for itgirlcontent.com
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://itgirlcontent.com/sitemap.xml
+
+# Disallow admin/private areas (add as needed)
+# Disallow: /admin/
+
