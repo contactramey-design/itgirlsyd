@@ -9,33 +9,42 @@
 //
 // Example: https://buy.stripe.com/abc123?client_reference_id=creator-business-toolkit
 
+// PRE-ORDER PRICING (until January 1st, 2025)
+// After launch, update to regular prices
+
 // Replace these with your actual Stripe Payment Link URLs
 export const STRIPE_PAYMENT_LINKS = {
-  // Courses
+  // Courses - PRE-ORDER PRICES (early bird discount!)
   'filmmaking-masterclass': {
     price: 99.99,
+    preorderPrice: 79.99, // Early bird!
     // Create this in Stripe Dashboard → Payment Links → New
+    // Use $79.99 for pre-order, then create a new link at $99.99 after launch
     paymentLink: 'YOUR_STRIPE_PAYMENT_LINK_HERE', // e.g., https://buy.stripe.com/xxx
     priceId: '', // Optional: Stripe Price ID if using Checkout API
   },
   'creator-business-toolkit': {
     price: 19.99,
+    preorderPrice: 14.99, // Early bird!
     paymentLink: 'YOUR_STRIPE_PAYMENT_LINK_HERE',
     priceId: '',
   },
   'ugc-starter-kit': {
     price: 24.99,
+    preorderPrice: 19.99, // Early bird!
     paymentLink: 'YOUR_STRIPE_PAYMENT_LINK_HERE',
     priceId: '',
   },
   'hair-brand-outreach': {
     price: 14.99,
+    preorderPrice: 9.99, // Early bird!
     paymentLink: 'YOUR_STRIPE_PAYMENT_LINK_HERE',
     priceId: '',
   },
-  // Bundles
+  // Bundles - THE BEST DEAL!
   'all-courses-bundle': {
-    price: 149.99,
+    price: 159.97, // Regular price
+    preorderPrice: 99.99, // Early bird bundle = $99.99 (user wants $100)
     paymentLink: 'YOUR_STRIPE_PAYMENT_LINK_HERE',
     priceId: '',
   },

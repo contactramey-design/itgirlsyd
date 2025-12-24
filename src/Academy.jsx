@@ -9,6 +9,10 @@ import {
 import { COURSE_SCRIPTS } from './CourseContent.js';
 import { redirectToCheckout, checkPurchaseSuccess, STRIPE_PAYMENT_LINKS } from './stripe-config.js';
 
+// Pre-order Release Date
+const RELEASE_DATE = new Date('2025-01-01T00:00:00');
+const IS_PREORDER = new Date() < RELEASE_DATE;
+
 // Course data structure
 const COURSES = [
   {
@@ -17,16 +21,18 @@ const COURSES = [
     subtitle: 'From Script to Viral Video',
     price: 99.99,
     originalPrice: 299.99,
+    preorderPrice: 79.99, // Early bird discount!
     image: null,
     color: 'from-red-600 to-orange-500',
     icon: Video,
     description: 'The ULTIMATE filmmaking bundle. Master scriptwriting, filming, editing, directing, and creating viral content. 8 courses in 1!',
-    students: 2847,
-    rating: 4.9,
+    students: 0,
+    rating: null,
     duration: '25+ hours',
     lessons: 64,
     bestseller: true,
     featured: true,
+    preorder: true,
     modules: [
       {
         id: 'm1',
@@ -134,15 +140,17 @@ const COURSES = [
     subtitle: 'Build Your Creator Empire',
     price: 19.99,
     originalPrice: 29.99,
+    preorderPrice: 14.99,
     image: '/creator business kit.jpg',
     color: 'from-purple-600 to-pink-600',
     icon: Crown,
     description: 'The complete guide to turning your content into a real business. From finding your niche to landing $500+ brand deals.',
-    students: 847,
-    rating: 4.9,
+    students: 0,
+    rating: null,
     duration: '2.5 hours',
     lessons: 12,
     bestseller: false,
+    preorder: true,
     modules: [
       {
         id: 'm1',
@@ -182,15 +190,17 @@ const COURSES = [
     subtitle: 'From Zero to Paid Creator',
     price: 24.99,
     originalPrice: 39.99,
+    preorderPrice: 19.99,
     image: '/ugc starter kit.jpg',
     color: 'from-orange-500 to-red-500',
     icon: Camera,
     description: 'Everything you need to start your UGC career. Learn how to create content brands actually want to pay for.',
-    students: 1243,
-    rating: 4.8,
+    students: 0,
+    rating: null,
     duration: '3 hours',
     lessons: 16,
     bestseller: false,
+    preorder: true,
     modules: [
       {
         id: 'm1',
@@ -240,16 +250,18 @@ const COURSES = [
     subtitle: 'Land Hair & Beauty Collabs',
     price: 14.99,
     originalPrice: 24.99,
+    preorderPrice: 9.99,
     image: null,
     color: 'from-pink-500 to-purple-500',
     icon: Sparkles,
     description: 'Specialized training for landing partnerships with hair care, beauty, and cosmetic brands. Includes real brand contacts!',
-    students: 456,
-    rating: 4.9,
+    students: 0,
+    rating: null,
     duration: '1.5 hours',
     lessons: 8,
     bestseller: false,
-    isNew: true,
+    isNew: false,
+    preorder: true,
     modules: [
       {
         id: 'm1',
@@ -515,7 +527,12 @@ function CourseCard({ course, onSelect, isPurchased }) {
       }`}
     >
       {/* Badges */}
-      <div className="absolute top-4 left-4 z-10 flex gap-2">
+      <div className="absolute top-4 left-4 z-10 flex flex-wrap gap-2">
+        {course.preorder && IS_PREORDER && (
+          <span className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg animate-pulse">
+            🚀 PRE-ORDER
+          </span>
+        )}
         {course.bestseller && (
           <span className="bg-gradient-to-r from-yellow-400 to-orange-400 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
             <Star className="w-3 h-3 fill-white" />
@@ -589,10 +606,17 @@ function CourseCard({ course, onSelect, isPurchased }) {
 
         {/* Price & CTA */}
         <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-          <div className="flex items-baseline gap-2">
-            <span className="text-2xl font-black text-gray-900">${course.price}</span>
-            {course.originalPrice && (
-              <span className="text-sm text-gray-400 line-through">${course.originalPrice}</span>
+          <div className="flex flex-col">
+            <div className="flex items-baseline gap-2">
+              <span className="text-2xl font-black text-gray-900">
+                ${course.preorder && IS_PREORDER && course.preorderPrice ? course.preorderPrice : course.price}
+              </span>
+              <span className="text-sm text-gray-400 line-through">
+                ${course.preorder && IS_PREORDER ? course.price : course.originalPrice}
+              </span>
+            </div>
+            {course.preorder && IS_PREORDER && (
+              <span className="text-xs text-blue-600 font-medium">Early Bird Pricing!</span>
             )}
           </div>
           
@@ -718,13 +742,20 @@ function CourseViewer({ course, onBack, onPurchase, isPurchased }) {
                 </>
               ) : (
                 <>
-                  <p className="text-white/80 text-sm mb-1">Enroll for</p>
-                  <div className="flex items-baseline gap-2 mb-3">
-                    <span className="text-3xl font-bold">${course.price}</span>
-                    {course.originalPrice && (
-                      <span className="text-white/60 line-through">${course.originalPrice}</span>
-                    )}
+                  <p className="text-white/80 text-sm mb-1">
+                    {course.preorder && IS_PREORDER ? '🚀 Pre-order for' : 'Enroll for'}
+                  </p>
+                  <div className="flex items-baseline gap-2 mb-1">
+                    <span className="text-3xl font-bold">
+                      ${course.preorder && IS_PREORDER && course.preorderPrice ? course.preorderPrice : course.price}
+                    </span>
+                    <span className="text-white/60 line-through">
+                      ${course.preorder && IS_PREORDER ? course.price : course.originalPrice}
+                    </span>
                   </div>
+                  {course.preorder && IS_PREORDER && (
+                    <p className="text-cyan-300 text-xs font-medium mb-2">Early bird pricing ends Jan 1!</p>
+                  )}
                   <button
                     onClick={() => setShowPurchaseModal(true)}
                     className="w-full bg-white text-purple-600 font-bold py-3 rounded-xl hover:bg-purple-50 transition-colors"
@@ -899,7 +930,9 @@ function CourseViewer({ course, onBack, onPurchase, isPurchased }) {
                     onClick={() => setShowPurchaseModal(true)}
                     className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-3 rounded-xl font-bold hover:shadow-lg transition-all"
                   >
-                    Enroll Now for ${course.price}
+                    {course.preorder && IS_PREORDER 
+                      ? `🚀 Pre-order for $${course.preorderPrice || course.price}` 
+                      : `Enroll Now for $${course.price}`}
                   </button>
                 )}
               </div>
@@ -932,16 +965,26 @@ function CourseViewer({ course, onBack, onPurchase, isPurchased }) {
             </button>
 
             <div className="p-6">
+              {/* Pre-order Banner */}
+              {course.preorder && IS_PREORDER && (
+                <div className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-center py-3 px-4 rounded-xl mb-4 animate-pulse">
+                  <p className="text-sm font-bold">🚀 PRE-ORDER • Releasing January 1st, 2025</p>
+                  <p className="text-xs opacity-90">Get early bird pricing before launch!</p>
+                </div>
+              )}
+              
               <div className="flex items-center justify-center gap-3 mb-6">
-                <span className="text-4xl font-black text-gray-900">${course.price}</span>
-                {course.originalPrice && (
-                  <>
-                    <span className="text-xl text-gray-400 line-through">${course.originalPrice}</span>
-                    <span className="bg-green-100 text-green-700 px-2 py-1 rounded-full text-sm font-bold">
-                      Save ${(course.originalPrice - course.price).toFixed(2)}
-                    </span>
-                  </>
-                )}
+                <span className="text-4xl font-black text-gray-900">
+                  ${course.preorder && IS_PREORDER && course.preorderPrice ? course.preorderPrice : course.price}
+                </span>
+                <span className="text-xl text-gray-400 line-through">
+                  ${course.preorder && IS_PREORDER ? course.price : course.originalPrice}
+                </span>
+                <span className="bg-green-100 text-green-700 px-2 py-1 rounded-full text-sm font-bold">
+                  {course.preorder && IS_PREORDER 
+                    ? `Save $${(course.price - (course.preorderPrice || course.price)).toFixed(2)}`
+                    : `Save $${((course.originalPrice || course.price) - course.price).toFixed(2)}`}
+                </span>
               </div>
 
               <ul className="space-y-2 mb-6">
@@ -968,14 +1011,20 @@ function CourseViewer({ course, onBack, onPurchase, isPurchased }) {
                   onPurchase(course.id);
                   setShowPurchaseModal(false);
                 }}
-                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-4 rounded-xl font-bold text-lg hover:shadow-xl transition-all flex items-center justify-center gap-2"
+                className={`w-full py-4 rounded-xl font-bold text-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 ${
+                  course.preorder && IS_PREORDER 
+                    ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
+                    : 'bg-gradient-to-r from-purple-600 to-pink-600 text-white'
+                }`}
               >
                 <ShoppingBag className="w-5 h-5" />
-                Purchase Now
+                {course.preorder && IS_PREORDER ? '🚀 Pre-order Now' : 'Purchase Now'}
               </button>
 
               <p className="text-center text-gray-500 text-sm mt-4">
-                Secure checkout • Instant access
+                {course.preorder && IS_PREORDER 
+                  ? 'Secure checkout • Access on January 1st, 2025'
+                  : 'Secure checkout • Instant access'}
               </p>
             </div>
           </div>
@@ -1071,6 +1120,35 @@ export default function Academy({ onBack }) {
           <span className="text-purple-600 font-semibold">Back to Main</span>
         </button>
 
+        {/* Pre-order Announcement Banner */}
+        {IS_PREORDER && (
+          <div className={`mb-8 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-5'}`}>
+            <div className="bg-gradient-to-r from-blue-500 via-cyan-500 to-purple-600 rounded-2xl p-6 text-white text-center shadow-xl relative overflow-hidden">
+              {/* Animated sparkles */}
+              <div className="absolute inset-0 overflow-hidden">
+                <div className="absolute top-2 left-10 w-2 h-2 bg-white rounded-full animate-ping opacity-50"></div>
+                <div className="absolute bottom-4 right-20 w-1.5 h-1.5 bg-yellow-300 rounded-full animate-ping opacity-60" style={{animationDelay: '0.5s'}}></div>
+                <div className="absolute top-6 right-32 w-1 h-1 bg-pink-300 rounded-full animate-ping opacity-40" style={{animationDelay: '1s'}}></div>
+              </div>
+              
+              <div className="relative z-10">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <span className="text-3xl">🚀</span>
+                  <h2 className="text-2xl md:text-3xl font-bold">Pre-Orders Now Open!</h2>
+                  <span className="text-3xl">🎉</span>
+                </div>
+                <p className="text-lg text-white/90 mb-3">
+                  All courses release <span className="font-bold">January 1st, 2025</span>
+                </p>
+                <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
+                  <span className="text-yellow-300 font-bold">✨ Early Bird Pricing</span>
+                  <span className="text-white/80">- Lock in up to 33% off before launch!</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Header */}
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
           <div className="inline-flex items-center gap-4 mb-6">
@@ -1089,8 +1167,8 @@ export default function Academy({ onBack }) {
         {/* Stats Bar */}
         <div className={`flex flex-wrap justify-center gap-8 mb-16 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-lg border border-purple-100">
-            <p className="text-3xl font-bold text-purple-600">2,500+</p>
-            <p className="text-gray-600 text-sm">Students Enrolled</p>
+            <p className="text-3xl font-bold text-purple-600">{IS_PREORDER ? '4' : '2,500+'}</p>
+            <p className="text-gray-600 text-sm">{IS_PREORDER ? 'Courses Available' : 'Students Enrolled'}</p>
           </div>
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-lg border border-purple-100">
             <p className="text-3xl font-bold text-pink-600">4.9★</p>
@@ -1125,32 +1203,57 @@ export default function Academy({ onBack }) {
 
         {/* Bundle Offer */}
         <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 rounded-3xl p-8 md:p-12 text-white text-center shadow-2xl">
-            <div className="flex items-center justify-center gap-3 mb-4">
+          <div className="bg-gradient-to-r from-blue-500 via-cyan-500 to-purple-600 rounded-3xl p-8 md:p-12 text-white text-center shadow-2xl relative overflow-hidden">
+            {/* Pre-order banner */}
+            {IS_PREORDER && (
+              <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-yellow-400 to-orange-400 text-black py-2 text-sm font-bold animate-pulse">
+                🚀 PRE-ORDER SPECIAL • Releasing January 1st, 2025 • Early Bird Pricing!
+              </div>
+            )}
+            
+            <div className={`flex items-center justify-center gap-3 mb-4 ${IS_PREORDER ? 'mt-8' : ''}`}>
               <Crown className="w-10 h-10" />
-              <h2 className="text-3xl md:text-4xl font-bold">Get All Courses Bundle</h2>
+              <h2 className="text-3xl md:text-4xl font-bold">
+                {IS_PREORDER ? 'Pre-order All Courses' : 'Get All Courses Bundle'}
+              </h2>
               <Crown className="w-10 h-10" />
             </div>
             <p className="text-white/90 text-lg mb-6 max-w-2xl mx-auto">
-              Unlock everything for one special price. Lifetime access to all current and future courses!
+              {IS_PREORDER 
+                ? 'Lock in early bird pricing! All courses unlock on January 1st, 2025. Lifetime access to all current and future courses!'
+                : 'Unlock everything for one special price. Lifetime access to all current and future courses!'}
             </p>
             <div className="flex items-center justify-center gap-4 mb-6">
-              <span className="text-5xl font-black">$49.99</span>
-              <span className="text-2xl text-white/60 line-through">$89.97</span>
-              <span className="bg-white/20 px-3 py-1 rounded-full text-sm font-bold">Save 44%</span>
+              <span className="text-5xl font-black">{IS_PREORDER ? '$99.99' : '$159.97'}</span>
+              <span className="text-2xl text-white/60 line-through">{IS_PREORDER ? '$159.97' : '$199.99'}</span>
+              <span className="bg-white/20 px-3 py-1 rounded-full text-sm font-bold">
+                {IS_PREORDER ? 'Save $59.98!' : 'Save $40'}
+              </span>
             </div>
             <button 
               onClick={() => {
-                COURSES.forEach(c => {
-                  if (!purchasedCourses.includes(c.id)) {
-                    handlePurchase(c.id);
-                  }
-                });
+                // Redirect to bundle Stripe link
+                const bundleLink = STRIPE_PAYMENT_LINKS['all-courses-bundle'];
+                if (bundleLink && bundleLink.paymentLink && bundleLink.paymentLink !== 'YOUR_STRIPE_PAYMENT_LINK_HERE') {
+                  window.location.href = bundleLink.paymentLink;
+                } else {
+                  COURSES.forEach(c => {
+                    if (!purchasedCourses.includes(c.id)) {
+                      handlePurchase(c.id);
+                    }
+                  });
+                }
               }}
               className="bg-white text-purple-600 px-10 py-4 rounded-xl font-bold text-lg hover:bg-purple-50 transition-all hover:scale-105 shadow-xl"
             >
-              Get The Bundle
+              {IS_PREORDER ? '🚀 Pre-order Bundle Now' : 'Get The Bundle'}
             </button>
+            
+            {IS_PREORDER && (
+              <p className="text-white/80 text-sm mt-4">
+                ✨ Be the first to access all courses when they launch!
+              </p>
+            )}
           </div>
         </div>
 
