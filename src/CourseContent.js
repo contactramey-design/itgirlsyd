@@ -3,6 +3,1261 @@
 
 export const COURSE_SCRIPTS = {
   // ═══════════════════════════════════════════════════════════════════════════
+  // CREATOR FILMMAKING MASTERCLASS - Complete Scripts (8 Courses in 1)
+  // ═══════════════════════════════════════════════════════════════════════════
+  'filmmaking-masterclass': {
+    courseTitle: 'Creator Filmmaking Masterclass',
+    courseDescription: 'The ULTIMATE filmmaking bundle - from script to viral video.',
+    modules: [
+      // ─────────────────────────────────────────────────────────────────────────
+      // MODULE 1: 1 Day Script
+      // ─────────────────────────────────────────────────────────────────────────
+      {
+        moduleId: 'm1',
+        moduleTitle: '1 Day Script: Write Ads That Convert',
+        moduleDescription: 'Write and storyboard ads that convert 24/7/365.',
+        lessons: [
+          {
+            lessonId: 'fm-l1',
+            title: 'The Perfect Script Framework',
+            type: 'video',
+            duration: '15:00',
+            free: true,
+            script: {
+              hook: `Every viral video, every ad that makes you stop scrolling, every piece of content that converts... starts with ONE thing: a killer script.
+
+And here's the secret most creators miss: You don't need to be a "writer" to write scripts that convert. You need a FRAMEWORK.
+
+Today I'm giving you the exact script structure that professional ad agencies use - the same framework behind campaigns that generate millions in sales.`,
+              
+              painPoints: [
+                "Sitting down to film with no plan",
+                "Rambling on camera and losing your audience",
+                "Videos that get views but no conversions",
+                "Spending hours filming and getting nowhere",
+                "Not knowing how to structure your message"
+              ],
+              
+              keyPoints: [
+                {
+                  title: "The AIDA Framework",
+                  content: `Every converting script follows AIDA:
+
+A - ATTENTION (0-3 seconds)
+Stop the scroll. Pattern interrupt. Make them STAY.
+
+I - INTEREST (3-15 seconds)  
+Hook them with a problem they relate to or a promise they want.
+
+D - DESIRE (15-45 seconds)
+Show the transformation. Paint the picture of the outcome.
+
+A - ACTION (Final 5-10 seconds)
+Tell them EXACTLY what to do next.
+
+This framework works for 30-second ads, 3-minute videos, or hour-long content. Master this, and you can write anything.`,
+                  actionStep: "Take your next video idea and outline it using AIDA before you start filming."
+                },
+                {
+                  title: "The Hook Formula",
+                  content: `Your first 3 seconds determine EVERYTHING. Here are hooks that work:
+
+🎯 THE QUESTION HOOK
+"Want to know why your videos aren't converting?"
+
+🎯 THE BOLD CLAIM
+"This script made me $50,000 in one month."
+
+🎯 THE STORY HOOK  
+"I was broke, living on my friend's couch, when I discovered..."
+
+🎯 THE CONTROVERSY
+"Everything you've been told about [topic] is wrong."
+
+🎯 THE CURIOSITY GAP
+"There's one thing all viral videos have in common..."
+
+Pick your hook BEFORE you write anything else.`,
+                  actionStep: "Write 5 different hooks for your next video using these formulas."
+                },
+                {
+                  title: "Writing for Speaking, Not Reading",
+                  content: `Common mistake: Writing scripts that sound good on paper but awkward on camera.
+
+Tips for natural delivery:
+• Use contractions (you're, don't, can't)
+• Write like you talk to a friend
+• Short sentences. Punchy phrases.
+• Add [PAUSE] markers for emphasis
+• Read it out loud before filming
+• If you stumble on a sentence, rewrite it
+
+Your script should feel like you're explaining something to your best friend over coffee, not reading a corporate presentation.`,
+                  actionStep: "Read your next script out loud 3 times before filming. Rewrite anything awkward."
+                }
+              ],
+              
+              successStory: `I once spent 4 hours filming a video with no script. It was a rambling mess. Edited down to 2 minutes but still felt scattered. Got 200 views.
+
+The next week, I spent 30 minutes writing a script using AIDA. Filmed it in ONE take. Same topic. Same me. Same camera.
+
+That video got 50,000 views and brought in 15 paying customers.
+
+The difference? The script.`,
+              
+              recap: [
+                "Use AIDA: Attention, Interest, Desire, Action",
+                "Your hook determines if people stay or scroll",
+                "Write like you speak, not like you write",
+                "Read scripts aloud before filming",
+                "30 minutes of scripting saves hours of editing"
+              ],
+              
+              homework: "Write a 60-second script for your next video using the AIDA framework. Don't film until it's done.",
+              
+              quotable: "A great video starts with a great script. Period."
+            }
+          },
+          {
+            lessonId: 'fm-l2',
+            title: 'Storyboarding Your Vision',
+            type: 'video',
+            duration: '18:00',
+            script: {
+              hook: `Professional filmmakers never show up to set without a storyboard. And neither should you.
+
+Even if you're a one-person team filming on your phone, a simple storyboard will 10x the quality of your content. Let me show you how to visualize your video before you ever hit record.`,
+              
+              keyPoints: [
+                {
+                  title: "What is a Storyboard?",
+                  content: `A storyboard is a visual plan for your video. Think of it as a comic strip version of your content.
+
+It doesn't need to be artistic. Stick figures work!
+
+Each frame shows:
+• What's in the shot (you, product, b-roll)
+• Camera angle (close-up, wide, overhead)
+• Text/graphics on screen
+• Audio (voiceover, music, silence)
+• Movement (zoom, pan, static)
+
+When you plan visually, you film faster and edit easier.`,
+                  actionStep: "Create a 6-panel storyboard for your next video using simple sketches or notes."
+                },
+                {
+                  title: "The Shot List Shortcut",
+                  content: `Don't have time to draw? Use a shot list instead.
+
+Format:
+SHOT 1: Close-up of product, hands holding it
+SHOT 2: Face talking to camera (wide)
+SHOT 3: B-roll of product in use
+SHOT 4: Face close-up for CTA
+
+This takes 5 minutes and saves you hours of "what should I film next?" confusion on set.`,
+                  actionStep: "Make a shot list for your next video with at least 5 specific shots planned."
+                }
+              ],
+              
+              recap: [
+                "Storyboards help you visualize before filming",
+                "Stick figures are perfectly fine",
+                "Shot lists are a quick alternative",
+                "Planning = faster filming + better content"
+              ]
+            }
+          },
+          {
+            lessonId: 'fm-l3',
+            title: 'Hook Formulas That Stop Scrollers',
+            type: 'video',
+            duration: '12:00',
+            script: {
+              hook: `You have 0.5 seconds to stop someone from scrolling. Half a second. That's it.
+
+Let me give you 10 hook formulas that work across EVERY platform - TikTok, Instagram, YouTube, ads, all of it.`,
+              
+              keyPoints: [
+                {
+                  title: "10 Proven Hook Formulas",
+                  content: `Save these and use them:
+
+1. "POV: [Relatable scenario]"
+2. "Things I wish I knew before [action]"
+3. "This changed my life: [thing]"
+4. "Stop doing [common mistake]"
+5. "Nobody's talking about [topic]"
+6. "The real reason [outcome happens]"
+7. "I tried [thing] for 30 days..."
+8. "Unpopular opinion: [take]"
+9. "How to [result] without [objection]"
+10. "If you [situation], watch this"
+
+These work because they create curiosity, promise value, or trigger emotion.`,
+                  actionStep: "Pick 3 formulas and write hooks for your content using each one."
+                }
+              ],
+              
+              quotable: "Your hook is your headline. If it doesn't grab, nothing else matters."
+            }
+          },
+          {
+            lessonId: 'fm-l4',
+            title: 'Script Templates & Swipe File',
+            type: 'template',
+            downloadName: 'Script-Templates-Swipe-File.pdf',
+            description: '15+ script templates for different video types.',
+            templateSections: [
+              {
+                title: "Product Review Script",
+                content: `HOOK: "I've tested [product] for [time] - here's my honest review."
+
+PROBLEM: "I used to struggle with [pain point]..."
+
+SOLUTION: "Then I found [product]..."
+
+FEATURES: "What I love: [3 specific things]"
+
+PROOF: "After [time], I noticed [results]"
+
+CTA: "Link in bio if you want to try it!"
+
+DURATION: 45-90 seconds`
+              },
+              {
+                title: "Tutorial Script",
+                content: `HOOK: "Here's how to [result] in [timeframe]"
+
+STEP 1: "[Action]" - Show and explain
+STEP 2: "[Action]" - Show and explain
+STEP 3: "[Action]" - Show and explain
+
+RECAP: "So to recap: [steps]"
+
+CTA: "Save this for later!"
+
+DURATION: 30-60 seconds`
+              },
+              {
+                title: "Story/Testimonial Script",
+                content: `HOOK: "6 months ago, I [past state]..."
+
+LOW POINT: "I was [struggle/problem]..."
+
+DISCOVERY: "Then I [found solution]..."
+
+TRANSFORMATION: "Now I [new state]..."
+
+PROOF: "The difference is [specific result]"
+
+CTA: "If you want the same [result], [action]"
+
+DURATION: 60-120 seconds`
+              }
+            ]
+          }
+        ]
+      },
+      // ─────────────────────────────────────────────────────────────────────────
+      // MODULE 2: 14 Day Filmmaker
+      // ─────────────────────────────────────────────────────────────────────────
+      {
+        moduleId: 'm2',
+        moduleTitle: '14 Day Filmmaker: Technical Mastery',
+        moduleDescription: 'Master the technical skills to produce professional videos.',
+        lessons: [
+          {
+            lessonId: 'fm-l5',
+            title: 'Essential Gear Guide (What to Buy)',
+            type: 'video',
+            duration: '20:00',
+            script: {
+              hook: `Let's talk gear. I'm going to save you hundreds of dollars and countless hours of confusion.
+
+Because here's the truth: Most creators buy WAY too much gear too soon. Or they buy the wrong gear entirely.
+
+I'm giving you the exact gear list for every budget level - from $0 to $2,000+.`,
+              
+              painPoints: [
+                "Overwhelmed by gear options",
+                "Wasting money on equipment you don't need",
+                "Thinking you need expensive gear to start",
+                "Not knowing what actually makes videos look better"
+              ],
+              
+              keyPoints: [
+                {
+                  title: "The $0 Setup (Phone Only)",
+                  content: `You can create PROFESSIONAL content with zero gear investment:
+
+📱 YOUR PHONE
+- Any phone from the last 3-4 years is fine
+- Use the back camera, not selfie cam
+- Clean your lens (seriously, do it)
+
+💡 NATURAL LIGHT
+- Window light is the best light
+- Face the window, camera between you and window
+- Golden hour = free professional lighting
+
+🎙 BUILT-IN MIC
+- Film in quiet spaces
+- Get close to phone (2-3 feet)
+- AirPods as wireless mic work okay
+
+This setup can get you to 100K followers. Don't let gear be your excuse.`,
+                  actionStep: "Film one video with JUST your phone and window light. See what you can create."
+                },
+                {
+                  title: "The $100-300 Starter Kit",
+                  content: `When you're ready to level up:
+
+📱 TRIPOD ($20-40)
+- Any phone tripod with adjustable height
+- Joby GorillaPod for flexibility
+- Don't need expensive - just stable
+
+💡 RING LIGHT ($25-50)
+- 10-12 inch is perfect
+- Adjustable brightness + warmth
+- Phone mount built in = bonus
+
+🎙 LAPEL MIC ($20-40)
+- BOYA or Rode Lav = great budget options
+- Clips to your shirt
+- Massive audio upgrade
+
+📦 BASIC BACKDROP ($20-40)
+- Collapsible fabric backdrop
+- Or just clean up your background
+
+TOTAL: ~$100-150 for a complete upgrade`,
+                  actionStep: "Pick ONE gear upgrade to buy this month. Start with audio - it makes the biggest difference."
+                },
+                {
+                  title: "The $500-2000 Pro Setup",
+                  content: `Ready to go all-in? Here's the pro setup:
+
+📷 CAMERA ($500-1500)
+- Sony ZV-1 / ZV-E10 (made for creators)
+- Canon M50 (great value)
+- Sony A6400 (amazing autofocus)
+
+💡 LIGHTING KIT ($100-300)
+- Softbox key light
+- LED panel for fill
+- RGB for creativity
+
+🎙 PRO AUDIO ($100-300)
+- Rode VideoMic
+- USB mic for desktop (Shure MV7)
+- Audio interface if you want studio quality
+
+🖥 EDITING SOFTWARE
+- DaVinci Resolve (FREE & pro-level)
+- Premiere Pro ($20/month)
+- Final Cut Pro ($300 one-time)
+
+Remember: Skills matter more than gear. Upgrade skills first, gear second.`,
+                  actionStep: "Make a gear wishlist prioritized by what will improve your content MOST."
+                }
+              ],
+              
+              successStory: `I filmed my first 50 videos on an iPhone 8 with natural light. Got to 30K followers.
+
+Then I bought a $1,200 camera. You know what? Those videos looked maybe 15% better. The biggest improvements came from better LIGHTING and AUDIO - which cost under $100.
+
+Don't let gear stop you from starting.`,
+              
+              recap: [
+                "Phone + window light = enough to start",
+                "Audio upgrade makes biggest difference",
+                "Don't buy camera until you've mastered phone",
+                "Skills > Gear always"
+              ],
+              
+              quotable: "The best camera is the one you have. The best lighting is free (sunlight)."
+            }
+          },
+          {
+            lessonId: 'fm-l6',
+            title: 'Camera Settings Demystified',
+            type: 'video',
+            duration: '25:00',
+            script: {
+              hook: `ISO, aperture, shutter speed, frame rate... if these words make you want to run away, this lesson is for you.
+
+I'm going to explain camera settings like I'm talking to a complete beginner - because that's who I was 2 years ago. And now I shoot professional content.`,
+              
+              keyPoints: [
+                {
+                  title: "The Exposure Triangle",
+                  content: `Three settings control how bright your image is:
+
+📐 APERTURE (f-stop)
+- Lower number = more light, blurry background (f/1.8)
+- Higher number = less light, everything in focus (f/8)
+- For talking head: f/2.8 - f/4 is the sweet spot
+
+⏱ SHUTTER SPEED
+- Controls motion blur
+- For video: 2x your frame rate (24fps = 1/50 shutter)
+- Higher = sharper but more choppy
+- Lower = smoother but can be blurry
+
+📊 ISO
+- Controls light sensitivity
+- Lower = cleaner image (100-400)
+- Higher = more noise/grain (800+)
+- Always keep as low as possible
+
+Adjust in this order: Aperture first, then shutter, then ISO last.`,
+                  actionStep: "Set your camera to manual mode and practice adjusting each setting. Notice what changes."
+                },
+                {
+                  title: "Phone Settings Matter Too",
+                  content: `Think phones are all automatic? Not anymore.
+
+iPhone: Use Cinematic Mode or Filmic Pro app
+- Lock exposure by holding screen
+- Adjust exposure up/down by sliding
+- 4K 24fps for cinematic look
+
+Android: Use Pro/Manual mode
+- Same principles apply
+- Control focus, exposure, white balance
+
+The best phone setting? 4K, 24 or 30fps, lock your exposure, good lighting.`,
+                  actionStep: "Find the manual/pro mode on your phone and practice locking exposure."
+                }
+              ],
+              
+              recap: [
+                "Aperture = depth of field + light",
+                "Shutter speed = motion blur",
+                "ISO = light sensitivity (keep low)",
+                "Phone Pro mode gives you more control"
+              ]
+            }
+          },
+          {
+            lessonId: 'fm-l7',
+            title: 'Lighting Like a Pro',
+            type: 'video',
+            duration: '22:00',
+            script: {
+              hook: `Lighting is the #1 thing that separates amateur content from professional content. And it doesn't cost a fortune.
+
+Let me show you how to light yourself like a Hollywood cinematographer - even in a tiny apartment.`,
+              
+              keyPoints: [
+                {
+                  title: "The 3-Point Lighting Setup",
+                  content: `Professional lighting uses 3 lights:
+
+💡 KEY LIGHT (Main light)
+- Brightest light
+- 45° angle from your face
+- Creates dimension
+
+💡 FILL LIGHT (Softens shadows)
+- Opposite side from key
+- Less bright (or use reflector)
+- Reduces harsh shadows
+
+💡 BACK LIGHT (Separation)
+- Behind you, pointing at your back
+- Separates you from background
+- Creates "glow" effect
+
+Don't have 3 lights? Use window as key, white foam board as fill, done.`,
+                  actionStep: "Set up a 2-light setup (key + fill) for your next video. Compare to just 1 light."
+                },
+                {
+                  title: "Common Lighting Mistakes",
+                  content: `Avoid these:
+
+❌ Overhead lighting only (creates shadows under eyes)
+❌ Backlit (sitting in front of window)
+❌ Mixed color temperatures (warm + cool)
+❌ Too harsh/direct (use diffusion)
+❌ No catch light in eyes (looks lifeless)
+
+The fix: Soft, diffused light at eye level, slightly above. Window light is perfect.`,
+                  actionStep: "Film the same shot with 3 different lighting setups. Compare the results."
+                }
+              ],
+              
+              quotable: "Good lighting hides flaws. Great lighting creates magic."
+            }
+          },
+          {
+            lessonId: 'fm-l8',
+            title: 'Camera Movements & Composition',
+            type: 'video',
+            duration: '18:00',
+            script: {
+              hook: `Static, tripod shots are fine. But if you want cinematic content that FEELS professional, you need movement and composition.`,
+              
+              keyPoints: [
+                {
+                  title: "Essential Camera Movements",
+                  content: `Start with these:
+
+🎬 PAN - Camera rotates left/right (show environment)
+🎬 TILT - Camera rotates up/down (reveal moment)
+🎬 PUSH IN - Move closer (build intensity)
+🎬 PULL OUT - Move away (reveal context)
+🎬 SLIDER - Smooth horizontal movement (b-roll magic)
+
+For phone: Use gimbal or just slow, steady hand movements.
+
+Pro tip: Slow moves > fast moves for 90% of content.`,
+                  actionStep: "Practice one camera movement until it's smooth before adding more."
+                },
+                {
+                  title: "Rule of Thirds",
+                  content: `The rule of thirds instantly makes shots more interesting:
+
+Divide frame into 9 boxes (3x3 grid)
+Place subjects on the lines/intersections
+Eyes should be on upper third line
+Never center everything
+
+Turn on grid lines in your camera/phone settings. Follow this rule and your composition improves immediately.`,
+                  actionStep: "Turn on grid lines in your camera settings. Frame 5 shots using rule of thirds."
+                }
+              ]
+            }
+          },
+          {
+            lessonId: 'fm-l9',
+            title: 'Audio Recording & Processing',
+            type: 'video',
+            duration: '20:00',
+            script: {
+              hook: `Here's a hard truth: People will watch a slightly blurry video with good audio. They will NOT watch a beautiful video with bad audio.
+
+Audio is 50% of your video. Maybe more. Let's get it right.`,
+              
+              keyPoints: [
+                {
+                  title: "Recording Good Audio",
+                  content: `The basics:
+
+🎙 GET MIC CLOSE
+- 6-12 inches from mouth ideal
+- Lapel mics work great
+- Phone's mic is okay if you're 2-3 feet away
+
+🔇 CONTROL YOUR ENVIRONMENT  
+- Turn off AC/fans while recording
+- Close windows
+- No echo (add soft furniture/blankets)
+- Record room tone (30 sec of silence) for editing
+
+📱 PHONE RECORDING TIPS
+- Use headphone mic (better than phone mic)
+- Record in quiet space
+- Test audio before full recording`,
+                  actionStep: "Record a 30-second clip. Listen with headphones. Fix what sounds bad."
+                },
+                {
+                  title: "Audio Processing Basics",
+                  content: `Clean up your audio in post:
+
+1. NOISE REDUCTION - Remove background hiss
+2. EQ - Cut frequencies below 80Hz
+3. COMPRESSION - Even out loud/quiet parts
+4. NORMALIZE - Bring to proper volume level (-14 LUFS for most platforms)
+
+Free tools: DaVinci Resolve, Audacity
+Paid tools: Adobe Audition, iZotope RX
+
+Even 5 minutes of processing makes audio sound pro.`,
+                  actionStep: "Learn the noise reduction tool in your editing software. Apply it to your next video."
+                }
+              ],
+              
+              quotable: "Viewers forgive bad video. They don't forgive bad audio."
+            }
+          },
+          {
+            lessonId: 'fm-l10',
+            title: 'Gear Tutorials & Setup Walkthroughs',
+            type: 'video',
+            duration: '30:00',
+            script: {
+              hook: `Let me walk you through my exact setup - what I use, how I use it, and why. Then I'll show you how to replicate it at different budget levels.`,
+              
+              keyPoints: [
+                {
+                  title: "My Current Setup",
+                  content: `What I use today:
+
+📷 Camera: Sony A7IV (overkill for most - A6400 is plenty)
+🔲 Lens: 24-70mm f/2.8 (versatile)
+💡 Key Light: Aputure 60D
+💡 Fill: Elgato Key Light
+🎙 Audio: Shure SM7B + GoXLR
+📱 Phone Setup: iPhone + DJI OM 6 gimbal
+
+But here's the thing... I started with just an iPhone and ring light. Don't wait for perfect gear.`,
+                  actionStep: "List what you currently have. Identify ONE upgrade that would help most."
+                }
+              ]
+            }
+          }
+        ]
+      },
+      // ─────────────────────────────────────────────────────────────────────────
+      // MODULE 3: 14 Day Smartphone Filmmaker
+      // ─────────────────────────────────────────────────────────────────────────
+      {
+        moduleId: 'm3',
+        moduleTitle: '14 Day Smartphone Filmmaker',
+        moduleDescription: 'Shoot professional videos with just your phone.',
+        lessons: [
+          {
+            lessonId: 'fm-l11',
+            title: 'Why Smartphone = Professional',
+            type: 'video',
+            duration: '10:00',
+            free: true,
+            script: {
+              hook: `Major movies have been shot on iPhones. Music videos. Super Bowl commercials. If Hollywood trusts smartphones... so can you.
+
+Let me show you why your phone is more powerful than you think - and how creators are building 6-figure businesses filming entirely on mobile.`,
+              
+              keyPoints: [
+                {
+                  title: "Phone vs Camera Reality Check",
+                  content: `Modern smartphones can:
+• Shoot 4K 60fps (cinema quality)
+• Record in LOG/Cinematic mode
+• Have multiple lenses built-in
+• Autofocus faster than most cameras
+• Fit in your pocket (always available)
+
+What they CAN'T do as well:
+• Low light performance
+• Depth of field control
+• Professional audio (use external mic)
+
+For 90% of content creation, phones are MORE than enough.`,
+                  actionStep: "Watch a video shot on iPhone. Notice you probably couldn't tell the difference."
+                }
+              ],
+              
+              quotable: "The phone in your pocket is more powerful than cameras that made Oscar-winning films."
+            }
+          },
+          {
+            lessonId: 'fm-l12',
+            title: 'Phone Camera Settings Deep Dive',
+            type: 'video',
+            duration: '18:00',
+            script: {
+              hook: `Your phone's auto mode is holding you back. Let me show you the pro settings most people never touch.`,
+              
+              keyPoints: [
+                {
+                  title: "iPhone Pro Settings",
+                  content: `Settings for better video:
+
+📱 Settings > Camera:
+- Record Video: 4K at 24fps (cinematic) or 4K at 30fps (smooth)
+- Formats: High Efficiency (saves space)
+- Grid: ON (for composition)
+
+🎬 Cinematic Mode:
+- Automatic depth effect
+- f/2.0 or f/4.5
+- Great for interviews
+
+🎥 ProRes (if available):
+- Highest quality
+- Best for color grading
+- Uses lots of storage
+
+Lock exposure/focus by long-pressing on your subject!`,
+                  actionStep: "Open your phone camera settings and update them based on these recommendations."
+                }
+              ]
+            }
+          },
+          {
+            lessonId: 'fm-l13',
+            title: 'Stabilization Techniques',
+            type: 'video',
+            duration: '15:00',
+            script: {
+              hook: `Shaky footage screams "amateur." Here's how to get buttery smooth video with just your phone.`,
+              
+              keyPoints: [
+                {
+                  title: "Stabilization Without Gear",
+                  content: `Free stabilization tricks:
+
+👐 THE NINJA GRIP
+- Two hands on phone
+- Elbows tucked to body
+- Walk heel-to-toe smoothly
+
+🚶 THE WALKING METHOD
+- Bend knees slightly
+- Take small steps
+- Float, don't bounce
+
+🧱 USE YOUR ENVIRONMENT
+- Rest phone on surfaces
+- Lean against walls
+- Use bags/books as makeshift tripod
+
+Most phones have built-in stabilization - turn it ON in settings.`,
+                  actionStep: "Practice the ninja grip for 5 minutes. Compare footage to your normal grip."
+                },
+                {
+                  title: "Gimbal Basics",
+                  content: `When to invest in a gimbal:
+
+Good gimbals for phones:
+- DJI OM 6 (~$150)
+- Zhiyun Smooth 5 (~$130)
+- Insta360 Flow (~$130)
+
+When to use gimbal:
+- Walking shots
+- Following subjects
+- Any movement
+
+When NOT to use gimbal:
+- Static tripod shots
+- Controlled handheld
+- Quick/intimate content
+
+Gimbals are great but not required. Master handheld first.`,
+                  actionStep: "If you have a gimbal, practice for 30 minutes. If not, master handheld techniques."
+                }
+              ]
+            }
+          },
+          {
+            lessonId: 'fm-l14',
+            title: 'Lighting for Mobile',
+            type: 'video',
+            duration: '12:00'
+          },
+          {
+            lessonId: 'fm-l15',
+            title: 'Must-Have Phone Accessories',
+            type: 'video',
+            duration: '14:00'
+          },
+          {
+            lessonId: 'fm-l16',
+            title: 'Mobile Editing Workflows',
+            type: 'video',
+            duration: '20:00'
+          },
+          {
+            lessonId: 'fm-l17',
+            title: 'Cinematic Phone Shots',
+            type: 'video',
+            duration: '16:00'
+          }
+        ]
+      },
+      // ─────────────────────────────────────────────────────────────────────────
+      // MODULE 4: 1-Week Director
+      // ─────────────────────────────────────────────────────────────────────────
+      {
+        moduleId: 'm4',
+        moduleTitle: '1-Week Director: Lead Like a Pro',
+        moduleDescription: 'Master directing skills for powerful content regardless of budget.',
+        lessons: [
+          {
+            lessonId: 'fm-l18',
+            title: 'The Director\'s Mindset',
+            type: 'video',
+            duration: '12:00',
+            script: {
+              hook: `A director isn't someone with the biggest budget. A director is someone with the clearest VISION.
+
+Even if you're a one-person team, you need to think like a director. That mindset will transform your content.`,
+              
+              keyPoints: [
+                {
+                  title: "Vision Before Execution",
+                  content: `Before you pick up a camera, answer these:
+
+🎯 What's the PURPOSE of this video?
+🎯 What should viewers FEEL?
+🎯 What's the ONE message?
+🎯 What action do I want them to take?
+
+Directors start with the end in mind. Then they reverse-engineer every shot to serve that goal.
+
+A video with purpose > A video with fancy shots.`,
+                  actionStep: "Write down the purpose, feeling, and action for your next video before filming."
+                }
+              ],
+              
+              quotable: "Direction is 90% clarity and 10% camera work."
+            }
+          },
+          {
+            lessonId: 'fm-l19',
+            title: 'Working With Talent/Subjects',
+            type: 'video',
+            duration: '18:00'
+          },
+          {
+            lessonId: 'fm-l20',
+            title: 'Visual Storytelling Principles',
+            type: 'video',
+            duration: '22:00'
+          },
+          {
+            lessonId: 'fm-l21',
+            title: 'Creating on Any Budget',
+            type: 'video',
+            duration: '15:00'
+          },
+          {
+            lessonId: 'fm-l22',
+            title: 'Pre-Production Planning',
+            type: 'video',
+            duration: '14:00'
+          },
+          {
+            lessonId: 'fm-l23',
+            title: 'On-Set Workflow',
+            type: 'video',
+            duration: '18:00'
+          }
+        ]
+      },
+      // ─────────────────────────────────────────────────────────────────────────
+      // MODULE 5: Weekend YouTuber
+      // ─────────────────────────────────────────────────────────────────────────
+      {
+        moduleId: 'm5',
+        moduleTitle: 'Weekend YouTuber: Grow Your Channel',
+        moduleDescription: '10X your YouTube channel growth rate.',
+        lessons: [
+          {
+            lessonId: 'fm-l24',
+            title: 'YouTube Algorithm Explained',
+            type: 'video',
+            duration: '20:00',
+            script: {
+              hook: `The YouTube algorithm isn't random. It's actually pretty simple once you understand what it's optimizing for.
+
+Let me break down exactly how the algorithm decides which videos to push - and how to use that to grow your channel faster.`,
+              
+              keyPoints: [
+                {
+                  title: "What the Algorithm Wants",
+                  content: `YouTube's goal: Keep people on the platform longer.
+
+So it measures:
+
+⏱ WATCH TIME - How long do people watch?
+📈 CLICK-THROUGH RATE - How many impressions → clicks?
+📊 AVERAGE VIEW DURATION - What % of video do people watch?
+💬 ENGAGEMENT - Likes, comments, shares
+🔔 SESSION TIME - Do viewers keep watching after your video?
+
+The algorithm doesn't care about subscriber count. It cares about these metrics.
+
+Video with 10K views but 80% retention > Video with 100K views and 20% retention.`,
+                  actionStep: "Check your YouTube analytics. Find your highest retention video. Make more like that."
+                },
+                {
+                  title: "The 48-Hour Window",
+                  content: `The first 48 hours determine your video's fate.
+
+YouTube tests your video with a small audience. If metrics are good, it pushes to more people. If not, it stops pushing.
+
+How to win the first 48 hours:
+• Post when your audience is online
+• Reply to every comment quickly
+• Share across all platforms
+• Have your best hook in first 30 seconds
+• Use an irresistible thumbnail
+
+Front-load your effort to trigger the algorithm.`,
+                  actionStep: "Plan your next video launch: posting time, sharing strategy, engagement plan."
+                }
+              ],
+              
+              quotable: "YouTube rewards videos that keep people watching. It's that simple."
+            }
+          },
+          {
+            lessonId: 'fm-l25',
+            title: 'Niche Selection for Growth',
+            type: 'video',
+            duration: '15:00'
+          },
+          {
+            lessonId: 'fm-l26',
+            title: 'Titles & Thumbnails That Click',
+            type: 'video',
+            duration: '18:00',
+            script: {
+              hook: `Your video could be the best on the entire platform. But if your title and thumbnail don't get the click... nobody will ever see it.
+
+This is the skill that separates small channels from big ones. Let's master it.`,
+              
+              keyPoints: [
+                {
+                  title: "Thumbnail Rules",
+                  content: `Thumbnails that get clicks:
+
+✅ FACE with EMOTION (shock, joy, curiosity)
+✅ HIGH CONTRAST (stands out when small)
+✅ 3 ELEMENTS MAX (face, text, object)
+✅ BIG, BOLD TEXT (readable on phone)
+✅ CURIOSITY GAP (make them want to know more)
+
+Tools: Canva, Photoshop, Figma
+
+Test: View thumbnail at mobile size. Does it still work?`,
+                  actionStep: "Redesign an old thumbnail using these rules. Compare impressions."
+                },
+                {
+                  title: "Title Psychology",
+                  content: `Title formulas that work:
+
+🔥 "How I [Result] in [Timeframe]"
+🔥 "I Tried [Thing] for [Time]..."
+🔥 "The [Topic] No One Talks About"
+🔥 "[Number] [Things] to [Result]"
+🔥 "Why [Common Belief] is Wrong"
+
+Rules:
+• Under 60 characters
+• Front-load important words
+• Include power words (secret, ultimate, exactly)
+• Create curiosity without clickbait
+
+Title + Thumbnail should tell a story together.`,
+                  actionStep: "Write 5 different titles for your next video. Pick the most click-worthy."
+                }
+              ]
+            }
+          },
+          {
+            lessonId: 'fm-l27',
+            title: 'Content Strategy & Scheduling',
+            type: 'video',
+            duration: '14:00'
+          },
+          {
+            lessonId: 'fm-l28',
+            title: '10X Your Subscriber Growth',
+            type: 'video',
+            duration: '22:00'
+          },
+          {
+            lessonId: 'fm-l29',
+            title: 'Monetization Strategies',
+            type: 'video',
+            duration: '16:00'
+          },
+          {
+            lessonId: 'fm-l30',
+            title: 'Analytics & Optimization',
+            type: 'video',
+            duration: '12:00'
+          }
+        ]
+      },
+      // ─────────────────────────────────────────────────────────────────────────
+      // MODULE 6: Viral Video Checklists
+      // ─────────────────────────────────────────────────────────────────────────
+      {
+        moduleId: 'm6',
+        moduleTitle: 'Viral Video Checklists',
+        moduleDescription: 'Systematic checklists for consistently viral content.',
+        lessons: [
+          {
+            lessonId: 'fm-l31',
+            title: 'The Viral Video Formula',
+            type: 'video',
+            duration: '18:00',
+            script: {
+              hook: `Viral videos aren't accidents. They follow patterns.
+
+I've analyzed hundreds of videos with millions of views, and they all share certain elements. Let me give you the formula.`,
+              
+              keyPoints: [
+                {
+                  title: "The Viral Formula: HERS",
+                  content: `Every viral video has these 4 elements:
+
+H - HOOK (First 3 seconds that STOP the scroll)
+E - EMOTION (Make them feel something)
+R - RELATABILITY (They see themselves in it)
+S - SHAREABILITY (They want others to see it)
+
+If your video is missing ONE of these, it probably won't go viral.
+
+The strongest viral videos hit all 4 HARD.`,
+                  actionStep: "Review your last 5 videos. Rate each on HERS (1-10). See the pattern?"
+                }
+              ],
+              
+              quotable: "Virality isn't luck. It's a formula you can learn."
+            }
+          },
+          {
+            lessonId: 'fm-l32',
+            title: 'Hook Checklist (First 3 Seconds)',
+            type: 'template',
+            downloadName: 'Hook-Checklist.pdf',
+            description: 'Pre-publish checklist for killer hooks.',
+            templateSections: [
+              {
+                title: "First 3 Seconds Checklist",
+                prompts: [
+                  "□ Does the first frame grab attention visually?",
+                  "□ Is there movement/action immediately?",
+                  "□ Does the first sentence create curiosity?",
+                  "□ Would YOU stop scrolling for this?",
+                  "□ Is the problem/promise clear in 3 seconds?",
+                  "□ No unnecessary intros or logos?",
+                  "□ Did you test 3+ different hooks?"
+                ]
+              }
+            ]
+          },
+          {
+            lessonId: 'fm-l33',
+            title: 'Retention Checklist',
+            type: 'template',
+            downloadName: 'Retention-Checklist.pdf',
+            description: 'Keep viewers watching until the end.'
+          },
+          {
+            lessonId: 'fm-l34',
+            title: 'Share-Worthy Content Checklist',
+            type: 'template',
+            downloadName: 'Share-Worthy-Checklist.pdf',
+            description: 'Make content people want to share.'
+          },
+          {
+            lessonId: 'fm-l35',
+            title: 'Platform-Specific Checklists',
+            type: 'template',
+            downloadName: 'Platform-Checklists.pdf',
+            description: 'Optimized checklists for TikTok, Instagram, YouTube.'
+          },
+          {
+            lessonId: 'fm-l36',
+            title: 'Pre-Publish Quality Check',
+            type: 'template',
+            downloadName: 'Pre-Publish-Checklist.pdf',
+            description: 'Final quality check before posting.'
+          }
+        ]
+      },
+      // ─────────────────────────────────────────────────────────────────────────
+      // MODULE 7: Ultimate Video Editing Template Pack
+      // ─────────────────────────────────────────────────────────────────────────
+      {
+        moduleId: 'm7',
+        moduleTitle: 'Ultimate Video Editing Template Pack',
+        moduleDescription: 'Professional templates for faster, better editing.',
+        lessons: [
+          {
+            lessonId: 'fm-l37',
+            title: 'How to Use These Templates',
+            type: 'video',
+            duration: '10:00'
+          },
+          {
+            lessonId: 'fm-l38',
+            title: 'Premiere Pro Templates',
+            type: 'template',
+            downloadName: 'Premiere-Pro-Templates.zip',
+            description: 'Motion graphics, titles, transitions for Premiere Pro.'
+          },
+          {
+            lessonId: 'fm-l39',
+            title: 'After Effects Templates',
+            type: 'template',
+            downloadName: 'After-Effects-Templates.zip',
+            description: 'Animated graphics and effects for After Effects.'
+          },
+          {
+            lessonId: 'fm-l40',
+            title: 'CapCut Templates',
+            type: 'template',
+            downloadName: 'CapCut-Templates.zip',
+            description: 'Mobile-ready templates for CapCut.'
+          },
+          {
+            lessonId: 'fm-l41',
+            title: 'DaVinci Resolve Templates',
+            type: 'template',
+            downloadName: 'DaVinci-Templates.zip',
+            description: 'Free pro-level templates for DaVinci Resolve.'
+          },
+          {
+            lessonId: 'fm-l42',
+            title: 'Sound Effects & Music Pack',
+            type: 'template',
+            downloadName: 'Sound-Effects-Music-Pack.zip',
+            description: 'Royalty-free sounds, transitions, and background music.'
+          }
+        ]
+      },
+      // ─────────────────────────────────────────────────────────────────────────
+      // MODULE 8: Viral Video Effects Course
+      // ─────────────────────────────────────────────────────────────────────────
+      {
+        moduleId: 'm8',
+        moduleTitle: 'Viral Video Effects Course',
+        moduleDescription: 'Learn effects that make videos trendy, fun, and shareable.',
+        lessons: [
+          {
+            lessonId: 'fm-l43',
+            title: 'Trending Effects Breakdown',
+            type: 'video',
+            duration: '20:00',
+            script: {
+              hook: `Want to know the effects you keep seeing in viral videos? The ones that make you think "how did they DO that?"
+
+I'm breaking down the exact effects trending RIGHT NOW and showing you how to recreate them yourself.`,
+              
+              keyPoints: [
+                {
+                  title: "Effects That Are Trending",
+                  content: `Current viral effects:
+
+🎬 VELOCITY EDITS - Speed ramps synced to music beats
+🎬 FREEZE FRAMES - Stop motion with 3D camera rotation
+🎬 GLITCH EFFECTS - Digital distortion for emphasis
+🎬 ZOOM TRANSITIONS - Punchy scene changes
+🎬 TEXT TRACKING - Words that follow objects
+🎬 SPLIT SCREENS - Multiple angles at once
+🎬 BLUR TRANSITIONS - Motion blur between scenes
+🎬 BEAT SYNCING - Cuts perfectly on music
+
+These effects go in and out of style. Stay current by watching trending content.`,
+                  actionStep: "Save 10 videos with effects you want to learn. Deconstruct how they did it."
+                }
+              ]
+            }
+          },
+          {
+            lessonId: 'fm-l44',
+            title: 'Speed Ramps & Transitions',
+            type: 'video',
+            duration: '18:00'
+          },
+          {
+            lessonId: 'fm-l45',
+            title: 'Text Animations That Pop',
+            type: 'video',
+            duration: '15:00'
+          },
+          {
+            lessonId: 'fm-l46',
+            title: 'Green Screen Mastery',
+            type: 'video',
+            duration: '14:00'
+          },
+          {
+            lessonId: 'fm-l47',
+            title: 'Color Grading for Mood',
+            type: 'video',
+            duration: '16:00'
+          },
+          {
+            lessonId: 'fm-l48',
+            title: 'Sound Design for Impact',
+            type: 'video',
+            duration: '12:00'
+          },
+          {
+            lessonId: 'fm-l49',
+            title: 'TikTok/Reels Effects Tutorial',
+            type: 'video',
+            duration: '20:00'
+          },
+          {
+            lessonId: 'fm-l50',
+            title: 'Final Project & Certificate',
+            type: 'quiz',
+            questions: [
+              {
+                question: "What does AIDA stand for in scriptwriting?",
+                options: [
+                  "Action, Intro, Drama, Audio",
+                  "Attention, Interest, Desire, Action",
+                  "Audience, Impact, Direction, Angle",
+                  "Audio, Image, Design, Animation"
+                ],
+                correct: 1,
+                explanation: "AIDA (Attention, Interest, Desire, Action) is the fundamental framework for converting scripts."
+              },
+              {
+                question: "What's the most important upgrade for content quality?",
+                options: [
+                  "Better camera",
+                  "Better lighting and audio",
+                  "Better tripod",
+                  "Better editing software"
+                ],
+                correct: 1,
+                explanation: "Lighting and audio make the biggest difference in perceived quality. Good audio is especially critical."
+              },
+              {
+                question: "What should shutter speed be for 24fps video?",
+                options: [
+                  "1/24",
+                  "1/50",
+                  "1/100",
+                  "1/200"
+                ],
+                correct: 1,
+                explanation: "Shutter speed should be roughly 2x your frame rate for natural motion blur. 24fps → 1/50 shutter."
+              },
+              {
+                question: "What are the 4 elements of viral content (HERS)?",
+                options: [
+                  "Hook, Energy, Reach, Speed",
+                  "Hook, Emotion, Relatability, Shareability",
+                  "High quality, Editing, Rhythm, Story",
+                  "Humor, Entertainment, Results, Sound"
+                ],
+                correct: 1,
+                explanation: "HERS: Hook, Emotion, Relatability, Shareability - the four elements that make content go viral."
+              },
+              {
+                question: "What determines a video's success in the YouTube algorithm?",
+                options: [
+                  "Subscriber count",
+                  "Upload frequency",
+                  "Watch time and engagement metrics",
+                  "Video length"
+                ],
+                correct: 2,
+                explanation: "YouTube prioritizes videos that keep viewers watching and engaged, regardless of subscriber count."
+              }
+            ],
+            certificate: true
+          }
+        ]
+      }
+    ]
+  },
+  // ═══════════════════════════════════════════════════════════════════════════
   // CREATOR BUSINESS TOOLKIT - Complete Scripts
   // ═══════════════════════════════════════════════════════════════════════════
   'creator-business-toolkit': {

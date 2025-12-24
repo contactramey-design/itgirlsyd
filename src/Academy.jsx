@@ -11,6 +11,123 @@ import { COURSE_SCRIPTS } from './CourseContent.js';
 // Course data structure
 const COURSES = [
   {
+    id: 'filmmaking-masterclass',
+    title: 'Creator Filmmaking Masterclass',
+    subtitle: 'From Script to Viral Video',
+    price: 99.99,
+    originalPrice: 299.99,
+    image: null,
+    color: 'from-red-600 to-orange-500',
+    icon: Video,
+    description: 'The ULTIMATE filmmaking bundle. Master scriptwriting, filming, editing, directing, and creating viral content. 8 courses in 1!',
+    students: 2847,
+    rating: 4.9,
+    duration: '25+ hours',
+    lessons: 64,
+    bestseller: true,
+    featured: true,
+    modules: [
+      {
+        id: 'm1',
+        title: '1 Day Script: Write Ads That Convert',
+        lessons: [
+          { id: 'fm-l1', title: 'The Perfect Script Framework', type: 'video', duration: '15:00', free: true },
+          { id: 'fm-l2', title: 'Storyboarding Your Vision', type: 'video', duration: '18:00' },
+          { id: 'fm-l3', title: 'Hook Formulas That Stop Scrollers', type: 'video', duration: '12:00' },
+          { id: 'fm-l4', title: 'Script Templates & Swipe File', type: 'template' }
+        ]
+      },
+      {
+        id: 'm2',
+        title: '14 Day Filmmaker: Technical Mastery',
+        lessons: [
+          { id: 'fm-l5', title: 'Essential Gear Guide (What to Buy)', type: 'video', duration: '20:00' },
+          { id: 'fm-l6', title: 'Camera Settings Demystified', type: 'video', duration: '25:00' },
+          { id: 'fm-l7', title: 'Lighting Like a Pro', type: 'video', duration: '22:00' },
+          { id: 'fm-l8', title: 'Camera Movements & Composition', type: 'video', duration: '18:00' },
+          { id: 'fm-l9', title: 'Audio Recording & Processing', type: 'video', duration: '20:00' },
+          { id: 'fm-l10', title: 'Gear Tutorials & Setup Walkthroughs', type: 'video', duration: '30:00' }
+        ]
+      },
+      {
+        id: 'm3',
+        title: '14 Day Smartphone Filmmaker',
+        lessons: [
+          { id: 'fm-l11', title: 'Why Smartphone = Professional', type: 'video', duration: '10:00', free: true },
+          { id: 'fm-l12', title: 'Phone Camera Settings Deep Dive', type: 'video', duration: '18:00' },
+          { id: 'fm-l13', title: 'Stabilization Techniques', type: 'video', duration: '15:00' },
+          { id: 'fm-l14', title: 'Lighting for Mobile', type: 'video', duration: '12:00' },
+          { id: 'fm-l15', title: 'Must-Have Phone Accessories', type: 'video', duration: '14:00' },
+          { id: 'fm-l16', title: 'Mobile Editing Workflows', type: 'video', duration: '20:00' },
+          { id: 'fm-l17', title: 'Cinematic Phone Shots', type: 'video', duration: '16:00' }
+        ]
+      },
+      {
+        id: 'm4',
+        title: '1-Week Director: Lead Like a Pro',
+        lessons: [
+          { id: 'fm-l18', title: 'The Director\'s Mindset', type: 'video', duration: '12:00' },
+          { id: 'fm-l19', title: 'Working With Talent/Subjects', type: 'video', duration: '18:00' },
+          { id: 'fm-l20', title: 'Visual Storytelling Principles', type: 'video', duration: '22:00' },
+          { id: 'fm-l21', title: 'Creating on Any Budget', type: 'video', duration: '15:00' },
+          { id: 'fm-l22', title: 'Pre-Production Planning', type: 'video', duration: '14:00' },
+          { id: 'fm-l23', title: 'On-Set Workflow', type: 'video', duration: '18:00' }
+        ]
+      },
+      {
+        id: 'm5',
+        title: 'Weekend YouTuber: Grow Your Channel',
+        lessons: [
+          { id: 'fm-l24', title: 'YouTube Algorithm Explained', type: 'video', duration: '20:00' },
+          { id: 'fm-l25', title: 'Niche Selection for Growth', type: 'video', duration: '15:00' },
+          { id: 'fm-l26', title: 'Titles & Thumbnails That Click', type: 'video', duration: '18:00' },
+          { id: 'fm-l27', title: 'Content Strategy & Scheduling', type: 'video', duration: '14:00' },
+          { id: 'fm-l28', title: '10X Your Subscriber Growth', type: 'video', duration: '22:00' },
+          { id: 'fm-l29', title: 'Monetization Strategies', type: 'video', duration: '16:00' },
+          { id: 'fm-l30', title: 'Analytics & Optimization', type: 'video', duration: '12:00' }
+        ]
+      },
+      {
+        id: 'm6',
+        title: 'Viral Video Checklists',
+        lessons: [
+          { id: 'fm-l31', title: 'The Viral Video Formula', type: 'video', duration: '18:00' },
+          { id: 'fm-l32', title: 'Hook Checklist (First 3 Seconds)', type: 'template' },
+          { id: 'fm-l33', title: 'Retention Checklist', type: 'template' },
+          { id: 'fm-l34', title: 'Share-Worthy Content Checklist', type: 'template' },
+          { id: 'fm-l35', title: 'Platform-Specific Checklists', type: 'template' },
+          { id: 'fm-l36', title: 'Pre-Publish Quality Check', type: 'template' }
+        ]
+      },
+      {
+        id: 'm7',
+        title: 'Ultimate Video Editing Template Pack',
+        lessons: [
+          { id: 'fm-l37', title: 'How to Use These Templates', type: 'video', duration: '10:00' },
+          { id: 'fm-l38', title: 'Premiere Pro Templates', type: 'template' },
+          { id: 'fm-l39', title: 'After Effects Templates', type: 'template' },
+          { id: 'fm-l40', title: 'CapCut Templates', type: 'template' },
+          { id: 'fm-l41', title: 'DaVinci Resolve Templates', type: 'template' },
+          { id: 'fm-l42', title: 'Sound Effects & Music Pack', type: 'template' }
+        ]
+      },
+      {
+        id: 'm8',
+        title: 'Viral Video Effects Course',
+        lessons: [
+          { id: 'fm-l43', title: 'Trending Effects Breakdown', type: 'video', duration: '20:00' },
+          { id: 'fm-l44', title: 'Speed Ramps & Transitions', type: 'video', duration: '18:00' },
+          { id: 'fm-l45', title: 'Text Animations That Pop', type: 'video', duration: '15:00' },
+          { id: 'fm-l46', title: 'Green Screen Mastery', type: 'video', duration: '14:00' },
+          { id: 'fm-l47', title: 'Color Grading for Mood', type: 'video', duration: '16:00' },
+          { id: 'fm-l48', title: 'Sound Design for Impact', type: 'video', duration: '12:00' },
+          { id: 'fm-l49', title: 'TikTok/Reels Effects Tutorial', type: 'video', duration: '20:00' },
+          { id: 'fm-l50', title: 'Final Project & Certificate', type: 'quiz', questions: 10 }
+        ]
+      }
+    ]
+  },
+  {
     id: 'creator-business-toolkit',
     title: 'Creator Business Toolkit',
     subtitle: 'Build Your Creator Empire',
@@ -24,7 +141,7 @@ const COURSES = [
     rating: 4.9,
     duration: '2.5 hours',
     lessons: 12,
-    bestseller: true,
+    bestseller: false,
     modules: [
       {
         id: 'm1',
