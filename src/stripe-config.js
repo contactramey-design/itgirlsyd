@@ -12,41 +12,34 @@
 // PRE-ORDER PRICING (until January 1st, 2025)
 // After launch, update to regular prices
 
-// Replace these with your actual Stripe Payment Link URLs
+// Stripe Payment Links - LIVE!
 export const STRIPE_PAYMENT_LINKS = {
   // Courses - PRE-ORDER PRICES (early bird discount!)
   'filmmaking-masterclass': {
     price: 99.99,
-    preorderPrice: 79.99, // Early bird!
-    // Create this in Stripe Dashboard → Payment Links → New
-    // Use $79.99 for pre-order, then create a new link at $99.99 after launch
-    paymentLink: 'YOUR_STRIPE_PAYMENT_LINK_HERE', // e.g., https://buy.stripe.com/xxx
-    priceId: '', // Optional: Stripe Price ID if using Checkout API
+    preorderPrice: 79.99,
+    paymentLink: 'https://buy.stripe.com/test_00weVe5vQcm97iEeR383C00',
   },
   'creator-business-toolkit': {
     price: 19.99,
-    preorderPrice: 14.99, // Early bird!
-    paymentLink: 'YOUR_STRIPE_PAYMENT_LINK_HERE',
-    priceId: '',
+    preorderPrice: 14.99,
+    paymentLink: 'https://buy.stripe.com/test_3cI5kE6zU85T32o10d83C01',
   },
   'ugc-starter-kit': {
     price: 24.99,
-    preorderPrice: 19.99, // Early bird!
-    paymentLink: 'YOUR_STRIPE_PAYMENT_LINK_HERE',
-    priceId: '',
+    preorderPrice: 19.99,
+    paymentLink: 'https://buy.stripe.com/test_3cI14oaQacm98mIgZb83C02',
   },
   'hair-brand-outreach': {
     price: 14.99,
-    preorderPrice: 9.99, // Early bird!
-    paymentLink: 'YOUR_STRIPE_PAYMENT_LINK_HERE',
-    priceId: '',
+    preorderPrice: 9.99,
+    paymentLink: 'https://buy.stripe.com/test_bJe14o9M65XL46s7oB83C03',
   },
   // Bundles - THE BEST DEAL!
   'all-courses-bundle': {
-    price: 159.97, // Regular price
-    preorderPrice: 99.99, // Early bird bundle = $99.99 (user wants $100)
-    paymentLink: 'YOUR_STRIPE_PAYMENT_LINK_HERE',
-    priceId: '',
+    price: 159.97,
+    preorderPrice: 99.99,
+    paymentLink: 'https://buy.stripe.com/test_7sY7sM1fA1Hv8mIcIV83C04',
   },
 };
 
