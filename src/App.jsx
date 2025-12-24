@@ -425,463 +425,6 @@ Best regards,
   );
 }
 
-// Health & Wellness Gym Component - Fitness Theme
-function HealthGymPage({ onBack }) {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-  const fitnessCategories = [
-    {
-      title: 'My Workout Split',
-      icon: Dumbbell,
-      description: 'Follow my complete workout routine on Pinterest',
-      color: 'from-red-600 to-orange-600',
-      url: 'https://pin.it/1xLXe8fTm',
-      featured: true
-    },
-    {
-      title: 'Meal Prep: Breakfast Bowls',
-      icon: UtensilsCrossed,
-      description: 'Savory breakfast bowls with potatoes & eggs - high protein & carbs',
-      color: 'from-lime-500 to-green-600',
-      url: 'https://www.pinterest.com/pin/997899229946483647/',
-      featured: true
-    },
-    {
-      title: 'Training & Recovery',
-      icon: Dumbbell,
-      description: 'Workouts, yoga, stretching, meditation & fitness motivation',
-      color: 'from-orange-500 to-red-500',
-      url: '#'
-    },
-    {
-      title: 'Nutrition & Recipes',
-      icon: UtensilsCrossed,
-      description: 'Healthy meals, meal prep & clean eating guides',
-      color: 'from-lime-500 to-green-600',
-      url: '#'
-    },
-    {
-      title: 'Shop Fitness Gear',
-      icon: ShoppingBag,
-      description: 'Equipment, supplements & workout essentials',
-      color: 'from-yellow-500 to-orange-500',
-      url: 'https://www.amazon.com/shop/itgirlsyd19'
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-red-950 via-orange-950 to-yellow-950 relative overflow-hidden">
-      {/* Gym floor grid pattern */}
-      <div className="fixed inset-0 bg-[linear-gradient(rgba(249,115,22,0.15)_3px,transparent_3px),linear-gradient(90deg,rgba(249,115,22,0.15)_3px,transparent_3px)] bg-[size:60px_60px]" />
-      
-      {/* Dynamic stripes */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500" />
-        <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-yellow-500 via-orange-500 to-red-600" />
-      </div>
-      
-      {/* Glowing workout orbs */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-20 w-96 h-96 bg-orange-600/30 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-red-600/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-yellow-600/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
-      </div>
-
-      {/* Pulsing energy bars */}
-      <div className="fixed inset-0 pointer-events-none opacity-10">
-        {[...Array(5)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-orange-500 to-transparent"
-            style={{
-              top: `${20 + i * 15}%`,
-              animation: `pulse ${2 + i * 0.5}s infinite`,
-              animationDelay: `${i * 0.3}s`
-            }}
-          />
-        ))}
-      </div>
-
-      <div className="relative z-10 max-w-6xl mx-auto px-6 py-12">
-        {/* Back Button */}
-        <button
-          onClick={onBack}
-          className="group mb-8 flex items-center gap-2 bg-black/60 border-3 border-orange-500/50 px-6 py-4 rounded-lg hover:border-orange-400 hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-300"
-        >
-          <ArrowLeft className="w-5 h-5 text-orange-400 group-hover:-translate-x-1 transition-transform" />
-          <span className="text-orange-400 font-black uppercase">Exit Gym</span>
-        </button>
-
-        {/* Header Section */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
-          {/* Gym Header */}
-          <div className="relative inline-block mb-8">
-            <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500 rounded-2xl blur-3xl opacity-60 animate-pulse" />
-            <div className="relative bg-gradient-to-br from-black via-gray-900 to-orange-900/30 border-4 border-orange-500 rounded-2xl p-10 shadow-2xl">
-              <div className="flex items-center justify-center gap-8 mb-6">
-                <Dumbbell className="w-20 h-20 text-orange-500" />
-                <Zap className="w-24 h-24 text-yellow-500" />
-                <Activity className="w-20 h-20 text-red-500" />
-              </div>
-              <h1 className="text-6xl font-black bg-gradient-to-r from-red-500 via-orange-400 to-yellow-400 bg-clip-text text-transparent mb-4 uppercase tracking-wider">
-                Iron Temple
-              </h1>
-              <div className="flex items-center justify-center gap-4">
-                <div className="h-1 w-12 bg-gradient-to-r from-red-500 to-orange-500" />
-                <p className="text-orange-400 font-black text-xl uppercase tracking-widest">
-                  No Pain • No Gain
-                </p>
-                <div className="h-1 w-12 bg-gradient-to-r from-orange-500 to-yellow-500" />
-              </div>
-            </div>
-          </div>
-
-          <p className="text-2xl text-orange-400 font-black mb-4 uppercase tracking-wide">
-            Train Like a Champion
-          </p>
-          
-          <p className="text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            Welcome to the Iron Temple. Hardcore workouts, nutrition science, and mental toughness.
-            This is where transformations happen.
-          </p>
-        </div>
-
-        {/* Fitness Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {fitnessCategories.map((category, index) => (
-            <a
-              key={index}
-              href={category.url}
-              target={category.url.startsWith('http') ? '_blank' : '_self'}
-              rel="noopener noreferrer"
-              className={`group bg-gradient-to-br from-black via-gray-900 to-orange-950/50 border-3 rounded-xl p-6 hover:border-orange-400 transition-all duration-300 hover:-translate-y-2 shadow-lg hover:shadow-2xl hover:shadow-orange-500/40 ${
-                category.featured 
-                  ? 'border-red-500/60 bg-gradient-to-br from-red-950/50 to-orange-950 md:col-span-2 lg:col-span-3' 
-                  : 'border-orange-500/40'
-              } ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-              style={{ transitionDelay: `${index * 100}ms` }}
-            >
-              {category.featured ? (
-                /* Featured Workout Layout */
-                <div className="flex flex-col md:flex-row gap-6 items-center">
-                  <div className="relative">
-                    <div className={`absolute inset-0 bg-gradient-to-r ${category.color} blur-xl opacity-70 group-hover:opacity-90 transition-opacity`} />
-                    <div className={`relative bg-gradient-to-r ${category.color} p-6 rounded-2xl transform group-hover:scale-110 transition-all duration-300`}>
-                      <category.icon className="w-16 h-16 text-white" />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <div className="inline-block bg-red-600 text-white text-xs font-black px-3 py-1 rounded-full mb-3 uppercase tracking-wider">
-                      FEATURED WORKOUT
-                    </div>
-                    <h3 className="text-2xl font-black text-white mb-2 group-hover:text-orange-400 transition-colors uppercase tracking-wide">
-                      {category.title}
-                    </h3>
-                    <p className="text-gray-300 mb-4">
-                      {category.description}
-                    </p>
-                    <div className={`inline-flex items-center gap-2 bg-gradient-to-r ${category.color} text-black px-6 py-3 rounded-lg font-black group-hover:shadow-lg transition-all uppercase tracking-wider`}>
-                      <TrendingUp className="w-5 h-5" />
-                      <span>View on Pinterest</span>
-                      <Zap className="w-5 h-5" />
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                /* Regular Category Layout */
-                <>
-                  <div className="relative mb-4">
-                    <div className={`absolute inset-0 bg-gradient-to-r ${category.color} blur-xl opacity-60 group-hover:opacity-90 transition-opacity`} />
-                    <div className={`relative bg-gradient-to-r ${category.color} p-5 rounded-xl inline-block transform group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300`}>
-                      <category.icon className="w-10 h-10 text-white" />
-                    </div>
-                  </div>
-
-                  <h3 className="text-xl font-black text-white mb-2 group-hover:text-orange-400 transition-colors uppercase tracking-wide">
-                    {category.title}
-                  </h3>
-
-                  <p className="text-gray-300 text-sm mb-4">
-                    {category.description}
-                  </p>
-
-                  <div className={`flex items-center justify-center gap-2 bg-gradient-to-r ${category.color} text-black px-4 py-2 rounded-lg text-sm font-black group-hover:shadow-lg group-hover:shadow-orange-500/50 transition-all uppercase tracking-wider`}>
-                    <Zap className="w-4 h-4" />
-                    <span>Train Now</span>
-                    <span className="group-hover:translate-x-1 transition-transform">→</span>
-                  </div>
-                </>
-              )}
-            </a>
-          ))}
-        </div>
-
-        {/* Motivational CTA */}
-        <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="relative bg-black border-4 border-orange-500 rounded-2xl p-10 shadow-2xl text-white text-center overflow-hidden">
-            {/* Diagonal stripes */}
-            <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,rgba(249,115,22,0.1)_10px,rgba(249,115,22,0.1)_20px)]" />
-            
-            <div className="relative z-10">
-              <div className="flex items-center justify-center gap-4 mb-6">
-                <div className="h-1 w-20 bg-gradient-to-r from-red-500 to-orange-500" />
-                <Dumbbell className="w-16 h-16 text-orange-500" />
-                <div className="h-1 w-20 bg-gradient-to-r from-orange-500 to-yellow-500" />
-              </div>
-              <h2 className="text-4xl font-black mb-4 uppercase tracking-wider bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent">
-                Gear Up
-              </h2>
-              <p className="mb-6 text-lg font-bold text-gray-300">
-                Professional equipment and supplements to maximize your results.
-                Train harder. Recover faster. Dominate.
-              </p>
-              <a
-                href="https://www.amazon.com/shop/itgirlsyd19"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-600 to-red-600 text-white px-10 py-5 rounded-xl font-black hover:from-orange-500 hover:to-red-500 transition-all hover:scale-105 shadow-2xl shadow-orange-500/50 uppercase tracking-wide border-2 border-yellow-500"
-              >
-                <ShoppingBag className="w-6 h-6" />
-                Shop Equipment
-                <Zap className="w-6 h-6" />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div className="mt-16 text-center">
-          <div className="flex items-center justify-center gap-3 mb-3">
-            <div className="h-1 w-8 bg-orange-500" />
-            <Zap className="w-6 h-6 text-orange-500" />
-            <p className="text-orange-400 font-black uppercase tracking-widest text-lg">
-              Rise & Grind
-            </p>
-            <Zap className="w-6 h-6 text-orange-500" />
-            <div className="h-1 w-8 bg-orange-500" />
-          </div>
-          <p className="text-gray-400 text-sm font-bold">
-            Your journey to greatness starts now
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// Home & Living Component - Cozy Holiday Theme
-function HomeHavenPage({ onBack }) {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-  const homeCategories = [
-    {
-      title: 'Home Decor & Seasonal',
-      icon: Home,
-      description: 'Room tours, fall & Christmas decorating, cozy styling',
-      color: 'from-amber-600 to-orange-600',
-      url: '#'
-    },
-    {
-      title: 'Baking & Recipes',
-      icon: Cookie,
-      description: 'Sweet treats, holiday cookies & comfort food',
-      color: 'from-red-600 to-pink-600',
-      url: '#'
-    },
-    {
-      title: 'Lifestyle Vlogs',
-      icon: Camera,
-      description: 'Day in the life, routines & cozy living moments',
-      color: 'from-orange-600 to-amber-700',
-      url: '#'
-    },
-    {
-      title: 'Shop Home Essentials',
-      icon: ShoppingBag,
-      description: 'Decor, kitchen tools & cozy must-haves',
-      color: 'from-amber-700 to-orange-800',
-      url: 'https://www.amazon.com/shop/itgirlsyd19'
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 relative overflow-hidden">
-      {/* Warm texture overlay */}
-      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-orange-100/40 via-transparent to-transparent" />
-      
-      {/* Subtle sparkle effects */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        {[...Array(15)].map((_, i) => (
-          <Star
-            key={i}
-            className={`absolute ${i % 3 === 0 ? 'text-orange-300' : i % 3 === 1 ? 'text-red-300' : 'text-amber-300'} animate-pulse`}
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              opacity: 0.2,
-              fontSize: `${Math.random() * 12 + 8}px`
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Warm glowing orbs */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-20 w-96 h-96 bg-orange-300 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" />
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-red-300 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-amber-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" style={{ animationDelay: '2s' }} />
-      </div>
-
-      <div className="relative z-10 max-w-6xl mx-auto px-6 py-12">
-        {/* Back Button */}
-        <button
-          onClick={onBack}
-          className="group mb-8 flex items-center gap-2 bg-white/80 backdrop-blur-sm border-2 border-amber-300 px-6 py-3 rounded-full hover:border-amber-400 hover:shadow-lg hover:shadow-amber-300/50 transition-all duration-300"
-        >
-          <ArrowLeft className="w-5 h-5 text-amber-600 group-hover:-translate-x-1 transition-transform" />
-          <span className="text-amber-700 font-semibold">Back to Main</span>
-        </button>
-
-        {/* Header Section */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
-          {/* Home Header */}
-          <div className="relative inline-block mb-8">
-            <div className="absolute inset-0 bg-gradient-to-r from-amber-400 via-orange-400 to-red-400 rounded-2xl blur-2xl opacity-40" />
-            <div className="relative bg-white border border-amber-300 rounded-2xl p-8 shadow-2xl">
-              <div className="flex items-center justify-center gap-8 mb-6">
-                <Home className="w-16 h-16 text-amber-600" />
-                <Cookie className="w-20 h-20 text-orange-600" />
-                <Sparkles className="w-16 h-16 text-red-600" />
-              </div>
-              <h1 className="text-5xl font-bold bg-gradient-to-r from-amber-700 via-orange-600 to-red-700 bg-clip-text text-transparent mb-3">
-                Home & Living
-              </h1>
-              <p className="text-amber-700 font-semibold text-lg">
-                Seasonal Decor • Baking • Lifestyle
-              </p>
-            </div>
-          </div>
-
-          <p className="text-xl text-amber-800 font-semibold mb-4">
-            Your Seasonal Home & Kitchen Inspiration
-          </p>
-          
-          <p className="text-gray-700 max-w-2xl mx-auto leading-relaxed">
-            Discover holiday decorating ideas, delicious baking recipes, and cozy lifestyle content.
-            From autumn aesthetics to festive Christmas decor.
-          </p>
-        </div>
-
-        {/* Home Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {homeCategories.map((category, index) => (
-            <a
-              key={index}
-              href={category.url}
-              target={category.url.startsWith('http') ? '_blank' : '_self'}
-              rel="noopener noreferrer"
-              className={`group bg-white/90 backdrop-blur-sm border-3 border-amber-200 rounded-2xl p-6 hover:border-amber-400 transition-all duration-300 hover:-translate-y-2 shadow-lg hover:shadow-2xl hover:shadow-amber-300/50 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-              style={{ transitionDelay: `${index * 100}ms` }}
-            >
-              {/* Category icon */}
-              <div className="relative mb-4">
-                <div className={`absolute inset-0 bg-gradient-to-r ${category.color} blur-xl opacity-60 group-hover:opacity-90 transition-opacity`} />
-                <div className={`relative bg-gradient-to-r ${category.color} p-5 rounded-2xl inline-block transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
-                  <category.icon className="w-10 h-10 text-white" />
-                </div>
-              </div>
-
-              {/* Category title */}
-              <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-amber-700 transition-colors">
-                {category.title}
-              </h3>
-
-              {/* Category description */}
-              <p className="text-gray-600 text-sm mb-4">
-                {category.description}
-              </p>
-
-              {/* View button */}
-              <div className={`flex items-center justify-center gap-2 bg-gradient-to-r ${category.color} text-white px-4 py-2 rounded-full text-sm font-semibold group-hover:shadow-lg transition-all`}>
-                <Heart className="w-4 h-4 fill-white" />
-                <span>Explore</span>
-                <Sparkles className="w-4 h-4" />
-              </div>
-            </a>
-          ))}
-        </div>
-
-        {/* Seasonal Featured Section */}
-        <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="relative bg-gradient-to-r from-red-700 via-green-700 to-red-700 rounded-3xl p-8 shadow-2xl text-white text-center overflow-hidden">
-            {/* Holiday sparkles */}
-            <div className="absolute inset-0 pointer-events-none">
-              {[...Array(25)].map((_, i) => (
-                <Star
-                  key={i}
-                  className="absolute text-yellow-200/40 animate-pulse"
-                  style={{
-                    left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`,
-                    animationDelay: `${Math.random() * 2}s`,
-                    fontSize: `${Math.random() * 15 + 10}px`
-                  }}
-                />
-              ))}
-            </div>
-            
-            <div className="relative z-10">
-              <div className="flex items-center justify-center gap-4 mb-4">
-                <Cookie className="w-14 h-14" />
-                <Home className="w-16 h-16" />
-                <ShoppingBag className="w-14 h-14" />
-              </div>
-              <h2 className="text-3xl font-bold mb-4">Seasonal Essentials</h2>
-              <p className="mb-6 text-lg">
-                Premium home decor and kitchen tools for creating 
-                beautiful spaces and delicious memories.
-              </p>
-              <a
-                href="https://www.amazon.com/shop/itgirlsyd19"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-white text-red-700 px-8 py-4 rounded-full font-bold hover:bg-amber-50 transition-all hover:scale-105 shadow-2xl"
-              >
-                <ShoppingBag className="w-5 h-5" />
-                Shop Home & Kitchen
-                <Heart className="w-5 h-5 fill-red-700" />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div className="mt-16 text-center">
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <Heart className="w-5 h-5 text-amber-600 fill-amber-600 animate-pulse" />
-            <p className="text-amber-700 font-semibold">
-              Home is where the heart is
-            </p>
-            <Heart className="w-5 h-5 text-amber-600 fill-amber-600 animate-pulse" />
-          </div>
-          <p className="text-gray-600 text-sm">
-            Making memories, one cozy moment at a time 🏡✨
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 // Business & Tech Guides - Free Resource Page
 function BusinessTechGuides({ onBack }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -2049,6 +1592,7 @@ export default function CreatorLandingPage() {
   const [notification, setNotification] = useState('');
   const [currentPage, setCurrentPage] = useState('home'); // 'home', 'business', 'beauty', 'gym', 'homehaven', 'mediakit', 'partnerships', 'moda', 'content-form', or 'tech-guides'
   const [showSupportPopup, setShowSupportPopup] = useState(false);
+  const [showCollabPopup, setShowCollabPopup] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
@@ -2149,22 +1693,6 @@ export default function CreatorLandingPage() {
       color: 'from-purple-500 to-indigo-500',
       description: 'Tech tools, business guides, content creation & professional services',
       page: 'business'
-    },
-    {
-      title: 'Health & Wellness',
-      emoji: '💪',
-      icon: Dumbbell,
-      color: 'from-green-500 to-orange-500',
-      description: 'Fitness routines, nutrition tips, wellness practices & healthy recipes',
-      page: 'gym'
-    },
-    {
-      title: 'Home & Living',
-      emoji: '🏡',
-      icon: Home,
-      color: 'from-amber-600 to-red-600',
-      description: 'Seasonal decor, baking recipes, lifestyle vlogs & cozy home inspiration',
-      page: 'homehaven'
     }
   ];
 
@@ -2224,15 +1752,6 @@ export default function CreatorLandingPage() {
     return <BusinessTechGuides onBack={() => setCurrentPage('business')} />;
   }
 
-  // Render Gym Page
-  if (currentPage === 'gym') {
-    return <HealthGymPage onBack={navigateHome} />;
-  }
-
-  // Render Home Haven Page
-  if (currentPage === 'homehaven') {
-    return <HomeHavenPage onBack={navigateHome} />;
-  }
 
   // Render Main Landing Page
   return (
@@ -2301,13 +1820,17 @@ export default function CreatorLandingPage() {
           </p>
           
           <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-lg">
-              <Heart className="w-5 h-5 text-pink-500 fill-pink-500" />
-              <span className="font-semibold text-gray-700">55K+ Community</span>
-            </div>
-            <div className="flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white px-4 py-2 rounded-full shadow-lg">
+            <button
+              onClick={() => setShowCollabPopup(true)}
+              className="group flex items-center gap-2 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 text-white px-6 py-3 rounded-full shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 font-bold"
+            >
+              <Briefcase className="w-5 h-5 group-hover:animate-bounce" />
+              <span>Work With Me</span>
               <Sparkles className="w-5 h-5" />
-              <span className="font-semibold">Verified Creator</span>
+            </button>
+            <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-lg border-2 border-pink-200">
+              <Crown className="w-5 h-5 text-purple-500" />
+              <span className="font-semibold text-gray-700">Verified Creator</span>
             </div>
           </div>
 
@@ -2316,6 +1839,110 @@ export default function CreatorLandingPage() {
             Join me on this journey & shop my faves below! ✨
           </p>
         </div>
+
+        {/* Work With Me / Collaboration Popup */}
+        {showCollabPopup && (
+          <div 
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+            onClick={() => setShowCollabPopup(false)}
+          >
+            <div 
+              className="relative bg-white rounded-3xl shadow-2xl max-w-lg w-full overflow-hidden animate-in"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Gradient Header */}
+              <div className="bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 p-6 text-white text-center">
+                <div className="flex items-center justify-center gap-3 mb-2">
+                  <Sparkles className="w-8 h-8" />
+                  <h2 className="text-2xl font-bold">Let's Collaborate!</h2>
+                  <Sparkles className="w-8 h-8" />
+                </div>
+                <p className="text-white/90 text-sm">Brands, PR & partnership inquiries welcome 💕</p>
+              </div>
+
+              {/* Close Button */}
+              <button
+                onClick={() => setShowCollabPopup(false)}
+                className="absolute top-4 right-4 bg-white/20 hover:bg-white/40 text-white rounded-full p-2 transition-all"
+              >
+                <span className="text-xl font-bold">×</span>
+              </button>
+
+              {/* Content */}
+              <div className="p-6">
+                {/* Quick Stats */}
+                <div className="grid grid-cols-3 gap-3 mb-6">
+                  <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl p-3 text-center border border-pink-200">
+                    <p className="text-2xl font-bold text-purple-600">55K+</p>
+                    <p className="text-xs text-gray-600">Followers</p>
+                  </div>
+                  <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl p-3 text-center border border-pink-200">
+                    <p className="text-2xl font-bold text-pink-600">8%+</p>
+                    <p className="text-xs text-gray-600">Engagement</p>
+                  </div>
+                  <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl p-3 text-center border border-pink-200">
+                    <p className="text-2xl font-bold text-orange-500">5+</p>
+                    <p className="text-xs text-gray-600">Platforms</p>
+                  </div>
+                </div>
+
+                {/* Main Actions */}
+                <div className="space-y-3">
+                  {/* Send Email - Big CTA */}
+                  <a
+                    href="mailto:sydney@itgirlsydcontent.com?subject=Brand Collaboration Inquiry&body=Hi Sydney!%0A%0AI'd love to discuss a potential collaboration with you.%0A%0ABrand/Company:%0AType of Collaboration:%0ATimeline:%0ABudget Range:%0A%0ALooking forward to hearing from you!"
+                    className="flex items-center justify-center gap-3 w-full bg-gradient-to-r from-purple-600 to-pink-500 text-white px-6 py-4 rounded-xl font-bold text-lg hover:shadow-xl hover:scale-[1.02] transition-all"
+                  >
+                    <Mail className="w-6 h-6" />
+                    Send Me an Email
+                  </a>
+                  
+                  {/* Response Time Notice */}
+                  <div className="bg-green-50 border border-green-200 rounded-xl p-3 text-center">
+                    <p className="text-green-700 text-sm font-medium">
+                      ⚡ I typically respond within <span className="font-bold">12-24 hours</span>
+                    </p>
+                  </div>
+
+                  {/* View Media Kit */}
+                  <button
+                    onClick={() => {
+                      setShowCollabPopup(false);
+                      setCurrentPage('mediakit');
+                    }}
+                    className="flex items-center justify-center gap-2 w-full bg-white border-2 border-purple-300 text-purple-600 px-6 py-3 rounded-xl font-semibold hover:bg-purple-50 hover:border-purple-400 transition-all"
+                  >
+                    <FileText className="w-5 h-5" />
+                    View My Media Kit
+                  </button>
+
+                  {/* View Partnership Info */}
+                  <button
+                    onClick={() => {
+                      setShowCollabPopup(false);
+                      setCurrentPage('partnerships');
+                    }}
+                    className="flex items-center justify-center gap-2 w-full text-gray-600 hover:text-purple-600 text-sm font-medium py-2 transition-colors"
+                  >
+                    <Briefcase className="w-4 h-4" />
+                    See Partnership Options & Rates
+                  </button>
+                </div>
+
+                {/* Email Display */}
+                <div className="mt-4 pt-4 border-t border-gray-100 text-center">
+                  <p className="text-xs text-gray-500 mb-1">Or email directly:</p>
+                  <a 
+                    href="mailto:sydney@itgirlsydcontent.com"
+                    className="text-purple-600 font-semibold hover:underline"
+                  >
+                    sydney@itgirlsydcontent.com
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* TikTok Live Battle Feature */}
         <div className={`mb-8 transition-all duration-1000 delay-150 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
