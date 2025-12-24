@@ -3,8 +3,10 @@ import {
   ArrowLeft, Play, BookOpen, FileText, CheckCircle, Lock, 
   Star, Users, Clock, Award, ShoppingBag, Sparkles, Heart,
   ChevronRight, Download, Video, Crown, Zap, Target, Camera,
-  Scissors, DollarSign, TrendingUp, Mail, Check, X
+  Scissors, DollarSign, TrendingUp, Mail, Check, X, 
+  Lightbulb, AlertCircle, Quote, CheckSquare, MessageCircle
 } from 'lucide-react';
+import { COURSE_SCRIPTS } from './CourseContent.js';
 
 // Course data structure
 const COURSES = [
@@ -160,6 +162,229 @@ const COURSES = [
     ]
   }
 ];
+
+// Helper function to find lesson script from CourseContent
+function findLessonScript(courseId, lessonId) {
+  const courseData = COURSE_SCRIPTS[courseId];
+  if (!courseData) return null;
+  
+  for (const module of courseData.modules) {
+    for (const lesson of module.lessons) {
+      if (lesson.lessonId === lessonId) {
+        return lesson;
+      }
+    }
+  }
+  return null;
+}
+
+// Lesson Script Display Component
+function LessonScriptDisplay({ courseId, lessonId, lessonType }) {
+  const lessonData = findLessonScript(courseId, lessonId);
+  
+  if (!lessonData) {
+    return (
+      <p className="text-gray-600">
+        {lessonType === 'video' && 'Watch the video above to learn this lesson.'}
+        {lessonType === 'template' && 'Download the template and fill it out to apply what you\'ve learned.'}
+        {lessonType === 'quiz' && 'Test your knowledge with this quiz to make sure you\'re ready for the next module.'}
+      </p>
+    );
+  }
+
+  // Video lesson with full script
+  if (lessonData.script) {
+    const { script } = lessonData;
+    return (
+      <div className="space-y-6">
+        {/* Hook Section */}
+        {script.hook && (
+          <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6 border-l-4 border-purple-500">
+            <div className="flex items-center gap-2 mb-3">
+              <MessageCircle className="w-5 h-5 text-purple-600" />
+              <h4 className="font-bold text-purple-800">🎬 HOOK (Open with this)</h4>
+            </div>
+            <p className="text-gray-700 whitespace-pre-line italic leading-relaxed">"{script.hook}"</p>
+          </div>
+        )}
+
+        {/* Pain Points */}
+        {script.painPoints && script.painPoints.length > 0 && (
+          <div className="bg-red-50 rounded-2xl p-6 border-l-4 border-red-400">
+            <div className="flex items-center gap-2 mb-3">
+              <AlertCircle className="w-5 h-5 text-red-600" />
+              <h4 className="font-bold text-red-800">💔 Pain Points to Address</h4>
+            </div>
+            <p className="text-gray-600 text-sm mb-3">Connect with your audience by addressing these struggles:</p>
+            <ul className="space-y-2">
+              {script.painPoints.map((point, idx) => (
+                <li key={idx} className="flex items-start gap-2 text-gray-700">
+                  <span className="text-red-400 mt-1">•</span>
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Key Points */}
+        {script.keyPoints && script.keyPoints.map((point, idx) => (
+          <div key={idx} className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+            <div className="flex items-center gap-2 mb-3">
+              <Lightbulb className="w-5 h-5 text-yellow-500" />
+              <h4 className="font-bold text-gray-800">🎯 Key Point #{idx + 1}: {point.title}</h4>
+            </div>
+            <p className="text-gray-700 whitespace-pre-line leading-relaxed mb-4">{point.content}</p>
+            {point.actionStep && (
+              <div className="bg-green-50 rounded-xl p-4 border border-green-200">
+                <div className="flex items-center gap-2 mb-2">
+                  <CheckSquare className="w-4 h-4 text-green-600" />
+                  <span className="font-semibold text-green-800 text-sm">👉 ACTION STEP:</span>
+                </div>
+                <p className="text-green-700 text-sm">{point.actionStep}</p>
+              </div>
+            )}
+          </div>
+        ))}
+
+        {/* Success Story */}
+        {script.successStory && (
+          <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-6 border-l-4 border-amber-500">
+            <div className="flex items-center gap-2 mb-3">
+              <Star className="w-5 h-5 text-amber-600" />
+              <h4 className="font-bold text-amber-800">✨ Success Story</h4>
+            </div>
+            <p className="text-gray-700 whitespace-pre-line leading-relaxed italic">"{script.successStory}"</p>
+          </div>
+        )}
+
+        {/* Recap */}
+        {script.recap && script.recap.length > 0 && (
+          <div className="bg-blue-50 rounded-2xl p-6 border-l-4 border-blue-500">
+            <div className="flex items-center gap-2 mb-3">
+              <BookOpen className="w-5 h-5 text-blue-600" />
+              <h4 className="font-bold text-blue-800">📋 Quick Recap</h4>
+            </div>
+            <ul className="space-y-2">
+              {script.recap.map((item, idx) => (
+                <li key={idx} className="flex items-start gap-2 text-gray-700">
+                  <Check className="w-4 h-4 text-blue-500 mt-1 flex-shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Homework */}
+        {script.homework && (
+          <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-6 text-white">
+            <div className="flex items-center gap-2 mb-3">
+              <Target className="w-5 h-5" />
+              <h4 className="font-bold">📝 Your Homework</h4>
+            </div>
+            <p className="leading-relaxed">{script.homework}</p>
+          </div>
+        )}
+
+        {/* Quotable */}
+        {script.quotable && (
+          <div className="bg-gray-900 rounded-2xl p-6 text-center">
+            <Quote className="w-8 h-8 text-pink-400 mx-auto mb-3" />
+            <p className="text-xl font-bold text-white italic">"{script.quotable}"</p>
+            <p className="text-pink-400 mt-2 text-sm">— Save this for your notes! 💕</p>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // Template lesson
+  if (lessonData.templateSections) {
+    return (
+      <div className="space-y-6">
+        <p className="text-gray-600 mb-4">{lessonData.description}</p>
+        {lessonData.templateSections.map((section, idx) => (
+          <div key={idx} className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+            <h4 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
+              <FileText className="w-5 h-5 text-purple-600" />
+              {section.title}
+            </h4>
+            {section.prompts && (
+              <ul className="space-y-2 text-gray-700">
+                {section.prompts.map((prompt, pIdx) => (
+                  <li key={pIdx} className="flex items-start gap-2">
+                    <span className="text-purple-400">•</span>
+                    {prompt}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {section.content && (
+              <p className="text-gray-700 whitespace-pre-line">{section.content}</p>
+            )}
+          </div>
+        ))}
+        <div className="bg-purple-50 rounded-xl p-4 text-center">
+          <p className="text-purple-800 font-semibold mb-2">📥 Download: {lessonData.downloadName}</p>
+          <p className="text-purple-600 text-sm">(Template file will be attached here)</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Quiz lesson
+  if (lessonData.questions) {
+    return (
+      <div className="space-y-6">
+        <p className="text-gray-600 mb-4">Test your knowledge with {lessonData.questions.length} questions.</p>
+        {lessonData.questions.map((q, idx) => (
+          <div key={idx} className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+            <h4 className="font-bold text-gray-800 mb-4">Question {idx + 1}: {q.question}</h4>
+            <div className="space-y-2">
+              {q.options.map((option, oIdx) => (
+                <div 
+                  key={oIdx} 
+                  className={`p-3 rounded-xl border-2 ${
+                    oIdx === q.correct 
+                      ? 'border-green-400 bg-green-50' 
+                      : 'border-gray-200 bg-gray-50'
+                  }`}
+                >
+                  <span className={oIdx === q.correct ? 'text-green-700 font-semibold' : 'text-gray-700'}>
+                    {String.fromCharCode(65 + oIdx)}. {option}
+                  </span>
+                  {oIdx === q.correct && <span className="ml-2 text-green-600">✓ Correct</span>}
+                </div>
+              ))}
+            </div>
+            {q.explanation && (
+              <p className="mt-4 text-sm text-gray-600 bg-blue-50 p-3 rounded-lg">
+                💡 {q.explanation}
+              </p>
+            )}
+          </div>
+        ))}
+        {lessonData.certificate && (
+          <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-6 text-white text-center">
+            <Award className="w-12 h-12 mx-auto mb-3" />
+            <h4 className="text-xl font-bold mb-2">🎓 Certificate Available!</h4>
+            <p>Complete this quiz to earn your course certificate.</p>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // Default fallback
+  return (
+    <p className="text-gray-600">
+      {lessonType === 'video' && 'Watch the video above to learn this lesson.'}
+      {lessonType === 'template' && 'Download the template and fill it out.'}
+      {lessonType === 'quiz' && 'Test your knowledge with this quiz.'}
+    </p>
+  );
+}
 
 // Course Card Component
 function CourseCard({ course, onSelect, isPurchased }) {
@@ -519,9 +744,9 @@ function CourseViewer({ course, onBack, onPurchase, isPurchased }) {
                   )}
                 </div>
 
-                {/* Lesson Info */}
+                {/* Lesson Info & Script Content */}
                 <div className="p-6">
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-between mb-6">
                     <h3 className="text-2xl font-bold text-gray-800">{activeLesson.title}</h3>
                     {!completedLessons.includes(activeLesson.id) && (
                       <button
@@ -540,11 +765,8 @@ function CourseViewer({ course, onBack, onPurchase, isPurchased }) {
                     )}
                   </div>
                   
-                  <p className="text-gray-600">
-                    {activeLesson.type === 'video' && 'Watch the video above to learn this lesson.'}
-                    {activeLesson.type === 'template' && 'Download the template and fill it out to apply what you\'ve learned.'}
-                    {activeLesson.type === 'quiz' && 'Test your knowledge with this quiz to make sure you\'re ready for the next module.'}
-                  </p>
+                  {/* Script Content Display */}
+                  <LessonScriptDisplay courseId={course.id} lessonId={activeLesson.id} lessonType={activeLesson.type} />
                 </div>
               </div>
             ) : (
