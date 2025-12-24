@@ -174,6 +174,72 @@ Best regards,
           </p>
         </div>
 
+        {/* ⭐ Featured Product of the Week */}
+        <div className={`mb-10 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="relative bg-gradient-to-br from-purple-900 via-pink-900 to-purple-900 rounded-3xl p-6 md:p-8 shadow-2xl overflow-hidden border-2 border-pink-400/30">
+            {/* Animated background sparkles */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <div className="absolute top-4 left-8 text-2xl animate-bounce" style={{animationDuration: '2s'}}>✨</div>
+              <div className="absolute top-8 right-12 text-xl animate-bounce" style={{animationDuration: '2.5s', animationDelay: '0.3s'}}>💫</div>
+              <div className="absolute bottom-6 left-16 text-lg animate-bounce" style={{animationDuration: '1.8s', animationDelay: '0.6s'}}>⭐</div>
+              <div className="absolute bottom-4 right-8 text-2xl animate-bounce" style={{animationDuration: '2.2s', animationDelay: '0.9s'}}>✨</div>
+              <div className="absolute top-1/2 left-4 text-sm animate-ping opacity-50" style={{animationDuration: '3s'}}>💖</div>
+            </div>
+            
+            <div className="relative z-10 flex flex-col md:flex-row items-center gap-6">
+              {/* Animated Star Icon */}
+              <div className="relative flex-shrink-0">
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-pink-500 blur-2xl opacity-60 animate-pulse"></div>
+                <div className="relative bg-gradient-to-br from-yellow-400 via-pink-500 to-purple-500 p-5 rounded-2xl shadow-xl animate-pulse">
+                  <div className="text-5xl animate-bounce" style={{animationDuration: '1.5s'}}>⭐</div>
+                </div>
+                {/* Rotating ring */}
+                <div className="absolute -inset-2 border-2 border-dashed border-pink-400/50 rounded-2xl animate-spin" style={{animationDuration: '10s'}}></div>
+              </div>
+              
+              {/* Product Info */}
+              <div className="flex-1 text-center md:text-left">
+                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-400 text-black px-4 py-1 rounded-full text-xs font-bold mb-3 animate-pulse">
+                  <span>🔥</span>
+                  <span>PRODUCT OF THE WEEK</span>
+                  <span>🔥</span>
+                </div>
+                
+                <h3 className="text-2xl md:text-3xl font-black text-white mb-2">
+                  Dola Hair Wax Stick
+                </h3>
+                <p className="text-pink-200 text-sm md:text-base mb-4">
+                  Flyaway Control & Styling Pomade for Kids & Women • Sleek edges, no flakes, all-day hold! 💕
+                </p>
+                
+                <div className="flex flex-col sm:flex-row items-center gap-3 justify-center md:justify-start">
+                  <a
+                    href="https://www.amazon.com/dp/B0EXAMPLE?tag=itgirlsyd-20"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group bg-gradient-to-r from-pink-500 to-purple-500 text-white px-8 py-3 rounded-xl font-bold hover:from-pink-400 hover:to-purple-400 transition-all hover:scale-105 shadow-lg flex items-center gap-2"
+                  >
+                    <ShoppingBag className="w-5 h-5" />
+                    Shop Now
+                    <span className="group-hover:translate-x-1 transition-transform">→</span>
+                  </a>
+                  <span className="text-yellow-300 text-sm font-medium flex items-center gap-1">
+                    <Star className="w-4 h-4 fill-yellow-300" />
+                    Sydney's Pick!
+                  </span>
+                </div>
+              </div>
+              
+              {/* Product Image Placeholder */}
+              <div className="hidden lg:block flex-shrink-0">
+                <div className="w-32 h-32 bg-gradient-to-br from-pink-400/30 to-purple-400/30 rounded-2xl border-2 border-white/20 flex items-center justify-center">
+                  <span className="text-5xl">💇‍♀️</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Featured Looks - Small Bubbles on Top */}
         <div className={`mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h3 className="text-center text-gray-600 font-medium mb-4 text-sm">✨ Shop Featured Looks</h3>
