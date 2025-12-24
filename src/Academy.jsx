@@ -636,7 +636,7 @@ function CourseCard({ course, onSelect, isPurchased }) {
             ) : (
               <>
                 <ShoppingBag className="w-4 h-4" />
-                Enroll Now
+                {IS_PREORDER ? '🚀 Pre-order' : 'Enroll Now'}
               </>
             )}
           </button>
@@ -760,7 +760,7 @@ function CourseViewer({ course, onBack, onPurchase, isPurchased }) {
                     onClick={() => setShowPurchaseModal(true)}
                     className="w-full bg-white text-purple-600 font-bold py-3 rounded-xl hover:bg-purple-50 transition-colors"
                   >
-                    Enroll Now
+                    {IS_PREORDER ? '🚀 Pre-order Now' : 'Enroll Now'}
                   </button>
                 </>
               )}
@@ -1093,7 +1093,11 @@ export default function Academy({ onBack }) {
       // Demo mode - simulate purchase
       if (!purchasedCourses.includes(courseId)) {
         setPurchasedCourses([...purchasedCourses, courseId]);
-        alert('🎉 Course purchased! (Demo mode)\n\nTo enable real payments:\n1. Create products in Stripe Dashboard\n2. Add payment links to stripe-config.js');
+        if (IS_PREORDER) {
+          alert('🎉 Pre-order confirmed! (Demo mode)\n\n✨ Your course will unlock on January 1st, 2025!\n📧 Check your email for Scribed.ai workspace invite.\n\nTo enable real payments, add Stripe payment links.');
+        } else {
+          alert('🎉 Course purchased! (Demo mode)\n\nTo enable real payments:\n1. Create products in Stripe Dashboard\n2. Add payment links to stripe-config.js');
+        }
       }
     }
   };
