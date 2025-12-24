@@ -7,6 +7,7 @@ import {
   Lightbulb, AlertCircle, Quote, CheckSquare, MessageCircle
 } from 'lucide-react';
 import { COURSE_SCRIPTS } from './CourseContent.js';
+import { redirectToCheckout, checkPurchaseSuccess, STRIPE_PAYMENT_LINKS } from './stripe-config.js';
 
 // Course data structure
 const COURSES = [
@@ -1002,12 +1003,40 @@ export default function Academy({ onBack }) {
     localStorage.setItem('purchased-courses', JSON.stringify(purchasedCourses));
   }, [purchasedCourses]);
 
+  // Check for successful Stripe payment on page load
+  useEffect(() => {
+    const purchaseResult = checkPurchaseSuccess();
+    if (purchaseResult?.success) {
+      // Get the course ID from URL or session
+      const params = new URLSearchParams(window.location.search);
+      const courseId = params.get('course');
+      
+      if (courseId && !purchasedCourses.includes(courseId)) {
+        setPurchasedCourses(prev => [...prev, courseId]);
+        alert('🎉 Payment successful! Welcome to the course!');
+      }
+      
+      // Clean up URL
+      window.history.replaceState({}, '', window.location.pathname);
+    } else if (purchaseResult?.cancelled) {
+      alert('Payment was cancelled. You can try again anytime!');
+      window.history.replaceState({}, '', window.location.pathname);
+    }
+  }, []);
+
   const handlePurchase = (courseId) => {
-    // In production, this would integrate with Stripe
-    // For now, we'll simulate a purchase
-    if (!purchasedCourses.includes(courseId)) {
-      setPurchasedCourses([...purchasedCourses, courseId]);
-      alert('🎉 Course purchased! (Demo mode - in production this would use Stripe)');
+    // Check if Stripe is configured for this course
+    const stripeConfig = STRIPE_PAYMENT_LINKS[courseId];
+    
+    if (stripeConfig && stripeConfig.paymentLink && stripeConfig.paymentLink !== 'YOUR_STRIPE_PAYMENT_LINK_HERE') {
+      // Real Stripe payment - redirect to checkout
+      redirectToCheckout(courseId);
+    } else {
+      // Demo mode - simulate purchase
+      if (!purchasedCourses.includes(courseId)) {
+        setPurchasedCourses([...purchasedCourses, courseId]);
+        alert('🎉 Course purchased! (Demo mode)\n\nTo enable real payments:\n1. Create products in Stripe Dashboard\n2. Add payment links to stripe-config.js');
+      }
     }
   };
 
