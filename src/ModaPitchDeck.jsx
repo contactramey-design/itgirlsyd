@@ -78,7 +78,7 @@ export default function ModaPitchDeck({ onBack }) {
         '3D avatar generation system in development',
         'Virtual try-on engine prototype completed',
         'AI outfit recommendation algorithm built',
-        'Validated demand with 35K+ fashion-focused followers',
+        'Validated demand with 55K+ fashion-focused followers',
         'Strong fashion content engagement (35% of content portfolio)',
         'Early user testing with positive feedback'
       ]
@@ -411,6 +411,7 @@ export default function ModaPitchDeck({ onBack }) {
     </div>
   );
 }
+
 
 
 

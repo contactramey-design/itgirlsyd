@@ -3,16 +3,17 @@ import { Heart, Instagram, Video, Twitter, Mail, TrendingUp, Activity, Camera, U
 
 export default function MediaKit() {
   const stats = [
-    { platform: 'TikTok', followers: '22K', engagement: '8.5%', icon: Video, color: 'from-black to-cyan-400' },
+    { platform: 'TikTok', followers: '22K', views: '80K+ views/30 days', engagement: '8.5%', icon: Video, color: 'from-black to-cyan-400', badge: 'Creator Program' },
     { platform: 'Instagram', followers: '9.5K', engagement: '6.2%', icon: Instagram, color: 'from-purple-600 to-pink-500' },
     { platform: 'Pinterest', followers: '23K', engagement: '12%', icon: TrendingUp, color: 'from-red-600 to-red-500' },
     { platform: 'Threads', followers: '1.2K', engagement: '5.8%', icon: Activity, color: 'from-black to-gray-900' }
   ];
 
   const contentPillars = [
-    { name: 'Beauty & Fashion', percentage: '45%', color: 'bg-pink-500' },
-    { name: 'Tech & Business', percentage: '30%', color: 'bg-purple-600' },
-    { name: 'Miscellaneous', percentage: '25%', color: 'bg-amber-500' }
+    { name: 'Beauty & Fashion', percentage: '35%', color: 'bg-pink-500' },
+    { name: 'Health & Wellness', percentage: '25%', color: 'bg-orange-500' },
+    { name: 'Home & Lifestyle', percentage: '20%', color: 'bg-amber-600' },
+    { name: 'Tech & Business', percentage: '20%', color: 'bg-purple-600' }
   ];
 
   const demographics = [
@@ -76,14 +77,17 @@ export default function MediaKit() {
               <h1 className="text-5xl font-bold mb-2">Sydney (@itgirlsyd19)</h1>
               <p className="text-xl mb-4 opacity-90">Content Creator • Lifestyle Influencer • Digital Trendsetter</p>
               <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-                <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full font-semibold">
-                  35K+ Total Reach
+                <div className="bg-gradient-to-r from-cyan-400 to-blue-500 px-4 py-2 rounded-full font-semibold shadow-lg">
+                  ✓ TikTok Creator Program
                 </div>
                 <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full font-semibold">
-                  Multi-Platform Creator
+                  80K+ Monthly Views
                 </div>
                 <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full font-semibold">
-                  Beauty • Fashion • Tech
+                  55K+ Total Followers
+                </div>
+                <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full font-semibold">
+                  Beauty • Wellness • Lifestyle
                 </div>
               </div>
             </div>
@@ -100,13 +104,15 @@ export default function MediaKit() {
           </h2>
           <p className="text-gray-700 leading-relaxed mb-4">
             Sydney is a dynamic content creator with a passion for empowering her community through authentic, engaging content. 
-            Specializing in beauty, fashion, and tech/business, she creates relatable content that resonates with her 
+            Specializing in beauty, wellness, lifestyle, and business, she creates relatable content that resonates with her 
             predominantly female, millennial audience.
           </p>
           <p className="text-gray-700 leading-relaxed">
-            With a combined reach of over 35,000 followers across multiple platforms, Sydney delivers genuine brand stories 
+            As a verified member of the <span className="font-bold text-cyan-600">TikTok Creator Program</span>, Sydney has achieved 
+            <span className="font-bold text-pink-600"> 80,000+ views in the past 30 days</span> and continues to grow rapidly. 
+            With over 55,000 followers across multiple platforms, she delivers genuine brand stories 
             that drive engagement and conversions. Her diverse content portfolio spans fashion hauls, beauty tutorials, 
-            GRWM videos, creator tips, and business insights.
+            fitness motivation, home decor, and business insights.
           </p>
         </section>
 
@@ -118,12 +124,20 @@ export default function MediaKit() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {stats.map((stat, index) => (
-              <div key={index} className="bg-gray-50 rounded-xl p-6 border-2 border-gray-200 hover:border-pink-300 transition-all">
+              <div key={index} className="bg-gray-50 rounded-xl p-6 border-2 border-gray-200 hover:border-pink-300 transition-all relative">
+                {stat.badge && (
+                  <div className="absolute -top-2 -right-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                    ✓ {stat.badge}
+                  </div>
+                )}
                 <div className={`bg-gradient-to-br ${stat.color} p-4 rounded-xl inline-block mb-4`}>
                   <stat.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="font-bold text-xl text-gray-800 mb-1">{stat.platform}</h3>
                 <p className="text-3xl font-black text-gray-900 mb-2">{stat.followers}</p>
+                {stat.views && (
+                  <p className="text-sm text-cyan-600 font-bold mb-1">📈 {stat.views}</p>
+                )}
                 <p className="text-sm text-gray-600">Avg. Engagement: <span className="font-bold text-green-600">{stat.engagement}</span></p>
               </div>
             ))}
@@ -227,24 +241,24 @@ export default function MediaKit() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-gradient-to-br from-pink-50 to-rose-50 rounded-xl p-6 border-2 border-pink-200">
-              <h4 className="font-bold text-lg mb-2">Beauty & Fashion</h4>
-              <p className="text-gray-600 text-sm mb-3">Product reviews, hauls, GRWM, tutorials & style guides</p>
+              <h4 className="font-bold text-lg mb-2">Fashion & Beauty</h4>
+              <p className="text-gray-600 text-sm mb-3">Product reviews, hauls, tutorials & style guides</p>
               <div className="bg-pink-500 text-white px-3 py-1 rounded-full text-xs font-bold inline-block">
-                45% of content
+                35% of content
               </div>
             </div>
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border-2 border-purple-200">
-              <h4 className="font-bold text-lg mb-2">Tech & Business</h4>
-              <p className="text-gray-600 text-sm mb-3">Creator tips, business insights & tech reviews</p>
-              <div className="bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-bold inline-block">
-                30% of content
+            <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-6 border-2 border-orange-200">
+              <h4 className="font-bold text-lg mb-2">Health & Fitness</h4>
+              <p className="text-gray-600 text-sm mb-3">Workout routines, wellness tips & healthy recipes</p>
+              <div className="bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold inline-block">
+                25% of content
               </div>
             </div>
             <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-6 border-2 border-amber-200">
-              <h4 className="font-bold text-lg mb-2">Miscellaneous</h4>
-              <p className="text-gray-600 text-sm mb-3">Lifestyle, vlogs, day-in-my-life & trending content</p>
-              <div className="bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-bold inline-block">
-                25% of content
+              <h4 className="font-bold text-lg mb-2">Lifestyle & Home</h4>
+              <p className="text-gray-600 text-sm mb-3">Home decor, baking, seasonal content & vlogs</p>
+              <div className="bg-amber-600 text-white px-3 py-1 rounded-full text-xs font-bold inline-block">
+                20% of content
               </div>
             </div>
           </div>
@@ -299,12 +313,12 @@ export default function MediaKit() {
             {[
               'Clean Beauty',
               'Sustainable Fashion',
-              'Tech & Gadgets',
-              'Creator Tools',
+              'Wellness Products',
+              'Tech Innovation',
+              'Home Essentials',
               'Female Empowerment',
               'Quality Over Quantity',
-              'Authentic Storytelling',
-              'Lifestyle Brands'
+              'Authentic Storytelling'
             ].map((value, index) => (
               <div key={index} className="bg-gradient-to-r from-pink-50 to-purple-50 px-4 py-3 rounded-lg text-center border border-pink-200">
                 <span className="font-semibold text-gray-800 text-sm">{value}</span>
@@ -346,7 +360,7 @@ export default function MediaKit() {
         <div className="text-center mt-12 text-gray-600">
           <p className="mb-2">© 2025 Sydney (@itgirlsyd19) • All Rights Reserved</p>
           <p className="text-sm">
-            Last Updated: October 2025 • For the most current statistics, please request updated analytics
+            Last Updated: December 2025 • For the most current statistics, please request updated analytics
           </p>
         </div>
       </div>

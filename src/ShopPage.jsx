@@ -27,8 +27,8 @@ const ProductCard = ({ product, isDigital = true }) => {
   return (
     <>
       <div 
-        className={`group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border-3 ${
-          product.bestseller ? 'border-yellow-400 ring-4 ring-yellow-100' : 'border-purple-200'
+        className={`group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 ${
+          product.bestseller ? 'border-yellow-400' : 'border-gray-100'
         }`}
       >
         {/* Bestseller Badge */}
@@ -186,36 +186,29 @@ const ProductCard = ({ product, isDigital = true }) => {
         </div>
       </div>
 
-      {/* Full Page Product View */}
+      {/* Product Detail Modal */}
       {showModal && (
-        <div className="fixed inset-0 z-50 bg-gradient-to-br from-pink-50 via-purple-50 to-white overflow-y-auto">
-          {/* Header with back button */}
-          <div className="sticky top-0 z-20 bg-white/90 backdrop-blur-md border-b border-pink-200 px-6 py-4">
-            <div className="max-w-7xl mx-auto flex items-center justify-between">
-              <button
-                onClick={() => setShowModal(false)}
-                className="flex items-center gap-2 text-purple-600 hover:text-purple-800 font-semibold transition-colors"
-              >
-                <ChevronLeft className="w-5 h-5" />
-                Back to Shop
-              </button>
-              {product.bestseller && (
-                <div className="flex items-center gap-1 bg-gradient-to-r from-yellow-400 to-orange-400 text-white px-4 py-2 rounded-full text-sm font-bold">
-                  <Star className="w-4 h-4 fill-white" />
-                  BESTSELLER
-                </div>
-              )}
-            </div>
-          </div>
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+          onClick={() => setShowModal(false)}
+        >
+          <div 
+            className="relative bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-4 right-4 z-20 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-all"
+            >
+              <X className="w-6 h-6" />
+            </button>
 
-          {/* Main Content */}
-          <div className="max-w-7xl mx-auto px-6 py-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              
-              {/* Left: Large Image Gallery */}
-              <div className="space-y-6">
-                {/* Main Image - Large */}
-                <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-gradient-to-br from-pink-100 to-purple-100 shadow-2xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+              {/* Image Gallery */}
+              <div className="relative bg-gradient-to-br from-pink-100 to-purple-100 p-6">
+                {/* Main Image */}
+                <div className="relative aspect-square rounded-2xl overflow-hidden mb-4">
                   <img 
                     src={allImages[currentImageIndex]} 
                     alt={`${product.name} - Image ${currentImageIndex + 1}`}
@@ -227,38 +220,31 @@ const ProductCard = ({ product, isDigital = true }) => {
                     <>
                       <button
                         onClick={prevImage}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/95 hover:bg-white text-gray-800 rounded-full p-3 shadow-xl transition-all hover:scale-110"
+                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all"
                       >
-                        <ChevronLeft className="w-8 h-8" />
+                        <ChevronLeft className="w-6 h-6" />
                       </button>
                       <button
                         onClick={nextImage}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/95 hover:bg-white text-gray-800 rounded-full p-3 shadow-xl transition-all hover:scale-110"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all"
                       >
-                        <ChevronRight className="w-8 h-8" />
+                        <ChevronRight className="w-6 h-6" />
                       </button>
                     </>
                   )}
-
-                  {/* Image counter */}
-                  {allImages.length > 1 && (
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                      {currentImageIndex + 1} / {allImages.length}
-                    </div>
-                  )}
                 </div>
                 
-                {/* Thumbnail Gallery - Larger */}
+                {/* Thumbnail Gallery */}
                 {allImages.length > 1 && (
-                  <div className="flex gap-4 justify-center">
+                  <div className="flex gap-3 justify-center">
                     {allImages.map((img, idx) => (
                       <button
                         key={idx}
                         onClick={() => setCurrentImageIndex(idx)}
-                        className={`w-24 h-24 md:w-32 md:h-32 rounded-2xl overflow-hidden border-4 transition-all shadow-lg ${
+                        className={`w-20 h-20 rounded-xl overflow-hidden border-3 transition-all ${
                           currentImageIndex === idx 
-                            ? 'border-purple-500 scale-105 shadow-purple-300' 
-                            : 'border-white opacity-80 hover:opacity-100 hover:scale-105'
+                            ? 'border-purple-500 shadow-lg scale-105' 
+                            : 'border-transparent opacity-70 hover:opacity-100'
                         }`}
                       >
                         <img src={img} alt={`Thumbnail ${idx + 1}`} className="w-full h-full object-cover" />
@@ -268,45 +254,40 @@ const ProductCard = ({ product, isDigital = true }) => {
                 )}
               </div>
 
-              {/* Right: Product Details */}
-              <div className="lg:sticky lg:top-32 lg:self-start space-y-8">
-                {/* Category */}
-                <span className="inline-block text-sm font-semibold text-purple-600 bg-purple-100 px-4 py-2 rounded-full">
-                  {product.category}
-                </span>
-
-                {/* Title */}
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-                  {product.name}
-                </h1>
+              {/* Product Details */}
+              <div className="p-8">
+                {product.bestseller && (
+                  <div className="inline-flex items-center gap-1 bg-gradient-to-r from-yellow-400 to-orange-400 text-white px-3 py-1 rounded-full text-xs font-bold mb-4">
+                    <Star className="w-3 h-3 fill-white" />
+                    BESTSELLER
+                  </div>
+                )}
                 
-                {/* Description */}
-                <p className="text-xl text-gray-600 leading-relaxed">
-                  {product.description}
-                </p>
+                <h2 className="text-3xl font-bold text-gray-900 mb-2">{product.name}</h2>
+                <p className="text-gray-600 mb-6">{product.description}</p>
                 
                 {/* Price */}
-                <div className="flex items-baseline gap-4 py-4 border-t border-b border-pink-200">
-                  <span className="text-5xl font-black text-gray-900">${product.price}</span>
+                <div className="flex items-baseline gap-3 mb-6">
+                  <span className="text-4xl font-black text-gray-900">${product.price}</span>
                   {product.originalPrice && (
-                    <>
-                      <span className="text-2xl text-gray-400 line-through">${product.originalPrice}</span>
-                      <span className="bg-green-100 text-green-700 px-3 py-1.5 rounded-full text-base font-bold">
-                        Save ${(product.originalPrice - product.price).toFixed(2)}
-                      </span>
-                    </>
+                    <span className="text-xl text-gray-400 line-through">${product.originalPrice}</span>
+                  )}
+                  {product.originalPrice && (
+                    <span className="bg-green-100 text-green-700 px-2 py-1 rounded-full text-sm font-bold">
+                      Save ${(product.originalPrice - product.price).toFixed(2)}
+                    </span>
                   )}
                 </div>
 
                 {/* Sizes */}
                 {product.sizes && (
-                  <div>
-                    <span className="text-lg font-bold text-gray-800 mb-3 block">Select Size:</span>
-                    <div className="flex flex-wrap gap-3">
+                  <div className="mb-6">
+                    <span className="text-sm font-semibold text-gray-700 mb-2 block">Select Size:</span>
+                    <div className="flex gap-2">
                       {product.sizes.map((size) => (
                         <button 
                           key={size} 
-                          className="px-6 py-3 border-3 border-gray-200 rounded-xl text-lg font-semibold text-gray-700 hover:border-purple-500 hover:bg-purple-50 hover:text-purple-600 transition-all"
+                          className="px-4 py-2 border-2 border-gray-200 rounded-lg text-sm font-semibold text-gray-700 hover:border-purple-500 hover:text-purple-600 transition-all"
                         >
                           {size}
                         </button>
@@ -317,13 +298,13 @@ const ProductCard = ({ product, isDigital = true }) => {
 
                 {/* Features */}
                 {product.features && (
-                  <div className="bg-gray-50 rounded-2xl p-6">
-                    <span className="text-lg font-bold text-gray-800 mb-4 block">What's Included:</span>
-                    <ul className="space-y-3">
+                  <div className="mb-6">
+                    <span className="text-sm font-semibold text-gray-700 mb-2 block">What's Included:</span>
+                    <ul className="space-y-2">
                       {product.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-gray-700">
-                          <Check className="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" />
-                          <span className="text-base">{feature}</span>
+                        <li key={idx} className="flex items-start gap-2 text-gray-600">
+                          <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                          <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -335,14 +316,14 @@ const ProductCard = ({ product, isDigital = true }) => {
                   href={product.paypalLink || '#'}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-5 rounded-2xl font-bold text-xl hover:shadow-2xl hover:scale-[1.02] transition-all shadow-lg"
+                  className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl hover:scale-[1.02] transition-all"
                 >
-                  <CreditCard className="w-7 h-7" />
+                  <CreditCard className="w-6 h-6" />
                   Buy Now - ${product.price}
                 </a>
                 
-                <p className="text-center text-gray-500 text-base">
-                  🔒 Secure checkout via PayPal
+                <p className="text-center text-gray-500 text-sm mt-4">
+                  Secure checkout via PayPal
                 </p>
               </div>
             </div>
@@ -490,16 +471,46 @@ export default function ShopPage({ onBack }) {
       comingSoon: false,
       paypalLink: 'https://paypal.me/SydneyRamey894/49.99',
       bestseller: true
+    },
+    {
+      id: 102,
+      name: 'Creator Essentials Tote',
+      category: 'Accessories',
+      description: 'Canvas tote bag with inspirational quote. Fits all your filming essentials!',
+      price: 24.99,
+      icon: ShoppingBag,
+      color: 'from-amber-500 to-orange-500',
+      comingSoon: true
+    },
+    {
+      id: 103,
+      name: 'Affirmation Mug Set',
+      category: 'Home',
+      description: 'Set of 2 ceramic mugs with daily affirmations for creators.',
+      price: 29.99,
+      icon: Coffee,
+      color: 'from-pink-400 to-rose-400',
+      comingSoon: true
+    },
+    {
+      id: 104,
+      name: 'Mystery Creator Box',
+      category: 'Bundle',
+      description: 'Surprise box filled with creator goodies, stickers, and exclusive merch!',
+      price: 39.99,
+      icon: Gift,
+      color: 'from-purple-500 to-indigo-500',
+      comingSoon: true
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-100 to-orange-100 relative overflow-hidden">
-      {/* Background decorations - subtle and positioned at edges */}
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 relative overflow-hidden">
+      {/* Background decorations */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute -top-20 -left-20 w-72 h-72 bg-purple-300/20 rounded-full blur-3xl" />
-        <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-pink-300/20 rounded-full blur-3xl" />
-        <div className="absolute top-1/3 -right-32 w-64 h-64 bg-orange-300/15 rounded-full blur-3xl" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-300/30 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-pink-300/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-orange-300/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-12">
@@ -588,31 +599,35 @@ export default function ShopPage({ onBack }) {
         {/* Physical Products Grid */}
         {activeCategory === 'physical' && (
           <>
-            {/* Featured Product Banner */}
-            <div className="bg-gradient-to-r from-pink-500 via-purple-500 to-pink-500 rounded-2xl p-8 mb-12 text-white text-center shadow-xl">
+            {/* Coming Soon Banner */}
+            <div className="bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl p-8 mb-12 text-white text-center shadow-xl">
               <div className="flex items-center justify-center gap-3 mb-3">
-                <Sparkles className="w-8 h-8 text-yellow-300 animate-pulse" />
-                <h3 className="text-2xl font-bold">Exclusive IT GIRL Merch</h3>
-                <Sparkles className="w-8 h-8 text-yellow-300 animate-pulse" />
+                <Sparkles className="w-8 h-8 text-yellow-400 animate-pulse" />
+                <h3 className="text-2xl font-bold">Merch Collection Coming Soon!</h3>
+                <Sparkles className="w-8 h-8 text-yellow-400 animate-pulse" />
               </div>
-              <p className="text-pink-100 max-w-xl mx-auto">
-                Shop our signature collection! More styles coming soon 💖
+              <p className="text-gray-300 max-w-xl mx-auto mb-6">
+                Get ready for exclusive IT GIRL merch! Sign up to be notified when we launch.
               </p>
+              <a
+                href="mailto:sydney@itgirlsydcontent.com?subject=Notify Me - Merch Launch"
+                className="inline-flex items-center gap-2 bg-white text-gray-900 px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition-all hover:scale-105"
+              >
+                <Mail className="w-5 h-5" />
+                Get Notified
+              </a>
             </div>
 
-            {/* Merch Product - Full width card with better visibility */}
-            <div className={`max-w-2xl mx-auto transition-all duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-              <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-6 shadow-2xl border-4 border-pink-200">
-                {PHYSICAL_PRODUCTS.map((product, index) => (
-                  <div 
-                    key={product.id}
-                    style={{ transitionDelay: `${index * 100}ms` }}
-                    className={`transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-                  >
-                    <ProductCard product={product} isDigital={false} />
-                  </div>
-                ))}
-              </div>
+            <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+              {PHYSICAL_PRODUCTS.map((product, index) => (
+                <div 
+                  key={product.id}
+                  style={{ transitionDelay: `${index * 100}ms` }}
+                  className={`transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                >
+                  <ProductCard product={product} isDigital={false} />
+                </div>
+              ))}
             </div>
           </>
         )}

@@ -76,12 +76,27 @@ export default function PartnershipsPage({ onBack, onViewMediaKit }) {
           </p>
         </div>
 
+        {/* TikTok Creator Program Badge */}
+        <div className={`flex justify-center mb-8 transition-all duration-1000 delay-50 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 text-white px-8 py-3 rounded-full font-bold shadow-xl flex items-center gap-3">
+            <span className="text-2xl">✓</span>
+            <span className="text-lg">TikTok Creator Program Member</span>
+            <span className="text-2xl">🎬</span>
+          </div>
+        </div>
+
         {/* Stats Overview */}
-        <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className={`grid grid-cols-2 md:grid-cols-5 gap-4 mb-12 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="bg-white rounded-xl p-6 shadow-lg text-center border-2 border-pink-200">
             <TrendingUp className="w-8 h-8 text-pink-500 mx-auto mb-2" />
-            <p className="text-3xl font-black text-gray-900">35K+</p>
-            <p className="text-sm text-gray-600">Total Reach</p>
+            <p className="text-3xl font-black text-gray-900">55K+</p>
+            <p className="text-sm text-gray-600">Total Followers</p>
+          </div>
+          <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl p-6 shadow-lg text-center border-2 border-cyan-300 relative">
+            <div className="absolute -top-2 -right-2 bg-cyan-500 text-white px-2 py-0.5 rounded-full text-xs font-bold">HOT</div>
+            <Zap className="w-8 h-8 text-cyan-500 mx-auto mb-2" />
+            <p className="text-3xl font-black text-cyan-600">80K+</p>
+            <p className="text-sm text-gray-600">Views/30 Days</p>
           </div>
           <div className="bg-white rounded-xl p-6 shadow-lg text-center border-2 border-purple-200">
             <Award className="w-8 h-8 text-purple-500 mx-auto mb-2" />
@@ -108,7 +123,7 @@ export default function PartnershipsPage({ onBack, onViewMediaKit }) {
           </h2>
           <p className="text-gray-700 leading-relaxed text-lg">
             I create authentic, engaging content that inspires and empowers my community across beauty, wellness, lifestyle, and business. 
-            With a combined reach of <span className="font-bold text-purple-600">35K+</span> followers, I deliver genuine brand stories that convert. 
+            With a combined reach of <span className="font-bold text-purple-600">55K+</span> followers and <span className="font-bold text-cyan-600">80K+ monthly views</span>, I deliver genuine brand stories that convert. 
             My audience trusts my recommendations because I only partner with brands I genuinely believe in.
           </p>
         </div>
