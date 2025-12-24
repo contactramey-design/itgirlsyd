@@ -879,10 +879,16 @@ function CourseViewer({ course, onBack, onPurchase, isPurchased }) {
                     <div className="text-center text-white">
                       <FileText className="w-16 h-16 mx-auto mb-4 opacity-80" />
                       <p className="text-xl font-bold">{activeLesson.title}</p>
-                      <button className="mt-4 bg-white text-purple-600 px-6 py-3 rounded-xl font-bold flex items-center gap-2 mx-auto hover:bg-purple-50 transition-colors">
+                      <p className="text-white/70 text-sm mt-2 mb-4">Templates are delivered through your Scribed workspace</p>
+                      <a 
+                        href="https://scribed.ai" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-white text-purple-600 px-6 py-3 rounded-xl font-bold hover:bg-purple-50 transition-colors"
+                      >
                         <Download className="w-5 h-5" />
-                        Download Template
-                      </button>
+                        Access on Scribed
+                      </a>
                     </div>
                   ) : (
                     <div className="text-center text-white">
@@ -994,11 +1000,11 @@ function CourseViewer({ course, onBack, onPurchase, isPurchased }) {
                 </li>
                 <li className="flex items-center gap-2 text-gray-700">
                   <Check className="w-5 h-5 text-green-500" />
-                  Downloadable templates & resources
+                  Templates delivered via Scribed.ai workspace
                 </li>
                 <li className="flex items-center gap-2 text-gray-700">
                   <Check className="w-5 h-5 text-green-500" />
-                  Certificate of completion
+                  Exclusive IT Girl Academy community access
                 </li>
                 <li className="flex items-center gap-2 text-gray-700">
                   <Check className="w-5 h-5 text-green-500" />
@@ -1023,8 +1029,11 @@ function CourseViewer({ course, onBack, onPurchase, isPurchased }) {
 
               <p className="text-center text-gray-500 text-sm mt-4">
                 {course.preorder && IS_PREORDER 
-                  ? 'Secure checkout • Access on January 1st, 2025'
-                  : 'Secure checkout • Instant access'}
+                  ? 'Secure checkout • Templates delivered via Scribed on Jan 1st'
+                  : 'Secure checkout • Templates delivered via Scribed'}
+              </p>
+              <p className="text-center text-gray-400 text-xs mt-2">
+                You'll receive an email to join the IT Girl Academy workspace on Scribed.ai
               </p>
             </div>
           </div>
