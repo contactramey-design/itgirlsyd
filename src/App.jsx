@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Heart, Instagram, Youtube, Twitter, Mail, ShoppingBag, Crown, Sparkles, Star, Link as LinkIcon, Lock, TrendingUp, Palette, Briefcase, Activity, Home, Cookie, Scissors, Brain, Dumbbell, UtensilsCrossed, Terminal, Code, Zap, Rocket, DollarSign, FileText, Edit3, Users, ArrowLeft, Cpu, Database, Globe, Shirt, Smile, Gem, Wand2, Camera, Video, Target, Award, GraduationCap, BookOpen } from 'lucide-react';
 import MediaKit from './MediaKit.jsx';
 import PartnershipsPage from './Partnerships.jsx';
+import AvatarCustomizer from './components/AvatarCustomizer.jsx';
 import './email-utils.js'; // Load email collection utilities
-import Academy from './Academy.jsx';
 
 // Beauty Closet Component - Pink Fitting Room Theme
 function BeautyClosetPage({ onBack }) {
@@ -1216,7 +1216,7 @@ export default function CreatorLandingPage() {
   const [activeSection, setActiveSection] = useState('');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [notification, setNotification] = useState('');
-  const [currentPage, setCurrentPage] = useState('home'); // 'home', 'business', 'beauty', 'gym', 'homehaven', 'mediakit', 'partnerships', 'moda', 'content-form', or 'tech-guides'
+  const [currentPage, setCurrentPage] = useState('home'); // 'home', 'business', 'beauty', 'mediakit', 'partnerships', 'content-form', 'tech-guides', 'avatar'
   const [showSupportPopup, setShowSupportPopup] = useState(false);
   const [showCollabPopup, setShowCollabPopup] = useState(false);
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -1321,6 +1321,14 @@ export default function CreatorLandingPage() {
       color: 'from-purple-500 to-indigo-500',
       description: 'Tech tools, business guides, content creation & professional services',
       page: 'business'
+    },
+    {
+      title: 'Style Studio',
+      emoji: '✨',
+      icon: Sparkles,
+      color: 'from-rose-500 to-pink-500',
+      description: 'Create your perfect outfit with our virtual avatar customizer',
+      page: 'avatar'
     }
   ];
 
@@ -1340,10 +1348,6 @@ export default function CreatorLandingPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Render Academy Page
-  if (currentPage === 'academy') {
-    return <Academy onBack={navigateHome} />;
-  }
 
   // Render Media Kit Page
   if (currentPage === 'mediakit') {
@@ -1380,6 +1384,10 @@ export default function CreatorLandingPage() {
     return <BusinessTechGuides onBack={() => setCurrentPage('business')} />;
   }
 
+  // Render Avatar Customizer Page
+  if (currentPage === 'avatar') {
+    return <AvatarCustomizer onBack={navigateHome} isSubscribed={false} />;
+  }
 
   // Render Main Landing Page
   return (
@@ -1729,86 +1737,6 @@ export default function CreatorLandingPage() {
           </div>
         </div>
 
-        {/* 🏫 IT Girl Academy - Featured Schoolhouse */}
-        <div className={`mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <button
-            onClick={() => handleCategoryClick('academy', 'IT Girl Academy')}
-            className="w-full group relative overflow-hidden"
-          >
-            {/* Schoolhouse Card */}
-            <div className="relative bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 rounded-3xl p-1 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.01]">
-              <div className="bg-gradient-to-br from-purple-900 via-purple-800 to-pink-900 rounded-[22px] p-8 md:p-10 relative overflow-hidden">
-                
-                {/* Animated Background Elements */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                  <div className="absolute top-4 left-8 text-6xl opacity-20 animate-bounce" style={{animationDuration: '3s'}}>📚</div>
-                  <div className="absolute top-12 right-12 text-4xl opacity-20 animate-bounce" style={{animationDuration: '2.5s', animationDelay: '0.5s'}}>✨</div>
-                  <div className="absolute bottom-8 left-16 text-5xl opacity-20 animate-bounce" style={{animationDuration: '2s', animationDelay: '1s'}}>💫</div>
-                  <div className="absolute bottom-4 right-8 text-4xl opacity-20 animate-bounce" style={{animationDuration: '2.8s', animationDelay: '0.3s'}}>🎓</div>
-                  {/* Gradient orbs */}
-                  <div className="absolute -top-20 -right-20 w-40 h-40 bg-pink-500/30 rounded-full blur-3xl"></div>
-                  <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-purple-500/30 rounded-full blur-3xl"></div>
-                </div>
-
-                {/* Content */}
-                <div className="relative z-10 text-center">
-                  {/* Schoolhouse Icon */}
-                  <div className="inline-block mb-6 relative">
-                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-400 blur-2xl opacity-60 animate-pulse pointer-events-none"></div>
-                    <div className="relative bg-gradient-to-br from-yellow-400 via-orange-400 to-pink-500 p-6 rounded-2xl shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                      {/* Schoolhouse shape */}
-                      <div className="relative">
-                        <div className="text-6xl">🏫</div>
-                        {/* Sparkle effect */}
-                        <div className="absolute -top-2 -right-2 text-2xl animate-ping">✨</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Title */}
-                  <h2 className="text-4xl md:text-5xl font-black text-white mb-4 group-hover:scale-105 transition-transform">
-                    IT Girl Academy
-                  </h2>
-
-                  {/* Subtitle */}
-                  <p className="text-xl text-purple-200 mb-6 max-w-xl mx-auto">
-                    Learn to build your creator empire with real courses, templates & strategies that actually work 💕
-                  </p>
-
-                  {/* Stats Row */}
-                  <div className="flex justify-center gap-6 mb-8">
-                    <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-xl border border-white/20">
-                      <p className="text-2xl font-bold text-white">4</p>
-                      <p className="text-xs text-purple-300">Courses</p>
-                    </div>
-                    <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-xl border border-white/20">
-                      <p className="text-2xl font-bold text-white">50+</p>
-                      <p className="text-xs text-purple-300">Lessons</p>
-                    </div>
-                    <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-xl border border-white/20">
-                      <p className="text-2xl font-bold text-white">📄</p>
-                      <p className="text-xs text-purple-300">Templates</p>
-                    </div>
-                  </div>
-
-                  {/* Pre-order Badge */}
-                  <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-4 py-2 rounded-full text-sm font-bold mb-6 animate-pulse">
-                    🚀 Pre-Orders Open • Releasing Jan 1st, 2026!
-                  </div>
-
-                  {/* CTA Button */}
-                  <div className="flex justify-center">
-                    <div className="bg-white text-purple-900 px-10 py-4 rounded-2xl font-bold text-xl shadow-lg group-hover:shadow-lg group-hover:bg-purple-50 transition-all flex items-center gap-3">
-                      <Award className="w-6 h-6" />
-                      Enter Academy
-                      <ArrowLeft className="w-6 h-6 rotate-180 group-hover:translate-x-2 transition-transform" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </button>
-        </div>
 
         {/* Content Categories */}
         <div className="mb-12 relative z-20">
@@ -1819,7 +1747,7 @@ export default function CreatorLandingPage() {
             Click a category to discover curated content, tutorials, and recommendations
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-20">
             {contentCategories.map((category, catIndex) => (
               <button
                 key={catIndex}
