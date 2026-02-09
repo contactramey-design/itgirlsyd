@@ -1812,7 +1812,7 @@ export default function CreatorLandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-pink-50/30 relative">
       {/* Subtle Grid Background - Modern Newspaper Hybrid */}
-      <div className="fixed inset-0 pointer-events-none opacity-[0.02]" style={{
+      <div className="fixed inset-0 pointer-events-none opacity-[0.01] z-0" style={{
         backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, #000 2px, #000 3px)',
         backgroundSize: '100% 40px'
       }}></div>
@@ -2082,104 +2082,179 @@ export default function CreatorLandingPage() {
         </div>
 
 
-        {/* Three Main Sections - Beauty/Fashion, Tech, Business */}
+        {/* Three Main Hubs - Beauty/Fashion, Tech, Business */}
         <div className="mb-16 border-t border-gray-200 pt-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {/* Section 1: Beauty & Fashion */}
-            <article className="group">
-              <div className="mb-4 pb-3 border-b border-gray-200">
-                <h2 className="text-3xl font-black tracking-tight" style={{ fontFamily: 'Georgia, serif' }}>
-                  Beauty & Fashion
-                </h2>
-                <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">Glow Up Your Confidence</p>
-              </div>
-              <button
-                onClick={() => setCurrentPage('beauty')}
-                className="text-left w-full group/article"
-              >
-                {/* Beauty Outfit Image */}
-                <div className="mb-4 aspect-video bg-gradient-to-br from-pink-100 to-rose-100 rounded-xl overflow-hidden shadow-md group-hover:shadow-xl transition-all">
-                  <div className="w-full h-full flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600')] bg-cover bg-center group-hover:scale-110 transition-transform duration-500">
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-                    <div className="relative z-10 text-white text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <Palette className="w-12 h-12 mx-auto mb-2" />
-                      <span className="text-sm font-bold uppercase">Explore Beauty</span>
-                    </div>
+            {/* Hub 1: Beauty & Fashion */}
+            <button
+              onClick={() => setCurrentPage('beauty')}
+              className="group relative bg-gradient-to-br from-pink-50 via-rose-50 to-purple-50 rounded-2xl p-8 border-2 border-pink-200 hover:border-pink-400 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-left overflow-hidden"
+            >
+              {/* Decorative background elements */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-200/30 to-transparent rounded-bl-full"></div>
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-purple-200/30 to-transparent rounded-tr-full"></div>
+              
+              <div className="relative z-10">
+                {/* Icon Badge */}
+                <div className="mb-6 flex items-center justify-between">
+                  <div className="bg-gradient-to-br from-pink-500 to-rose-500 p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform">
+                    <Palette className="w-8 h-8 text-white" />
                   </div>
+                  <div className="text-4xl">💄</div>
                 </div>
-                <div className="mb-4">
-                  <h3 className="text-xl font-bold mb-2 group-hover/article:underline">Routines, Tutorials & Style Inspiration</h3>
-                  <p className="text-sm text-gray-700 leading-relaxed mb-3">
-                    Discover beauty rituals that become your foundation for empire building. From everyday glam to statement looks.
-                  </p>
-                  <div className="text-xs text-gray-500 uppercase tracking-wide group-hover/article:text-black group-hover/article:font-bold transition-all">Explore →</div>
+                
+                {/* Title */}
+                <h2 className="text-4xl font-black tracking-tight mb-2 bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent" style={{ fontFamily: 'Georgia, serif' }}>
+                  Beauty & Fashion Hub
+                </h2>
+                <p className="text-sm font-semibold text-pink-600 uppercase tracking-wider mb-4">✨ Glow Up Your Confidence</p>
+                
+                {/* Description */}
+                <p className="text-gray-700 leading-relaxed mb-6">
+                  Makeup tutorials, hair care routines, skincare guides, and style inspiration. Everything you need to look and feel your best.
+                </p>
+                
+                {/* Features List */}
+                <ul className="space-y-2 mb-6 text-sm text-gray-600">
+                  <li className="flex items-center gap-2">
+                    <span className="text-pink-500">•</span>
+                    <span>Makeup Video Tutorials</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-pink-500">•</span>
+                    <span>Hair Care Routines</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-pink-500">•</span>
+                    <span>Skincare Guides</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-pink-500">•</span>
+                    <span>Editor's Picks Shop</span>
+                  </li>
+                </ul>
+                
+                {/* CTA Button */}
+                <div className="flex items-center gap-2 text-pink-600 font-bold group-hover:text-pink-700 transition-colors">
+                  <span>Enter Hub</span>
+                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </div>
-              </button>
-            </article>
+              </div>
+            </button>
 
-            {/* Section 2: Tech */}
-            <article className="group">
-              <div className="mb-4 pb-3 border-b border-gray-200">
-                <h2 className="text-3xl font-black tracking-tight" style={{ fontFamily: 'Georgia, serif' }}>
-                  Tech
-                </h2>
-                <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">Build Smarter, Scale Bigger</p>
-              </div>
-              <button
-                onClick={() => setCurrentPage('business')}
-                className="text-left w-full group/article"
-              >
-                {/* Course Outline Image - Ways to Make Money */}
-                <div className="mb-4 aspect-video bg-gradient-to-br from-purple-100 to-indigo-100 rounded-xl overflow-hidden shadow-md group-hover:shadow-xl transition-all relative">
-                  <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600')] bg-cover bg-center group-hover:scale-110 transition-transform duration-500"></div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                    <p className="text-xs uppercase tracking-widest mb-1 opacity-90">Featured Course</p>
-                    <p className="text-sm md:text-base font-bold">10 Glam-Tech Ways to Stack Cash</p>
-                    <p className="text-xs opacity-75">Side Hustles for Boss Babes</p>
+            {/* Hub 2: Tech */}
+            <button
+              onClick={() => setCurrentPage('business')}
+              className="group relative bg-gradient-to-br from-purple-50 via-indigo-50 to-blue-50 rounded-2xl p-8 border-2 border-purple-200 hover:border-purple-400 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-left overflow-hidden"
+            >
+              {/* Decorative background elements */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-200/30 to-transparent rounded-bl-full"></div>
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-blue-200/30 to-transparent rounded-tr-full"></div>
+              
+              <div className="relative z-10">
+                {/* Icon Badge */}
+                <div className="mb-6 flex items-center justify-between">
+                  <div className="bg-gradient-to-br from-purple-500 to-indigo-500 p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform">
+                    <Terminal className="w-8 h-8 text-white" />
                   </div>
+                  <div className="text-4xl">💻</div>
                 </div>
-                <div className="mb-4">
-                  <h3 className="text-xl font-bold mb-2 group-hover/article:underline">Tools, Hustles & Asset Strategies</h3>
-                  <p className="text-sm text-gray-700 leading-relaxed mb-3">
-                    From beginner side hustles to empire asset strategies. Real tools for real growth.
-                  </p>
-                  <div className="text-xs text-gray-500 uppercase tracking-wide group-hover/article:text-black group-hover/article:font-bold transition-all">Explore →</div>
+                
+                {/* Title */}
+                <h2 className="text-4xl font-black tracking-tight mb-2 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent" style={{ fontFamily: 'Georgia, serif' }}>
+                  Tech Hub
+                </h2>
+                <p className="text-sm font-semibold text-purple-600 uppercase tracking-wider mb-4">🚀 Build Smarter, Scale Bigger</p>
+                
+                {/* Description */}
+                <p className="text-gray-700 leading-relaxed mb-6">
+                  Fiverr services, website design, Skool community, notary services, and free tech guides. Your one-stop shop for business growth.
+                </p>
+                
+                {/* Features List */}
+                <ul className="space-y-2 mb-6 text-sm text-gray-600">
+                  <li className="flex items-center gap-2">
+                    <span className="text-purple-500">•</span>
+                    <span>Fiverr Services</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-purple-500">•</span>
+                    <span>Website Design</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-purple-500">•</span>
+                    <span>Skool Community</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-purple-500">•</span>
+                    <span>Free Tech Guides</span>
+                  </li>
+                </ul>
+                
+                {/* CTA Button */}
+                <div className="flex items-center gap-2 text-purple-600 font-bold group-hover:text-purple-700 transition-colors">
+                  <span>Enter Hub</span>
+                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </div>
-              </button>
-            </article>
+              </div>
+            </button>
 
-            {/* Section 3: Business */}
-            <article className="group">
-              <div className="mb-4 pb-3 border-b border-gray-200">
-                <h2 className="text-3xl font-black tracking-tight" style={{ fontFamily: 'Georgia, serif' }}>
-                  Business
-                </h2>
-                <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">Empire Building</p>
-              </div>
-              <button
-                onClick={() => setCurrentPage('business')}
-                className="text-left w-full group/article"
-              >
-                {/* Business Image */}
-                <div className="mb-4 aspect-video bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl overflow-hidden shadow-md group-hover:shadow-xl transition-all">
-                  <div className="w-full h-full flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600')] bg-cover bg-center group-hover:scale-110 transition-transform duration-500">
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-                    <div className="relative z-10 text-white text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <Briefcase className="w-12 h-12 mx-auto mb-2" />
-                      <span className="text-sm font-bold uppercase">Explore Business</span>
-                    </div>
+            {/* Hub 3: Business */}
+            <button
+              onClick={() => setCurrentPage('business')}
+              className="group relative bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-50 rounded-2xl p-8 border-2 border-blue-200 hover:border-blue-400 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-left overflow-hidden"
+            >
+              {/* Decorative background elements */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-200/30 to-transparent rounded-bl-full"></div>
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-teal-200/30 to-transparent rounded-tr-full"></div>
+              
+              <div className="relative z-10">
+                {/* Icon Badge */}
+                <div className="mb-6 flex items-center justify-between">
+                  <div className="bg-gradient-to-br from-blue-500 to-cyan-500 p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform">
+                    <Briefcase className="w-8 h-8 text-white" />
                   </div>
+                  <div className="text-4xl">💼</div>
                 </div>
-                <div className="mb-4">
-                  <h3 className="text-xl font-bold mb-2 group-hover/article:underline">Resources, Tools & Strategies</h3>
-                  <p className="text-sm text-gray-700 leading-relaxed mb-3">
-                    Build your empire with proven strategies, tools, and resources for scaling your business.
-                  </p>
-                  <div className="text-xs text-gray-500 uppercase tracking-wide group-hover/article:text-black group-hover/article:font-bold transition-all">Explore →</div>
+                
+                {/* Title */}
+                <h2 className="text-4xl font-black tracking-tight mb-2 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent" style={{ fontFamily: 'Georgia, serif' }}>
+                  Business Hub
+                </h2>
+                <p className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-4">🏆 Empire Building</p>
+                
+                {/* Description */}
+                <p className="text-gray-700 leading-relaxed mb-6">
+                  Notary services, business resources, tools, and strategies. Everything you need to build and scale your empire.
+                </p>
+                
+                {/* Features List */}
+                <ul className="space-y-2 mb-6 text-sm text-gray-600">
+                  <li className="flex items-center gap-2">
+                    <span className="text-blue-500">•</span>
+                    <span>Notary Services</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-blue-500">•</span>
+                    <span>Business Resources</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-blue-500">•</span>
+                    <span>Growth Strategies</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-blue-500">•</span>
+                    <span>Expert Tools</span>
+                  </li>
+                </ul>
+                
+                {/* CTA Button */}
+                <div className="flex items-center gap-2 text-blue-600 font-bold group-hover:text-blue-700 transition-colors">
+                  <span>Enter Hub</span>
+                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </div>
-              </button>
-            </article>
+              </div>
+            </button>
           </div>
         </div>
 
