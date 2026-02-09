@@ -327,18 +327,18 @@ export default function AvatarCustomizer() {
   const activeItems = itemCatalog[activeCategory] || [];
 
   return (
-    <div className="mb-16 border-t-4 border-black pt-8">
+    <div className="mb-16 border-t border-gray-200 pt-12">
       <div className="text-center mb-6">
-        <h2 className="text-4xl font-black uppercase tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+        <h2 className="text-4xl font-black tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
           Style Studio
         </h2>
-        <p className="text-sm text-gray-600 uppercase tracking-widest">Create Your Look</p>
+        <p className="text-sm text-gray-500 uppercase tracking-widest">Create Your Look</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Category Sidebar - Desktop */}
         <div className="hidden lg:block">
-          <div className="border-4 border-black p-4 bg-white sticky top-4">
+          <div className="border-2 border-gray-200 rounded-xl p-4 bg-white sticky top-4 shadow-md">
             <h3 className="text-xl font-black uppercase mb-4" style={{ fontFamily: 'Georgia, serif' }}>
               Categories
             </h3>
@@ -349,10 +349,10 @@ export default function AvatarCustomizer() {
                   <button
                     key={category.id}
                     onClick={() => setActiveCategory(category.id)}
-                    className={`w-full text-left px-4 py-3 border-2 border-black font-bold uppercase text-sm transition-all hover:scale-105 ${
+                    className={`w-full text-left px-4 py-3 border-2 font-semibold text-sm rounded-lg transition-all hover:scale-105 ${
                       activeCategory === category.id
-                        ? 'bg-black text-white'
-                        : 'bg-white text-black hover:bg-gray-100'
+                        ? 'bg-black text-white border-black'
+                        : 'bg-white text-black border-gray-300 hover:bg-gray-50 hover:border-gray-400'
                     }`}
                   >
                     <div className="flex items-center gap-2">
@@ -368,8 +368,8 @@ export default function AvatarCustomizer() {
 
         {/* Canvas Area */}
         <div className="lg:col-span-1 order-2 lg:order-none">
-          <div className="border-4 border-black p-4 bg-white">
-            <div className="flex justify-center mb-4 bg-gray-50 p-4 min-h-[450px] items-center">
+          <div className="border-2 border-gray-200 rounded-xl p-4 bg-white shadow-md">
+            <div className="flex justify-center mb-4 bg-gray-50 p-4 min-h-[450px] items-center rounded-lg">
               <div className="w-full max-w-[300px]">
                 <AvatarCanvas
                   baseAvatarSrc="/avatar/base-avatar.png"
@@ -385,10 +385,10 @@ export default function AvatarCustomizer() {
             <div className="flex gap-2 justify-center">
               <button
                 onClick={handleLike}
-                className={`border-2 border-black px-4 py-2 font-bold text-sm uppercase transition-all hover:scale-105 ${
+                className={`border-2 px-4 py-2 font-semibold text-sm rounded-lg transition-all hover:scale-105 ${
                   isOutfitLiked
-                    ? 'bg-black text-white'
-                    : 'bg-white text-black hover:bg-gray-100'
+                    ? 'bg-black text-white border-black'
+                    : 'bg-white text-black border-gray-300 hover:bg-gray-50 hover:border-gray-400'
                 }`}
                 title={isOutfitLiked ? 'Unlike outfit' : 'Like outfit'}
               >
@@ -396,7 +396,7 @@ export default function AvatarCustomizer() {
               </button>
               <button
                 onClick={handleSaveOutfit}
-                className="border-2 border-black px-4 py-2 font-bold text-sm uppercase bg-white text-black hover:bg-gray-100 transition-all flex items-center gap-2 hover:scale-105"
+                className="border-2 border-gray-300 px-4 py-2 font-semibold text-sm rounded-lg bg-white text-black hover:bg-gray-50 hover:border-gray-400 transition-all flex items-center gap-2 hover:scale-105"
                 title="Save this outfit"
               >
                 <Save className="w-5 h-5" />
@@ -408,7 +408,7 @@ export default function AvatarCustomizer() {
 
         {/* Item Grid */}
         <div className="lg:col-span-1 order-1 lg:order-none">
-          <div className="border-4 border-black p-4 bg-white">
+          <div className="border-2 border-gray-200 rounded-xl p-4 bg-white shadow-md">
             {/* Category Carousel - Mobile */}
             <div className="lg:hidden mb-4">
               <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
@@ -418,10 +418,10 @@ export default function AvatarCustomizer() {
                     <button
                       key={category.id}
                       onClick={() => setActiveCategory(category.id)}
-                      className={`flex-shrink-0 px-4 py-2 border-2 border-black font-bold uppercase text-xs transition-all hover:scale-105 ${
+                      className={`flex-shrink-0 px-4 py-2 border-2 font-semibold text-xs rounded-lg transition-all hover:scale-105 ${
                         activeCategory === category.id
-                          ? 'bg-black text-white'
-                          : 'bg-white text-black hover:bg-gray-100'
+                          ? 'bg-black text-white border-black'
+                          : 'bg-white text-black border-gray-300 hover:bg-gray-50 hover:border-gray-400'
                       }`}
                     >
                       <Icon className="w-4 h-4 inline mr-1" />
@@ -432,7 +432,7 @@ export default function AvatarCustomizer() {
               </div>
             </div>
 
-            <h3 className="text-xl font-black uppercase mb-4" style={{ fontFamily: 'Georgia, serif' }}>
+            <h3 className="text-xl font-black mb-4" style={{ fontFamily: 'Georgia, serif' }}>
               {categories.find(c => c.id === activeCategory)?.name || 'Items'}
             </h3>
 
@@ -442,12 +442,12 @@ export default function AvatarCustomizer() {
                 return (
                   <div
                     key={item.id}
-                    className={`border-2 border-black p-2 cursor-pointer transition-all ${
-                      isSelected ? 'bg-black text-white' : 'bg-white hover:bg-gray-100'
+                    className={`border-2 p-2 cursor-pointer transition-all rounded-lg ${
+                      isSelected ? 'bg-black text-white border-black' : 'bg-white border-gray-200 hover:bg-gray-50 hover:border-gray-300'
                     }`}
                     onClick={() => handleItemSelect(item.id)}
                   >
-                    <div className="aspect-square bg-gray-100 mb-2 flex items-center justify-center overflow-hidden">
+                    <div className="aspect-square bg-gray-100 mb-2 flex items-center justify-center overflow-hidden rounded">
                       <img
                         src={item.image}
                         alt={item.name}
@@ -479,16 +479,16 @@ export default function AvatarCustomizer() {
       {/* Subscribe Modal */}
       {showSubscribeModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <div className="bg-white border-4 border-black p-6 max-w-md w-full relative">
+          <div className="bg-white border-2 border-gray-200 rounded-xl p-6 max-w-md w-full relative shadow-xl">
             <button
               onClick={() => setShowSubscribeModal(false)}
-              className="absolute top-4 right-4 text-black hover:text-gray-600"
+              className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
             >
               <X className="w-6 h-6" />
             </button>
             <div className="text-center mb-4">
               <Lock className="w-12 h-12 mx-auto mb-4 text-gray-400" />
-              <h3 className="text-2xl font-black uppercase mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+              <h3 className="text-2xl font-black mb-2" style={{ fontFamily: 'Georgia, serif' }}>
                 Subscribe to Access
               </h3>
               <p className="text-sm text-gray-600">
@@ -504,15 +504,15 @@ export default function AvatarCustomizer() {
                   if (subscribeStatus === 'error') setSubscribeStatus('');
                 }}
                 placeholder="Enter your email"
-                className={`w-full px-4 py-3 border-2 border-black text-gray-800 focus:outline-none focus:ring-2 focus:ring-black ${
-                  subscribeStatus === 'error' ? 'border-red-600' : ''
+                className={`w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-gray-400 ${
+                  subscribeStatus === 'error' ? 'border-red-500' : ''
                 }`}
                 required
               />
               <button
                 type="submit"
                 disabled={subscribeStatus === 'loading'}
-                className="w-full bg-black text-white px-6 py-3 font-bold text-sm uppercase tracking-wide hover:bg-gray-800 transition-all disabled:opacity-50"
+                className="w-full bg-black text-white px-6 py-3 font-semibold text-sm rounded-lg hover:bg-gray-800 transition-all disabled:opacity-50"
               >
                 {subscribeStatus === 'loading' ? 'Subscribing...' : 'Subscribe'}
               </button>
@@ -527,18 +527,18 @@ export default function AvatarCustomizer() {
       {/* Item Details Modal */}
       {showItemDetails && selectedItemDetails && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <div className="bg-white border-4 border-black p-6 max-w-md w-full relative">
+          <div className="bg-white border-2 border-gray-200 rounded-xl p-6 max-w-md w-full relative shadow-xl">
             <button
               onClick={() => {
                 setShowItemDetails(false);
                 setSelectedItemDetails(null);
               }}
-              className="absolute top-4 right-4 text-black hover:text-gray-600"
+              className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
             >
               <X className="w-6 h-6" />
             </button>
             <div className="mb-4">
-              <h3 className="text-2xl font-black uppercase mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+              <h3 className="text-2xl font-black mb-2" style={{ fontFamily: 'Georgia, serif' }}>
                 {selectedItemDetails.name}
               </h3>
               <p className="text-lg font-bold text-gray-800">{selectedItemDetails.brand}</p>
@@ -554,7 +554,7 @@ export default function AvatarCustomizer() {
                   href={selectedItemDetails.purchaseLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full bg-black text-white px-6 py-3 font-bold text-sm uppercase tracking-wide hover:bg-gray-800 transition-all text-center"
+                  className="block w-full bg-black text-white px-6 py-3 font-semibold text-sm rounded-lg hover:bg-gray-800 transition-all text-center"
                 >
                   <ShoppingBag className="w-5 h-5 inline mr-2" />
                   Shop Now
@@ -572,7 +572,7 @@ export default function AvatarCustomizer() {
                     setShowItemDetails(false);
                     setShowSubscribeModal(true);
                   }}
-                  className="w-full bg-black text-white px-6 py-3 font-bold text-sm uppercase tracking-wide hover:bg-gray-800 transition-all"
+                  className="w-full bg-black text-white px-6 py-3 font-semibold text-sm rounded-lg hover:bg-gray-800 transition-all"
                 >
                   <Lock className="w-5 h-5 inline mr-2" />
                   Subscribe for Full Details

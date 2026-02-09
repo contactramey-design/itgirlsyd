@@ -2048,19 +2048,19 @@ export default function CreatorLandingPage() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   onClick={() => setCurrentPage('partnerships')}
-                  className="border-2 border-black px-6 py-3 font-bold text-sm uppercase tracking-wide hover:bg-black hover:text-white transition-all hover:scale-105 active:scale-95"
+                  className="border-2 border-gray-300 px-6 py-3 font-semibold text-sm rounded-lg hover:border-gray-400 hover:bg-gray-50 transition-all hover:scale-105 active:scale-95"
                 >
                   Partnership Info
                 </button>
                 <button
                   onClick={() => setCurrentPage('mediakit')}
-                  className="border-2 border-black px-6 py-3 font-bold text-sm uppercase tracking-wide hover:bg-black hover:text-white transition-all hover:scale-105 active:scale-95"
+                  className="border-2 border-gray-300 px-6 py-3 font-semibold text-sm rounded-lg hover:border-gray-400 hover:bg-gray-50 transition-all hover:scale-105 active:scale-95"
                 >
                   Media Kit
                 </button>
                 <button
                   onClick={() => setShowCollabPopup(true)}
-                  className="bg-black text-white px-6 py-3 font-bold text-sm uppercase tracking-wide hover:bg-gray-800 transition-all hover:scale-105 active:scale-95"
+                  className="bg-black text-white px-6 py-3 font-semibold text-sm rounded-lg hover:bg-gray-800 transition-all hover:scale-105 active:scale-95"
                 >
                   Contact
                 </button>

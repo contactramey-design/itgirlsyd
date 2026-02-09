@@ -90,7 +90,7 @@ export default function AvatarCanvas({
       ref={canvasRef}
       width={width}
       height={height}
-      className="border-4 border-black bg-white"
+      className="border-2 border-gray-300 rounded-lg bg-white shadow-sm"
       style={{ maxWidth: '100%', height: 'auto' }}
     />
   );
