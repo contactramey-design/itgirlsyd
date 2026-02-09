@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Heart, Instagram, Youtube, Twitter, Mail, ShoppingBag, Crown, Sparkles, Star, Link as LinkIcon, Lock, TrendingUp, Palette, Briefcase, Activity, Home, Cookie, Scissors, Brain, Dumbbell, UtensilsCrossed, Terminal, Code, Zap, Rocket, DollarSign, FileText, Edit3, Users, ArrowLeft, Cpu, Database, Globe, Shirt, Smile, Gem, Wand2, Camera, Video, Target, Award, GraduationCap, BookOpen } from 'lucide-react';
+import { Heart, Instagram, Youtube, Twitter, Mail, ShoppingBag, Crown, Sparkles, Star, Link as LinkIcon, Lock, TrendingUp, Palette, Briefcase, Activity, Home, Cookie, Scissors, Brain, Dumbbell, UtensilsCrossed, Terminal, Code, Zap, Rocket, DollarSign, FileText, Edit3, Users, ArrowLeft, Cpu, Database, Globe, Shirt, Smile, Gem, Wand2, Camera, Video, Target, Award, GraduationCap, BookOpen, ChevronRight } from 'lucide-react';
 import MediaKit from './MediaKit.jsx';
 import PartnershipsPage from './Partnerships.jsx';
 import './email-utils.js'; // Load email collection utilities
@@ -1221,6 +1221,134 @@ function BusinessHubPage({ onBack, onNavigateToContentForm, onNavigateToTechGuid
   );
 }
 
+// Outfit Spinner Component
+function OutfitSpinner({ onEmailSubmit }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [clickCount, setClickCount] = useState(0);
+  const [showEmailGate, setShowEmailGate] = useState(false);
+  const [email, setEmail] = useState('');
+  const [emailStatus, setEmailStatus] = useState('');
+
+  const outfitImages = [
+    'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800', // Outfit 1 - Light blue hoodie, flare jeans, sneakers, bag
+    'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800', // Outfit 2 - Gold bracelet, Coach bag, black romper, sandals
+    'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800', // Outfit 3 - White bodysuit, jeans, sneakers, pink bag
+    'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800', // Outfit 4 - Pink dress, jewelry, Dior bag
+    'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800', // Outfit 5 - Grey dress, pink bag, sandals
+    'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800', // Outfit 6 - White set, pink puffer, UGG slippers
+    'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800', // Outfit 7 - Chrome Hearts hoodie, shorts, flip-flops
+    'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800', // Outfit 8 - Black hoodie, leggings, UGG boots
+    'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800', // Outfit 9 - Pink pajamas
+    'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800', // Outfit 10 - Winter outfit with puffer
+  ];
+
+  const handleNext = () => {
+    if (clickCount >= 4 && !showEmailGate) {
+      setShowEmailGate(true);
+      return;
+    }
+    
+    if (!showEmailGate) {
+      setClickCount(prev => prev + 1);
+      setCurrentIndex(prev => (prev + 1) % outfitImages.length);
+    }
+  };
+
+  const handleEmailSubmit = async (e) => {
+    e.preventDefault();
+    if (!email || !email.includes('@')) {
+      setEmailStatus('error');
+      return;
+    }
+
+    setEmailStatus('loading');
+    if (onEmailSubmit) {
+      await onEmailSubmit(email);
+    }
+    
+    // Save to localStorage as backup
+    const subscribers = JSON.parse(localStorage.getItem('vip_subscribers') || '[]');
+    subscribers.push({ email, date: new Date().toISOString(), source: 'Outfit Spinner' });
+    localStorage.setItem('vip_subscribers', JSON.stringify(subscribers));
+    
+    setEmailStatus('success');
+    setShowEmailGate(false);
+    setClickCount(0); // Reset for continued viewing
+  };
+
+  return (
+    <div className="border-4 border-black bg-white p-6 mb-8">
+      <div className="text-center mb-4">
+        <h3 className="text-2xl font-black uppercase tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+          Outfit Ideas
+        </h3>
+        <p className="text-xs text-gray-600 uppercase tracking-widest">Click to Browse</p>
+      </div>
+
+      {showEmailGate ? (
+        <div className="text-center py-8">
+          <Lock className="w-12 h-12 mx-auto mb-4 text-gray-400" />
+          <h4 className="text-xl font-bold mb-2 uppercase">Unlock More Outfits</h4>
+          <p className="text-sm text-gray-600 mb-6">Sign up to keep browsing outfit inspiration!</p>
+          <form onSubmit={handleEmailSubmit} className="max-w-md mx-auto">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                if (emailStatus === 'error') setEmailStatus('');
+              }}
+              placeholder="Enter your email"
+              className={`w-full px-4 py-3 border-2 border-black text-gray-800 focus:outline-none focus:ring-2 focus:ring-black transition-all mb-3 ${
+                emailStatus === 'error' ? 'border-red-600' : ''
+              }`}
+              required
+            />
+            <button
+              type="submit"
+              disabled={emailStatus === 'loading'}
+              className="w-full bg-black text-white px-6 py-3 font-bold text-sm uppercase tracking-wide hover:bg-gray-800 transition-all disabled:opacity-50"
+            >
+              {emailStatus === 'loading' ? 'Signing Up...' : 'Continue Browsing'}
+            </button>
+            {emailStatus === 'error' && (
+              <p className="text-red-600 text-xs mt-2">Please enter a valid email</p>
+            )}
+          </form>
+        </div>
+      ) : (
+        <div className="relative group">
+          <div 
+            onClick={handleNext}
+            className="cursor-pointer border-4 border-black overflow-hidden bg-gray-100 aspect-[4/5] relative"
+          >
+            <img
+              src={outfitImages[currentIndex]}
+              alt={`Outfit ${currentIndex + 1}`}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
+            <div className="absolute bottom-4 left-4 right-4 text-white bg-black/60 px-4 py-2">
+              <p className="text-sm font-bold uppercase">Click to See Next Outfit</p>
+              <p className="text-xs opacity-90">{clickCount + 1} / 5 views</p>
+            </div>
+          </div>
+          <div className="mt-4 flex items-center justify-center gap-2">
+            {outfitImages.slice(0, 5).map((_, idx) => (
+              <div
+                key={idx}
+                className={`h-2 flex-1 border-2 border-black ${
+                  idx === currentIndex % 5 ? 'bg-black' : 'bg-white'
+                } transition-colors`}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function CreatorLandingPage() {
   const [isVisible, setIsVisible] = useState(false);
   const [activeSection, setActiveSection] = useState('');
@@ -1476,13 +1604,18 @@ export default function CreatorLandingPage() {
           <div className="absolute top-0 left-0 w-2 h-full bg-black"></div>
           <div className="absolute top-0 right-0 w-2 h-full bg-black"></div>
           <div className="text-center relative">
-            {/* Hero Image Placeholder */}
+            {/* Hero Image - Glam Tech */}
             <div className="mb-4 aspect-[16/6] border-4 border-black overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 relative group">
-              <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1200')] bg-cover bg-center group-hover:scale-105 transition-transform duration-700"></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-              <div className="absolute bottom-4 left-4 right-4 text-white">
-                <p className="text-xs uppercase tracking-widest mb-1 opacity-90">Featured Story</p>
-                <p className="text-lg md:text-xl font-bold">From Scroll to Empire: The IT Girl Journey</p>
+              <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200')] bg-cover bg-center group-hover:scale-105 transition-transform duration-700"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center text-white z-10">
+                  <h2 className="text-4xl md:text-6xl font-black mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+                    GLAM TECH
+                  </h2>
+                  <p className="text-lg md:text-xl uppercase tracking-widest">Empower Community</p>
+                  <p className="text-sm md:text-base mt-2 opacity-90">A Community for Women in Tech</p>
+                </div>
               </div>
             </div>
             <h1 className="text-7xl md:text-9xl font-black tracking-tight mb-2 hover:scale-105 transition-transform cursor-default relative inline-block group" style={{ fontFamily: 'Georgia, serif' }}>
@@ -1687,11 +1820,44 @@ export default function CreatorLandingPage() {
         </div>
 
 
+        {/* Outfit Spinner - Side Addition */}
+        <div className="mb-12 border-t-4 border-black pt-8">
+          <OutfitSpinner 
+            onEmailSubmit={async (email) => {
+              try {
+                const response = await fetch('/api/subscribe', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    email,
+                    source: 'Outfit Spinner - Homepage',
+                    date: new Date().toISOString()
+                  })
+                });
+                if (response.ok) {
+                  setNewsletterStatus('success');
+                  setNewsletterEmail(email);
+                }
+              } catch (error) {
+                console.error('Subscription error:', error);
+              }
+              // Fallback to localStorage
+              const subscribers = JSON.parse(localStorage.getItem('vip_subscribers') || '[]');
+              subscribers.push({ email, date: new Date().toISOString(), source: 'Outfit Spinner' });
+              localStorage.setItem('vip_subscribers', JSON.stringify(subscribers));
+              return true;
+            }}
+          />
+        </div>
+
         {/* Social Media - Newspaper Style */}
-        <div className="mb-12 border-t-2 border-black pt-6">
-          <div className="text-center mb-4">
-            <h3 className="text-sm uppercase tracking-widest font-bold mb-4">Connect</h3>
-            <div className="flex flex-wrap items-center justify-center gap-4">
+        <div className="mb-12 border-t-4 border-black pt-8">
+          <div className="text-center mb-6">
+            <h3 className="text-2xl font-black uppercase tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+              Connect
+            </h3>
+            <p className="text-xs text-gray-600 uppercase tracking-widest mb-6">Follow The Journey</p>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-4xl mx-auto">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
@@ -1699,10 +1865,17 @@ export default function CreatorLandingPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => handleLinkClick(social.name)}
-                  className="group border-2 border-black px-4 py-2 hover:bg-black hover:text-white transition-all font-semibold text-sm uppercase tracking-wide"
+                  className="group border-4 border-black p-4 hover:bg-black hover:text-white transition-all relative overflow-hidden"
                   title={social.name}
                 >
-                  {social.name}
+                  {/* Background pattern */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity">
+                    <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,currentColor_50%,transparent_75%)] bg-[length:10px_10px]"></div>
+                  </div>
+                  <div className="relative z-10 flex flex-col items-center gap-2">
+                    <social.icon className={`w-8 h-8 group-hover:scale-110 transition-transform ${social.iconColor}`} />
+                    <span className="font-bold text-xs uppercase tracking-wide">{social.name}</span>
+                  </div>
                 </a>
               ))}
             </div>
@@ -1725,7 +1898,7 @@ export default function CreatorLandingPage() {
                 onClick={() => handleCategoryClick('beauty', 'Beauty')}
                 className="text-left w-full group/article"
               >
-                {/* Image Placeholder */}
+                {/* Beauty Outfit Image */}
                 <div className="mb-4 aspect-video bg-gradient-to-br from-pink-100 to-rose-100 border-4 border-black overflow-hidden group-hover:border-gray-600 transition-all">
                   <div className="w-full h-full flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600')] bg-cover bg-center group-hover:scale-110 transition-transform duration-500">
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
@@ -1757,14 +1930,14 @@ export default function CreatorLandingPage() {
                 onClick={() => handleCategoryClick('business', 'Tech')}
                 className="text-left w-full group/article"
               >
-                {/* Image Placeholder */}
-                <div className="mb-4 aspect-video bg-gradient-to-br from-purple-100 to-indigo-100 border-4 border-black overflow-hidden group-hover:border-gray-600 transition-all">
-                  <div className="w-full h-full flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600')] bg-cover bg-center group-hover:scale-110 transition-transform duration-500">
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-                    <div className="relative z-10 text-white text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <Code className="w-12 h-12 mx-auto mb-2" />
-                      <span className="text-sm font-bold uppercase">Explore Tech Tools</span>
-                    </div>
+                {/* Course Outline Image - Ways to Make Money */}
+                <div className="mb-4 aspect-video bg-gradient-to-br from-purple-100 to-indigo-100 border-4 border-black overflow-hidden group-hover:border-gray-600 transition-all relative">
+                  <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600')] bg-cover bg-center group-hover:scale-110 transition-transform duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                    <p className="text-xs uppercase tracking-widest mb-1 opacity-90">Featured Course</p>
+                    <p className="text-sm md:text-base font-bold">10 Glam-Tech Ways to Stack Cash</p>
+                    <p className="text-xs opacity-75">Side Hustles for Boss Babes</p>
                   </div>
                 </div>
                 <div className="mb-4">
