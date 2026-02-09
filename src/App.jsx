@@ -597,6 +597,20 @@ Best regards,
           </div>
         </div>
 
+        {/* Avatar Customizer Section */}
+        <div className={`mb-12 border-t border-gray-200 pt-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="mb-6">
+            <h2 className="text-4xl font-black tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+              Style Studio
+            </h2>
+            <p className="text-sm text-gray-500 uppercase tracking-widest mb-4">Avatar Customizer</p>
+            <p className="text-gray-700 max-w-2xl">
+              Create your virtual avatar and mix & match outfits. Subscribe to unlock advanced customization like skin color and hair style!
+            </p>
+          </div>
+          <AvatarCustomizer />
+        </div>
+
         {/* Footer */}
         <div className="mt-16 text-center">
           <div className="flex items-center justify-center gap-2 mb-3">
@@ -2082,10 +2096,10 @@ export default function CreatorLandingPage() {
         </div>
 
 
-        {/* Three Main Hubs - Beauty/Fashion, Tech, Business */}
+        {/* Two Main Hubs - Fashion & Beauty, Tech & Business */}
         <div className="mb-16 border-t border-gray-200 pt-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {/* Hub 1: Beauty & Fashion */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Hub 1: Fashion & Beauty (with Avatar) */}
             <button
               onClick={() => setCurrentPage('beauty')}
               className="group relative bg-gradient-to-br from-pink-50 via-rose-50 to-purple-50 rounded-2xl p-8 border-2 border-pink-200 hover:border-pink-400 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-left overflow-hidden"
@@ -2105,13 +2119,13 @@ export default function CreatorLandingPage() {
                 
                 {/* Title */}
                 <h2 className="text-4xl font-black tracking-tight mb-2 bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent" style={{ fontFamily: 'Georgia, serif' }}>
-                  Beauty & Fashion Hub
+                  Fashion & Beauty Hub
                 </h2>
                 <p className="text-sm font-semibold text-pink-600 uppercase tracking-wider mb-4">✨ Glow Up Your Confidence</p>
                 
                 {/* Description */}
                 <p className="text-gray-700 leading-relaxed mb-6">
-                  Makeup tutorials, hair care routines, skincare guides, and style inspiration. Everything you need to look and feel your best.
+                  Makeup tutorials, hair care routines, skincare guides, style inspiration, avatar customizer, and editor's picks. Everything you need to look and feel your best.
                 </p>
                 
                 {/* Features List */}
@@ -2130,6 +2144,10 @@ export default function CreatorLandingPage() {
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="text-pink-500">•</span>
+                    <span>Avatar Style Studio</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-pink-500">•</span>
                     <span>Editor's Picks Shop</span>
                   </li>
                 </ul>
@@ -2142,7 +2160,7 @@ export default function CreatorLandingPage() {
               </div>
             </button>
 
-            {/* Hub 2: Tech */}
+            {/* Hub 2: Tech & Business (Combined) */}
             <button
               onClick={() => setCurrentPage('business')}
               className="group relative bg-gradient-to-br from-purple-50 via-indigo-50 to-blue-50 rounded-2xl p-8 border-2 border-purple-200 hover:border-purple-400 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-left overflow-hidden"
@@ -2162,13 +2180,13 @@ export default function CreatorLandingPage() {
                 
                 {/* Title */}
                 <h2 className="text-4xl font-black tracking-tight mb-2 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent" style={{ fontFamily: 'Georgia, serif' }}>
-                  Tech Hub
+                  Tech & Business Hub
                 </h2>
                 <p className="text-sm font-semibold text-purple-600 uppercase tracking-wider mb-4">🚀 Build Smarter, Scale Bigger</p>
                 
                 {/* Description */}
                 <p className="text-gray-700 leading-relaxed mb-6">
-                  Fiverr services, website design, Skool community, notary services, and free tech guides. Your one-stop shop for business growth.
+                  Fiverr services, website design, Skool community, notary services, business resources, and free tech guides. Your one-stop shop for business growth and empire building.
                 </p>
                 
                 {/* Features List */}
@@ -2187,6 +2205,10 @@ export default function CreatorLandingPage() {
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="text-purple-500">•</span>
+                    <span>Notary Services</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-purple-500">•</span>
                     <span>Free Tech Guides</span>
                   </li>
                 </ul>
@@ -2197,106 +2219,6 @@ export default function CreatorLandingPage() {
                   <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
-            </button>
-
-            {/* Hub 3: Business */}
-            <button
-              onClick={() => setCurrentPage('business')}
-              className="group relative bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-50 rounded-2xl p-8 border-2 border-blue-200 hover:border-blue-400 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-left overflow-hidden"
-            >
-              {/* Decorative background elements */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-200/30 to-transparent rounded-bl-full"></div>
-              <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-teal-200/30 to-transparent rounded-tr-full"></div>
-              
-              <div className="relative z-10">
-                {/* Icon Badge */}
-                <div className="mb-6 flex items-center justify-between">
-                  <div className="bg-gradient-to-br from-blue-500 to-cyan-500 p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform">
-                    <Briefcase className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="text-4xl">💼</div>
-                </div>
-                
-                {/* Title */}
-                <h2 className="text-4xl font-black tracking-tight mb-2 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent" style={{ fontFamily: 'Georgia, serif' }}>
-                  Business Hub
-                </h2>
-                <p className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-4">🏆 Empire Building</p>
-                
-                {/* Description */}
-                <p className="text-gray-700 leading-relaxed mb-6">
-                  Notary services, business resources, tools, and strategies. Everything you need to build and scale your empire.
-                </p>
-                
-                {/* Features List */}
-                <ul className="space-y-2 mb-6 text-sm text-gray-600">
-                  <li className="flex items-center gap-2">
-                    <span className="text-blue-500">•</span>
-                    <span>Notary Services</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-blue-500">•</span>
-                    <span>Business Resources</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-blue-500">•</span>
-                    <span>Growth Strategies</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-blue-500">•</span>
-                    <span>Expert Tools</span>
-                  </li>
-                </ul>
-                
-                {/* CTA Button */}
-                <div className="flex items-center gap-2 text-blue-600 font-bold group-hover:text-blue-700 transition-colors">
-                  <span>Enter Hub</span>
-                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </div>
-            </button>
-          </div>
-        </div>
-
-        {/* Shop & Avatar Links */}
-        <div className="mb-16 border-t border-gray-200 pt-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Shop Section */}
-            <button
-              onClick={() => setCurrentPage('shop')}
-              className="border-2 border-gray-200 rounded-xl p-6 bg-white hover:border-gray-400 hover:shadow-lg transition-all group text-left"
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <ShoppingBag className="w-12 h-12 group-hover:scale-110 transition-transform" />
-                <div>
-                  <h3 className="text-2xl font-black uppercase" style={{ fontFamily: 'Georgia, serif' }}>
-                    Shop
-                  </h3>
-                  <p className="text-xs text-gray-600 group-hover:text-gray-300 uppercase tracking-widest">Editor's Picks</p>
-                </div>
-              </div>
-              <p className="text-sm text-gray-700 group-hover:text-gray-200">
-                Curated essentials for your glow-up and empire journey. Everything I use and love.
-              </p>
-            </button>
-
-            {/* Avatar Customizer Section */}
-            <button
-              onClick={() => setCurrentPage('avatar')}
-              className="border-2 border-gray-200 rounded-xl p-6 bg-white hover:border-gray-400 hover:shadow-lg transition-all group text-left"
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <Sparkles className="w-12 h-12 group-hover:scale-110 transition-transform" />
-                <div>
-                  <h3 className="text-2xl font-black uppercase" style={{ fontFamily: 'Georgia, serif' }}>
-                    Style Studio
-                  </h3>
-                  <p className="text-xs text-gray-600 group-hover:text-gray-300 uppercase tracking-widest">Create Your Look</p>
-                </div>
-              </div>
-              <p className="text-sm text-gray-700 group-hover:text-gray-200">
-                Mix and match clothing items to create your perfect outfit. Customize your avatar with our interactive style studio.
-              </p>
             </button>
           </div>
         </div>
