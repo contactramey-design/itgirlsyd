@@ -3,12 +3,10 @@ import { Heart, Instagram, Youtube, Twitter, Mail, ShoppingBag, Crown, Sparkles,
 import MediaKit from './MediaKit.jsx';
 import PartnershipsPage from './Partnerships.jsx';
 import './email-utils.js'; // Load email collection utilities
-import Academy from './Academy.jsx';
-import SmartPilatesAIClasses from './SmartPilatesAIClasses.jsx';
 import { fetchProducts, handleAffiliateClick } from './services/affiliateService.js';
 
 // Beauty Closet Component - Pink Fitting Room Theme
-function BeautyClosetPage({ onBack }) {
+function BeautyClosetPage({ onBack, myPicks = [], handleAffiliateClick }) {
   const [isVisible, setIsVisible] = useState(false);
   const [unlocked, setUnlocked] = useState(false);
   const [email, setEmail] = useState('');
@@ -227,7 +225,7 @@ Best regards,
                   </a>
                   <span className="text-yellow-300 text-sm font-medium flex items-center gap-1">
                     <Star className="w-4 h-4 fill-yellow-300" />
-                    Sydney's Pick!
+                    IT Girl's Pick!
                   </span>
                 </div>
               </div>
@@ -462,29 +460,57 @@ Best regards,
           </div>
         </div>
 
-        {/* Featured Call-to-Action */}
-        <div className={`transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="bg-gradient-to-r from-pink-500 via-rose-500 to-purple-500 rounded-2xl p-8 shadow-2xl text-white text-center overflow-hidden">
-            <div className="absolute inset-0 bg-white/10"></div>
-            
-            <div className="relative z-10">
-              <ShoppingBag className="w-14 h-14 mx-auto mb-4" />
-              <h2 className="text-3xl font-bold mb-4">Shop Curated Favorites</h2>
-              <p className="mb-6 text-lg">
-                Discover my handpicked beauty and fashion essentials. 
-                Premium products I personally use and recommend.
-              </p>
-              <a
-                href="https://www.amazon.com/shop/itgirlsyd19"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-white text-pink-600 px-8 py-4 rounded-full font-bold hover:bg-pink-50 transition-all hover:scale-105 shadow-2xl"
+        {/* Editor's Picks - Shop My Picks */}
+        <div className={`mb-12 border-t-4 border-black pt-8 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="mb-6">
+            <h2 className="text-4xl font-black uppercase tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+              Editor's Picks
+            </h2>
+            <p className="text-sm text-gray-600 uppercase tracking-widest mb-4">Shop My Picks</p>
+            <p className="text-gray-700 max-w-2xl">
+              Everything I use & love! Click to shop - your support means the world 💕
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
+            {myPicks.slice(0, 8).map((product) => (
+              <div
+                key={product.id}
+                onClick={() => handleAffiliateClick(
+                  product.id,
+                  product.affiliateUrl,
+                  product.source || 'amazon',
+                  product.name
+                )}
+                className="group border-2 border-black hover:bg-black hover:text-white transition-all cursor-pointer"
               >
-                <ShoppingBag className="w-5 h-5" />
-                Shop My Amazon Storefront
-                <Sparkles className="w-5 h-5" />
-              </a>
-            </div>
+                <div className="aspect-square bg-gray-100 overflow-hidden">
+                  <img 
+                    src={product.image} 
+                    alt={product.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-3">
+                  <h3 className="font-bold text-sm mb-1 line-clamp-2 group-hover:text-white">
+                    {product.name}
+                  </h3>
+                  <p className="text-xs text-gray-600 group-hover:text-gray-300 mb-2 line-clamp-1">{product.description}</p>
+                  <div className="font-bold text-sm group-hover:text-white">{product.price}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="text-center">
+            <a
+              href="https://www.amazon.com/shop/itgirlsyd19"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block border-2 border-black px-6 py-3 font-bold text-sm uppercase tracking-wide hover:bg-black hover:text-white transition-all"
+            >
+              View Full Storefront →
+            </a>
           </div>
         </div>
 
@@ -493,7 +519,7 @@ Best regards,
           <div className="flex items-center justify-center gap-2 mb-3">
             <Heart className="w-5 h-5 text-pink-500 fill-pink-500 animate-pulse" />
             <p className="text-pink-600 font-semibold">
-              Made with love by Sydney
+              Made with love by IT Girl
             </p>
             <Heart className="w-5 h-5 text-pink-500 fill-pink-500 animate-pulse" />
           </div>
@@ -989,7 +1015,7 @@ function BusinessHubPage({ onBack, onNavigateToContentForm, onNavigateToTechGuid
   const [typedText, setTypedText] = useState('');
   const [unlocked, setUnlocked] = useState(false);
   const [email, setEmail] = useState('');
-  const fullText = 'SYDNEY_TECH_HUB.exe';
+  const fullText = 'IT_GIRL_TECH_HUB.exe';
 
   useEffect(() => {
     setIsVisible(true);
@@ -1120,7 +1146,7 @@ function BusinessHubPage({ onBack, onNavigateToContentForm, onNavigateToTechGuid
               <div className="w-3 h-3 rounded-full bg-red-500" />
               <div className="w-3 h-3 rounded-full bg-yellow-500" />
               <div className="w-3 h-3 rounded-full bg-green-500" />
-              <span className="ml-4 text-green-400 font-mono text-sm">terminal@sydney:~$</span>
+              <span className="ml-4 text-green-400 font-mono text-sm">terminal@itgirl:~$</span>
             </div>
             <div className="font-mono text-2xl text-green-400">
               <span className="text-purple-400">{'>'}</span> {typedText}
@@ -1205,7 +1231,7 @@ function BusinessHubPage({ onBack, onNavigateToContentForm, onNavigateToTechGuid
             {'> '}SYSTEM_STATUS: <span className="text-cyan-400">ONLINE</span>
           </p>
           <p className="text-gray-600 font-mono text-xs">
-            © 2025 SYDNEY TECH VENTURES • ALL SYSTEMS OPERATIONAL
+            © 2025 IT GIRL • ALL SYSTEMS OPERATIONAL
           </p>
         </div>
       </div>
@@ -1218,7 +1244,7 @@ export default function CreatorLandingPage() {
   const [activeSection, setActiveSection] = useState('');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [notification, setNotification] = useState('');
-  const [currentPage, setCurrentPage] = useState('home'); // 'home', 'business', 'beauty', 'gym', 'homehaven', 'mediakit', 'partnerships', 'moda', 'content-form', 'tech-guides', 'smartpilatesai'
+  const [currentPage, setCurrentPage] = useState('home'); // 'home', 'business', 'beauty', 'gym', 'homehaven', 'mediakit', 'partnerships', 'moda', 'content-form', 'tech-guides'
   const [showSupportPopup, setShowSupportPopup] = useState(false);
   const [showCollabPopup, setShowCollabPopup] = useState(false);
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -1400,16 +1426,6 @@ export default function CreatorLandingPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Render Academy Page
-  if (currentPage === 'academy') {
-    return <Academy onBack={navigateHome} />;
-  }
-
-  // Render Smart Pilates AI Classes Page
-  if (currentPage === 'smartpilatesai') {
-    return <SmartPilatesAIClasses onBack={navigateHome} />;
-  }
-
   // Render Media Kit Page
   if (currentPage === 'mediakit') {
     return <MediaKit />;
@@ -1422,7 +1438,7 @@ export default function CreatorLandingPage() {
 
   // Render Beauty Closet Page
   if (currentPage === 'beauty') {
-    return <BeautyClosetPage onBack={navigateHome} />;
+    return <BeautyClosetPage onBack={navigateHome} myPicks={myPicks} handleAffiliateClick={handleAffiliateClick} />;
   }
 
   // Render Business Page
@@ -1447,91 +1463,59 @@ export default function CreatorLandingPage() {
 
 
   // Render Main Landing Page
+  const currentDate = new Date().toLocaleDateString('en-US', { 
+    weekday: 'long', 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div 
-          className="absolute w-96 h-96 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"
-          style={{ 
-            left: `${mousePosition.x / 20}px`, 
-            top: `${mousePosition.y / 20}px`,
-            transition: 'all 0.3s ease-out'
-          }}
-        />
-        <div className="absolute w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse animation-delay-2000 top-1/4 right-0" />
-        <div className="absolute w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse animation-delay-4000 bottom-0 left-1/4" />
-      </div>
+    <div className="min-h-screen bg-white relative">
+      {/* Newspaper Grid Background */}
+      <div className="fixed inset-0 pointer-events-none opacity-5" style={{
+        backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, #000 2px, #000 3px)',
+        backgroundSize: '100% 40px'
+      }}></div>
 
-      {/* Floating sparkles */}
-      <div className="fixed inset-0 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <Star
-            key={i}
-            className="absolute text-pink-300 animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              opacity: Math.random() * 0.5 + 0.2,
-              fontSize: `${Math.random() * 10 + 8}px`
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Notification toast */}
+      {/* Notification toast - Newspaper Style */}
       {notification && (
-        <div className="fixed top-8 right-8 z-50 bg-white rounded-2xl shadow-2xl px-6 py-4 border-2 border-pink-200 animate-in slide-in-from-top">
-          <p className="text-pink-600 font-semibold flex items-center gap-2">
-            <Sparkles className="w-5 h-5" />
+        <div className="fixed top-8 right-8 z-50 bg-white shadow-2xl px-6 py-4 border-4 border-black animate-in slide-in-from-top">
+          <p className="text-black font-bold flex items-center gap-2 uppercase text-sm tracking-wide">
             {notification}
           </p>
         </div>
       )}
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 py-12">
-        {/* Header Section */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
-          <div className="relative inline-block mb-6">
-            <img
-              src="/profile.png"
-              alt="Sydney"
-              className="w-32 h-32 rounded-full border-4 border-white shadow-2xl object-cover mx-auto"
-            />
-            <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full p-2 shadow-lg">
-              <Crown className="w-6 h-6 text-white" />
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-8">
+        {/* Newspaper Masthead */}
+        <div className="border-b-4 border-black mb-6 pb-4">
+          <div className="text-center">
+            <h1 className="text-7xl md:text-9xl font-black tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+              IT GIRL
+            </h1>
+            <div className="flex items-center justify-between text-sm text-gray-600 border-t border-b border-gray-400 py-2 mt-2">
+              <span>VOL. 1, NO. 1</span>
+              <span className="uppercase font-semibold">{currentDate}</span>
+              <span>BEAUTY • TECH • EMPIRE</span>
             </div>
           </div>
-          
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 bg-clip-text text-transparent mb-4">
-            Sydney
-          </h1>
-          
-          <p className="text-xl text-gray-700 mb-6 font-medium">
-            Content Creator • Lifestyle Influencer • Digital Trendsetter
-          </p>
-          
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <button
-              onClick={() => setShowCollabPopup(true)}
-              className="group flex items-center gap-2 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 text-white px-6 py-3 rounded-full shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 font-bold"
-            >
-              <Briefcase className="w-5 h-5 group-hover:animate-bounce" />
-              <span>Work With Me</span>
-              <Sparkles className="w-5 h-5" />
-            </button>
-            <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-lg border-2 border-pink-200">
-              <Crown className="w-5 h-5 text-purple-500" />
-              <span className="font-semibold text-gray-700">Verified Creator</span>
-            </div>
-          </div>
-
-          <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Hey babe! 💕 Welcome to my little corner of the internet. I'm all about beauty, fashion, lifestyle & good vibes. 
-            Join me on this journey & shop my faves below! ✨
-          </p>
         </div>
+
+        {/* Navigation Bar - Newspaper Style */}
+        <nav className="border-b-2 border-black mb-8 pb-3">
+          <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-semibold uppercase tracking-wider">
+            <button onClick={() => setCurrentPage('home')} className="hover:underline">Home</button>
+            <span className="text-gray-400">|</span>
+            <button onClick={() => handleCategoryClick('beauty', 'Beauty')} className="hover:underline">Beauty</button>
+            <span className="text-gray-400">|</span>
+            <button onClick={() => handleCategoryClick('business', 'Tech')} className="hover:underline">Tech</button>
+            <span className="text-gray-400">|</span>
+            <button onClick={() => setCurrentPage('partnerships')} className="hover:underline">Partnerships</button>
+            <span className="text-gray-400">|</span>
+            <button onClick={() => setCurrentPage('mediakit')} className="hover:underline">Media Kit</button>
+          </div>
+        </nav>
 
         {/* Work With Me / Collaboration Popup */}
         {showCollabPopup && (
@@ -1637,450 +1621,184 @@ export default function CreatorLandingPage() {
           </div>
         )}
 
-        {/* TikTok Live Battle Feature */}
-        <div className={`mb-8 transition-all duration-1000 delay-150 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="relative bg-gradient-to-r from-black via-pink-600 to-cyan-400 rounded-2xl p-6 shadow-2xl overflow-hidden">
-            {/* Animated background */}
-            <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.1)_50%,transparent_75%)] bg-[length:250%_250%] animate-pulse" />
-            
-            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-4">
-                <div className="bg-gradient-to-br from-pink-500 to-cyan-400 p-4 rounded-xl animate-pulse">
-                  <Video className="w-10 h-10 text-white" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse" />
-                    <span className="text-white font-black text-2xl uppercase tracking-wide">Live Battle</span>
-                  </div>
-                  <p className="text-pink-200 text-sm">Join my TikTok Live & support with gifts!</p>
-                </div>
+        {/* Breaking News Banner - TikTok Live Battle */}
+        <div className={`mb-8 border-4 border-black bg-black text-white p-4 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <div className="flex items-center justify-between flex-wrap gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-4 h-4 bg-red-600 animate-pulse"></div>
+              <div>
+                <div className="text-xs uppercase tracking-widest text-gray-300 mb-1">BREAKING NEWS</div>
+                <div className="text-xl md:text-2xl font-black uppercase">TikTok Live Battle Now</div>
+                <div className="text-sm text-gray-300">Join & support with gifts!</div>
               </div>
-              
-              <div className="flex gap-3">
-                <a
-                  href="https://www.tiktok.com/@itgirlsyd19/live"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-xl border-2 border-white/30 hover:border-white/60 hover:bg-white/30 transition-all cursor-pointer"
-                >
-                  <p className="text-white font-bold text-sm">Join Battle</p>
-                  <p className="text-pink-200 text-xs">Go Live Now →</p>
-                </a>
-                <a
-                  href="https://www.tiktok.com/coin"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-cyan-500/20 backdrop-blur-sm px-6 py-3 rounded-xl border-2 border-cyan-400/30 hover:border-cyan-400/60 hover:bg-cyan-500/30 transition-all cursor-pointer"
-                >
-                  <p className="text-white font-bold text-sm">Get Coins</p>
-                  <p className="text-cyan-200 text-xs">Discount Available</p>
-                </a>
-              </div>
+            </div>
+            <div className="flex gap-2">
+              <a
+                href="https://www.tiktok.com/@itgirlsyd19/live"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white text-black px-6 py-2 font-bold text-sm hover:bg-gray-200 transition-all border-2 border-white"
+              >
+                JOIN LIVE →
+              </a>
+              <a
+                href="https://www.tiktok.com/coin"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gray-800 text-white px-4 py-2 font-bold text-sm hover:bg-gray-700 transition-all border-2 border-gray-600"
+              >
+                GET COINS
+              </a>
             </div>
           </div>
         </div>
 
-        {/* Shop My Picks - Affiliate Products Section */}
-        <div id="shop-my-picks" className={`mb-12 transition-all duration-1000 delay-175 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="bg-gradient-to-br from-pink-50 via-purple-50 to-rose-50 rounded-3xl p-8 border-2 border-pink-200/50 shadow-xl">
-            {/* Header */}
-            <div className="text-center mb-8">
-              <div className="inline-flex items-center gap-3 mb-3">
-                <ShoppingBag className="w-8 h-8 text-pink-500" />
-                <h2 className="text-3xl font-bold bg-gradient-to-r from-pink-600 via-purple-600 to-rose-500 bg-clip-text text-transparent">
-                  Shop My Picks
-                </h2>
-                <Heart className="w-8 h-8 text-pink-500 fill-pink-500" />
-              </div>
-              <p className="text-gray-600 max-w-lg mx-auto">
-                Everything I use & love! Click to shop - your support means the world 💕
-              </p>
-            </div>
 
-            {/* Product Grid */}
-            {productsLoading ? (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                {[...Array(6)].map((_, index) => (
-                  <div
-                    key={index}
-                    className="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 animate-pulse"
-                  >
-                    <div className="aspect-square bg-gray-200" />
-                    <div className="p-3">
-                      <div className="h-4 bg-gray-200 rounded mb-2" />
-                      <div className="h-3 bg-gray-200 rounded w-2/3" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                {myPicks.map((product) => (
-                  <div
-                    key={product.id}
-                    onClick={() => handleAffiliateClick(
-                      product.id,
-                      product.affiliateUrl,
-                      product.source || 'amazon',
-                      product.name
-                    )}
-                    className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 hover:border-pink-300 cursor-pointer"
-                  >
-                  {/* Product Image */}
-                  <div className="relative aspect-square bg-gray-50 overflow-hidden">
-                    <img 
-                      src={product.image} 
-                      alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.nextSibling.style.display = 'flex';
-                      }}
-                    />
-                    {/* Fallback if image doesn't load */}
-                    <div className="hidden absolute inset-0 bg-gradient-to-br from-pink-400 to-purple-400 items-center justify-center">
-                      <ShoppingBag className="w-12 h-12 text-white/80" />
-                    </div>
-                    {/* Category Badge */}
-                    <span className="absolute top-2 left-2 bg-white/90 backdrop-blur-sm text-xs font-bold text-pink-600 px-2 py-0.5 rounded-full">
-                      {product.category}
-                    </span>
-                    {/* Add to Bag Overlay */}
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <div className="bg-white text-pink-600 px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 transform scale-90 group-hover:scale-100 transition-transform">
-                        <ShoppingBag className="w-4 h-4" />
-                        Shop Now
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Product Info */}
-                  <div className="p-3">
-                    <h3 className="font-semibold text-gray-800 text-sm leading-tight line-clamp-2 mb-1 group-hover:text-pink-600 transition-colors">
-                      {product.name}
-                    </h3>
-                    <p className="text-xs text-gray-500 line-clamp-1 mb-2">{product.description}</p>
-                    <div className="flex items-center justify-between">
-                      <span className="font-bold text-pink-600 text-sm">{product.price}</span>
-                      <Heart className="w-4 h-4 text-gray-300 group-hover:text-pink-500 group-hover:fill-pink-500 transition-colors" />
-                    </div>
-                  </div>
-                </div>
+        {/* Social Media - Newspaper Style */}
+        <div className="mb-12 border-t-2 border-black pt-6">
+          <div className="text-center mb-4">
+            <h3 className="text-sm uppercase tracking-widest font-bold mb-4">Connect</h3>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => handleLinkClick(social.name)}
+                  className="group border-2 border-black px-4 py-2 hover:bg-black hover:text-white transition-all font-semibold text-sm uppercase tracking-wide"
+                  title={social.name}
+                >
+                  {social.name}
+                </a>
               ))}
-              </div>
-            )}
-
-            {/* View All Link */}
-            <div className="text-center mt-6">
-              <a
-                href="https://www.amazon.com/shop/itgirlsyd19"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white px-6 py-3 rounded-full font-bold hover:shadow-lg hover:scale-105 transition-all"
-              >
-                <ShoppingBag className="w-5 h-5" />
-                View Full Storefront
-                <ArrowLeft className="w-5 h-5 rotate-180" />
-              </a>
             </div>
           </div>
         </div>
 
-        {/* Compact Social Media Section - Smaller Icons */}
-        <div className={`mb-10 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="text-center text-gray-500 text-sm font-medium mb-3">Follow Me</h3>
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            {socialLinks.map((social, index) => (
-              <a
-                key={index}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => handleLinkClick(social.name)}
-                className={`group bg-gradient-to-br ${social.color} rounded-full p-2.5 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110`}
-                title={social.name}
-              >
-                <social.icon className={`w-4 h-4 ${social.iconColor}`} />
-              </a>
-            ))}
-          </div>
-        </div>
 
-        {/* 🏫 IT Girl Academy - Featured Schoolhouse */}
-        <div className={`mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <button
-            onClick={() => handleCategoryClick('academy', 'IT Girl Academy')}
-            className="w-full group relative overflow-hidden"
-          >
-            {/* Schoolhouse Card */}
-            <div className="relative bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 rounded-3xl p-1 shadow-2xl hover:shadow-purple-500/50 transition-all duration-500 hover:scale-[1.02]">
-              <div className="bg-gradient-to-br from-purple-900 via-purple-800 to-pink-900 rounded-[22px] p-8 md:p-10 relative overflow-hidden">
-                
-                {/* Animated Background Elements */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                  <div className="absolute top-4 left-8 text-6xl opacity-20 animate-bounce" style={{animationDuration: '3s'}}>📚</div>
-                  <div className="absolute top-12 right-12 text-4xl opacity-20 animate-bounce" style={{animationDuration: '2.5s', animationDelay: '0.5s'}}>✨</div>
-                  <div className="absolute bottom-8 left-16 text-5xl opacity-20 animate-bounce" style={{animationDuration: '2s', animationDelay: '1s'}}>💫</div>
-                  <div className="absolute bottom-4 right-8 text-4xl opacity-20 animate-bounce" style={{animationDuration: '2.8s', animationDelay: '0.3s'}}>🎓</div>
-                  {/* Gradient orbs */}
-                  <div className="absolute -top-20 -right-20 w-40 h-40 bg-pink-500/30 rounded-full blur-3xl"></div>
-                  <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-purple-500/30 rounded-full blur-3xl"></div>
-                </div>
-
-                {/* Content */}
-                <div className="relative z-10 text-center">
-                  {/* Schoolhouse Icon */}
-                  <div className="inline-block mb-6 relative">
-                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-400 blur-2xl opacity-60 animate-pulse"></div>
-                    <div className="relative bg-gradient-to-br from-yellow-400 via-orange-400 to-pink-500 p-6 rounded-2xl shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                      {/* Schoolhouse shape */}
-                      <div className="relative">
-                        <div className="text-6xl">🏫</div>
-                        {/* Sparkle effect */}
-                        <div className="absolute -top-2 -right-2 text-2xl animate-ping">✨</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Title */}
-                  <h2 className="text-4xl md:text-5xl font-black text-white mb-4 group-hover:scale-105 transition-transform">
-                    IT Girl Academy
-                  </h2>
-
-                  {/* Subtitle */}
-                  <p className="text-xl text-purple-200 mb-6 max-w-xl mx-auto">
-                    Learn to build your creator empire with real courses, templates & strategies that actually work 💕
-                  </p>
-
-                  {/* Stats Row */}
-                  <div className="flex justify-center gap-6 mb-8">
-                    <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-xl border border-white/20">
-                      <p className="text-2xl font-bold text-white">4</p>
-                      <p className="text-xs text-purple-300">Courses</p>
-                    </div>
-                    <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-xl border border-white/20">
-                      <p className="text-2xl font-bold text-white">50+</p>
-                      <p className="text-xs text-purple-300">Lessons</p>
-                    </div>
-                    <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-xl border border-white/20">
-                      <p className="text-2xl font-bold text-white">📄</p>
-                      <p className="text-xs text-purple-300">Templates</p>
-                    </div>
-                  </div>
-
-                  {/* Pre-order Badge */}
-                  <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-4 py-2 rounded-full text-sm font-bold mb-6 animate-pulse">
-                    🚀 Pre-Orders Open • Releasing Jan 1st, 2026!
-                  </div>
-
-                  {/* CTA Button */}
-                  <div className="flex justify-center">
-                    <div className="bg-white text-purple-900 px-10 py-4 rounded-2xl font-bold text-xl shadow-xl group-hover:shadow-2xl group-hover:bg-purple-50 transition-all flex items-center gap-3">
-                      <Award className="w-6 h-6" />
-                      Enter Academy
-                      <ArrowLeft className="w-6 h-6 rotate-180 group-hover:translate-x-2 transition-transform" />
-                    </div>
-                  </div>
-                </div>
+        {/* Editorial Feed - Newspaper Columns */}
+        <div className="mb-16 border-t-4 border-black pt-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 border-l border-r border-gray-300 px-4">
+            {/* Column 1: Latest Beauty */}
+            <article className="border-r border-gray-300 pr-6 last:border-r-0">
+              <div className="mb-4 pb-2 border-b-2 border-black">
+                <h2 className="text-3xl font-black uppercase tracking-tight" style={{ fontFamily: 'Georgia, serif' }}>
+                  Latest Beauty
+                </h2>
+                <p className="text-xs text-gray-600 uppercase mt-1">Glow Up Your Confidence</p>
               </div>
-            </div>
-          </button>
-        </div>
-
-        {/* 🧘 Smart Pilates AI - Featured Section */}
-        <div className={`mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
-          <button
-            onClick={() => handleCategoryClick('smartpilatesai', 'Smart Pilates AI')}
-            className="w-full group relative overflow-hidden"
-          >
-            {/* Pilates Card */}
-            <div className="relative bg-gradient-to-br from-pink-500 via-purple-600 to-teal-500 rounded-3xl p-1 shadow-2xl hover:shadow-pink-500/50 transition-all duration-500 hover:scale-[1.02]">
-              <div className="bg-gradient-to-br from-pink-900 via-purple-800 to-teal-900 rounded-[22px] p-8 md:p-10 relative overflow-hidden">
-                
-                {/* Animated Background Elements */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                  <div className="absolute top-4 left-8 text-6xl opacity-20 animate-bounce" style={{animationDuration: '3s'}}>🧘</div>
-                  <div className="absolute top-12 right-12 text-4xl opacity-20 animate-bounce" style={{animationDuration: '2.5s', animationDelay: '0.5s'}}>✨</div>
-                  <div className="absolute bottom-8 left-16 text-5xl opacity-20 animate-bounce" style={{animationDuration: '2s', animationDelay: '1s'}}>💪</div>
-                  <div className="absolute bottom-4 right-8 text-4xl opacity-20 animate-bounce" style={{animationDuration: '2.8s', animationDelay: '0.3s'}}>🌟</div>
-                  {/* Gradient orbs */}
-                  <div className="absolute -top-20 -right-20 w-40 h-40 bg-pink-500/30 rounded-full blur-3xl"></div>
-                  <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-teal-500/30 rounded-full blur-3xl"></div>
-                </div>
-
-                {/* Content */}
-                <div className="relative z-10 text-center">
-                  {/* Pilates Icon */}
-                  <div className="inline-block mb-6 relative">
-                    <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-teal-400 blur-2xl opacity-60 animate-pulse"></div>
-                    <div className="relative bg-gradient-to-br from-pink-400 via-purple-500 to-teal-500 p-6 rounded-2xl shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                      <div className="relative">
-                        <div className="text-6xl">🧘‍♀️</div>
-                        <div className="absolute -top-2 -right-2 text-2xl animate-ping">✨</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Title */}
-                  <h2 className="text-4xl md:text-5xl font-black text-white mb-4 group-hover:scale-105 transition-transform">
-                    Smart Pilates AI
-                  </h2>
-
-                  {/* Subtitle */}
-                  <p className="text-xl text-pink-200 mb-6 max-w-xl mx-auto">
-                    Transform your body and mind with AI-powered Pilates instruction. 12-week program with personalized guidance 💕
-                  </p>
-
-                  {/* Stats Row */}
-                  <div className="flex justify-center gap-6 mb-8">
-                    <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-xl border border-white/20">
-                      <p className="text-2xl font-bold text-white">12</p>
-                      <p className="text-xs text-pink-300">Weeks</p>
-                    </div>
-                    <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-xl border border-white/20">
-                      <p className="text-2xl font-bold text-white">100+</p>
-                      <p className="text-xs text-pink-300">Exercises</p>
-                    </div>
-                    <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-xl border border-white/20">
-                      <p className="text-2xl font-bold text-white">🤖</p>
-                      <p className="text-xs text-pink-300">AI Instructor</p>
-                    </div>
-                  </div>
-
-                  {/* CTA Button */}
-                  <div className="flex justify-center">
-                    <div className="bg-white text-pink-600 px-10 py-4 rounded-2xl font-bold text-xl shadow-xl group-hover:shadow-2xl group-hover:bg-pink-50 transition-all flex items-center gap-3">
-                      <Heart className="w-6 h-6" />
-                      View Classes
-                      <ArrowLeft className="w-6 h-6 rotate-180 group-hover:translate-x-2 transition-transform" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </button>
-        </div>
-
-        {/* Three-Pillar Hub - Prominent Entry Points */}
-        <div className="mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-pink-600 via-purple-600 to-orange-500 bg-clip-text text-transparent">
-            From Scroll to Empire Glow-Up
-          </h2>
-          <p className="text-center text-xl text-gray-700 mb-12 max-w-3xl mx-auto font-medium">
-            Beauty, Tech, & Bold Ownership - Relatable beauty rituals, smart tech tools, shoppable essentials
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12">
-            {contentCategories.map((category, catIndex) => (
               <button
-                key={catIndex}
-                onClick={() => {
-                  if (category.page === 'home') {
-                    // Scroll to shop section
-                    const shopSection = document.getElementById('shop-my-picks');
-                    if (shopSection) {
-                      shopSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    } else {
-                      // Fallback: scroll to shop section by finding it
-                      setTimeout(() => {
-                        const section = document.querySelector('[class*="Shop My Picks"]')?.closest('div') || 
-                                       document.querySelector('h2:contains("Shop My Picks")')?.closest('div');
-                        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                      }, 100);
-                    }
-                  } else {
-                    handleCategoryClick(category.page, category.title);
-                  }
-                }}
-                className={`group relative block h-full rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-                style={{ transitionDelay: `${300 + catIndex * 100}ms`, minHeight: '400px' }}
+                onClick={() => handleCategoryClick('beauty', 'Beauty')}
+                className="text-left w-full group"
               >
-                {/* Gradient Background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${category.color}`}>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
-                </div>
-
-                {/* Content */}
-                <div className="relative z-10 h-full flex flex-col justify-end p-8 text-white">
-                  <div className="mb-4">
-                    <span className="inline-block bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-semibold mb-3">
-                      {category.tagline || category.title}
-                    </span>
-                    <h3 className="text-3xl md:text-4xl font-bold mb-4">
-                      {category.title}
-                    </h3>
-                    <p className="text-lg text-white/90 mb-6 max-w-md">
-                      {category.description.split(' - ')[1] || category.description}
-                    </p>
-                  </div>
-
-                  <div className="flex items-center gap-2 text-white font-semibold group-hover:gap-4 transition-all">
-                    <span>{category.ctaText || 'Explore'}</span>
-                    <ArrowLeft className="w-5 h-5 rotate-180 group-hover:translate-x-2 transition-transform" />
-                  </div>
+                <div className="mb-4">
+                  <h3 className="text-xl font-bold mb-2 group-hover:underline">Routines, Tutorials & Style Inspiration</h3>
+                  <p className="text-sm text-gray-700 leading-relaxed mb-3">
+                    Discover beauty rituals that become your foundation for empire building. From everyday glam to statement looks.
+                  </p>
+                  <div className="text-xs text-gray-500 uppercase tracking-wide">Read More →</div>
                 </div>
               </button>
-            ))}
+            </article>
+
+            {/* Column 2: Tech News */}
+            <article className="border-r border-gray-300 pr-6 last:border-r-0">
+              <div className="mb-4 pb-2 border-b-2 border-black">
+                <h2 className="text-3xl font-black uppercase tracking-tight" style={{ fontFamily: 'Georgia, serif' }}>
+                  Tech News
+                </h2>
+                <p className="text-xs text-gray-600 uppercase mt-1">Build Smarter, Scale Bigger</p>
+              </div>
+              <button
+                onClick={() => handleCategoryClick('business', 'Tech')}
+                className="text-left w-full group"
+              >
+                <div className="mb-4">
+                  <h3 className="text-xl font-bold mb-2 group-hover:underline">Tools, Hustles & Asset Strategies</h3>
+                  <p className="text-sm text-gray-700 leading-relaxed mb-3">
+                    From beginner side hustles to empire asset strategies. Real tools for real growth.
+                  </p>
+                  <div className="text-xs text-gray-500 uppercase tracking-wide">Read More →</div>
+                </div>
+              </button>
+            </article>
+
+            {/* Column 3: Must-Have Picks */}
+            <article className="pr-6">
+              <div className="mb-4 pb-2 border-b-2 border-black">
+                <h2 className="text-3xl font-black uppercase tracking-tight" style={{ fontFamily: 'Georgia, serif' }}>
+                  Must-Have Picks
+                </h2>
+                <p className="text-xs text-gray-600 uppercase mt-1">Own Your Essentials</p>
+              </div>
+              <button
+                onClick={() => handleCategoryClick('beauty', 'Shop')}
+                className="text-left w-full group"
+              >
+                <div className="mb-4">
+                  <h3 className="text-xl font-bold mb-2 group-hover:underline">Bundles, Kits & Faves</h3>
+                  <p className="text-sm text-gray-700 leading-relaxed mb-3">
+                    Curated essentials for your glow-up and empire journey. Everything I use and love.
+                  </p>
+                  <div className="text-xs text-gray-500 uppercase tracking-wide">Shop Now →</div>
+                </div>
+              </button>
+            </article>
           </div>
         </div>
 
-        {/* Compact Work With Me Section */}
-        <div className={`mb-12 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-900 rounded-2xl p-8 shadow-2xl border border-purple-500/30 text-center">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <Briefcase className="w-10 h-10 text-purple-400" />
-              <h2 className="text-3xl font-bold text-white">Work With Me</h2>
-              <Crown className="w-10 h-10 text-purple-400" />
-            </div>
-            <p className="text-purple-200 mb-6 max-w-2xl mx-auto">
+        {/* Work With Me - Newspaper Style */}
+        <div className="mb-12 border-t-4 border-black pt-8">
+          <div className="text-center mb-6">
+            <h2 className="text-4xl font-black uppercase tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+              Work With Me
+            </h2>
+            <p className="text-sm text-gray-600 uppercase tracking-widest">Partnerships & Collaborations</p>
+          </div>
+          <div className="max-w-2xl mx-auto text-center mb-6">
+            <p className="text-gray-700 leading-relaxed">
               Partner with a multi-platform creator. 55K+ engaged followers across beauty, wellness, lifestyle & business.
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button
-                onClick={() => setCurrentPage('partnerships')}
-                className="group bg-white text-purple-900 px-8 py-4 rounded-xl font-bold hover:bg-purple-50 transition-all hover:scale-105 shadow-lg flex items-center gap-2"
-              >
-                <Sparkles className="w-5 h-5" />
-                Partnership Info
-                <ArrowLeft className="w-5 h-5 rotate-180 group-hover:translate-x-1 transition-transform" />
-              </button>
-
-              <button
-                onClick={() => setCurrentPage('mediakit')}
-                className="group bg-purple-700 text-white px-8 py-4 rounded-xl font-bold hover:bg-purple-600 transition-all hover:scale-105 shadow-lg flex items-center gap-2 border-2 border-purple-500"
-              >
-                <FileText className="w-5 h-5" />
-                Media Kit
-                <ArrowLeft className="w-5 h-5 rotate-180 group-hover:translate-x-1 transition-transform" />
-              </button>
-              
-              <a
-                href="mailto:sydney@itgirlsydcontent.com?subject=Brand Partnership Inquiry"
-                className="group bg-indigo-700 text-white px-8 py-4 rounded-xl font-bold hover:bg-indigo-600 transition-all hover:scale-105 shadow-lg flex items-center gap-2 border-2 border-indigo-500"
-              >
-                <Mail className="w-5 h-5" />
-                Contact
-              </a>
-            </div>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <button
+              onClick={() => setCurrentPage('partnerships')}
+              className="border-2 border-black px-6 py-3 font-bold text-sm uppercase tracking-wide hover:bg-black hover:text-white transition-all"
+            >
+              Partnership Info
+            </button>
+            <button
+              onClick={() => setCurrentPage('mediakit')}
+              className="border-2 border-black px-6 py-3 font-bold text-sm uppercase tracking-wide hover:bg-black hover:text-white transition-all"
+            >
+              Media Kit
+            </button>
+            <button
+              onClick={() => setShowCollabPopup(true)}
+              className="bg-black text-white px-6 py-3 font-bold text-sm uppercase tracking-wide hover:bg-gray-800 transition-all"
+            >
+              Contact
+            </button>
           </div>
         </div>
 
-        {/* Newsletter Section */}
-        <div className={`mb-12 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-3xl p-8 shadow-2xl text-white text-center">
-            <Sparkles className="w-12 h-12 mx-auto mb-4" />
-            <h2 className="text-3xl font-bold mb-4">Join My VIP List</h2>
-            <p className="mb-6 text-lg opacity-90">
-              Get exclusive content, early access to courses, and special offers delivered to your inbox!
+        {/* Newsletter Section - Newspaper Style */}
+        <div className={`mb-12 border-t-4 border-black pt-8 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <div className="border-4 border-black p-8 bg-white text-center">
+            <h2 className="text-4xl font-black uppercase tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+              Join The List
+            </h2>
+            <p className="text-sm text-gray-600 uppercase tracking-widest mb-4">VIP Newsletter</p>
+            <p className="mb-6 text-gray-700 max-w-2xl mx-auto">
+              Get exclusive content, early access, and special offers delivered to your inbox!
             </p>
             
             {newsletterStatus === 'success' ? (
-              <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 max-w-md mx-auto border border-white/30">
+              <div className="border-4 border-black p-6 max-w-md mx-auto bg-white">
                 <div className="text-5xl mb-4">🎉</div>
-                <h3 className="text-2xl font-bold mb-2">You're In!</h3>
-                <p className="opacity-90">Welcome to the VIP list! Check your inbox for a welcome email. 💕</p>
+                <h3 className="text-2xl font-black uppercase mb-2">You're In!</h3>
+                <p className="text-gray-700">Welcome to the VIP list! Check your inbox for a welcome email.</p>
               </div>
             ) : (
               <form 
@@ -2137,25 +1855,25 @@ export default function CreatorLandingPage() {
                     setNewsletterEmail(e.target.value);
                     if (newsletterStatus === 'error') setNewsletterStatus('');
                   }}
-                  className={`flex-1 px-6 py-4 rounded-full text-gray-800 focus:outline-none focus:ring-4 transition-all ${
+                  className={`flex-1 px-6 py-4 border-2 border-black text-gray-800 focus:outline-none focus:ring-2 focus:ring-black transition-all ${
                     newsletterStatus === 'error' 
-                      ? 'ring-4 ring-red-400 focus:ring-red-400' 
-                      : 'focus:ring-white/50'
+                      ? 'border-red-600 ring-2 ring-red-400' 
+                      : ''
                   }`}
                   required
                 />
                 <button 
                   type="submit"
                   disabled={newsletterStatus === 'loading'}
-                  className={`px-8 py-4 rounded-full font-bold transition-all shadow-lg flex items-center justify-center gap-2 ${
+                  className={`px-8 py-4 border-2 border-black font-bold text-sm uppercase tracking-wide transition-all flex items-center justify-center gap-2 ${
                     newsletterStatus === 'loading'
-                      ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                      : 'bg-white text-purple-600 hover:bg-pink-50 hover:scale-105'
+                      ? 'bg-gray-300 text-gray-500 cursor-not-allowed border-gray-400'
+                      : 'bg-black text-white hover:bg-gray-800'
                   }`}
                 >
                   {newsletterStatus === 'loading' ? (
                     <>
-                      <div className="w-5 h-5 border-2 border-purple-600 border-t-transparent rounded-full animate-spin"></div>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                       Joining...
                     </>
                   ) : (
@@ -2166,35 +1884,40 @@ export default function CreatorLandingPage() {
             )}
             
             {newsletterStatus === 'error' && (
-              <p className="mt-3 text-yellow-200 text-sm font-medium">
-                Please enter a valid email address 💕
+              <p className="mt-3 text-red-600 text-sm font-bold uppercase">
+                Please enter a valid email address
               </p>
             )}
             
             {newsletterStatus !== 'success' && (
-              <p className="mt-4 text-sm opacity-75">No spam, ever! Unsubscribe anytime.</p>
+              <p className="mt-4 text-sm text-gray-600">No spam, ever! Unsubscribe anytime.</p>
             )}
           </div>
         </div>
 
-        {/* Footer */}
-        <div className={`text-center transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <p className="text-gray-600 mb-4">
-            Made with <Heart className="inline w-4 h-4 text-pink-500 fill-pink-500" /> by Sydney @itgirlsyd19
+        {/* Footer - Newspaper Style */}
+        <div className={`border-t-4 border-black pt-8 text-center ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <p className="text-sm uppercase tracking-widest font-bold mb-2">IT GIRL</p>
+          <p className="text-gray-600 mb-4 text-sm">
+            © 2025 IT GIRL • All Rights Reserved
           </p>
-          <p className="text-sm text-gray-500">
-            © 2025 All Rights Reserved • <a href="#" className="hover:text-pink-500 transition-colors">Privacy Policy</a> • <a href="#" className="hover:text-pink-500 transition-colors">Terms</a>
-          </p>
+          <div className="flex items-center justify-center gap-4 text-xs text-gray-500 uppercase tracking-wide">
+            <a href="#" className="hover:text-black hover:underline transition-colors">Privacy</a>
+            <span>•</span>
+            <a href="#" className="hover:text-black hover:underline transition-colors">Terms</a>
+            <span>•</span>
+            <a href="mailto:sydney@itgirlsydcontent.com" className="hover:text-black hover:underline transition-colors">Contact</a>
+          </div>
         </div>
       </div>
 
-      {/* Floating Support Button */}
+      {/* Floating Support Button - Newspaper Style */}
       <button
         onClick={() => setShowSupportPopup(true)}
-        className="fixed bottom-8 right-8 z-40 bg-gradient-to-r from-pink-500 to-purple-600 text-white p-4 rounded-full shadow-2xl hover:shadow-pink-500/50 hover:scale-110 transition-all duration-300 flex items-center gap-2 group"
+        className="fixed bottom-8 right-8 z-40 bg-black text-white p-4 border-4 border-black hover:bg-gray-800 transition-all duration-300 flex items-center gap-2 group font-bold text-sm uppercase tracking-wide"
       >
-        <Heart className="w-6 h-6 fill-white group-hover:animate-pulse" />
-        <span className="font-bold hidden sm:inline">Support Me</span>
+        <Heart className="w-5 h-5 fill-white" />
+        <span className="hidden sm:inline">Support</span>
       </button>
 
       {/* Support Popup Modal */}
