@@ -1,5 +1,4 @@
-// Payment Configuration for IT Girl Academy
-// Supports: Perspective Funnel & Stripe Payment Links
+// Stripe Configuration for IT Girl Academy
 // 
 // HOW TO SET UP STRIPE PAYMENT LINKS:
 // 1. Go to https://dashboard.stripe.com/payment-links
@@ -13,41 +12,7 @@
 // PRE-ORDER PRICING (until January 1st, 2025)
 // After launch, update to regular prices
 
-// Perspective Funnel Links - ACTIVE!
-export const PERSPECTIVE_PAYMENT_LINKS = {
-  'filmmaking-masterclass': {
-    price: 99.99,
-    preorderPrice: 79.99,
-    paymentLink: 'https://perspectivefunnel.co/698a3f5b078d433910e9d183/698a3ff712c2e59a41888d3c/',
-  },
-  'creator-business-toolkit': {
-    price: 19.99,
-    preorderPrice: 14.99,
-    paymentLink: 'https://perspectivefunnel.co/698a3f5b078d433910e9d183/698a3ff712c2e59a41888d3c/',
-  },
-  'ugc-starter-kit': {
-    price: 24.99,
-    preorderPrice: 19.99,
-    paymentLink: 'https://perspectivefunnel.co/698a3f5b078d433910e9d183/698a3ff712c2e59a41888d3c/',
-  },
-  'hair-brand-outreach': {
-    price: 14.99,
-    preorderPrice: 9.99,
-    paymentLink: 'https://perspectivefunnel.co/698a3f5b078d433910e9d183/698a3ff712c2e59a41888d3c/',
-  },
-  // Bundles - THE BEST DEAL!
-  'all-courses-bundle': {
-    price: 159.97,
-    preorderPrice: 99.99,
-    paymentLink: 'https://perspectivefunnel.co/698a3f5b078d433910e9d183/698a3ff712c2e59a41888d3c/',
-  },
-};
-
-// Payment Provider Selection
-// Set to 'perspective' to use Perspective funnel, or 'stripe' to use Stripe
-export const PAYMENT_PROVIDER = 'perspective';
-
-// Stripe Payment Links - FALLBACK
+// Stripe Payment Links - LIVE!
 export const STRIPE_PAYMENT_LINKS = {
   // Courses - PRE-ORDER PRICES (early bird discount!)
   'filmmaking-masterclass': {
@@ -84,24 +49,8 @@ export const STRIPE_URLS = {
   cancelUrl: window.location.origin + '/academy?purchase=cancelled',
 };
 
-// Helper function to redirect to Perspective Funnel or Stripe Payment Link
+// Helper function to redirect to Stripe Payment Link
 export function redirectToCheckout(courseId) {
-  // Use Perspective if configured
-  if (PAYMENT_PROVIDER === 'perspective') {
-    const config = PERSPECTIVE_PAYMENT_LINKS[courseId];
-    
-    if (!config || !config.paymentLink) {
-      // Demo mode - simulate purchase
-      console.log('Demo mode: Simulating purchase for', courseId);
-      return { demo: true, courseId };
-    }
-    
-    // Redirect to Perspective funnel
-    window.location.href = config.paymentLink;
-    return { demo: false, provider: 'perspective' };
-  }
-  
-  // Fallback to Stripe
   const config = STRIPE_PAYMENT_LINKS[courseId];
   
   if (!config || !config.paymentLink || config.paymentLink === 'YOUR_STRIPE_PAYMENT_LINK_HERE') {
@@ -116,7 +65,7 @@ export function redirectToCheckout(courseId) {
   
   // Redirect to Stripe
   window.location.href = url.toString();
-  return { demo: false, provider: 'stripe' };
+  return { demo: false };
 }
 
 // Check if returning from successful Stripe payment

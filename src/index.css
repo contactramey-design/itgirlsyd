@@ -8,13 +8,6 @@
   font-weight: 400;
 }
 
-/* Newspaper Typography */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap');
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', Georgia, serif;
-}
-
 body {
   margin: 0;
   min-width: 320px;
@@ -44,16 +37,6 @@ body {
 
 .animate-in {
   animation: slide-in-from-top 0.3s ease-out;
-}
-
-/* Hide scrollbar for category carousel */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
 }
 
 /* Hacker/Gaming theme animations */
