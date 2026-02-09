@@ -443,6 +443,106 @@ Best regards,
           </div>
         </div>
 
+        {/* Makeup Videos Section */}
+        <div className={`mb-12 border-t border-gray-200 pt-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="mb-6">
+            <h2 className="text-4xl font-black tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+              Makeup Videos
+            </h2>
+            <p className="text-sm text-gray-500 uppercase tracking-widest mb-4">Tutorials & Looks</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Placeholder for video embeds */}
+            <div className="border-2 border-gray-200 rounded-xl p-4 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
+              <div className="aspect-video bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
+                <Video className="w-12 h-12 text-gray-400" />
+              </div>
+              <h3 className="font-bold mb-1">Everyday Glam Look</h3>
+              <p className="text-sm text-gray-600">Quick 5-minute makeup routine</p>
+            </div>
+            <div className="border-2 border-gray-200 rounded-xl p-4 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
+              <div className="aspect-video bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
+                <Video className="w-12 h-12 text-gray-400" />
+              </div>
+              <h3 className="font-bold mb-1">Full Glam Tutorial</h3>
+              <p className="text-sm text-gray-600">Complete step-by-step guide</p>
+            </div>
+            <div className="border-2 border-gray-200 rounded-xl p-4 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
+              <div className="aspect-video bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
+                <Video className="w-12 h-12 text-gray-400" />
+              </div>
+              <h3 className="font-bold mb-1">Natural Makeup Look</h3>
+              <p className="text-sm text-gray-600">Fresh-faced everyday beauty</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Hair Care Routines Section */}
+        <div className={`mb-12 border-t border-gray-200 pt-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="mb-6">
+            <h2 className="text-4xl font-black tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+              Hair Care Routines
+            </h2>
+            <p className="text-sm text-gray-500 uppercase tracking-widest mb-4">Healthy Hair Tips</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="border-2 border-gray-200 rounded-xl p-4 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
+              <div className="aspect-video bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
+                <Video className="w-12 h-12 text-gray-400" />
+              </div>
+              <h3 className="font-bold mb-1">Wash Day Routine</h3>
+              <p className="text-sm text-gray-600">Complete hair care process</p>
+            </div>
+            <div className="border-2 border-gray-200 rounded-xl p-4 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
+              <div className="aspect-video bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
+                <Video className="w-12 h-12 text-gray-400" />
+              </div>
+              <h3 className="font-bold mb-1">Styling Tips</h3>
+              <p className="text-sm text-gray-600">Easy everyday hairstyles</p>
+            </div>
+            <div className="border-2 border-gray-200 rounded-xl p-4 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
+              <div className="aspect-video bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
+                <Video className="w-12 h-12 text-gray-400" />
+              </div>
+              <h3 className="font-bold mb-1">Protective Styles</h3>
+              <p className="text-sm text-gray-600">Maintaining healthy hair</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Skincare Routines Section */}
+        <div className={`mb-12 border-t border-gray-200 pt-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="mb-6">
+            <h2 className="text-4xl font-black tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+              Skincare Routines
+            </h2>
+            <p className="text-sm text-gray-500 uppercase tracking-widest mb-4">Glow Up Your Skin</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="border-2 border-gray-200 rounded-xl p-4 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
+              <div className="aspect-video bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
+                <Video className="w-12 h-12 text-gray-400" />
+              </div>
+              <h3 className="font-bold mb-1">Morning Routine</h3>
+              <p className="text-sm text-gray-600">Start your day right</p>
+            </div>
+            <div className="border-2 border-gray-200 rounded-xl p-4 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
+              <div className="aspect-video bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
+                <Video className="w-12 h-12 text-gray-400" />
+              </div>
+              <h3 className="font-bold mb-1">Nighttime Routine</h3>
+              <p className="text-sm text-gray-600">Evening skincare essentials</p>
+            </div>
+            <div className="border-2 border-gray-200 rounded-xl p-4 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
+              <div className="aspect-video bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
+                <Video className="w-12 h-12 text-gray-400" />
+              </div>
+              <h3 className="font-bold mb-1">Product Reviews</h3>
+              <p className="text-sm text-gray-600">Honest skincare reviews</p>
+            </div>
+          </div>
+        </div>
+
         {/* Editor's Picks - Shop My Picks */}
         <div className={`mb-12 border-t border-gray-200 pt-12 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="mb-6">
@@ -475,11 +575,11 @@ Best regards,
                   />
                 </div>
                 <div className="p-3">
-                  <h3 className="font-bold text-sm mb-1 line-clamp-2 group-hover:text-white">
+                  <h3 className="font-bold text-sm mb-1 line-clamp-2">
                     {product.name}
                   </h3>
-                  <p className="text-xs text-gray-600 group-hover:text-gray-300 mb-2 line-clamp-1">{product.description}</p>
-                  <div className="font-bold text-sm group-hover:text-white">{product.price}</div>
+                  <p className="text-xs text-gray-600 mb-2 line-clamp-1">{product.description}</p>
+                  <div className="font-bold text-sm">{product.price}</div>
                 </div>
               </div>
             ))}
@@ -490,7 +590,7 @@ Best regards,
               href="https://www.amazon.com/shop/itgirlsyd19"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block border-2 border-black px-6 py-3 font-bold text-sm uppercase tracking-wide hover:bg-black hover:text-white transition-all"
+              className="inline-block border-2 border-gray-300 rounded-lg px-6 py-3 font-semibold text-sm hover:border-gray-400 hover:bg-gray-50 transition-all"
             >
               View Full Storefront →
             </a>
@@ -1069,28 +1169,44 @@ function BusinessHubPage({ onBack, onNavigateToContentForm, onNavigateToTechGuid
 
   const businessServices = [
     {
-      title: 'Business & Tech Guides (FREE)',
-      icon: FileText,
-      description: 'Complete toolkit - AI tools, code editors, design apps & more',
-      color: 'from-cyan-400 to-blue-500',
-      glowColor: 'group-hover:shadow-cyan-500/50',
-      url: '#tech-guides'
-    },
-    {
-      title: 'Content Creation Services',
-      icon: Edit3,
-      description: 'Custom landing pages, video editing & 1-on-1 consulting',
-      color: 'from-purple-400 to-pink-500',
-      glowColor: 'group-hover:shadow-purple-500/50',
-      url: '#content-form'
+      title: 'Fiverr Services',
+      icon: Briefcase,
+      description: 'Professional services on Fiverr - web design, content creation & more',
+      color: 'from-green-400 to-emerald-500',
+      glowColor: 'group-hover:shadow-green-500/50',
+      url: 'https://www.fiverr.com/itgirlsyd'
     },
     {
       title: 'Notary Services',
       icon: Lock,
       description: 'Professional notary services for your business needs',
-      color: 'from-green-400 to-emerald-500',
-      glowColor: 'group-hover:shadow-green-500/50',
+      color: 'from-blue-400 to-indigo-500',
+      glowColor: 'group-hover:shadow-blue-500/50',
       url: 'https://notarize.la'
+    },
+    {
+      title: 'Skool Community',
+      icon: Users,
+      description: 'Join our exclusive Skool community for business & tech resources',
+      color: 'from-purple-400 to-pink-500',
+      glowColor: 'group-hover:shadow-purple-500/50',
+      url: 'https://skool.com/itgirl'
+    },
+    {
+      title: 'Website Design Services',
+      icon: Globe,
+      description: 'Custom website design & development for your business',
+      color: 'from-cyan-400 to-blue-500',
+      glowColor: 'group-hover:shadow-cyan-500/50',
+      url: '#content-form'
+    },
+    {
+      title: 'Business & Tech Guides (FREE)',
+      icon: FileText,
+      description: 'Complete toolkit - AI tools, code editors, design apps & more',
+      color: 'from-orange-400 to-red-500',
+      glowColor: 'group-hover:shadow-orange-500/50',
+      url: '#tech-guides'
     },
   ];
 
@@ -1572,6 +1688,118 @@ export default function CreatorLandingPage() {
     return <BusinessTechGuides onBack={() => setCurrentPage('business')} />;
   }
 
+  // Render Shop Page
+  if (currentPage === 'shop') {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-pink-50/30 relative">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-8">
+          <button
+            onClick={navigateHome}
+            className="mb-8 flex items-center gap-2 text-gray-600 hover:text-black transition-colors border-2 border-gray-300 rounded-lg px-4 py-2 hover:bg-gray-50"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            <span className="font-semibold text-sm">Back to Home</span>
+          </button>
+          <div className="text-center mb-8">
+            <h1 className="text-5xl font-black tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+              Style Studio & Shop
+            </h1>
+            <p className="text-sm text-gray-500 uppercase tracking-widest">Avatar Customizer • Lounge Sets • Ebooks</p>
+          </div>
+
+          {/* Avatar Customizer Section */}
+          <div className="mb-12 border-t border-gray-200 pt-12">
+            <h2 className="text-3xl font-black tracking-tight mb-4" style={{ fontFamily: 'Georgia, serif' }}>
+              Avatar Customizer
+            </h2>
+            <p className="text-gray-600 mb-6">Create your virtual avatar. Subscribe to unlock advanced customization!</p>
+            <AvatarCustomizer />
+          </div>
+
+          {/* Lounge Sets Section */}
+          <div className="mb-12 border-t border-gray-200 pt-12">
+            <h2 className="text-3xl font-black tracking-tight mb-4" style={{ fontFamily: 'Georgia, serif' }}>
+              Lounge Sets
+            </h2>
+            <p className="text-gray-600 mb-6">Comfortable, stylish loungewear for your everyday glow</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {/* Placeholder for lounge sets */}
+              <div className="border-2 border-gray-200 rounded-xl p-4 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
+                <div className="aspect-square bg-gray-100 rounded-lg mb-3"></div>
+                <h3 className="font-bold text-sm mb-1">Cozy Lounge Set</h3>
+                <p className="text-sm text-gray-600 mb-2">$49.99</p>
+                <button className="w-full bg-black text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-gray-800 transition-all">
+                  Shop Now
+                </button>
+              </div>
+              <div className="border-2 border-gray-200 rounded-xl p-4 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
+                <div className="aspect-square bg-gray-100 rounded-lg mb-3"></div>
+                <h3 className="font-bold text-sm mb-1">Matching Set</h3>
+                <p className="text-sm text-gray-600 mb-2">$59.99</p>
+                <button className="w-full bg-black text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-gray-800 transition-all">
+                  Shop Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Ebooks Section */}
+          <div className="mb-12 border-t border-gray-200 pt-12">
+            <h2 className="text-3xl font-black tracking-tight mb-4" style={{ fontFamily: 'Georgia, serif' }}>
+              Ebooks
+            </h2>
+            <p className="text-gray-600 mb-6">Digital guides for beauty, business, and lifestyle</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Placeholder for ebooks */}
+              <div className="border-2 border-gray-200 rounded-xl p-6 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
+                <div className="aspect-[3/4] bg-gray-100 rounded-lg mb-4"></div>
+                <h3 className="font-bold text-lg mb-2">Beauty Guide</h3>
+                <p className="text-sm text-gray-600 mb-4">Complete beauty routine guide</p>
+                <p className="text-xl font-bold mb-4">$9.99</p>
+                <button className="w-full bg-black text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-gray-800 transition-all">
+                  Purchase
+                </button>
+              </div>
+              <div className="border-2 border-gray-200 rounded-xl p-6 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
+                <div className="aspect-[3/4] bg-gray-100 rounded-lg mb-4"></div>
+                <h3 className="font-bold text-lg mb-2">Business Blueprint</h3>
+                <p className="text-sm text-gray-600 mb-4">Start your side hustle</p>
+                <p className="text-xl font-bold mb-4">$14.99</p>
+                <button className="w-full bg-black text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-gray-800 transition-all">
+                  Purchase
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Render Avatar Page (same as shop but focused on avatar)
+  if (currentPage === 'avatar') {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-pink-50/30 relative">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-8">
+          <button
+            onClick={navigateHome}
+            className="mb-8 flex items-center gap-2 text-gray-600 hover:text-black transition-colors border-2 border-gray-300 rounded-lg px-4 py-2 hover:bg-gray-50"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            <span className="font-semibold text-sm">Back to Home</span>
+          </button>
+          <div className="text-center mb-8">
+            <h1 className="text-5xl font-black tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+              Style Studio
+            </h1>
+            <p className="text-sm text-gray-500 uppercase tracking-widest">Create Your Virtual Avatar</p>
+          </div>
+          <AvatarCustomizer />
+        </div>
+      </div>
+    );
+  }
+
 
   // Render Main Landing Page
   const currentDate = new Date().toLocaleDateString('en-US', { 
@@ -1824,36 +2052,6 @@ export default function CreatorLandingPage() {
           </div>
         </div>
 
-
-        {/* Outfit Spinner - Side Addition */}
-        <div className="mb-12 border-t-4 border-black pt-8">
-          <OutfitSpinner 
-            onEmailSubmit={async (email) => {
-              try {
-                const response = await fetch('/api/subscribe', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({
-                    email,
-                    source: 'Outfit Spinner - Homepage',
-                    date: new Date().toISOString()
-                  })
-                });
-                if (response.ok) {
-                  setNewsletterStatus('success');
-                  setNewsletterEmail(email);
-                }
-              } catch (error) {
-                console.error('Subscription error:', error);
-              }
-              // Fallback to localStorage
-              const subscribers = JSON.parse(localStorage.getItem('vip_subscribers') || '[]');
-              subscribers.push({ email, date: new Date().toISOString(), source: 'Outfit Spinner' });
-              localStorage.setItem('vip_subscribers', JSON.stringify(subscribers));
-              return true;
-            }}
-          />
-        </div>
 
         {/* Social Media - Modern Style */}
         <div className="mb-12 border-t border-gray-200 pt-12">

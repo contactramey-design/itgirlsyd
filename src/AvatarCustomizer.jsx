@@ -332,7 +332,24 @@ export default function AvatarCustomizer() {
         <h2 className="text-4xl font-black tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
           Style Studio
         </h2>
-        <p className="text-sm text-gray-500 uppercase tracking-widest">Create Your Look</p>
+        <p className="text-sm text-gray-500 uppercase tracking-widest mb-4">Create Your Look</p>
+        {!isSubscribed && (
+          <div className="bg-gradient-to-r from-pink-50 to-purple-50 border-2 border-pink-200 rounded-xl p-4 max-w-2xl mx-auto mb-6">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <Lock className="w-5 h-5 text-pink-600" />
+              <p className="font-semibold text-pink-900">Subscribe to Unlock Advanced Customization</p>
+            </div>
+            <p className="text-sm text-gray-700">
+              With a subscription, customize your avatar's skin color, hair style, and more to look just like you!
+            </p>
+            <button
+              onClick={() => setShowSubscribeModal(true)}
+              className="mt-3 bg-black text-white px-6 py-2 rounded-lg font-semibold text-sm hover:bg-gray-800 transition-all"
+            >
+              Subscribe Now
+            </button>
+          </div>
+        )}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
