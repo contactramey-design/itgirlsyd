@@ -225,7 +225,7 @@ Best regards,
                   </a>
                   <span className="text-yellow-300 text-sm font-medium flex items-center gap-1">
                     <Star className="w-4 h-4 fill-yellow-300" />
-                    Sydney's Pick!
+                    IT Girl's Pick!
                   </span>
                 </div>
               </div>
@@ -491,7 +491,7 @@ Best regards,
           <div className="flex items-center justify-center gap-2 mb-3">
             <Heart className="w-5 h-5 text-pink-500 fill-pink-500 animate-pulse" />
             <p className="text-pink-600 font-semibold">
-              Made with love by Sydney
+              Made with love by IT Girl
             </p>
             <Heart className="w-5 h-5 text-pink-500 fill-pink-500 animate-pulse" />
           </div>
@@ -1431,7 +1431,7 @@ export default function CreatorLandingPage() {
           <div className="relative inline-block mb-6" style={{ width: '128px', height: '128px', pointerEvents: 'none' }}>
             <img
               src="/profile.png"
-              alt="Sydney"
+              alt="IT Girl"
               className="w-32 h-32 rounded-full border-4 border-white object-cover mx-auto"
               style={{ 
                 filter: 'drop-shadow(0 4px 6px -1px rgba(0, 0, 0, 0.1))',
@@ -1445,7 +1445,7 @@ export default function CreatorLandingPage() {
           </div>
           
           <h1 className="text-5xl font-bold bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 bg-clip-text text-transparent mb-4">
-            Sydney
+            IT Girl
           </h1>
           
           <p className="text-xl text-gray-700 mb-6 font-medium">
@@ -1523,7 +1523,7 @@ export default function CreatorLandingPage() {
                 <div className="space-y-3">
                   {/* Send Email - Big CTA */}
                   <a
-                    href="mailto:sydney@itgirlsydcontent.com?subject=Brand Collaboration Inquiry&body=Hi Sydney!%0A%0AI'd love to discuss a potential collaboration with you.%0A%0ABrand/Company:%0AType of Collaboration:%0ATimeline:%0ABudget Range:%0A%0ALooking forward to hearing from you!"
+                    href="mailto:sydney@itgirlsydcontent.com?subject=Brand Collaboration Inquiry&body=Hi IT Girl!%0A%0AI'd love to discuss a potential collaboration with you.%0A%0ABrand/Company:%0AType of Collaboration:%0ATimeline:%0ABudget Range:%0A%0ALooking forward to hearing from you!"
                     className="flex items-center justify-center gap-3 w-full bg-gradient-to-r from-purple-600 to-pink-500 text-white px-6 py-4 rounded-xl font-bold text-lg hover:shadow-lg hover:scale-[1.01] transition-all"
                   >
                     <Mail className="w-6 h-6" />
@@ -2010,7 +2010,7 @@ export default function CreatorLandingPage() {
         {/* Footer */}
         <div className={`text-center transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <p className="text-gray-600 mb-4">
-            Made with <Heart className="inline w-4 h-4 text-pink-500 fill-pink-500" /> by Sydney @itgirlsyd19
+            Made with <Heart className="inline w-4 h-4 text-pink-500 fill-pink-500" /> by IT Girl @itgirlsyd19
           </p>
           <p className="text-sm text-gray-500">
             © 2025 All Rights Reserved • <a href="#" className="hover:text-pink-500 transition-colors">Privacy Policy</a> • <a href="#" className="hover:text-pink-500 transition-colors">Terms</a>
