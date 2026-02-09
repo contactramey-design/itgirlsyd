@@ -150,8 +150,8 @@ Best regards,
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
           {/* Vanity mirror frame */}
           <div className="relative inline-block mb-8">
-            <div className="absolute inset-0 bg-gradient-to-r from-pink-300 via-rose-300 to-purple-300 rounded-2xl blur-2xl opacity-40 pointer-events-none" />
-            <div className="relative bg-white rounded-2xl p-8 shadow-2xl border border-pink-200">
+            <div className="absolute inset-0 bg-gradient-to-r from-pink-300 via-rose-300 to-purple-300 rounded-2xl blur-xl opacity-30 pointer-events-none" />
+            <div className="relative bg-white rounded-2xl p-8 shadow-lg border border-pink-200">
               <div className="flex items-center justify-center gap-6 mb-6">
                 <Palette className="w-16 h-16 text-pink-500" />
                 <Shirt className="w-20 h-20 text-rose-400" />
@@ -1434,7 +1434,7 @@ export default function CreatorLandingPage() {
               alt="Sydney"
               className="w-32 h-32 rounded-full border-4 border-white object-cover mx-auto"
               style={{ 
-                filter: 'drop-shadow(0 25px 50px -12px rgba(0, 0, 0, 0.25))',
+                filter: 'drop-shadow(0 4px 6px -1px rgba(0, 0, 0, 0.1))',
                 pointerEvents: 'none',
                 display: 'block'
               }}
