@@ -1,0 +1,33 @@
+{
+  "name": "itgirlcontent",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "homepage": "https://itgirlcontent.com",
+  "description": "IT Girl Content - Beauty, Fashion, Lifestyle & Creator Courses by Sydney",
+  "author": "Sydney Ramey",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "vite build && vercel --prod"
+  },
+  "dependencies": {
+    "@aws-sdk/credential-providers": "^3.450.0",
+    "@stripe/stripe-js": "^8.6.0",
+    "axios": "^1.6.0",
+    "lucide-react": "^0.263.1",
+    "paapi5-nodejs-sdk": "^1.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.3",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.27",
+    "tailwindcss": "^3.3.3",
+    "vite": "^4.4.5"
+  }
+}
