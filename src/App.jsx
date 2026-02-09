@@ -111,30 +111,12 @@ Best regards,
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-rose-50 to-purple-100 relative overflow-hidden">
-      {/* Sparkle overlay */}
-      <div className="fixed inset-0 pointer-events-none">
-        {[...Array(50)].map((_, i) => (
-          <Star
-            key={i}
-            className="absolute text-pink-300 animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              opacity: Math.random() * 0.6 + 0.2,
-              fontSize: `${Math.random() * 20 + 10}px`
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Glowing pink orbs */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" />
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-rose-300 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" style={{ animationDelay: '2s' }} />
-      </div>
+    <div className="min-h-screen bg-white relative overflow-hidden">
+      {/* Newspaper Grid Background */}
+      <div className="fixed inset-0 pointer-events-none opacity-5" style={{
+        backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, #000 2px, #000 3px)',
+        backgroundSize: '100% 40px'
+      }}></div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-12">
         {/* Back Button */}
@@ -1489,31 +1471,75 @@ export default function CreatorLandingPage() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-8">
         {/* Newspaper Masthead */}
-        <div className="border-b-4 border-black mb-6 pb-4">
-          <div className="text-center">
-            <h1 className="text-7xl md:text-9xl font-black tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
-              IT GIRL
+        <div className="border-b-4 border-black mb-6 pb-4 relative">
+          {/* Decorative elements */}
+          <div className="absolute top-0 left-0 w-2 h-full bg-black"></div>
+          <div className="absolute top-0 right-0 w-2 h-full bg-black"></div>
+          <div className="text-center relative">
+            {/* Hero Image Placeholder */}
+            <div className="mb-4 aspect-[16/6] border-4 border-black overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 relative group">
+              <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1200')] bg-cover bg-center group-hover:scale-105 transition-transform duration-700"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <p className="text-xs uppercase tracking-widest mb-1 opacity-90">Featured Story</p>
+                <p className="text-lg md:text-xl font-bold">From Scroll to Empire: The IT Girl Journey</p>
+              </div>
+            </div>
+            <h1 className="text-7xl md:text-9xl font-black tracking-tight mb-2 hover:scale-105 transition-transform cursor-default relative inline-block group" style={{ fontFamily: 'Georgia, serif' }}>
+              <span className="relative z-10">IT GIRL</span>
+              {/* Decorative underline on hover */}
+              <span className="absolute bottom-0 left-0 w-0 h-1 bg-black group-hover:w-full transition-all duration-500"></span>
             </h1>
             <div className="flex items-center justify-between text-sm text-gray-600 border-t border-b border-gray-400 py-2 mt-2">
-              <span>VOL. 1, NO. 1</span>
-              <span className="uppercase font-semibold">{currentDate}</span>
-              <span>BEAUTY • TECH • EMPIRE</span>
+              <span className="hover:text-black transition-colors cursor-default">VOL. 1, NO. 1</span>
+              <span className="uppercase font-semibold hover:text-black transition-colors cursor-default">{currentDate}</span>
+              <span className="hover:text-black transition-colors cursor-default">BEAUTY • TECH • EMPIRE</span>
             </div>
           </div>
         </div>
 
-        {/* Navigation Bar - Newspaper Style */}
+        {/* Navigation Bar - Newspaper Style with Hover Effects */}
         <nav className="border-b-2 border-black mb-8 pb-3">
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-semibold uppercase tracking-wider">
-            <button onClick={() => setCurrentPage('home')} className="hover:underline">Home</button>
+            <button 
+              onClick={() => setCurrentPage('home')} 
+              className="hover:underline hover:scale-110 transition-transform relative group px-2"
+            >
+              Home
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all"></span>
+            </button>
             <span className="text-gray-400">|</span>
-            <button onClick={() => handleCategoryClick('beauty', 'Beauty')} className="hover:underline">Beauty</button>
+            <button 
+              onClick={() => handleCategoryClick('beauty', 'Beauty')} 
+              className="hover:underline hover:scale-110 transition-transform relative group px-2"
+            >
+              Beauty
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all"></span>
+            </button>
             <span className="text-gray-400">|</span>
-            <button onClick={() => handleCategoryClick('business', 'Tech')} className="hover:underline">Tech</button>
+            <button 
+              onClick={() => handleCategoryClick('business', 'Tech')} 
+              className="hover:underline hover:scale-110 transition-transform relative group px-2"
+            >
+              Tech
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all"></span>
+            </button>
             <span className="text-gray-400">|</span>
-            <button onClick={() => setCurrentPage('partnerships')} className="hover:underline">Partnerships</button>
+            <button 
+              onClick={() => setCurrentPage('partnerships')} 
+              className="hover:underline hover:scale-110 transition-transform relative group px-2"
+            >
+              Partnerships
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all"></span>
+            </button>
             <span className="text-gray-400">|</span>
-            <button onClick={() => setCurrentPage('mediakit')} className="hover:underline">Media Kit</button>
+            <button 
+              onClick={() => setCurrentPage('mediakit')} 
+              className="hover:underline hover:scale-110 transition-transform relative group px-2"
+            >
+              Media Kit
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all"></span>
+            </button>
           </div>
         </nav>
 
@@ -1622,13 +1648,20 @@ export default function CreatorLandingPage() {
         )}
 
         {/* Breaking News Banner - TikTok Live Battle */}
-        <div className={`mb-8 border-4 border-black bg-black text-white p-4 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <div className="flex items-center justify-between flex-wrap gap-4">
-            <div className="flex items-center gap-3">
-              <div className="w-4 h-4 bg-red-600 animate-pulse"></div>
+        <div className={`mb-8 border-4 border-black bg-black text-white p-4 relative overflow-hidden group ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          {/* Animated background pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.1)_50%,transparent_75%)] bg-[length:20px_20px] animate-pulse"></div>
+          </div>
+          <div className="relative z-10 flex items-center justify-between flex-wrap gap-4">
+            <div className="flex items-center gap-4">
+              <div className="relative">
+                <div className="w-4 h-4 bg-red-600 animate-pulse"></div>
+                <div className="absolute inset-0 w-4 h-4 bg-red-600 animate-ping opacity-75"></div>
+              </div>
               <div>
                 <div className="text-xs uppercase tracking-widest text-gray-300 mb-1">BREAKING NEWS</div>
-                <div className="text-xl md:text-2xl font-black uppercase">TikTok Live Battle Now</div>
+                <div className="text-xl md:text-2xl font-black uppercase group-hover:scale-105 transition-transform">TikTok Live Battle Now</div>
                 <div className="text-sm text-gray-300">Join & support with gifts!</div>
               </div>
             </div>
@@ -1637,7 +1670,7 @@ export default function CreatorLandingPage() {
                 href="https://www.tiktok.com/@itgirlsyd19/live"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white text-black px-6 py-2 font-bold text-sm hover:bg-gray-200 transition-all border-2 border-white"
+                className="bg-white text-black px-6 py-2 font-bold text-sm hover:bg-gray-200 transition-all border-2 border-white hover:scale-105 active:scale-95"
               >
                 JOIN LIVE →
               </a>
@@ -1645,7 +1678,7 @@ export default function CreatorLandingPage() {
                 href="https://www.tiktok.com/coin"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gray-800 text-white px-4 py-2 font-bold text-sm hover:bg-gray-700 transition-all border-2 border-gray-600"
+                className="bg-gray-800 text-white px-4 py-2 font-bold text-sm hover:bg-gray-700 transition-all border-2 border-gray-600 hover:scale-105 active:scale-95"
               >
                 GET COINS
               </a>
@@ -1677,11 +1710,11 @@ export default function CreatorLandingPage() {
         </div>
 
 
-        {/* Editorial Feed - Newspaper Columns */}
+        {/* Editorial Feed - Newspaper Columns with Visuals */}
         <div className="mb-16 border-t-4 border-black pt-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 border-l border-r border-gray-300 px-4">
             {/* Column 1: Latest Beauty */}
-            <article className="border-r border-gray-300 pr-6 last:border-r-0">
+            <article className="border-r border-gray-300 pr-6 last:border-r-0 group">
               <div className="mb-4 pb-2 border-b-2 border-black">
                 <h2 className="text-3xl font-black uppercase tracking-tight" style={{ fontFamily: 'Georgia, serif' }}>
                   Latest Beauty
@@ -1690,20 +1723,30 @@ export default function CreatorLandingPage() {
               </div>
               <button
                 onClick={() => handleCategoryClick('beauty', 'Beauty')}
-                className="text-left w-full group"
+                className="text-left w-full group/article"
               >
+                {/* Image Placeholder */}
+                <div className="mb-4 aspect-video bg-gradient-to-br from-pink-100 to-rose-100 border-4 border-black overflow-hidden group-hover:border-gray-600 transition-all">
+                  <div className="w-full h-full flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600')] bg-cover bg-center group-hover:scale-110 transition-transform duration-500">
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                    <div className="relative z-10 text-white text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <Palette className="w-12 h-12 mx-auto mb-2" />
+                      <span className="text-sm font-bold uppercase">View Beauty Content</span>
+                    </div>
+                  </div>
+                </div>
                 <div className="mb-4">
-                  <h3 className="text-xl font-bold mb-2 group-hover:underline">Routines, Tutorials & Style Inspiration</h3>
+                  <h3 className="text-xl font-bold mb-2 group-hover/article:underline">Routines, Tutorials & Style Inspiration</h3>
                   <p className="text-sm text-gray-700 leading-relaxed mb-3">
                     Discover beauty rituals that become your foundation for empire building. From everyday glam to statement looks.
                   </p>
-                  <div className="text-xs text-gray-500 uppercase tracking-wide">Read More →</div>
+                  <div className="text-xs text-gray-500 uppercase tracking-wide group-hover/article:text-black group-hover/article:font-bold transition-all">Read More →</div>
                 </div>
               </button>
             </article>
 
             {/* Column 2: Tech News */}
-            <article className="border-r border-gray-300 pr-6 last:border-r-0">
+            <article className="border-r border-gray-300 pr-6 last:border-r-0 group">
               <div className="mb-4 pb-2 border-b-2 border-black">
                 <h2 className="text-3xl font-black uppercase tracking-tight" style={{ fontFamily: 'Georgia, serif' }}>
                   Tech News
@@ -1712,20 +1755,30 @@ export default function CreatorLandingPage() {
               </div>
               <button
                 onClick={() => handleCategoryClick('business', 'Tech')}
-                className="text-left w-full group"
+                className="text-left w-full group/article"
               >
+                {/* Image Placeholder */}
+                <div className="mb-4 aspect-video bg-gradient-to-br from-purple-100 to-indigo-100 border-4 border-black overflow-hidden group-hover:border-gray-600 transition-all">
+                  <div className="w-full h-full flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600')] bg-cover bg-center group-hover:scale-110 transition-transform duration-500">
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                    <div className="relative z-10 text-white text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <Code className="w-12 h-12 mx-auto mb-2" />
+                      <span className="text-sm font-bold uppercase">Explore Tech Tools</span>
+                    </div>
+                  </div>
+                </div>
                 <div className="mb-4">
-                  <h3 className="text-xl font-bold mb-2 group-hover:underline">Tools, Hustles & Asset Strategies</h3>
+                  <h3 className="text-xl font-bold mb-2 group-hover/article:underline">Tools, Hustles & Asset Strategies</h3>
                   <p className="text-sm text-gray-700 leading-relaxed mb-3">
                     From beginner side hustles to empire asset strategies. Real tools for real growth.
                   </p>
-                  <div className="text-xs text-gray-500 uppercase tracking-wide">Read More →</div>
+                  <div className="text-xs text-gray-500 uppercase tracking-wide group-hover/article:text-black group-hover/article:font-bold transition-all">Read More →</div>
                 </div>
               </button>
             </article>
 
             {/* Column 3: Must-Have Picks */}
-            <article className="pr-6">
+            <article className="pr-6 group">
               <div className="mb-4 pb-2 border-b-2 border-black">
                 <h2 className="text-3xl font-black uppercase tracking-tight" style={{ fontFamily: 'Georgia, serif' }}>
                   Must-Have Picks
@@ -1734,58 +1787,80 @@ export default function CreatorLandingPage() {
               </div>
               <button
                 onClick={() => handleCategoryClick('beauty', 'Shop')}
-                className="text-left w-full group"
+                className="text-left w-full group/article"
               >
+                {/* Image Placeholder */}
+                <div className="mb-4 aspect-video bg-gradient-to-br from-orange-100 to-amber-100 border-4 border-black overflow-hidden group-hover:border-gray-600 transition-all">
+                  <div className="w-full h-full flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600')] bg-cover bg-center group-hover:scale-110 transition-transform duration-500">
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                    <div className="relative z-10 text-white text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <ShoppingBag className="w-12 h-12 mx-auto mb-2" />
+                      <span className="text-sm font-bold uppercase">Shop Now</span>
+                    </div>
+                  </div>
+                </div>
                 <div className="mb-4">
-                  <h3 className="text-xl font-bold mb-2 group-hover:underline">Bundles, Kits & Faves</h3>
+                  <h3 className="text-xl font-bold mb-2 group-hover/article:underline">Bundles, Kits & Faves</h3>
                   <p className="text-sm text-gray-700 leading-relaxed mb-3">
                     Curated essentials for your glow-up and empire journey. Everything I use and love.
                   </p>
-                  <div className="text-xs text-gray-500 uppercase tracking-wide">Shop Now →</div>
+                  <div className="text-xs text-gray-500 uppercase tracking-wide group-hover/article:text-black group-hover/article:font-bold transition-all">Shop Now →</div>
                 </div>
               </button>
             </article>
           </div>
         </div>
 
-        {/* Work With Me - Newspaper Style */}
+        {/* Work With Me - Newspaper Style with Visuals */}
         <div className="mb-12 border-t-4 border-black pt-8">
-          <div className="text-center mb-6">
-            <h2 className="text-4xl font-black uppercase tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
-              Work With Me
-            </h2>
-            <p className="text-sm text-gray-600 uppercase tracking-widest">Partnerships & Collaborations</p>
-          </div>
-          <div className="max-w-2xl mx-auto text-center mb-6">
-            <p className="text-gray-700 leading-relaxed">
-              Partner with a multi-platform creator. 55K+ engaged followers across beauty, wellness, lifestyle & business.
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button
-              onClick={() => setCurrentPage('partnerships')}
-              className="border-2 border-black px-6 py-3 font-bold text-sm uppercase tracking-wide hover:bg-black hover:text-white transition-all"
-            >
-              Partnership Info
-            </button>
-            <button
-              onClick={() => setCurrentPage('mediakit')}
-              className="border-2 border-black px-6 py-3 font-bold text-sm uppercase tracking-wide hover:bg-black hover:text-white transition-all"
-            >
-              Media Kit
-            </button>
-            <button
-              onClick={() => setShowCollabPopup(true)}
-              className="bg-black text-white px-6 py-3 font-bold text-sm uppercase tracking-wide hover:bg-gray-800 transition-all"
-            >
-              Contact
-            </button>
+          <div className="grid md:grid-cols-2 gap-8 items-center mb-8">
+            {/* Left: Image/Visual */}
+            <div className="aspect-square border-4 border-black overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 group order-2 md:order-1">
+              <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800')] bg-cover bg-center group-hover:scale-110 transition-transform duration-700"></div>
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
+            </div>
+            {/* Right: Content */}
+            <div className="text-center md:text-left order-1 md:order-2">
+              <h2 className="text-4xl font-black uppercase tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+                Work With Me
+              </h2>
+              <p className="text-sm text-gray-600 uppercase tracking-widest mb-4">Partnerships & Collaborations</p>
+              <p className="text-gray-700 leading-relaxed mb-6">
+                Partner with a multi-platform creator. 55K+ engaged followers across beauty, wellness, lifestyle & business.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button
+                  onClick={() => setCurrentPage('partnerships')}
+                  className="border-2 border-black px-6 py-3 font-bold text-sm uppercase tracking-wide hover:bg-black hover:text-white transition-all hover:scale-105 active:scale-95"
+                >
+                  Partnership Info
+                </button>
+                <button
+                  onClick={() => setCurrentPage('mediakit')}
+                  className="border-2 border-black px-6 py-3 font-bold text-sm uppercase tracking-wide hover:bg-black hover:text-white transition-all hover:scale-105 active:scale-95"
+                >
+                  Media Kit
+                </button>
+                <button
+                  onClick={() => setShowCollabPopup(true)}
+                  className="bg-black text-white px-6 py-3 font-bold text-sm uppercase tracking-wide hover:bg-gray-800 transition-all hover:scale-105 active:scale-95"
+                >
+                  Contact
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Newsletter Section - Newspaper Style */}
+        {/* Newsletter Section - Newspaper Style with Visual */}
         <div className={`mb-12 border-t-4 border-black pt-8 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <div className="border-4 border-black p-8 bg-white text-center">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            {/* Left: Visual */}
+            <div className="aspect-square border-4 border-black overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 hidden md:block group">
+              <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800')] bg-cover bg-center group-hover:scale-110 transition-transform duration-700"></div>
+            </div>
+            {/* Right: Form */}
+            <div className="border-4 border-black p-8 bg-white text-center">
             <h2 className="text-4xl font-black uppercase tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
               Join The List
             </h2>
@@ -1892,6 +1967,7 @@ export default function CreatorLandingPage() {
             {newsletterStatus !== 'success' && (
               <p className="mt-4 text-sm text-gray-600">No spam, ever! Unsubscribe anytime.</p>
             )}
+            </div>
           </div>
         </div>
 
