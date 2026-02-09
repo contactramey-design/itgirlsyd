@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Heart, Instagram, Youtube, Twitter, Mail, ShoppingBag, Crown, Sparkles, Star, Link as LinkIcon, Lock, TrendingUp, Palette, Briefcase, Activity, Home, Cookie, Scissors, Brain, Dumbbell, UtensilsCrossed, Terminal, Code, Zap, Rocket, DollarSign, FileText, Edit3, Users, ArrowLeft, Cpu, Database, Globe, Shirt, Smile, Gem, Wand2, Camera, Video, Target, Award, GraduationCap, BookOpen, ChevronRight } from 'lucide-react';
+import { Heart, Instagram, Youtube, Twitter, Mail, ShoppingBag, Crown, Sparkles, Star, Link as LinkIcon, Lock, TrendingUp, Palette, Briefcase, Activity, Home, Cookie, Scissors, Brain, Dumbbell, UtensilsCrossed, Terminal, Code, Zap, Rocket, DollarSign, FileText, Edit3, Users, ArrowLeft, Cpu, Database, Globe, Shirt, Smile, Gem, Wand2, Camera, Video, Target, Award, GraduationCap, BookOpen } from 'lucide-react';
 import MediaKit from './MediaKit.jsx';
 import PartnershipsPage from './Partnerships.jsx';
-import AvatarCustomizer from './AvatarCustomizer.jsx';
 import './email-utils.js'; // Load email collection utilities
-import { fetchProducts, handleAffiliateClick } from './services/affiliateService.js';
+import Academy from './Academy.jsx';
 
 // Beauty Closet Component - Pink Fitting Room Theme
-function BeautyClosetPage({ onBack, myPicks = [], handleAffiliateClick }) {
+function BeautyClosetPage({ onBack }) {
   const [isVisible, setIsVisible] = useState(false);
   const [unlocked, setUnlocked] = useState(false);
   const [email, setEmail] = useState('');
@@ -112,12 +111,30 @@ Best regards,
   ];
 
   return (
-    <div className="min-h-screen bg-white relative overflow-hidden">
-      {/* Newspaper Grid Background */}
-      <div className="fixed inset-0 pointer-events-none opacity-5" style={{
-        backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, #000 2px, #000 3px)',
-        backgroundSize: '100% 40px'
-      }}></div>
+    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-rose-50 to-purple-100 relative overflow-hidden">
+      {/* Sparkle overlay */}
+      <div className="fixed inset-0 pointer-events-none">
+        {[...Array(50)].map((_, i) => (
+          <Star
+            key={i}
+            className="absolute text-pink-300 animate-pulse"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 3}s`,
+              opacity: Math.random() * 0.6 + 0.2,
+              fontSize: `${Math.random() * 20 + 10}px`
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Glowing pink orbs */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" />
+        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-rose-300 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" style={{ animationDelay: '2s' }} />
+      </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-12">
         {/* Back Button */}
@@ -133,7 +150,7 @@ Best regards,
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
           {/* Vanity mirror frame */}
           <div className="relative inline-block mb-8">
-            <div className="absolute inset-0 bg-gradient-to-r from-pink-300 via-rose-300 to-purple-300 rounded-2xl blur-2xl opacity-40" />
+            <div className="absolute inset-0 bg-gradient-to-r from-pink-300 via-rose-300 to-purple-300 rounded-2xl blur-2xl opacity-40 pointer-events-none" />
             <div className="relative bg-white rounded-2xl p-8 shadow-2xl border border-pink-200">
               <div className="flex items-center justify-center gap-6 mb-6">
                 <Palette className="w-16 h-16 text-pink-500" />
@@ -159,7 +176,7 @@ Best regards,
 
         {/* ⭐ Featured Product of the Week */}
         <div className={`mb-10 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="relative bg-gradient-to-br from-purple-900 via-pink-900 to-purple-900 rounded-3xl p-6 md:p-8 shadow-2xl overflow-hidden border-2 border-pink-400/30">
+          <div className="relative bg-gradient-to-br from-purple-900 via-pink-900 to-purple-900 rounded-3xl p-6 md:p-8 shadow-lg overflow-hidden border-2 border-pink-400/30">
             {/* Animated background sparkles */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
               <div className="absolute top-4 left-8 text-2xl animate-bounce" style={{animationDuration: '2s'}}>✨</div>
@@ -172,7 +189,7 @@ Best regards,
             <div className="relative z-10 flex flex-col md:flex-row items-center gap-6">
               {/* Animated Star Icon */}
               <div className="relative flex-shrink-0">
-                <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-pink-500 blur-2xl opacity-60 animate-pulse"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-pink-500 blur-2xl opacity-60 animate-pulse pointer-events-none"></div>
                 <div className="relative bg-gradient-to-br from-yellow-400 via-pink-500 to-purple-500 p-5 rounded-2xl shadow-xl animate-pulse">
                   <div className="text-5xl animate-bounce" style={{animationDuration: '1.5s'}}>⭐</div>
                 </div>
@@ -208,7 +225,7 @@ Best regards,
                   </a>
                   <span className="text-yellow-300 text-sm font-medium flex items-center gap-1">
                     <Star className="w-4 h-4 fill-yellow-300" />
-                    IT Girl's Pick!
+                    Sydney's Pick!
                   </span>
                 </div>
               </div>
@@ -233,7 +250,7 @@ Best regards,
                 href={category.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group bg-gradient-to-r ${category.color} text-white px-5 py-2.5 rounded-full shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2`}
+                className={`group bg-gradient-to-r ${category.color} text-white px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 flex items-center gap-2`}
               >
                 <category.icon className="w-4 h-4" />
                 <span className="font-semibold text-sm">{category.title.replace('Shop the Look: ', '').replace('Hair Goals: ', '')}</span>
@@ -251,12 +268,12 @@ Best regards,
               href={category.url}
               target={category.url.startsWith('http') ? '_blank' : '_self'}
               rel="noopener noreferrer"
-              className={`group bg-white/80 backdrop-blur-sm border-3 border-pink-200 rounded-2xl p-6 hover:border-pink-400 transition-all duration-300 hover:-translate-y-2 shadow-lg hover:shadow-2xl hover:shadow-pink-300/50 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+              className={`group bg-white/80 backdrop-blur-sm border-3 border-pink-200 rounded-2xl p-6 hover:border-pink-400 transition-all duration-300 hover:-translate-y-1 shadow-md hover:shadow-lg ${isVisible ? 'opacity-100' : 'opacity-0'}`}
               style={{ transitionDelay: `${(index + 2) * 100}ms` }}
             >
               {/* Category icon */}
               <div className="relative mb-4">
-                <div className={`absolute inset-0 bg-gradient-to-r ${category.color} blur-xl opacity-60 group-hover:opacity-90 transition-opacity`} />
+                <div className={`absolute inset-0 bg-gradient-to-r ${category.color} blur-xl opacity-60 group-hover:opacity-90 transition-opacity pointer-events-none`} />
                 <div className={`relative bg-gradient-to-r ${category.color} p-5 rounded-2xl inline-block transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
                   <category.icon className="w-10 h-10 text-white" />
                 </div>
@@ -285,7 +302,7 @@ Best regards,
         {/* Unlock Brand Contacts Section */}
         <div className={`mb-12 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="bg-gradient-to-br from-purple-900 via-pink-900 to-purple-900 rounded-2xl p-8 shadow-2xl border-2 border-purple-500/50 relative overflow-hidden">
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(168,85,247,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(168,85,247,0.05)_1px,transparent_1px)] bg-[size:20px_20px]" />
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(168,85,247,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(168,85,247,0.05)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
             
             <div className="relative z-10">
               {!unlocked ? (
@@ -443,172 +460,30 @@ Best regards,
           </div>
         </div>
 
-        {/* Makeup Videos Section */}
-        <div className={`mb-12 border-t border-gray-200 pt-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="mb-6">
-            <h2 className="text-4xl font-black tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
-              Makeup Videos
-            </h2>
-            <p className="text-sm text-gray-500 uppercase tracking-widest mb-4">Tutorials & Looks</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Placeholder for video embeds */}
-            <div className="border-2 border-gray-200 rounded-xl p-4 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
-              <div className="aspect-video bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                <Video className="w-12 h-12 text-gray-400" />
-              </div>
-              <h3 className="font-bold mb-1">Everyday Glam Look</h3>
-              <p className="text-sm text-gray-600">Quick 5-minute makeup routine</p>
-            </div>
-            <div className="border-2 border-gray-200 rounded-xl p-4 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
-              <div className="aspect-video bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                <Video className="w-12 h-12 text-gray-400" />
-              </div>
-              <h3 className="font-bold mb-1">Full Glam Tutorial</h3>
-              <p className="text-sm text-gray-600">Complete step-by-step guide</p>
-            </div>
-            <div className="border-2 border-gray-200 rounded-xl p-4 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
-              <div className="aspect-video bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                <Video className="w-12 h-12 text-gray-400" />
-              </div>
-              <h3 className="font-bold mb-1">Natural Makeup Look</h3>
-              <p className="text-sm text-gray-600">Fresh-faced everyday beauty</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Hair Care Routines Section */}
-        <div className={`mb-12 border-t border-gray-200 pt-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="mb-6">
-            <h2 className="text-4xl font-black tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
-              Hair Care Routines
-            </h2>
-            <p className="text-sm text-gray-500 uppercase tracking-widest mb-4">Healthy Hair Tips</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="border-2 border-gray-200 rounded-xl p-4 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
-              <div className="aspect-video bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                <Video className="w-12 h-12 text-gray-400" />
-              </div>
-              <h3 className="font-bold mb-1">Wash Day Routine</h3>
-              <p className="text-sm text-gray-600">Complete hair care process</p>
-            </div>
-            <div className="border-2 border-gray-200 rounded-xl p-4 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
-              <div className="aspect-video bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                <Video className="w-12 h-12 text-gray-400" />
-              </div>
-              <h3 className="font-bold mb-1">Styling Tips</h3>
-              <p className="text-sm text-gray-600">Easy everyday hairstyles</p>
-            </div>
-            <div className="border-2 border-gray-200 rounded-xl p-4 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
-              <div className="aspect-video bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                <Video className="w-12 h-12 text-gray-400" />
-              </div>
-              <h3 className="font-bold mb-1">Protective Styles</h3>
-              <p className="text-sm text-gray-600">Maintaining healthy hair</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Skincare Routines Section */}
-        <div className={`mb-12 border-t border-gray-200 pt-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="mb-6">
-            <h2 className="text-4xl font-black tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
-              Skincare Routines
-            </h2>
-            <p className="text-sm text-gray-500 uppercase tracking-widest mb-4">Glow Up Your Skin</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="border-2 border-gray-200 rounded-xl p-4 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
-              <div className="aspect-video bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                <Video className="w-12 h-12 text-gray-400" />
-              </div>
-              <h3 className="font-bold mb-1">Morning Routine</h3>
-              <p className="text-sm text-gray-600">Start your day right</p>
-            </div>
-            <div className="border-2 border-gray-200 rounded-xl p-4 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
-              <div className="aspect-video bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                <Video className="w-12 h-12 text-gray-400" />
-              </div>
-              <h3 className="font-bold mb-1">Nighttime Routine</h3>
-              <p className="text-sm text-gray-600">Evening skincare essentials</p>
-            </div>
-            <div className="border-2 border-gray-200 rounded-xl p-4 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
-              <div className="aspect-video bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
-                <Video className="w-12 h-12 text-gray-400" />
-              </div>
-              <h3 className="font-bold mb-1">Product Reviews</h3>
-              <p className="text-sm text-gray-600">Honest skincare reviews</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Editor's Picks - Shop My Picks */}
-        <div className={`mb-12 border-t border-gray-200 pt-12 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="mb-6">
-            <h2 className="text-4xl font-black tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
-              Editor's Picks
-            </h2>
-            <p className="text-sm text-gray-500 uppercase tracking-widest mb-4">Shop My Picks</p>
-            <p className="text-gray-700 max-w-2xl">
-              Everything I use & love! Click to shop - your support means the world 💕
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
-            {myPicks.slice(0, 8).map((product) => (
-              <div
-                key={product.id}
-                onClick={() => handleAffiliateClick(
-                  product.id,
-                  product.affiliateUrl,
-                  product.source || 'amazon',
-                  product.name
-                )}
-                className="group border-2 border-gray-200 rounded-xl hover:border-gray-400 hover:shadow-lg transition-all cursor-pointer bg-white overflow-hidden"
+        {/* Featured Call-to-Action */}
+        <div className={`transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="bg-gradient-to-r from-pink-500 via-rose-500 to-purple-500 rounded-2xl p-8 shadow-2xl text-white text-center overflow-hidden">
+            <div className="absolute inset-0 bg-white/10 pointer-events-none"></div>
+            
+            <div className="relative z-10">
+              <ShoppingBag className="w-14 h-14 mx-auto mb-4" />
+              <h2 className="text-3xl font-bold mb-4">Shop Curated Favorites</h2>
+              <p className="mb-6 text-lg">
+                Discover my handpicked beauty and fashion essentials. 
+                Premium products I personally use and recommend.
+              </p>
+              <a
+                href="https://www.amazon.com/shop/itgirlsyd19"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-white text-pink-600 px-8 py-4 rounded-full font-bold hover:bg-pink-50 transition-all hover:scale-105 shadow-2xl"
               >
-                <div className="aspect-square bg-gray-100 overflow-hidden">
-                  <img 
-                    src={product.image} 
-                    alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-3">
-                  <h3 className="font-bold text-sm mb-1 line-clamp-2">
-                    {product.name}
-                  </h3>
-                  <p className="text-xs text-gray-600 mb-2 line-clamp-1">{product.description}</p>
-                  <div className="font-bold text-sm">{product.price}</div>
-                </div>
-              </div>
-            ))}
+                <ShoppingBag className="w-5 h-5" />
+                Shop My Amazon Storefront
+                <Sparkles className="w-5 h-5" />
+              </a>
+            </div>
           </div>
-          
-          <div className="text-center">
-            <a
-              href="https://www.amazon.com/shop/itgirlsyd19"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block border-2 border-gray-300 rounded-lg px-6 py-3 font-semibold text-sm hover:border-gray-400 hover:bg-gray-50 transition-all"
-            >
-              View Full Storefront →
-            </a>
-          </div>
-        </div>
-
-        {/* Avatar Customizer Section */}
-        <div className={`mb-12 border-t border-gray-200 pt-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="mb-6">
-            <h2 className="text-4xl font-black tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
-              Style Studio
-            </h2>
-            <p className="text-sm text-gray-500 uppercase tracking-widest mb-4">Avatar Customizer</p>
-            <p className="text-gray-700 max-w-2xl">
-              Create your virtual avatar and mix & match outfits. Subscribe to unlock advanced customization like skin color and hair style!
-            </p>
-          </div>
-          <AvatarCustomizer />
         </div>
 
         {/* Footer */}
@@ -616,7 +491,7 @@ Best regards,
           <div className="flex items-center justify-center gap-2 mb-3">
             <Heart className="w-5 h-5 text-pink-500 fill-pink-500 animate-pulse" />
             <p className="text-pink-600 font-semibold">
-              Made with love by IT Girl
+              Made with love by Sydney
             </p>
             <Heart className="w-5 h-5 text-pink-500 fill-pink-500 animate-pulse" />
           </div>
@@ -703,13 +578,13 @@ function BusinessTechGuides({ onBack }) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900 relative overflow-hidden">
       {/* Tech Grid Background */}
-      <div className="fixed inset-0 bg-[linear-gradient(rgba(99,102,241,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <div className="fixed inset-0 bg-[linear-gradient(rgba(99,102,241,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.05)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none z-0" />
       
       {/* Glowing orbs */}
-      <div className="fixed top-20 right-20 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-pulse" />
-      <div className="fixed bottom-20 left-20 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+      <div className="fixed top-20 right-20 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-pulse pointer-events-none z-0" />
+      <div className="fixed bottom-20 left-20 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse pointer-events-none z-0" style={{ animationDelay: '1s' }} />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-12">
+      <div className="relative z-20 max-w-7xl mx-auto px-6 py-12">
         {/* Header */}
         <button
           onClick={onBack}
@@ -900,13 +775,13 @@ Please respond with a custom quote and invoice.
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-900 relative overflow-hidden">
       {/* Animated background */}
-      <div className="fixed inset-0 bg-[linear-gradient(rgba(168,85,247,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(168,85,247,0.05)_1px,transparent_1px)] bg-[size:30px_30px]" />
+      <div className="fixed inset-0 bg-[linear-gradient(rgba(168,85,247,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(168,85,247,0.05)_1px,transparent_1px)] bg-[size:30px_30px] pointer-events-none z-0" />
       
       {/* Glowing orbs */}
-      <div className="fixed top-20 right-20 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
-      <div className="fixed bottom-20 left-20 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+      <div className="fixed top-20 right-20 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse pointer-events-none z-0" />
+      <div className="fixed bottom-20 left-20 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl animate-pulse pointer-events-none z-0" style={{ animationDelay: '1s' }} />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 py-12">
+      <div className="relative z-20 max-w-4xl mx-auto px-6 py-12">
         {/* Header */}
         <button
           onClick={onBack}
@@ -1112,7 +987,7 @@ function BusinessHubPage({ onBack, onNavigateToContentForm, onNavigateToTechGuid
   const [typedText, setTypedText] = useState('');
   const [unlocked, setUnlocked] = useState(false);
   const [email, setEmail] = useState('');
-  const fullText = 'IT_GIRL_TECH_HUB.exe';
+  const fullText = 'SYDNEY_TECH_HUB.exe';
 
   useEffect(() => {
     setIsVisible(true);
@@ -1183,65 +1058,49 @@ function BusinessHubPage({ onBack, onNavigateToContentForm, onNavigateToTechGuid
 
   const businessServices = [
     {
-      title: 'Fiverr Services',
-      icon: Briefcase,
-      description: 'Professional services on Fiverr - web design, content creation & more',
-      color: 'from-green-400 to-emerald-500',
-      glowColor: 'group-hover:shadow-green-500/50',
-      url: 'https://www.fiverr.com/itgirlsyd'
+      title: 'Business & Tech Guides (FREE)',
+      icon: FileText,
+      description: 'Complete toolkit - AI tools, code editors, design apps & more',
+      color: 'from-cyan-400 to-blue-500',
+      glowColor: 'group-hover:shadow-cyan-500/50',
+      url: '#tech-guides'
+    },
+    {
+      title: 'Content Creation Services',
+      icon: Edit3,
+      description: 'Custom landing pages, video editing & 1-on-1 consulting',
+      color: 'from-purple-400 to-pink-500',
+      glowColor: 'group-hover:shadow-purple-500/50',
+      url: '#content-form'
     },
     {
       title: 'Notary Services',
       icon: Lock,
       description: 'Professional notary services for your business needs',
-      color: 'from-blue-400 to-indigo-500',
-      glowColor: 'group-hover:shadow-blue-500/50',
+      color: 'from-green-400 to-emerald-500',
+      glowColor: 'group-hover:shadow-green-500/50',
       url: 'https://notarize.la'
-    },
-    {
-      title: 'Skool Community',
-      icon: Users,
-      description: 'Join our exclusive Skool community for business & tech resources',
-      color: 'from-purple-400 to-pink-500',
-      glowColor: 'group-hover:shadow-purple-500/50',
-      url: 'https://skool.com/itgirl'
-    },
-    {
-      title: 'Website Design Services',
-      icon: Globe,
-      description: 'Custom website design & development for your business',
-      color: 'from-cyan-400 to-blue-500',
-      glowColor: 'group-hover:shadow-cyan-500/50',
-      url: '#content-form'
-    },
-    {
-      title: 'Business & Tech Guides (FREE)',
-      icon: FileText,
-      description: 'Complete toolkit - AI tools, code editors, design apps & more',
-      color: 'from-orange-400 to-red-500',
-      glowColor: 'group-hover:shadow-orange-500/50',
-      url: '#tech-guides'
     },
   ];
 
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
       {/* Matrix-style background */}
-      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-green-900/20 via-black to-black" />
+      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-green-900/20 via-black to-black pointer-events-none z-0" />
       
       {/* Grid overlay */}
-      <div className="fixed inset-0 bg-[linear-gradient(rgba(0,255,65,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
+      <div className="fixed inset-0 bg-[linear-gradient(rgba(0,255,65,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.03)_1px,transparent_1px)] bg-[size:50px_50px] pointer-events-none z-0" />
       
       {/* Animated scan lines */}
-      <div className="fixed inset-0 pointer-events-none">
+      <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-green-500/5 to-transparent animate-pulse" />
       </div>
 
       {/* Glowing orbs */}
-      <div className="fixed top-20 left-20 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" />
-      <div className="fixed bottom-20 right-20 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+      <div className="fixed top-20 left-20 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl animate-pulse pointer-events-none z-0" />
+      <div className="fixed bottom-20 right-20 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse pointer-events-none z-0" style={{ animationDelay: '1s' }} />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 py-12">
+      <div className="relative z-20 max-w-6xl mx-auto px-6 py-12">
         {/* Back Button */}
         <button
           onClick={onBack}
@@ -1259,7 +1118,7 @@ function BusinessHubPage({ onBack, onNavigateToContentForm, onNavigateToTechGuid
               <div className="w-3 h-3 rounded-full bg-red-500" />
               <div className="w-3 h-3 rounded-full bg-yellow-500" />
               <div className="w-3 h-3 rounded-full bg-green-500" />
-              <span className="ml-4 text-green-400 font-mono text-sm">terminal@itgirl:~$</span>
+              <span className="ml-4 text-green-400 font-mono text-sm">terminal@sydney:~$</span>
             </div>
             <div className="font-mono text-2xl text-green-400">
               <span className="text-purple-400">{'>'}</span> {typedText}
@@ -1311,7 +1170,7 @@ function BusinessHubPage({ onBack, onNavigateToContentForm, onNavigateToTechGuid
               >
                 {/* Service icon */}
                 <div className="relative mb-4">
-                  <div className={`absolute inset-0 bg-gradient-to-r ${service.color} blur-xl opacity-50 group-hover:opacity-75 transition-opacity`} />
+                  <div className={`absolute inset-0 bg-gradient-to-r ${service.color} blur-xl opacity-50 group-hover:opacity-75 transition-opacity pointer-events-none`} />
                   <div className={`relative bg-gradient-to-r ${service.color} p-4 rounded-lg inline-block`}>
                     <service.icon className="w-8 h-8 text-white" />
                   </div>
@@ -1344,138 +1203,10 @@ function BusinessHubPage({ onBack, onNavigateToContentForm, onNavigateToTechGuid
             {'> '}SYSTEM_STATUS: <span className="text-cyan-400">ONLINE</span>
           </p>
           <p className="text-gray-600 font-mono text-xs">
-            © 2025 IT GIRL • ALL SYSTEMS OPERATIONAL
+            © 2025 SYDNEY TECH VENTURES • ALL SYSTEMS OPERATIONAL
           </p>
         </div>
       </div>
-    </div>
-  );
-}
-
-// Outfit Spinner Component
-function OutfitSpinner({ onEmailSubmit }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [clickCount, setClickCount] = useState(0);
-  const [showEmailGate, setShowEmailGate] = useState(false);
-  const [email, setEmail] = useState('');
-  const [emailStatus, setEmailStatus] = useState('');
-
-  const outfitImages = [
-    'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800', // Outfit 1 - Light blue hoodie, flare jeans, sneakers, bag
-    'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800', // Outfit 2 - Gold bracelet, Coach bag, black romper, sandals
-    'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800', // Outfit 3 - White bodysuit, jeans, sneakers, pink bag
-    'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800', // Outfit 4 - Pink dress, jewelry, Dior bag
-    'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800', // Outfit 5 - Grey dress, pink bag, sandals
-    'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800', // Outfit 6 - White set, pink puffer, UGG slippers
-    'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800', // Outfit 7 - Chrome Hearts hoodie, shorts, flip-flops
-    'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800', // Outfit 8 - Black hoodie, leggings, UGG boots
-    'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800', // Outfit 9 - Pink pajamas
-    'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800', // Outfit 10 - Winter outfit with puffer
-  ];
-
-  const handleNext = () => {
-    if (clickCount >= 4 && !showEmailGate) {
-      setShowEmailGate(true);
-      return;
-    }
-    
-    if (!showEmailGate) {
-      setClickCount(prev => prev + 1);
-      setCurrentIndex(prev => (prev + 1) % outfitImages.length);
-    }
-  };
-
-  const handleEmailSubmit = async (e) => {
-    e.preventDefault();
-    if (!email || !email.includes('@')) {
-      setEmailStatus('error');
-      return;
-    }
-
-    setEmailStatus('loading');
-    if (onEmailSubmit) {
-      await onEmailSubmit(email);
-    }
-    
-    // Save to localStorage as backup
-    const subscribers = JSON.parse(localStorage.getItem('vip_subscribers') || '[]');
-    subscribers.push({ email, date: new Date().toISOString(), source: 'Outfit Spinner' });
-    localStorage.setItem('vip_subscribers', JSON.stringify(subscribers));
-    
-    setEmailStatus('success');
-    setShowEmailGate(false);
-    setClickCount(0); // Reset for continued viewing
-  };
-
-  return (
-    <div className="border-4 border-black bg-white p-6 mb-8">
-      <div className="text-center mb-4">
-        <h3 className="text-2xl font-black uppercase tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
-          Outfit Ideas
-        </h3>
-        <p className="text-xs text-gray-600 uppercase tracking-widest">Click to Browse</p>
-      </div>
-
-      {showEmailGate ? (
-        <div className="text-center py-8">
-          <Lock className="w-12 h-12 mx-auto mb-4 text-gray-400" />
-          <h4 className="text-xl font-bold mb-2 uppercase">Unlock More Outfits</h4>
-          <p className="text-sm text-gray-600 mb-6">Sign up to keep browsing outfit inspiration!</p>
-          <form onSubmit={handleEmailSubmit} className="max-w-md mx-auto">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-                if (emailStatus === 'error') setEmailStatus('');
-              }}
-              placeholder="Enter your email"
-              className={`w-full px-4 py-3 border-2 border-black text-gray-800 focus:outline-none focus:ring-2 focus:ring-black transition-all mb-3 ${
-                emailStatus === 'error' ? 'border-red-600' : ''
-              }`}
-              required
-            />
-            <button
-              type="submit"
-              disabled={emailStatus === 'loading'}
-              className="w-full bg-black text-white px-6 py-3 font-bold text-sm uppercase tracking-wide hover:bg-gray-800 transition-all disabled:opacity-50"
-            >
-              {emailStatus === 'loading' ? 'Signing Up...' : 'Continue Browsing'}
-            </button>
-            {emailStatus === 'error' && (
-              <p className="text-red-600 text-xs mt-2">Please enter a valid email</p>
-            )}
-          </form>
-        </div>
-      ) : (
-        <div className="relative group">
-          <div 
-            onClick={handleNext}
-            className="cursor-pointer border-4 border-black overflow-hidden bg-gray-100 aspect-[4/5] relative"
-          >
-            <img
-              src={outfitImages[currentIndex]}
-              alt={`Outfit ${currentIndex + 1}`}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
-            <div className="absolute bottom-4 left-4 right-4 text-white bg-black/60 px-4 py-2">
-              <p className="text-sm font-bold uppercase">Click to See Next Outfit</p>
-              <p className="text-xs opacity-90">{clickCount + 1} / 5 views</p>
-            </div>
-          </div>
-          <div className="mt-4 flex items-center justify-center gap-2">
-            {outfitImages.slice(0, 5).map((_, idx) => (
-              <div
-                key={idx}
-                className={`h-2 flex-1 border-2 border-black ${
-                  idx === currentIndex % 5 ? 'bg-black' : 'bg-white'
-                } transition-colors`}
-              />
-            ))}
-          </div>
-        </div>
-      )}
     </div>
   );
 }
@@ -1485,7 +1216,7 @@ export default function CreatorLandingPage() {
   const [activeSection, setActiveSection] = useState('');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [notification, setNotification] = useState('');
-  const [currentPage, setCurrentPage] = useState('home'); // 'home', 'business', 'beauty', 'gym', 'homehaven', 'mediakit', 'partnerships', 'moda', 'content-form', 'tech-guides'
+  const [currentPage, setCurrentPage] = useState('home'); // 'home', 'business', 'beauty', 'gym', 'homehaven', 'mediakit', 'partnerships', 'moda', 'content-form', or 'tech-guides'
   const [showSupportPopup, setShowSupportPopup] = useState(false);
   const [showCollabPopup, setShowCollabPopup] = useState(false);
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -1507,40 +1238,6 @@ export default function CreatorLandingPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentPage]);
 
-  // Fetch products from API on component mount
-  useEffect(() => {
-    const loadProducts = async () => {
-      setProductsLoading(true);
-      try {
-        // Try to fetch from Amazon first, fallback to LTK if needed
-        const products = await fetchProducts('amazon', 6, {
-          keywords: 'beauty fashion lifestyle creator'
-        });
-        
-        if (products && products.length > 0) {
-          setMyPicks(products);
-        } else {
-          // If Amazon fails, try LTK
-          const ltkProducts = await fetchProducts('ltk', 6);
-          if (ltkProducts && ltkProducts.length > 0) {
-            setMyPicks(ltkProducts);
-          }
-          // If both fail, fallback to hardcoded products (already set as default)
-        }
-      } catch (error) {
-        console.error('Failed to load products from API, using fallback:', error);
-        // Keep fallback products (already set as default state)
-      } finally {
-        setProductsLoading(false);
-      }
-    };
-
-    // Only fetch if we're on the home page
-    if (currentPage === 'home') {
-      loadProducts();
-    }
-  }, [currentPage]);
-
   const socialLinks = [
     { name: 'TikTok', icon: Video, url: 'https://tiktok.com/@itgirlsyd19', color: 'from-black via-gray-900 to-cyan-400', iconColor: 'text-white' },
     { name: 'Instagram', icon: Instagram, url: 'https://instagram.com/itgirlsyd19', color: 'from-purple-600 via-pink-500 to-orange-400', iconColor: 'text-white' },
@@ -1550,8 +1247,8 @@ export default function CreatorLandingPage() {
     { name: 'Email', icon: Mail, url: 'mailto:sydney@itgirlsydcontent.com', color: 'from-pink-500 to-rose-500', iconColor: 'text-white' }
   ];
 
-  // My Picks - Affiliate Products (fallback data if API fails)
-  const fallbackPicks = [
+  // My Picks - Affiliate Products (you earn commission when people buy!)
+  const myPicks = [
     {
       id: 1,
       name: 'Water Wave Lace Front Wig',
@@ -1559,8 +1256,7 @@ export default function CreatorLandingPage() {
       price: '$89.99',
       image: 'https://m.media-amazon.com/images/I/71L9FKS0QwL._AC_SX679_.jpg',
       affiliateUrl: 'https://amzn.to/3YxGhair1',
-      description: 'The exact wig from my TikToks - so natural!',
-      source: 'amazon'
+      description: 'The exact wig from my TikToks - so natural!'
     },
     {
       id: 2,
@@ -1569,8 +1265,7 @@ export default function CreatorLandingPage() {
       price: '$599.99',
       image: 'https://m.media-amazon.com/images/I/61kLVKfJS5L._AC_SX679_.jpg',
       affiliateUrl: 'https://amzn.to/dysonairwrap',
-      description: 'Game-changer for styling!',
-      source: 'amazon'
+      description: 'Game-changer for styling!'
     },
     {
       id: 3,
@@ -1579,8 +1274,7 @@ export default function CreatorLandingPage() {
       price: '$45.99',
       image: 'https://m.media-amazon.com/images/I/61Y3wE4mj-L._AC_UX679_.jpg',
       affiliateUrl: 'https://amzn.to/47v5ZEZ',
-      description: 'Perfect fall outfit - so chic!',
-      source: 'amazon'
+      description: 'Perfect fall outfit - so chic!'
     },
     {
       id: 4,
@@ -1589,8 +1283,7 @@ export default function CreatorLandingPage() {
       price: '$49.99',
       image: 'https://m.media-amazon.com/images/I/61X8x3TPRqL._AC_SX679_.jpg',
       affiliateUrl: 'https://amzn.to/ringlight',
-      description: 'Essential for content creation!',
-      source: 'amazon'
+      description: 'Essential for content creation!'
     },
     {
       id: 5,
@@ -1599,8 +1292,7 @@ export default function CreatorLandingPage() {
       price: '$38.99',
       image: 'https://m.media-amazon.com/images/I/61eBgz7LPQL._AC_UX679_.jpg',
       affiliateUrl: 'https://amzn.to/loungewear',
-      description: 'My go-to work from home fit',
-      source: 'amazon'
+      description: 'My go-to work from home fit'
     },
     {
       id: 6,
@@ -1609,45 +1301,26 @@ export default function CreatorLandingPage() {
       price: '$54.99',
       image: 'https://m.media-amazon.com/images/I/71B0M4UOEVL._AC_SX679_.jpg',
       affiliateUrl: 'https://amzn.to/skinfridge',
-      description: 'Keeps serums fresh & feels so luxe!',
-      source: 'amazon'
+      description: 'Keeps serums fresh & feels so luxe!'
     }
   ];
 
-  // State for dynamic products
-  const [myPicks, setMyPicks] = useState(fallbackPicks);
-  const [productsLoading, setProductsLoading] = useState(false);
-
   const contentCategories = [
     {
-      title: 'Beauty',
+      title: 'Fashion & Beauty',
       emoji: '💄',
       icon: Palette,
-      color: 'from-pink-500 to-rose-600',
-      description: 'Glow Up Your Confidence - Routines, tutorials, style inspo as foundation for empire',
-      page: 'beauty',
-      tagline: 'Glow Up Your Confidence',
-      ctaText: 'Dive into Beauty'
+      color: 'from-pink-500 to-rose-500',
+      description: 'Makeup tutorials, fashion hauls, skincare routines & style inspiration',
+      page: 'beauty'
     },
     {
-      title: 'Tech',
+      title: 'AI & Business',
       emoji: '💼',
       icon: Briefcase,
-      color: 'from-purple-500 to-indigo-600',
-      description: 'Build Smarter, Scale Bigger - Tools, hustles, asset strategies from beginner to empire',
-      page: 'business',
-      tagline: 'Build Smarter, Scale Bigger',
-      ctaText: 'Explore Tech'
-    },
-    {
-      title: 'Shop',
-      emoji: '🛍️',
-      icon: ShoppingBag,
-      color: 'from-orange-500 to-amber-600',
-      description: 'Own Your Essentials - Bundles, kits, faves for your glow-up & empire',
-      page: 'home', // Will scroll to shop section
-      tagline: 'Own Your Essentials',
-      ctaText: 'Shop Now'
+      color: 'from-purple-500 to-indigo-500',
+      description: 'Tech tools, business guides, content creation & professional services',
+      page: 'business'
     }
   ];
 
@@ -1667,6 +1340,11 @@ export default function CreatorLandingPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // Render Academy Page
+  if (currentPage === 'academy') {
+    return <Academy onBack={navigateHome} />;
+  }
+
   // Render Media Kit Page
   if (currentPage === 'mediakit') {
     return <MediaKit />;
@@ -1679,7 +1357,7 @@ export default function CreatorLandingPage() {
 
   // Render Beauty Closet Page
   if (currentPage === 'beauty') {
-    return <BeautyClosetPage onBack={navigateHome} myPicks={myPicks} handleAffiliateClick={handleAffiliateClick} />;
+    return <BeautyClosetPage onBack={navigateHome} />;
   }
 
   // Render Business Page
@@ -1702,226 +1380,98 @@ export default function CreatorLandingPage() {
     return <BusinessTechGuides onBack={() => setCurrentPage('business')} />;
   }
 
-  // Render Shop Page
-  if (currentPage === 'shop') {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-pink-50/30 relative">
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-8">
-          <button
-            onClick={navigateHome}
-            className="mb-8 flex items-center gap-2 text-gray-600 hover:text-black transition-colors border-2 border-gray-300 rounded-lg px-4 py-2 hover:bg-gray-50"
-          >
-            <ArrowLeft className="w-5 h-5" />
-            <span className="font-semibold text-sm">Back to Home</span>
-          </button>
-          <div className="text-center mb-8">
-            <h1 className="text-5xl font-black tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
-              Style Studio & Shop
-            </h1>
-            <p className="text-sm text-gray-500 uppercase tracking-widest">Avatar Customizer • Lounge Sets • Ebooks</p>
-          </div>
-
-          {/* Avatar Customizer Section */}
-          <div className="mb-12 border-t border-gray-200 pt-12">
-            <h2 className="text-3xl font-black tracking-tight mb-4" style={{ fontFamily: 'Georgia, serif' }}>
-              Avatar Customizer
-            </h2>
-            <p className="text-gray-600 mb-6">Create your virtual avatar. Subscribe to unlock advanced customization!</p>
-            <AvatarCustomizer />
-          </div>
-
-          {/* Lounge Sets Section */}
-          <div className="mb-12 border-t border-gray-200 pt-12">
-            <h2 className="text-3xl font-black tracking-tight mb-4" style={{ fontFamily: 'Georgia, serif' }}>
-              Lounge Sets
-            </h2>
-            <p className="text-gray-600 mb-6">Comfortable, stylish loungewear for your everyday glow</p>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {/* Placeholder for lounge sets */}
-              <div className="border-2 border-gray-200 rounded-xl p-4 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
-                <div className="aspect-square bg-gray-100 rounded-lg mb-3"></div>
-                <h3 className="font-bold text-sm mb-1">Cozy Lounge Set</h3>
-                <p className="text-sm text-gray-600 mb-2">$49.99</p>
-                <button className="w-full bg-black text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-gray-800 transition-all">
-                  Shop Now
-                </button>
-              </div>
-              <div className="border-2 border-gray-200 rounded-xl p-4 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
-                <div className="aspect-square bg-gray-100 rounded-lg mb-3"></div>
-                <h3 className="font-bold text-sm mb-1">Matching Set</h3>
-                <p className="text-sm text-gray-600 mb-2">$59.99</p>
-                <button className="w-full bg-black text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-gray-800 transition-all">
-                  Shop Now
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Ebooks Section */}
-          <div className="mb-12 border-t border-gray-200 pt-12">
-            <h2 className="text-3xl font-black tracking-tight mb-4" style={{ fontFamily: 'Georgia, serif' }}>
-              Ebooks
-            </h2>
-            <p className="text-gray-600 mb-6">Digital guides for beauty, business, and lifestyle</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Placeholder for ebooks */}
-              <div className="border-2 border-gray-200 rounded-xl p-6 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
-                <div className="aspect-[3/4] bg-gray-100 rounded-lg mb-4"></div>
-                <h3 className="font-bold text-lg mb-2">Beauty Guide</h3>
-                <p className="text-sm text-gray-600 mb-4">Complete beauty routine guide</p>
-                <p className="text-xl font-bold mb-4">$9.99</p>
-                <button className="w-full bg-black text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-gray-800 transition-all">
-                  Purchase
-                </button>
-              </div>
-              <div className="border-2 border-gray-200 rounded-xl p-6 bg-white hover:border-gray-400 hover:shadow-lg transition-all">
-                <div className="aspect-[3/4] bg-gray-100 rounded-lg mb-4"></div>
-                <h3 className="font-bold text-lg mb-2">Business Blueprint</h3>
-                <p className="text-sm text-gray-600 mb-4">Start your side hustle</p>
-                <p className="text-xl font-bold mb-4">$14.99</p>
-                <button className="w-full bg-black text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-gray-800 transition-all">
-                  Purchase
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // Render Avatar Page (same as shop but focused on avatar)
-  if (currentPage === 'avatar') {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-pink-50/30 relative">
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-8">
-          <button
-            onClick={navigateHome}
-            className="mb-8 flex items-center gap-2 text-gray-600 hover:text-black transition-colors border-2 border-gray-300 rounded-lg px-4 py-2 hover:bg-gray-50"
-          >
-            <ArrowLeft className="w-5 h-5" />
-            <span className="font-semibold text-sm">Back to Home</span>
-          </button>
-          <div className="text-center mb-8">
-            <h1 className="text-5xl font-black tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
-              Style Studio
-            </h1>
-            <p className="text-sm text-gray-500 uppercase tracking-widest">Create Your Virtual Avatar</p>
-          </div>
-          <AvatarCustomizer />
-        </div>
-      </div>
-    );
-  }
-
 
   // Render Main Landing Page
-  const currentDate = new Date().toLocaleDateString('en-US', { 
-    weekday: 'long', 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
-  });
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-pink-50/30 relative">
-      {/* Subtle Grid Background - Modern Newspaper Hybrid */}
-      <div className="fixed inset-0 pointer-events-none opacity-[0.01] z-0" style={{
-        backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, #000 2px, #000 3px)',
-        backgroundSize: '100% 40px'
-      }}></div>
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div 
+          className="absolute w-96 h-96 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"
+          style={{ 
+            left: `${mousePosition.x / 20}px`, 
+            top: `${mousePosition.y / 20}px`,
+            transition: 'all 0.3s ease-out'
+          }}
+        />
+        <div className="absolute w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse animation-delay-2000 top-1/4 right-0" />
+        <div className="absolute w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse animation-delay-4000 bottom-0 left-1/4" />
+      </div>
 
-      {/* Notification toast - Modern Style */}
+      {/* Floating sparkles */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        {[...Array(20)].map((_, i) => (
+          <Star
+            key={i}
+            className="absolute text-pink-300 animate-pulse"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 3}s`,
+              opacity: Math.random() * 0.5 + 0.2,
+              fontSize: `${Math.random() * 10 + 8}px`
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Notification toast */}
       {notification && (
-        <div className="fixed top-8 right-8 z-50 bg-white/95 backdrop-blur-sm shadow-xl px-6 py-4 border-2 border-gray-300 rounded-lg animate-in slide-in-from-top">
-          <p className="text-black font-semibold flex items-center gap-2 text-sm">
+        <div className="fixed top-8 right-8 z-50 bg-white rounded-2xl shadow-2xl px-6 py-4 border-2 border-pink-200 animate-in slide-in-from-top">
+          <p className="text-pink-600 font-semibold flex items-center gap-2">
+            <Sparkles className="w-5 h-5" />
             {notification}
           </p>
         </div>
       )}
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-8">
-        {/* Modern Masthead with Newspaper Elements */}
-        <div className="border-b-2 border-gray-300 mb-8 pb-6 relative">
-          <div className="text-center relative">
-            {/* Hero Image - Glam Tech */}
-            <div className="mb-6 aspect-[16/6] rounded-2xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 relative group shadow-lg">
-              <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200')] bg-cover bg-center group-hover:scale-105 transition-transform duration-700"></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center text-white z-10">
-                  <h2 className="text-4xl md:text-6xl font-black mb-2" style={{ fontFamily: 'Georgia, serif' }}>
-                    GLAM TECH
-                  </h2>
-                  <p className="text-lg md:text-xl uppercase tracking-widest">Empower Community</p>
-                  <p className="text-sm md:text-base mt-2 opacity-90">A Community for Women in Tech</p>
-                </div>
-              </div>
-            </div>
-            <h1 className="text-7xl md:text-9xl font-black tracking-tight mb-3 hover:scale-105 transition-transform cursor-default relative inline-block group bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent" style={{ fontFamily: 'Georgia, serif' }}>
-              <span className="relative z-10">IT GIRL</span>
-            </h1>
-            <div className="flex items-center justify-center gap-4 text-xs text-gray-500 py-2 mt-3">
-              <span className="uppercase tracking-wider">{currentDate}</span>
-              <span className="text-gray-300">•</span>
-              <span className="uppercase tracking-wider">BEAUTY • TECH • EMPIRE</span>
+      <div className="relative z-20 max-w-4xl mx-auto px-6 py-12">
+        {/* Header Section */}
+        <div className={`text-center mb-16 transition-all duration-1000 relative z-20 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
+          <div className="relative inline-block mb-6" style={{ width: '128px', height: '128px', pointerEvents: 'none' }}>
+            <img
+              src="/profile.png"
+              alt="Sydney"
+              className="w-32 h-32 rounded-full border-4 border-white object-cover mx-auto"
+              style={{ 
+                filter: 'drop-shadow(0 25px 50px -12px rgba(0, 0, 0, 0.25))',
+                pointerEvents: 'none',
+                display: 'block'
+              }}
+            />
+            <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full p-2 shadow-lg pointer-events-none z-30">
+              <Crown className="w-6 h-6 text-white" />
             </div>
           </div>
-        </div>
+          
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 bg-clip-text text-transparent mb-4">
+            Sydney
+          </h1>
+          
+          <p className="text-xl text-gray-700 mb-6 font-medium">
+            Content Creator • Lifestyle Influencer • Digital Trendsetter
+          </p>
+          
+          <div className="flex items-center justify-center gap-3 mb-6 relative z-20">
+            <button
+              onClick={() => setShowCollabPopup(true)}
+              className="group flex items-center gap-2 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 text-white px-6 py-3 rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 font-bold relative z-20"
+            >
+              <Briefcase className="w-5 h-5 group-hover:animate-bounce" />
+              <span>Work With Me</span>
+              <Sparkles className="w-5 h-5" />
+            </button>
+            <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-lg border-2 border-pink-200 relative z-20">
+              <Crown className="w-5 h-5 text-purple-500" />
+              <span className="font-semibold text-gray-700">Verified Creator</span>
+            </div>
+          </div>
 
-        {/* Navigation Bar - Modern with Newspaper Typography */}
-        <nav className="border-b border-gray-200 mb-8 pb-4">
-          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-sm font-medium">
-            <button 
-              onClick={() => setCurrentPage('home')} 
-              className="hover:text-gray-900 hover:scale-105 transition-all relative group px-3 py-1 rounded-lg hover:bg-gray-100"
-            >
-              Home
-            </button>
-            <span className="text-gray-300 hidden md:inline">•</span>
-            <button 
-              onClick={() => setCurrentPage('beauty')} 
-              className="hover:text-gray-900 hover:scale-105 transition-all relative group px-3 py-1 rounded-lg hover:bg-gray-100"
-            >
-              Beauty
-            </button>
-            <span className="text-gray-300 hidden md:inline">•</span>
-            <button 
-              onClick={() => setCurrentPage('business')} 
-              className="hover:text-gray-900 hover:scale-105 transition-all relative group px-3 py-1 rounded-lg hover:bg-gray-100"
-            >
-              Tech & Business
-            </button>
-            <span className="text-gray-300 hidden md:inline">•</span>
-            <button 
-              onClick={() => setCurrentPage('shop')} 
-              className="hover:text-gray-900 hover:scale-105 transition-all relative group px-3 py-1 rounded-lg hover:bg-gray-100"
-            >
-              Shop
-            </button>
-            <span className="text-gray-300 hidden md:inline">•</span>
-            <button 
-              onClick={() => setCurrentPage('avatar')} 
-              className="hover:text-gray-900 hover:scale-105 transition-all relative group px-3 py-1 rounded-lg hover:bg-gray-100"
-            >
-              Style Studio
-            </button>
-            <span className="text-gray-300 hidden md:inline">•</span>
-            <button 
-              onClick={() => setCurrentPage('partnerships')} 
-              className="hover:text-gray-900 hover:scale-105 transition-all relative group px-3 py-1 rounded-lg hover:bg-gray-100"
-            >
-              Partnerships
-            </button>
-            <span className="text-gray-300 hidden md:inline">•</span>
-            <button 
-              onClick={() => setCurrentPage('mediakit')} 
-              className="hover:text-gray-900 hover:scale-105 transition-all relative group px-3 py-1 rounded-lg hover:bg-gray-100"
-            >
-              Media Kit
-            </button>
-          </div>
-        </nav>
+          <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            Hey babe! 💕 Welcome to my little corner of the internet. I'm all about beauty, fashion, lifestyle & good vibes. 
+            Join me on this journey & shop my faves below! ✨
+          </p>
+        </div>
 
         {/* Work With Me / Collaboration Popup */}
         {showCollabPopup && (
@@ -1974,7 +1524,7 @@ export default function CreatorLandingPage() {
                   {/* Send Email - Big CTA */}
                   <a
                     href="mailto:sydney@itgirlsydcontent.com?subject=Brand Collaboration Inquiry&body=Hi Sydney!%0A%0AI'd love to discuss a potential collaboration with you.%0A%0ABrand/Company:%0AType of Collaboration:%0ATimeline:%0ABudget Range:%0A%0ALooking forward to hearing from you!"
-                    className="flex items-center justify-center gap-3 w-full bg-gradient-to-r from-purple-600 to-pink-500 text-white px-6 py-4 rounded-xl font-bold text-lg hover:shadow-xl hover:scale-[1.02] transition-all"
+                    className="flex items-center justify-center gap-3 w-full bg-gradient-to-r from-purple-600 to-pink-500 text-white px-6 py-4 rounded-xl font-bold text-lg hover:shadow-lg hover:scale-[1.01] transition-all"
                   >
                     <Mail className="w-6 h-6" />
                     Send Me an Email
@@ -2027,265 +1577,340 @@ export default function CreatorLandingPage() {
           </div>
         )}
 
-        {/* Breaking News Banner - TikTok Live Battle */}
-        <div className={`mb-8 rounded-xl bg-gradient-to-r from-black via-gray-900 to-black text-white p-4 relative overflow-hidden group shadow-lg ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          {/* Animated background pattern */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.1)_50%,transparent_75%)] bg-[length:20px_20px] animate-pulse"></div>
-          </div>
-          <div className="relative z-10 flex items-center justify-between flex-wrap gap-4">
-            <div className="flex items-center gap-4">
-              <div className="relative">
-                <div className="w-4 h-4 bg-red-600 animate-pulse"></div>
-                <div className="absolute inset-0 w-4 h-4 bg-red-600 animate-ping opacity-75"></div>
+        {/* TikTok Live Battle Feature */}
+        <div className={`mb-8 transition-all duration-1000 delay-150 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="relative bg-gradient-to-r from-black via-pink-600 to-cyan-400 rounded-2xl p-6 shadow-2xl overflow-hidden">
+            {/* Animated background */}
+            <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.1)_50%,transparent_75%)] bg-[length:250%_250%] animate-pulse pointer-events-none" />
+            
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <div className="bg-gradient-to-br from-pink-500 to-cyan-400 p-4 rounded-xl animate-pulse">
+                  <Video className="w-10 h-10 text-white" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse" />
+                    <span className="text-white font-black text-2xl uppercase tracking-wide">Live Battle</span>
+                  </div>
+                  <p className="text-pink-200 text-sm">Join my TikTok Live & support with gifts!</p>
+                </div>
               </div>
-              <div>
-                <div className="text-xs uppercase tracking-widest text-gray-300 mb-1">BREAKING NEWS</div>
-                <div className="text-xl md:text-2xl font-black uppercase group-hover:scale-105 transition-transform">TikTok Live Battle Now</div>
-                <div className="text-sm text-gray-300">Join & support with gifts!</div>
+              
+              <div className="flex gap-3">
+                <a
+                  href="https://www.tiktok.com/@itgirlsyd19/live"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-xl border-2 border-white/30 hover:border-white/60 hover:bg-white/30 transition-all cursor-pointer"
+                >
+                  <p className="text-white font-bold text-sm">Join Battle</p>
+                  <p className="text-pink-200 text-xs">Go Live Now →</p>
+                </a>
+                <a
+                  href="https://www.tiktok.com/coin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-cyan-500/20 backdrop-blur-sm px-6 py-3 rounded-xl border-2 border-cyan-400/30 hover:border-cyan-400/60 hover:bg-cyan-500/30 transition-all cursor-pointer"
+                >
+                  <p className="text-white font-bold text-sm">Get Coins</p>
+                  <p className="text-cyan-200 text-xs">Discount Available</p>
+                </a>
               </div>
-            </div>
-            <div className="flex gap-2">
-              <a
-                href="https://www.tiktok.com/@itgirlsyd19/live"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white text-black px-6 py-2 font-bold text-sm hover:bg-gray-200 transition-all border-2 border-white hover:scale-105 active:scale-95"
-              >
-                JOIN LIVE →
-              </a>
-              <a
-                href="https://www.tiktok.com/coin"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gray-800 text-white px-4 py-2 font-bold text-sm hover:bg-gray-700 transition-all border-2 border-gray-600 hover:scale-105 active:scale-95"
-              >
-                GET COINS
-              </a>
             </div>
           </div>
         </div>
 
+        {/* Shop My Picks - Affiliate Products Section */}
+        <div className={`mb-12 transition-all duration-1000 delay-175 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="bg-gradient-to-br from-pink-50 via-purple-50 to-rose-50 rounded-3xl p-8 border-2 border-pink-200/50 shadow-xl">
+            {/* Header */}
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center gap-3 mb-3">
+                <ShoppingBag className="w-8 h-8 text-pink-500" />
+                <h2 className="text-3xl font-bold bg-gradient-to-r from-pink-600 via-purple-600 to-rose-500 bg-clip-text text-transparent">
+                  Shop My Picks
+                </h2>
+                <Heart className="w-8 h-8 text-pink-500 fill-pink-500" />
+              </div>
+              <p className="text-gray-600 max-w-lg mx-auto">
+                Everything I use & love! Click to shop - your support means the world 💕
+              </p>
+            </div>
 
-        {/* Social Media - Modern Style */}
-        <div className="mb-12 border-t border-gray-200 pt-12">
-          <div className="text-center mb-6">
-            <h3 className="text-2xl font-black tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
-              Connect
-            </h3>
-            <p className="text-xs text-gray-500 uppercase tracking-widest mb-6">Follow The Journey</p>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-4xl mx-auto">
-              {socialLinks.map((social, index) => (
+            {/* Product Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {myPicks.map((product) => (
                 <a
-                  key={index}
-                  href={social.url}
+                  key={product.id}
+                  href={product.affiliateUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => handleLinkClick(social.name)}
-                  className="group border-2 border-gray-200 rounded-xl p-4 hover:border-gray-400 hover:shadow-lg bg-white transition-all relative overflow-hidden"
-                  title={social.name}
+                  className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 border border-gray-100 hover:border-pink-300"
+                  style={{ boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)' }}
                 >
-                  <div className="relative z-10 flex flex-col items-center gap-2">
-                    <social.icon className={`w-8 h-8 group-hover:scale-110 transition-transform ${social.iconColor.replace('text-white', 'text-gray-800')}`} />
-                    <span className="font-semibold text-xs">{social.name}</span>
+                  {/* Product Image */}
+                  <div className="relative aspect-square bg-gray-50 overflow-hidden">
+                    <img 
+                      src={product.image} 
+                      alt={product.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'flex';
+                      }}
+                      style={{ pointerEvents: 'none' }}
+                    />
+                    {/* Fallback if image doesn't load */}
+                    <div className="hidden absolute inset-0 bg-gradient-to-br from-pink-400 to-purple-400 items-center justify-center pointer-events-none">
+                      <ShoppingBag className="w-12 h-12 text-white/80" />
+                    </div>
+                    {/* Category Badge */}
+                    <span className="absolute top-2 left-2 bg-white/90 backdrop-blur-sm text-xs font-bold text-pink-600 px-2 py-0.5 rounded-full pointer-events-none z-10">
+                      {product.category}
+                    </span>
+                    {/* Add to Bag Overlay */}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                      <div className="bg-white text-pink-600 px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 transform scale-90 group-hover:scale-100 transition-transform pointer-events-auto">
+                        <ShoppingBag className="w-4 h-4" />
+                        Shop Now
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Product Info */}
+                  <div className="p-3">
+                    <h3 className="font-semibold text-gray-800 text-sm leading-tight line-clamp-2 mb-1 group-hover:text-pink-600 transition-colors">
+                      {product.name}
+                    </h3>
+                    <p className="text-xs text-gray-500 line-clamp-1 mb-2">{product.description}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="font-bold text-pink-600 text-sm">{product.price}</span>
+                      <Heart className="w-4 h-4 text-gray-300 group-hover:text-pink-500 group-hover:fill-pink-500 transition-colors" />
+                    </div>
                   </div>
                 </a>
               ))}
             </div>
+
+            {/* View All Link */}
+            <div className="text-center mt-6">
+              <a
+                href="https://www.amazon.com/shop/itgirlsyd19"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white px-6 py-3 rounded-full font-bold hover:shadow-lg hover:scale-105 transition-all"
+              >
+                <ShoppingBag className="w-5 h-5" />
+                View Full Storefront
+                <ArrowLeft className="w-5 h-5 rotate-180" />
+              </a>
+            </div>
           </div>
         </div>
 
+        {/* Compact Social Media Section - Smaller Icons */}
+        <div className={`mb-10 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h3 className="text-center text-gray-500 text-sm font-medium mb-3">Follow Me</h3>
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            {socialLinks.map((social, index) => (
+              <a
+                key={index}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => handleLinkClick(social.name)}
+                className={`group bg-gradient-to-br ${social.color} rounded-full p-2.5 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-110`}
+                title={social.name}
+              >
+                <social.icon className={`w-4 h-4 ${social.iconColor}`} />
+              </a>
+            ))}
+          </div>
+        </div>
 
-        {/* Two Main Hubs - Fashion & Beauty, Tech & Business */}
-        <div className="mb-16 border-t border-gray-200 pt-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Hub 1: Fashion & Beauty (with Avatar) */}
-            <button
-              onClick={() => setCurrentPage('beauty')}
-              className="group relative bg-gradient-to-br from-pink-50 via-rose-50 to-purple-50 rounded-2xl p-8 border-2 border-pink-200 hover:border-pink-400 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-left overflow-hidden"
-            >
-              {/* Decorative background elements */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-200/30 to-transparent rounded-bl-full"></div>
-              <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-purple-200/30 to-transparent rounded-tr-full"></div>
-              
-              <div className="relative z-10">
-                {/* Icon Badge */}
-                <div className="mb-6 flex items-center justify-between">
-                  <div className="bg-gradient-to-br from-pink-500 to-rose-500 p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform">
-                    <Palette className="w-8 h-8 text-white" />
+        {/* 🏫 IT Girl Academy - Featured Schoolhouse */}
+        <div className={`mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <button
+            onClick={() => handleCategoryClick('academy', 'IT Girl Academy')}
+            className="w-full group relative overflow-hidden"
+          >
+            {/* Schoolhouse Card */}
+            <div className="relative bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 rounded-3xl p-1 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.01]">
+              <div className="bg-gradient-to-br from-purple-900 via-purple-800 to-pink-900 rounded-[22px] p-8 md:p-10 relative overflow-hidden">
+                
+                {/* Animated Background Elements */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                  <div className="absolute top-4 left-8 text-6xl opacity-20 animate-bounce" style={{animationDuration: '3s'}}>📚</div>
+                  <div className="absolute top-12 right-12 text-4xl opacity-20 animate-bounce" style={{animationDuration: '2.5s', animationDelay: '0.5s'}}>✨</div>
+                  <div className="absolute bottom-8 left-16 text-5xl opacity-20 animate-bounce" style={{animationDuration: '2s', animationDelay: '1s'}}>💫</div>
+                  <div className="absolute bottom-4 right-8 text-4xl opacity-20 animate-bounce" style={{animationDuration: '2.8s', animationDelay: '0.3s'}}>🎓</div>
+                  {/* Gradient orbs */}
+                  <div className="absolute -top-20 -right-20 w-40 h-40 bg-pink-500/30 rounded-full blur-3xl"></div>
+                  <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-purple-500/30 rounded-full blur-3xl"></div>
+                </div>
+
+                {/* Content */}
+                <div className="relative z-10 text-center">
+                  {/* Schoolhouse Icon */}
+                  <div className="inline-block mb-6 relative">
+                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-400 blur-2xl opacity-60 animate-pulse pointer-events-none"></div>
+                    <div className="relative bg-gradient-to-br from-yellow-400 via-orange-400 to-pink-500 p-6 rounded-2xl shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                      {/* Schoolhouse shape */}
+                      <div className="relative">
+                        <div className="text-6xl">🏫</div>
+                        {/* Sparkle effect */}
+                        <div className="absolute -top-2 -right-2 text-2xl animate-ping">✨</div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-4xl">💄</div>
-                </div>
-                
-                {/* Title */}
-                <h2 className="text-4xl font-black tracking-tight mb-2 bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent" style={{ fontFamily: 'Georgia, serif' }}>
-                  Fashion & Beauty Hub
-                </h2>
-                <p className="text-sm font-semibold text-pink-600 uppercase tracking-wider mb-4">✨ Glow Up Your Confidence</p>
-                
-                {/* Description */}
-                <p className="text-gray-700 leading-relaxed mb-6">
-                  Makeup tutorials, hair care routines, skincare guides, style inspiration, avatar customizer, and editor's picks. Everything you need to look and feel your best.
-                </p>
-                
-                {/* Features List */}
-                <ul className="space-y-2 mb-6 text-sm text-gray-600">
-                  <li className="flex items-center gap-2">
-                    <span className="text-pink-500">•</span>
-                    <span>Makeup Video Tutorials</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-pink-500">•</span>
-                    <span>Hair Care Routines</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-pink-500">•</span>
-                    <span>Skincare Guides</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-pink-500">•</span>
-                    <span>Avatar Style Studio</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-pink-500">•</span>
-                    <span>Editor's Picks Shop</span>
-                  </li>
-                </ul>
-                
-                {/* CTA Button */}
-                <div className="flex items-center gap-2 text-pink-600 font-bold group-hover:text-pink-700 transition-colors">
-                  <span>Enter Hub</span>
-                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </div>
-            </button>
 
-            {/* Hub 2: Tech & Business (Combined) */}
-            <button
-              onClick={() => setCurrentPage('business')}
-              className="group relative bg-gradient-to-br from-purple-50 via-indigo-50 to-blue-50 rounded-2xl p-8 border-2 border-purple-200 hover:border-purple-400 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-left overflow-hidden"
-            >
-              {/* Decorative background elements */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-200/30 to-transparent rounded-bl-full"></div>
-              <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-blue-200/30 to-transparent rounded-tr-full"></div>
-              
-              <div className="relative z-10">
-                {/* Icon Badge */}
-                <div className="mb-6 flex items-center justify-between">
-                  <div className="bg-gradient-to-br from-purple-500 to-indigo-500 p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform">
-                    <Terminal className="w-8 h-8 text-white" />
+                  {/* Title */}
+                  <h2 className="text-4xl md:text-5xl font-black text-white mb-4 group-hover:scale-105 transition-transform">
+                    IT Girl Academy
+                  </h2>
+
+                  {/* Subtitle */}
+                  <p className="text-xl text-purple-200 mb-6 max-w-xl mx-auto">
+                    Learn to build your creator empire with real courses, templates & strategies that actually work 💕
+                  </p>
+
+                  {/* Stats Row */}
+                  <div className="flex justify-center gap-6 mb-8">
+                    <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-xl border border-white/20">
+                      <p className="text-2xl font-bold text-white">4</p>
+                      <p className="text-xs text-purple-300">Courses</p>
+                    </div>
+                    <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-xl border border-white/20">
+                      <p className="text-2xl font-bold text-white">50+</p>
+                      <p className="text-xs text-purple-300">Lessons</p>
+                    </div>
+                    <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-xl border border-white/20">
+                      <p className="text-2xl font-bold text-white">📄</p>
+                      <p className="text-xs text-purple-300">Templates</p>
+                    </div>
                   </div>
-                  <div className="text-4xl">💻</div>
+
+                  {/* Pre-order Badge */}
+                  <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-4 py-2 rounded-full text-sm font-bold mb-6 animate-pulse">
+                    🚀 Pre-Orders Open • Releasing Jan 1st, 2026!
+                  </div>
+
+                  {/* CTA Button */}
+                  <div className="flex justify-center">
+                    <div className="bg-white text-purple-900 px-10 py-4 rounded-2xl font-bold text-xl shadow-lg group-hover:shadow-lg group-hover:bg-purple-50 transition-all flex items-center gap-3">
+                      <Award className="w-6 h-6" />
+                      Enter Academy
+                      <ArrowLeft className="w-6 h-6 rotate-180 group-hover:translate-x-2 transition-transform" />
+                    </div>
+                  </div>
                 </div>
-                
-                {/* Title */}
-                <h2 className="text-4xl font-black tracking-tight mb-2 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent" style={{ fontFamily: 'Georgia, serif' }}>
-                  Tech & Business Hub
-                </h2>
-                <p className="text-sm font-semibold text-purple-600 uppercase tracking-wider mb-4">🚀 Build Smarter, Scale Bigger</p>
-                
-                {/* Description */}
-                <p className="text-gray-700 leading-relaxed mb-6">
-                  Fiverr services, website design, Skool community, notary services, business resources, and free tech guides. Your one-stop shop for business growth and empire building.
+              </div>
+            </div>
+          </button>
+        </div>
+
+        {/* Content Categories */}
+        <div className="mb-12 relative z-20">
+          <h2 className="text-4xl font-bold text-center mb-4 bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
+            Explore My Content
+          </h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Click a category to discover curated content, tutorials, and recommendations
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-20">
+            {contentCategories.map((category, catIndex) => (
+              <button
+                key={catIndex}
+                onClick={() => handleCategoryClick(category.page, category.title)}
+                className={`group bg-white rounded-2xl p-8 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100 hover:border-pink-300 text-left relative z-20 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+                style={{ transitionDelay: `${300 + catIndex * 100}ms` }}
+              >
+                {/* Category Icon */}
+                <div className="relative mb-6">
+                  <div className={`absolute inset-0 bg-gradient-to-r ${category.color} blur-xl opacity-40 group-hover:opacity-60 transition-opacity pointer-events-none`} />
+                  <div className={`relative bg-gradient-to-r ${category.color} p-6 rounded-2xl inline-block transform group-hover:scale-110 transition-all duration-300`}>
+                    <category.icon className="w-12 h-12 text-white" />
+                  </div>
+                </div>
+
+                {/* Category Title */}
+                <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text" style={{backgroundImage: `linear-gradient(to right, var(--tw-gradient-stops))`}}>
+                  {category.title}
+                </h3>
+
+                {/* Category Description */}
+                <p className="text-gray-600 mb-6">
+                  {category.description}
                 </p>
-                
-                {/* Features List */}
-                <ul className="space-y-2 mb-6 text-sm text-gray-600">
-                  <li className="flex items-center gap-2">
-                    <span className="text-purple-500">•</span>
-                    <span>Fiverr Services</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-purple-500">•</span>
-                    <span>Website Design</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-purple-500">•</span>
-                    <span>Skool Community</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-purple-500">•</span>
-                    <span>Notary Services</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-purple-500">•</span>
-                    <span>Free Tech Guides</span>
-                  </li>
-                </ul>
-                
-                {/* CTA Button */}
-                <div className="flex items-center gap-2 text-purple-600 font-bold group-hover:text-purple-700 transition-colors">
-                  <span>Enter Hub</span>
-                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+
+                {/* Enter Button */}
+                <div className={`flex items-center gap-2 bg-gradient-to-r ${category.color} text-white px-6 py-3 rounded-xl font-semibold group-hover:shadow-lg transition-all inline-flex`}>
+                  <span>Explore</span>
+                  <ArrowLeft className="w-5 h-5 rotate-180 group-hover:translate-x-1 transition-transform" />
                 </div>
-              </div>
-            </button>
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Work With Me - Modern Style with Visuals */}
-        <div className="mb-12 border-t border-gray-200 pt-12">
-          <div className="grid md:grid-cols-2 gap-8 items-center mb-8">
-            {/* Left: Image/Visual */}
-            <div className="aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 group order-2 md:order-1 shadow-lg">
-              <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800')] bg-cover bg-center group-hover:scale-110 transition-transform duration-700"></div>
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
+        {/* Compact Work With Me Section */}
+        <div className={`mb-12 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-900 rounded-2xl p-8 shadow-2xl border border-purple-500/30 text-center">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <Briefcase className="w-10 h-10 text-purple-400" />
+              <h2 className="text-3xl font-bold text-white">Work With Me</h2>
+              <Crown className="w-10 h-10 text-purple-400" />
             </div>
-            {/* Right: Content */}
-            <div className="text-center md:text-left order-1 md:order-2">
-              <h2 className="text-4xl font-black uppercase tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
-                Work With Me
-              </h2>
-              <p className="text-sm text-gray-600 uppercase tracking-widest mb-4">Partnerships & Collaborations</p>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                Partner with a multi-platform creator. 55K+ engaged followers across beauty, wellness, lifestyle & business.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button
-                  onClick={() => setCurrentPage('partnerships')}
-                  className="border-2 border-gray-300 px-6 py-3 font-semibold text-sm rounded-lg hover:border-gray-400 hover:bg-gray-50 transition-all hover:scale-105 active:scale-95"
-                >
-                  Partnership Info
-                </button>
-                <button
-                  onClick={() => setCurrentPage('mediakit')}
-                  className="border-2 border-gray-300 px-6 py-3 font-semibold text-sm rounded-lg hover:border-gray-400 hover:bg-gray-50 transition-all hover:scale-105 active:scale-95"
-                >
-                  Media Kit
-                </button>
-                <button
-                  onClick={() => setShowCollabPopup(true)}
-                  className="bg-black text-white px-6 py-3 font-semibold text-sm rounded-lg hover:bg-gray-800 transition-all hover:scale-105 active:scale-95"
-                >
-                  Contact
-                </button>
-              </div>
+            <p className="text-purple-200 mb-6 max-w-2xl mx-auto">
+              Partner with a multi-platform creator. 55K+ engaged followers across beauty, wellness, lifestyle & business.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button
+                onClick={() => setCurrentPage('partnerships')}
+                className="group bg-white text-purple-900 px-8 py-4 rounded-xl font-bold hover:bg-purple-50 transition-all hover:scale-105 shadow-lg flex items-center gap-2"
+              >
+                <Sparkles className="w-5 h-5" />
+                Partnership Info
+                <ArrowLeft className="w-5 h-5 rotate-180 group-hover:translate-x-1 transition-transform" />
+              </button>
+
+              <button
+                onClick={() => setCurrentPage('mediakit')}
+                className="group bg-purple-700 text-white px-8 py-4 rounded-xl font-bold hover:bg-purple-600 transition-all hover:scale-105 shadow-lg flex items-center gap-2 border-2 border-purple-500"
+              >
+                <FileText className="w-5 h-5" />
+                Media Kit
+                <ArrowLeft className="w-5 h-5 rotate-180 group-hover:translate-x-1 transition-transform" />
+              </button>
+              
+              <a
+                href="mailto:sydney@itgirlsydcontent.com?subject=Brand Partnership Inquiry"
+                className="group bg-indigo-700 text-white px-8 py-4 rounded-xl font-bold hover:bg-indigo-600 transition-all hover:scale-105 shadow-lg flex items-center gap-2 border-2 border-indigo-500"
+              >
+                <Mail className="w-5 h-5" />
+                Contact
+              </a>
             </div>
           </div>
         </div>
 
-        {/* Newsletter Section - Modern Style with Visual */}
-        <div className={`mb-12 border-t border-gray-200 pt-12 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            {/* Left: Visual */}
-            <div className="aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 hidden md:block group shadow-lg">
-              <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800')] bg-cover bg-center group-hover:scale-110 transition-transform duration-700"></div>
-            </div>
-            {/* Right: Form */}
-            <div className="border-2 border-gray-200 rounded-xl p-8 bg-white text-center shadow-md">
-            <h2 className="text-4xl font-black uppercase tracking-tight mb-2" style={{ fontFamily: 'Georgia, serif' }}>
-              Join The List
-            </h2>
-            <p className="text-sm text-gray-600 uppercase tracking-widest mb-4">VIP Newsletter</p>
-            <p className="mb-6 text-gray-700 max-w-2xl mx-auto">
-              Get exclusive content, early access, and special offers delivered to your inbox!
+        {/* Newsletter Section */}
+        <div className={`mb-12 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-3xl p-8 shadow-2xl text-white text-center">
+            <Sparkles className="w-12 h-12 mx-auto mb-4" />
+            <h2 className="text-3xl font-bold mb-4">Join My VIP List</h2>
+            <p className="mb-6 text-lg opacity-90">
+              Get exclusive content, early access to courses, and special offers delivered to your inbox!
             </p>
             
             {newsletterStatus === 'success' ? (
-              <div className="border-2 border-gray-200 rounded-xl p-6 max-w-md mx-auto bg-white shadow-md">
+              <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 max-w-md mx-auto border border-white/30">
                 <div className="text-5xl mb-4">🎉</div>
-                <h3 className="text-2xl font-black mb-2" style={{ fontFamily: 'Georgia, serif' }}>You're In!</h3>
-                <p className="text-gray-700">Welcome to the VIP list! Check your inbox for a welcome email.</p>
+                <h3 className="text-2xl font-bold mb-2">You're In!</h3>
+                <p className="opacity-90">Welcome to the VIP list! Check your inbox for a welcome email. 💕</p>
               </div>
             ) : (
               <form 
@@ -2342,25 +1967,25 @@ export default function CreatorLandingPage() {
                     setNewsletterEmail(e.target.value);
                     if (newsletterStatus === 'error') setNewsletterStatus('');
                   }}
-                  className={`flex-1 px-6 py-4 border-2 border-gray-300 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-gray-400 transition-all ${
+                  className={`flex-1 px-6 py-4 rounded-full text-gray-800 focus:outline-none focus:ring-4 transition-all ${
                     newsletterStatus === 'error' 
-                      ? 'border-red-500 ring-2 ring-red-300' 
-                      : ''
+                      ? 'ring-4 ring-red-400 focus:ring-red-400' 
+                      : 'focus:ring-white/50'
                   }`}
                   required
                 />
                 <button 
                   type="submit"
                   disabled={newsletterStatus === 'loading'}
-                  className={`px-8 py-4 rounded-lg font-semibold text-sm transition-all flex items-center justify-center gap-2 ${
+                  className={`px-8 py-4 rounded-full font-bold transition-all shadow-lg flex items-center justify-center gap-2 ${
                     newsletterStatus === 'loading'
                       ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                      : 'bg-black text-white hover:bg-gray-800'
+                      : 'bg-white text-purple-600 hover:bg-pink-50 hover:scale-105'
                   }`}
                 >
                   {newsletterStatus === 'loading' ? (
                     <>
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <div className="w-5 h-5 border-2 border-purple-600 border-t-transparent rounded-full animate-spin"></div>
                       Joining...
                     </>
                   ) : (
@@ -2371,41 +1996,35 @@ export default function CreatorLandingPage() {
             )}
             
             {newsletterStatus === 'error' && (
-              <p className="mt-3 text-red-600 text-sm font-bold uppercase">
-                Please enter a valid email address
+              <p className="mt-3 text-yellow-200 text-sm font-medium">
+                Please enter a valid email address 💕
               </p>
             )}
             
             {newsletterStatus !== 'success' && (
-              <p className="mt-4 text-sm text-gray-600">No spam, ever! Unsubscribe anytime.</p>
+              <p className="mt-4 text-sm opacity-75">No spam, ever! Unsubscribe anytime.</p>
             )}
-            </div>
           </div>
         </div>
 
-        {/* Footer - Modern Style */}
-        <div className={`border-t border-gray-200 pt-8 text-center ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <p className="text-sm uppercase tracking-widest font-bold mb-2" style={{ fontFamily: 'Georgia, serif' }}>IT GIRL</p>
-          <p className="text-gray-600 mb-4 text-sm">
-            © 2025 IT GIRL • All Rights Reserved
+        {/* Footer */}
+        <div className={`text-center transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <p className="text-gray-600 mb-4">
+            Made with <Heart className="inline w-4 h-4 text-pink-500 fill-pink-500" /> by Sydney @itgirlsyd19
           </p>
-          <div className="flex items-center justify-center gap-4 text-xs text-gray-500">
-            <a href="#" className="hover:text-gray-900 hover:underline transition-colors">Privacy</a>
-            <span>•</span>
-            <a href="#" className="hover:text-gray-900 hover:underline transition-colors">Terms</a>
-            <span>•</span>
-            <a href="mailto:sydney@itgirlsydcontent.com" className="hover:text-gray-900 hover:underline transition-colors">Contact</a>
-          </div>
+          <p className="text-sm text-gray-500">
+            © 2025 All Rights Reserved • <a href="#" className="hover:text-pink-500 transition-colors">Privacy Policy</a> • <a href="#" className="hover:text-pink-500 transition-colors">Terms</a>
+          </p>
         </div>
       </div>
 
-      {/* Floating Support Button - Modern Style */}
+      {/* Floating Support Button */}
       <button
         onClick={() => setShowSupportPopup(true)}
-        className="fixed bottom-8 right-8 z-40 bg-black text-white p-4 rounded-full shadow-xl hover:shadow-2xl hover:scale-110 transition-all duration-300 flex items-center gap-2 group font-semibold text-sm"
+        className="fixed bottom-8 right-8 z-40 bg-gradient-to-r from-pink-500 to-purple-600 text-white p-4 rounded-full shadow-lg hover:shadow-md hover:scale-110 transition-all duration-300 flex items-center gap-2 group"
       >
-        <Heart className="w-5 h-5 fill-white" />
-        <span className="hidden sm:inline">Support</span>
+        <Heart className="w-6 h-6 fill-white group-hover:animate-pulse" />
+        <span className="font-bold hidden sm:inline">Support Me</span>
       </button>
 
       {/* Support Popup Modal */}
