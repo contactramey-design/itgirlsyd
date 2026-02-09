@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Heart, Instagram, Youtube, Twitter, Mail, ShoppingBag, Crown, Sparkles, Star, Link as LinkIcon, Lock, TrendingUp, Palette, Briefcase, Activity, Home, Cookie, Scissors, Brain, Dumbbell, UtensilsCrossed, Terminal, Code, Zap, Rocket, DollarSign, FileText, Edit3, Users, ArrowLeft, Cpu, Database, Globe, Shirt, Smile, Gem, Wand2, Camera, Video, Target, Award, GraduationCap, BookOpen, ChevronRight } from 'lucide-react';
 import MediaKit from './MediaKit.jsx';
 import PartnershipsPage from './Partnerships.jsx';
+import AvatarCustomizer from './AvatarCustomizer.jsx';
 import './email-utils.js'; // Load email collection utilities
 import { fetchProducts, handleAffiliateClick } from './services/affiliateService.js';
 
@@ -1643,7 +1644,7 @@ export default function CreatorLandingPage() {
             </button>
             <span className="text-gray-400">|</span>
             <button 
-              onClick={() => handleCategoryClick('beauty', 'Beauty')} 
+              onClick={() => setCurrentPage('beauty')} 
               className="hover:underline hover:scale-110 transition-transform relative group px-2"
             >
               Beauty
@@ -1651,10 +1652,26 @@ export default function CreatorLandingPage() {
             </button>
             <span className="text-gray-400">|</span>
             <button 
-              onClick={() => handleCategoryClick('business', 'Tech')} 
+              onClick={() => setCurrentPage('business')} 
               className="hover:underline hover:scale-110 transition-transform relative group px-2"
             >
-              Tech
+              Tech & Business
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all"></span>
+            </button>
+            <span className="text-gray-400">|</span>
+            <button 
+              onClick={() => setCurrentPage('shop')} 
+              className="hover:underline hover:scale-110 transition-transform relative group px-2"
+            >
+              Shop
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all"></span>
+            </button>
+            <span className="text-gray-400">|</span>
+            <button 
+              onClick={() => setCurrentPage('avatar')} 
+              className="hover:underline hover:scale-110 transition-transform relative group px-2"
+            >
+              Style Studio
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all"></span>
             </button>
             <span className="text-gray-400">|</span>
@@ -1883,19 +1900,19 @@ export default function CreatorLandingPage() {
         </div>
 
 
-        {/* Editorial Feed - Newspaper Columns with Visuals */}
+        {/* Three Main Sections - Beauty/Fashion, Tech, Business */}
         <div className="mb-16 border-t-4 border-black pt-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 border-l border-r border-gray-300 px-4">
-            {/* Column 1: Latest Beauty */}
+            {/* Section 1: Beauty & Fashion */}
             <article className="border-r border-gray-300 pr-6 last:border-r-0 group">
               <div className="mb-4 pb-2 border-b-2 border-black">
                 <h2 className="text-3xl font-black uppercase tracking-tight" style={{ fontFamily: 'Georgia, serif' }}>
-                  Latest Beauty
+                  Beauty & Fashion
                 </h2>
                 <p className="text-xs text-gray-600 uppercase mt-1">Glow Up Your Confidence</p>
               </div>
               <button
-                onClick={() => handleCategoryClick('beauty', 'Beauty')}
+                onClick={() => setCurrentPage('beauty')}
                 className="text-left w-full group/article"
               >
                 {/* Beauty Outfit Image */}
@@ -1904,7 +1921,7 @@ export default function CreatorLandingPage() {
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
                     <div className="relative z-10 text-white text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity">
                       <Palette className="w-12 h-12 mx-auto mb-2" />
-                      <span className="text-sm font-bold uppercase">View Beauty Content</span>
+                      <span className="text-sm font-bold uppercase">Explore Beauty</span>
                     </div>
                   </div>
                 </div>
@@ -1913,21 +1930,21 @@ export default function CreatorLandingPage() {
                   <p className="text-sm text-gray-700 leading-relaxed mb-3">
                     Discover beauty rituals that become your foundation for empire building. From everyday glam to statement looks.
                   </p>
-                  <div className="text-xs text-gray-500 uppercase tracking-wide group-hover/article:text-black group-hover/article:font-bold transition-all">Read More →</div>
+                  <div className="text-xs text-gray-500 uppercase tracking-wide group-hover/article:text-black group-hover/article:font-bold transition-all">Explore →</div>
                 </div>
               </button>
             </article>
 
-            {/* Column 2: Tech News */}
+            {/* Section 2: Tech */}
             <article className="border-r border-gray-300 pr-6 last:border-r-0 group">
               <div className="mb-4 pb-2 border-b-2 border-black">
                 <h2 className="text-3xl font-black uppercase tracking-tight" style={{ fontFamily: 'Georgia, serif' }}>
-                  Tech News
+                  Tech
                 </h2>
                 <p className="text-xs text-gray-600 uppercase mt-1">Build Smarter, Scale Bigger</p>
               </div>
               <button
-                onClick={() => handleCategoryClick('business', 'Tech')}
+                onClick={() => setCurrentPage('business')}
                 className="text-left w-full group/article"
               >
                 {/* Course Outline Image - Ways to Make Money */}
@@ -1945,42 +1962,85 @@ export default function CreatorLandingPage() {
                   <p className="text-sm text-gray-700 leading-relaxed mb-3">
                     From beginner side hustles to empire asset strategies. Real tools for real growth.
                   </p>
-                  <div className="text-xs text-gray-500 uppercase tracking-wide group-hover/article:text-black group-hover/article:font-bold transition-all">Read More →</div>
+                  <div className="text-xs text-gray-500 uppercase tracking-wide group-hover/article:text-black group-hover/article:font-bold transition-all">Explore →</div>
                 </div>
               </button>
             </article>
 
-            {/* Column 3: Must-Have Picks */}
+            {/* Section 3: Business */}
             <article className="pr-6 group">
               <div className="mb-4 pb-2 border-b-2 border-black">
                 <h2 className="text-3xl font-black uppercase tracking-tight" style={{ fontFamily: 'Georgia, serif' }}>
-                  Must-Have Picks
+                  Business
                 </h2>
-                <p className="text-xs text-gray-600 uppercase mt-1">Own Your Essentials</p>
+                <p className="text-xs text-gray-600 uppercase mt-1">Empire Building</p>
               </div>
               <button
-                onClick={() => handleCategoryClick('beauty', 'Shop')}
+                onClick={() => setCurrentPage('business')}
                 className="text-left w-full group/article"
               >
-                {/* Image Placeholder */}
-                <div className="mb-4 aspect-video bg-gradient-to-br from-orange-100 to-amber-100 border-4 border-black overflow-hidden group-hover:border-gray-600 transition-all">
-                  <div className="w-full h-full flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600')] bg-cover bg-center group-hover:scale-110 transition-transform duration-500">
+                {/* Business Image */}
+                <div className="mb-4 aspect-video bg-gradient-to-br from-blue-100 to-indigo-100 border-4 border-black overflow-hidden group-hover:border-gray-600 transition-all">
+                  <div className="w-full h-full flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600')] bg-cover bg-center group-hover:scale-110 transition-transform duration-500">
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
                     <div className="relative z-10 text-white text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <ShoppingBag className="w-12 h-12 mx-auto mb-2" />
-                      <span className="text-sm font-bold uppercase">Shop Now</span>
+                      <Briefcase className="w-12 h-12 mx-auto mb-2" />
+                      <span className="text-sm font-bold uppercase">Explore Business</span>
                     </div>
                   </div>
                 </div>
                 <div className="mb-4">
-                  <h3 className="text-xl font-bold mb-2 group-hover/article:underline">Bundles, Kits & Faves</h3>
+                  <h3 className="text-xl font-bold mb-2 group-hover/article:underline">Resources, Tools & Strategies</h3>
                   <p className="text-sm text-gray-700 leading-relaxed mb-3">
-                    Curated essentials for your glow-up and empire journey. Everything I use and love.
+                    Build your empire with proven strategies, tools, and resources for scaling your business.
                   </p>
-                  <div className="text-xs text-gray-500 uppercase tracking-wide group-hover/article:text-black group-hover/article:font-bold transition-all">Shop Now →</div>
+                  <div className="text-xs text-gray-500 uppercase tracking-wide group-hover/article:text-black group-hover/article:font-bold transition-all">Explore →</div>
                 </div>
               </button>
             </article>
+          </div>
+        </div>
+
+        {/* Shop & Avatar Links */}
+        <div className="mb-16 border-t-4 border-black pt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Shop Section */}
+            <button
+              onClick={() => setCurrentPage('shop')}
+              className="border-4 border-black p-6 bg-white hover:bg-black hover:text-white transition-all group text-left"
+            >
+              <div className="flex items-center gap-4 mb-4">
+                <ShoppingBag className="w-12 h-12 group-hover:scale-110 transition-transform" />
+                <div>
+                  <h3 className="text-2xl font-black uppercase" style={{ fontFamily: 'Georgia, serif' }}>
+                    Shop
+                  </h3>
+                  <p className="text-xs text-gray-600 group-hover:text-gray-300 uppercase tracking-widest">Editor's Picks</p>
+                </div>
+              </div>
+              <p className="text-sm text-gray-700 group-hover:text-gray-200">
+                Curated essentials for your glow-up and empire journey. Everything I use and love.
+              </p>
+            </button>
+
+            {/* Avatar Customizer Section */}
+            <button
+              onClick={() => setCurrentPage('avatar')}
+              className="border-4 border-black p-6 bg-white hover:bg-black hover:text-white transition-all group text-left"
+            >
+              <div className="flex items-center gap-4 mb-4">
+                <Sparkles className="w-12 h-12 group-hover:scale-110 transition-transform" />
+                <div>
+                  <h3 className="text-2xl font-black uppercase" style={{ fontFamily: 'Georgia, serif' }}>
+                    Style Studio
+                  </h3>
+                  <p className="text-xs text-gray-600 group-hover:text-gray-300 uppercase tracking-widest">Create Your Look</p>
+                </div>
+              </div>
+              <p className="text-sm text-gray-700 group-hover:text-gray-200">
+                Mix and match clothing items to create your perfect outfit. Customize your avatar with our interactive style studio.
+              </p>
+            </button>
           </div>
         </div>
 
