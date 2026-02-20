@@ -6,11 +6,20 @@ import AvatarCustomizer from './components/AvatarCustomizer.jsx';
 import './email-utils.js'; // Load email collection utilities
 
 // Beauty Closet Component - Pink Fitting Room Theme
-function BeautyClosetPage({ onBack }) {
+function BeautyClosetPage({ onBack, onViewMediaKit, onViewPartnerships }) {
   const [isVisible, setIsVisible] = useState(false);
   const [unlocked, setUnlocked] = useState(false);
   const [email, setEmail] = useState('');
   const [showTemplate, setShowTemplate] = useState(false);
+
+  const shopMyPicks = [
+    { id: 1, name: 'Water Wave Lace Front Wig', category: 'Hair', price: '$89.99', image: 'https://m.media-amazon.com/images/I/71L9FKS0QwL._AC_SX679_.jpg', affiliateUrl: 'https://amzn.to/3YxGhair1', description: 'The exact wig from my TikToks - so natural!' },
+    { id: 2, name: 'Dyson Airwrap Complete', category: 'Styling', price: '$599.99', image: 'https://m.media-amazon.com/images/I/61kLVKfJS5L._AC_SX679_.jpg', affiliateUrl: 'https://amzn.to/dysonairwrap', description: 'Game-changer for styling!' },
+    { id: 3, name: 'Sleeveless Jumpsuit', category: 'Fashion', price: '$45.99', image: 'https://m.media-amazon.com/images/I/61Y3wE4mj-L._AC_UX679_.jpg', affiliateUrl: 'https://amzn.to/47v5ZEZ', description: 'Perfect fall outfit - so chic!' },
+    { id: 4, name: 'Ring Light with Tripod', category: 'Creator', price: '$49.99', image: 'https://m.media-amazon.com/images/I/61X8x3TPRqL._AC_SX679_.jpg', affiliateUrl: 'https://amzn.to/ringlight', description: 'Essential for content creation!' },
+    { id: 5, name: 'Cozy Loungewear Set', category: 'Fashion', price: '$38.99', image: 'https://m.media-amazon.com/images/I/61eBgz7LPQL._AC_UX679_.jpg', affiliateUrl: 'https://amzn.to/loungewear', description: 'My go-to work from home fit' },
+    { id: 6, name: 'Skincare Fridge', category: 'Beauty', price: '$54.99', image: 'https://m.media-amazon.com/images/I/71B0M4UOEVL._AC_SX679_.jpg', affiliateUrl: 'https://amzn.to/skinfridge', description: 'Keeps serums fresh & feels so luxe!' }
+  ];
 
   useEffect(() => {
     setIsVisible(true);
@@ -138,13 +147,30 @@ Best regards,
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-12">
         {/* Back Button */}
-        <button
-          onClick={onBack}
-          className="group mb-8 flex items-center gap-2 bg-white/80 backdrop-blur-sm border-2 border-pink-300 px-6 py-3 rounded-full hover:border-pink-400 hover:shadow-lg hover:shadow-pink-300/50 transition-all duration-300"
-        >
-          <ArrowLeft className="w-5 h-5 text-pink-500 group-hover:-translate-x-1 transition-transform" />
-          <span className="text-pink-600 font-semibold">Back to Main</span>
-        </button>
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+          <button
+            onClick={onBack}
+            className="group flex items-center gap-2 bg-white/80 backdrop-blur-sm border-2 border-pink-300 px-6 py-3 rounded-full hover:border-pink-400 hover:shadow-lg hover:shadow-pink-300/50 transition-all duration-300"
+          >
+            <ArrowLeft className="w-5 h-5 text-pink-500 group-hover:-translate-x-1 transition-transform" />
+            <span className="text-pink-600 font-semibold">Back to Main</span>
+          </button>
+          {/* Work With Me - Beauty & Fashion hub */}
+          <div className="flex items-center gap-2">
+            {onViewPartnerships && (
+              <button onClick={onViewPartnerships} className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-500 text-white px-5 py-2.5 rounded-full font-semibold hover:scale-105 transition-all shadow-md">
+                <Briefcase className="w-4 h-4" />
+                Work With Me
+              </button>
+            )}
+            {onViewMediaKit && (
+              <button onClick={onViewMediaKit} className="flex items-center gap-2 bg-white border-2 border-pink-300 text-pink-600 px-5 py-2.5 rounded-full font-semibold hover:bg-pink-50 transition-all">
+                <FileText className="w-4 h-4" />
+                Media Kit
+              </button>
+            )}
+          </div>
+        </div>
 
         {/* Header Section */}
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
@@ -460,27 +486,39 @@ Best regards,
           </div>
         </div>
 
-        {/* Featured Call-to-Action */}
-        <div className={`transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="bg-gradient-to-r from-pink-500 via-rose-500 to-purple-500 rounded-2xl p-8 shadow-2xl text-white text-center overflow-hidden">
-            <div className="absolute inset-0 bg-white/10 pointer-events-none"></div>
-            
-            <div className="relative z-10">
-              <ShoppingBag className="w-14 h-14 mx-auto mb-4" />
-              <h2 className="text-3xl font-bold mb-4">Shop Curated Favorites</h2>
-              <p className="mb-6 text-lg">
-                Discover my handpicked beauty and fashion essentials. 
-                Premium products I personally use and recommend.
-              </p>
-              <a
-                href="https://www.amazon.com/shop/itgirlsyd19"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-white text-pink-600 px-8 py-4 rounded-full font-bold hover:bg-pink-50 transition-all hover:scale-105 shadow-2xl"
-              >
-                <ShoppingBag className="w-5 h-5" />
-                Shop My Amazon Storefront
-                <Sparkles className="w-5 h-5" />
+        {/* Shop My Picks - moved here from homepage */}
+        <div className={`mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="bg-gradient-to-br from-pink-50 via-purple-50 to-rose-50 rounded-3xl p-8 border-2 border-pink-200/50 shadow-xl">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center gap-3 mb-3">
+                <ShoppingBag className="w-8 h-8 text-pink-500" />
+                <h2 className="text-3xl font-bold bg-gradient-to-r from-pink-600 via-purple-600 to-rose-500 bg-clip-text text-transparent">Shop My Picks</h2>
+                <Heart className="w-8 h-8 text-pink-500 fill-pink-500" />
+              </div>
+              <p className="text-gray-600 max-w-lg mx-auto">Everything I use & love! Click to shop 💕</p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {shopMyPicks.map((product) => (
+                <a key={product.id} href={product.affiliateUrl} target="_blank" rel="noopener noreferrer" className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 border border-gray-100 hover:border-pink-300">
+                  <div className="relative aspect-square bg-gray-50 overflow-hidden">
+                    <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onError={(e) => { e.target.style.display = 'none'; if (e.target.nextSibling) e.target.nextSibling.style.display = 'flex'; }} />
+                    <div className="hidden absolute inset-0 bg-gradient-to-br from-pink-400 to-purple-400 items-center justify-center"><ShoppingBag className="w-12 h-12 text-white/80" /></div>
+                    <span className="absolute top-2 left-2 bg-white/90 backdrop-blur-sm text-xs font-bold text-pink-600 px-2 py-0.5 rounded-full">{product.category}</span>
+                  </div>
+                  <div className="p-3">
+                    <h3 className="font-semibold text-gray-800 text-sm leading-tight line-clamp-2 mb-1 group-hover:text-pink-600">{product.name}</h3>
+                    <p className="text-xs text-gray-500 line-clamp-1 mb-2">{product.description}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="font-bold text-pink-600 text-sm">{product.price}</span>
+                      <Heart className="w-4 h-4 text-gray-300 group-hover:text-pink-500 group-hover:fill-pink-500 transition-colors" />
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+            <div className="text-center mt-6">
+              <a href="https://www.amazon.com/shop/itgirlsyd19" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white px-6 py-3 rounded-full font-bold hover:shadow-lg hover:scale-105 transition-all">
+                <ShoppingBag className="w-5 h-5" /> View Full Storefront <ArrowLeft className="w-5 h-5 rotate-180" />
               </a>
             </div>
           </div>
@@ -1101,14 +1139,23 @@ function BusinessHubPage({ onBack, onNavigateToContentForm, onNavigateToTechGuid
       <div className="fixed bottom-20 right-20 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse pointer-events-none z-0" style={{ animationDelay: '1s' }} />
 
       <div className="relative z-20 max-w-6xl mx-auto px-6 py-12">
-        {/* Back Button */}
-        <button
-          onClick={onBack}
-          className="group mb-8 flex items-center gap-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border-2 border-cyan-500/50 px-6 py-3 rounded-lg hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300"
-        >
-          <ArrowLeft className="w-5 h-5 text-cyan-400 group-hover:-translate-x-1 transition-transform" />
-          <span className="text-cyan-400 font-mono font-bold">RETURN_TO_MAIN</span>
-        </button>
+        {/* Back + Work With Me (Tech / Business hub) */}
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+          <button
+            onClick={onBack}
+            className="group flex items-center gap-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border-2 border-cyan-500/50 px-6 py-3 rounded-lg hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300"
+          >
+            <ArrowLeft className="w-5 h-5 text-cyan-400 group-hover:-translate-x-1 transition-transform" />
+            <span className="text-cyan-400 font-mono font-bold">RETURN_TO_MAIN</span>
+          </button>
+          <a
+            href="mailto:sydney@itgirlsydcontent.com?subject=Tech/Business Inquiry - Website, Design, Bots, Lead Scrapers"
+            className="flex items-center gap-2 bg-gradient-to-r from-cyan-500/30 to-purple-500/30 border-2 border-cyan-500/50 text-cyan-300 px-5 py-2.5 rounded-lg font-mono font-bold hover:border-cyan-400 transition-all"
+          >
+            <Briefcase className="w-4 h-4" />
+            Work With Me
+          </a>
+        </div>
 
         {/* Header Section */}
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
@@ -1218,7 +1265,6 @@ export default function CreatorLandingPage() {
   const [notification, setNotification] = useState('');
   const [currentPage, setCurrentPage] = useState('home'); // 'home', 'business', 'beauty', 'mediakit', 'partnerships', 'content-form', 'tech-guides', 'avatar'
   const [showSupportPopup, setShowSupportPopup] = useState(false);
-  const [showCollabPopup, setShowCollabPopup] = useState(false);
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [newsletterStatus, setNewsletterStatus] = useState(''); // 'success', 'error', 'loading'
 
@@ -1247,63 +1293,12 @@ export default function CreatorLandingPage() {
     { name: 'Email', icon: Mail, url: 'mailto:sydney@itgirlsydcontent.com', color: 'from-pink-500 to-rose-500', iconColor: 'text-white' }
   ];
 
-  // My Picks - Affiliate Products (you earn commission when people buy!)
-  const myPicks = [
-    {
-      id: 1,
-      name: 'Water Wave Lace Front Wig',
-      category: 'Hair',
-      price: '$89.99',
-      image: 'https://m.media-amazon.com/images/I/71L9FKS0QwL._AC_SX679_.jpg',
-      affiliateUrl: 'https://amzn.to/3YxGhair1',
-      description: 'The exact wig from my TikToks - so natural!'
-    },
-    {
-      id: 2,
-      name: 'Dyson Airwrap Complete',
-      category: 'Styling',
-      price: '$599.99',
-      image: 'https://m.media-amazon.com/images/I/61kLVKfJS5L._AC_SX679_.jpg',
-      affiliateUrl: 'https://amzn.to/dysonairwrap',
-      description: 'Game-changer for styling!'
-    },
-    {
-      id: 3,
-      name: 'Sleeveless Jumpsuit',
-      category: 'Fashion',
-      price: '$45.99',
-      image: 'https://m.media-amazon.com/images/I/61Y3wE4mj-L._AC_UX679_.jpg',
-      affiliateUrl: 'https://amzn.to/47v5ZEZ',
-      description: 'Perfect fall outfit - so chic!'
-    },
-    {
-      id: 4,
-      name: 'Ring Light with Tripod',
-      category: 'Creator',
-      price: '$49.99',
-      image: 'https://m.media-amazon.com/images/I/61X8x3TPRqL._AC_SX679_.jpg',
-      affiliateUrl: 'https://amzn.to/ringlight',
-      description: 'Essential for content creation!'
-    },
-    {
-      id: 5,
-      name: 'Cozy Loungewear Set',
-      category: 'Fashion',
-      price: '$38.99',
-      image: 'https://m.media-amazon.com/images/I/61eBgz7LPQL._AC_UX679_.jpg',
-      affiliateUrl: 'https://amzn.to/loungewear',
-      description: 'My go-to work from home fit'
-    },
-    {
-      id: 6,
-      name: 'Skincare Fridge',
-      category: 'Beauty',
-      price: '$54.99',
-      image: 'https://m.media-amazon.com/images/I/71B0M4UOEVL._AC_SX679_.jpg',
-      affiliateUrl: 'https://amzn.to/skinfridge',
-      description: 'Keeps serums fresh & feels so luxe!'
-    }
-  ];
+  // Portfolio: add your website URLs here for the floating scroll at top
+  const portfolioSites = [
+    { name: 'Site 1', url: 'https://example.com' },
+    { name: 'Site 2', url: 'https://example.com' },
+    // Add more: { name: 'Your Project', url: 'https://...' },
+  ].filter((s) => s.url && !s.url.includes('example.com')); // hide placeholder until you add real URLs
 
   const contentCategories = [
     {
@@ -1321,14 +1316,6 @@ export default function CreatorLandingPage() {
       color: 'from-purple-500 to-indigo-500',
       description: 'Tech tools, business guides, content creation & professional services',
       page: 'business'
-    },
-    {
-      title: 'Style Studio',
-      emoji: '✨',
-      icon: Sparkles,
-      color: 'from-rose-500 to-pink-500',
-      description: 'Create your perfect outfit with our virtual avatar customizer',
-      page: 'avatar'
     }
   ];
 
@@ -1361,7 +1348,13 @@ export default function CreatorLandingPage() {
 
   // Render Beauty Closet Page
   if (currentPage === 'beauty') {
-    return <BeautyClosetPage onBack={navigateHome} />;
+    return (
+      <BeautyClosetPage
+        onBack={navigateHome}
+        onViewMediaKit={() => setCurrentPage('mediakit')}
+        onViewPartnerships={() => setCurrentPage('partnerships')}
+      />
+    );
   }
 
   // Render Business Page
@@ -1434,6 +1427,28 @@ export default function CreatorLandingPage() {
       )}
 
       <div className="relative z-20 max-w-4xl mx-auto px-6 py-12">
+        {/* Website Portfolio – interactive floating scroll (add URLs in portfolioSites above) */}
+        {portfolioSites.length > 0 && (
+          <div className={`mb-10 transition-all duration-1000 relative z-20 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
+            <h3 className="text-center text-gray-500 text-sm font-medium mb-3">Websites I’ve Built</h3>
+            <div className="flex gap-4 overflow-x-auto pb-2 scroll-smooth snap-x snap-mandatory hide-scrollbar" style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}>
+              {portfolioSites.map((site, i) => (
+                <a
+                  key={i}
+                  href={site.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-shrink-0 snap-center group bg-white/90 backdrop-blur-sm border-2 border-pink-200 rounded-2xl px-6 py-4 shadow-md hover:shadow-lg hover:border-pink-400 hover:scale-[1.02] transition-all duration-300 flex items-center gap-3 min-w-[200px]"
+                >
+                  <Globe className="w-8 h-8 text-pink-500 group-hover:text-purple-500 transition-colors" />
+                  <span className="font-semibold text-gray-800 group-hover:text-pink-600 truncate">{site.name}</span>
+                  <span className="text-pink-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Header Section */}
         <div className={`text-center mb-16 transition-all duration-1000 relative z-20 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
           <div className="relative inline-block mb-6" style={{ width: '128px', height: '128px', pointerEvents: 'none' }}>
@@ -1457,133 +1472,9 @@ export default function CreatorLandingPage() {
           </h1>
           
           <p className="text-xl text-gray-700 mb-6 font-medium">
-            Content Creator • Lifestyle Influencer • Digital Trendsetter
-          </p>
-          
-          <div className="flex items-center justify-center gap-3 mb-6 relative z-20">
-            <button
-              onClick={() => setShowCollabPopup(true)}
-              className="group flex items-center gap-2 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 text-white px-6 py-3 rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 font-bold relative z-20"
-            >
-              <Briefcase className="w-5 h-5 group-hover:animate-bounce" />
-              <span>Work With Me</span>
-              <Sparkles className="w-5 h-5" />
-            </button>
-            <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-lg border-2 border-pink-200 relative z-20">
-              <Crown className="w-5 h-5 text-purple-500" />
-              <span className="font-semibold text-gray-700">Verified Creator</span>
-            </div>
-          </div>
-
-          <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Hey babe! 💕 Welcome to my little corner of the internet. I'm all about beauty, fashion, lifestyle & good vibes. 
-            Join me on this journey & shop my faves below! ✨
+            Beauty • Fashion • Brand collabs & social
           </p>
         </div>
-
-        {/* Work With Me / Collaboration Popup */}
-        {showCollabPopup && (
-          <div 
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
-            onClick={() => setShowCollabPopup(false)}
-          >
-            <div 
-              className="relative bg-white rounded-3xl shadow-2xl max-w-lg w-full overflow-hidden animate-in"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Gradient Header */}
-              <div className="bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 p-6 text-white text-center">
-                <div className="flex items-center justify-center gap-3 mb-2">
-                  <Sparkles className="w-8 h-8" />
-                  <h2 className="text-2xl font-bold">Let's Collaborate!</h2>
-                  <Sparkles className="w-8 h-8" />
-                </div>
-                <p className="text-white/90 text-sm">Brands, PR & partnership inquiries welcome 💕</p>
-              </div>
-
-              {/* Close Button */}
-              <button
-                onClick={() => setShowCollabPopup(false)}
-                className="absolute top-4 right-4 bg-white/20 hover:bg-white/40 text-white rounded-full p-2 transition-all"
-              >
-                <span className="text-xl font-bold">×</span>
-              </button>
-
-              {/* Content */}
-              <div className="p-6">
-                {/* Quick Stats */}
-                <div className="grid grid-cols-3 gap-3 mb-6">
-                  <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl p-3 text-center border border-pink-200">
-                    <p className="text-2xl font-bold text-purple-600">55K+</p>
-                    <p className="text-xs text-gray-600">Followers</p>
-                  </div>
-                  <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl p-3 text-center border border-pink-200">
-                    <p className="text-2xl font-bold text-pink-600">8%+</p>
-                    <p className="text-xs text-gray-600">Engagement</p>
-                  </div>
-                  <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl p-3 text-center border border-pink-200">
-                    <p className="text-2xl font-bold text-orange-500">5+</p>
-                    <p className="text-xs text-gray-600">Platforms</p>
-                  </div>
-                </div>
-
-                {/* Main Actions */}
-                <div className="space-y-3">
-                  {/* Send Email - Big CTA */}
-                  <a
-                    href="mailto:sydney@itgirlsydcontent.com?subject=Brand Collaboration Inquiry&body=Hi IT Girl!%0A%0AI'd love to discuss a potential collaboration with you.%0A%0ABrand/Company:%0AType of Collaboration:%0ATimeline:%0ABudget Range:%0A%0ALooking forward to hearing from you!"
-                    className="flex items-center justify-center gap-3 w-full bg-gradient-to-r from-purple-600 to-pink-500 text-white px-6 py-4 rounded-xl font-bold text-lg hover:shadow-lg hover:scale-[1.01] transition-all"
-                  >
-                    <Mail className="w-6 h-6" />
-                    Send Me an Email
-                  </a>
-                  
-                  {/* Response Time Notice */}
-                  <div className="bg-green-50 border border-green-200 rounded-xl p-3 text-center">
-                    <p className="text-green-700 text-sm font-medium">
-                      ⚡ I typically respond within <span className="font-bold">12-24 hours</span>
-                    </p>
-                  </div>
-
-                  {/* View Media Kit */}
-                  <button
-                    onClick={() => {
-                      setShowCollabPopup(false);
-                      setCurrentPage('mediakit');
-                    }}
-                    className="flex items-center justify-center gap-2 w-full bg-white border-2 border-purple-300 text-purple-600 px-6 py-3 rounded-xl font-semibold hover:bg-purple-50 hover:border-purple-400 transition-all"
-                  >
-                    <FileText className="w-5 h-5" />
-                    View My Media Kit
-                  </button>
-
-                  {/* View Partnership Info */}
-                  <button
-                    onClick={() => {
-                      setShowCollabPopup(false);
-                      setCurrentPage('partnerships');
-                    }}
-                    className="flex items-center justify-center gap-2 w-full text-gray-600 hover:text-purple-600 text-sm font-medium py-2 transition-colors"
-                  >
-                    <Briefcase className="w-4 h-4" />
-                    See Partnership Options & Rates
-                  </button>
-                </div>
-
-                {/* Email Display */}
-                <div className="mt-4 pt-4 border-t border-gray-100 text-center">
-                  <p className="text-xs text-gray-500 mb-1">Or email directly:</p>
-                  <a 
-                    href="mailto:sydney@itgirlsydcontent.com"
-                    className="text-purple-600 font-semibold hover:underline"
-                  >
-                    sydney@itgirlsydcontent.com
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* TikTok Live Battle Feature */}
         <div className={`mb-8 transition-all duration-1000 delay-150 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -1629,94 +1520,6 @@ export default function CreatorLandingPage() {
           </div>
         </div>
 
-        {/* Shop My Picks - Affiliate Products Section */}
-        <div className={`mb-12 transition-all duration-1000 delay-175 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="bg-gradient-to-br from-pink-50 via-purple-50 to-rose-50 rounded-3xl p-8 border-2 border-pink-200/50 shadow-xl">
-            {/* Header */}
-            <div className="text-center mb-8">
-              <div className="inline-flex items-center gap-3 mb-3">
-                <ShoppingBag className="w-8 h-8 text-pink-500" />
-                <h2 className="text-3xl font-bold bg-gradient-to-r from-pink-600 via-purple-600 to-rose-500 bg-clip-text text-transparent">
-                  Shop My Picks
-                </h2>
-                <Heart className="w-8 h-8 text-pink-500 fill-pink-500" />
-              </div>
-              <p className="text-gray-600 max-w-lg mx-auto">
-                Everything I use & love! Click to shop - your support means the world 💕
-              </p>
-            </div>
-
-            {/* Product Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-              {myPicks.map((product) => (
-                <a
-                  key={product.id}
-                  href={product.affiliateUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 border border-gray-100 hover:border-pink-300"
-                  style={{ boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)' }}
-                >
-                  {/* Product Image */}
-                  <div className="relative aspect-square bg-gray-50 overflow-hidden">
-                    <img 
-                      src={product.image} 
-                      alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.nextSibling.style.display = 'flex';
-                      }}
-                      style={{ pointerEvents: 'none' }}
-                    />
-                    {/* Fallback if image doesn't load */}
-                    <div className="hidden absolute inset-0 bg-gradient-to-br from-pink-400 to-purple-400 items-center justify-center pointer-events-none">
-                      <ShoppingBag className="w-12 h-12 text-white/80" />
-                    </div>
-                    {/* Category Badge */}
-                    <span className="absolute top-2 left-2 bg-white/90 backdrop-blur-sm text-xs font-bold text-pink-600 px-2 py-0.5 rounded-full pointer-events-none z-10">
-                      {product.category}
-                    </span>
-                    {/* Add to Bag Overlay */}
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
-                      <div className="bg-white text-pink-600 px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 transform scale-90 group-hover:scale-100 transition-transform pointer-events-auto">
-                        <ShoppingBag className="w-4 h-4" />
-                        Shop Now
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Product Info */}
-                  <div className="p-3">
-                    <h3 className="font-semibold text-gray-800 text-sm leading-tight line-clamp-2 mb-1 group-hover:text-pink-600 transition-colors">
-                      {product.name}
-                    </h3>
-                    <p className="text-xs text-gray-500 line-clamp-1 mb-2">{product.description}</p>
-                    <div className="flex items-center justify-between">
-                      <span className="font-bold text-pink-600 text-sm">{product.price}</span>
-                      <Heart className="w-4 h-4 text-gray-300 group-hover:text-pink-500 group-hover:fill-pink-500 transition-colors" />
-                    </div>
-                  </div>
-                </a>
-              ))}
-            </div>
-
-            {/* View All Link */}
-            <div className="text-center mt-6">
-              <a
-                href="https://www.amazon.com/shop/itgirlsyd19"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white px-6 py-3 rounded-full font-bold hover:shadow-lg hover:scale-105 transition-all"
-              >
-                <ShoppingBag className="w-5 h-5" />
-                View Full Storefront
-                <ArrowLeft className="w-5 h-5 rotate-180" />
-              </a>
-            </div>
-          </div>
-        </div>
-
         {/* Compact Social Media Section - Smaller Icons */}
         <div className={`mb-10 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h3 className="text-center text-gray-500 text-sm font-medium mb-3">Follow Me</h3>
@@ -1738,43 +1541,43 @@ export default function CreatorLandingPage() {
         </div>
 
 
-        {/* Content Categories */}
-        <div className="mb-12 relative z-20">
+        {/* Content Categories - two main subsections */}
+        <div className="mb-12 relative z-20 max-w-5xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-4 bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
             Explore My Content
           </h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
             Click a category to discover curated content, tutorials, and recommendations
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-20">
             {contentCategories.map((category, catIndex) => (
               <button
                 key={catIndex}
                 onClick={() => handleCategoryClick(category.page, category.title)}
-                className={`group bg-white rounded-2xl p-8 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100 hover:border-pink-300 text-left relative z-20 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+                className={`group bg-white rounded-3xl p-10 md:p-12 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-100 hover:border-pink-300 text-left relative z-20 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
                 style={{ transitionDelay: `${300 + catIndex * 100}ms` }}
               >
                 {/* Category Icon */}
-                <div className="relative mb-6">
+                <div className="relative mb-8">
                   <div className={`absolute inset-0 bg-gradient-to-r ${category.color} blur-xl opacity-40 group-hover:opacity-60 transition-opacity pointer-events-none`} />
-                  <div className={`relative bg-gradient-to-r ${category.color} p-6 rounded-2xl inline-block transform group-hover:scale-110 transition-all duration-300`}>
-                    <category.icon className="w-12 h-12 text-white" />
+                  <div className={`relative bg-gradient-to-r ${category.color} p-8 rounded-2xl inline-block transform group-hover:scale-110 transition-all duration-300`}>
+                    <category.icon className="w-16 h-16 text-white" />
                   </div>
                 </div>
 
                 {/* Category Title */}
-                <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text" style={{backgroundImage: `linear-gradient(to right, var(--tw-gradient-stops))`}}>
+                <h3 className="text-3xl font-bold text-gray-800 mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text" style={{backgroundImage: `linear-gradient(to right, var(--tw-gradient-stops))`}}>
                   {category.title}
                 </h3>
 
                 {/* Category Description */}
-                <p className="text-gray-600 mb-6">
+                <p className="text-gray-600 text-base mb-8 leading-relaxed">
                   {category.description}
                 </p>
 
                 {/* Enter Button */}
-                <div className={`flex items-center gap-2 bg-gradient-to-r ${category.color} text-white px-6 py-3 rounded-xl font-semibold group-hover:shadow-lg transition-all inline-flex`}>
+                <div className={`flex items-center gap-2 bg-gradient-to-r ${category.color} text-white px-8 py-4 rounded-xl font-semibold text-lg group-hover:shadow-lg transition-all inline-flex`}>
                   <span>Explore</span>
                   <ArrowLeft className="w-5 h-5 rotate-180 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -1783,62 +1586,20 @@ export default function CreatorLandingPage() {
           </div>
         </div>
 
-        {/* Compact Work With Me Section */}
-        <div className={`mb-12 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-900 rounded-2xl p-8 shadow-2xl border border-purple-500/30 text-center">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <Briefcase className="w-10 h-10 text-purple-400" />
-              <h2 className="text-3xl font-bold text-white">Work With Me</h2>
-              <Crown className="w-10 h-10 text-purple-400" />
-            </div>
-            <p className="text-purple-200 mb-6 max-w-2xl mx-auto">
-              Partner with a multi-platform creator. 55K+ engaged followers across beauty, wellness, lifestyle & business.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button
-                onClick={() => setCurrentPage('partnerships')}
-                className="group bg-white text-purple-900 px-8 py-4 rounded-xl font-bold hover:bg-purple-50 transition-all hover:scale-105 shadow-lg flex items-center gap-2"
-              >
-                <Sparkles className="w-5 h-5" />
-                Partnership Info
-                <ArrowLeft className="w-5 h-5 rotate-180 group-hover:translate-x-1 transition-transform" />
-              </button>
-
-              <button
-                onClick={() => setCurrentPage('mediakit')}
-                className="group bg-purple-700 text-white px-8 py-4 rounded-xl font-bold hover:bg-purple-600 transition-all hover:scale-105 shadow-lg flex items-center gap-2 border-2 border-purple-500"
-              >
-                <FileText className="w-5 h-5" />
-                Media Kit
-                <ArrowLeft className="w-5 h-5 rotate-180 group-hover:translate-x-1 transition-transform" />
-              </button>
-              
-              <a
-                href="mailto:sydney@itgirlsydcontent.com?subject=Brand Partnership Inquiry"
-                className="group bg-indigo-700 text-white px-8 py-4 rounded-xl font-bold hover:bg-indigo-600 transition-all hover:scale-105 shadow-lg flex items-center gap-2 border-2 border-indigo-500"
-              >
-                <Mail className="w-5 h-5" />
-                Contact
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Newsletter Section */}
+        {/* Newsletter Section - compact */}
         <div className={`mb-12 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-3xl p-8 shadow-2xl text-white text-center">
-            <Sparkles className="w-12 h-12 mx-auto mb-4" />
-            <h2 className="text-3xl font-bold mb-4">Join My VIP List</h2>
-            <p className="mb-6 text-lg opacity-90">
-              Get exclusive content, early access to courses, and special offers delivered to your inbox!
+          <div className="bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-2xl px-6 py-5 md:px-8 md:py-6 shadow-xl text-white text-center max-w-2xl mx-auto">
+            <Sparkles className="w-8 h-8 mx-auto mb-2" />
+            <h2 className="text-xl md:text-2xl font-bold mb-2">Join My VIP List</h2>
+            <p className="mb-4 text-sm opacity-90">
+              Exclusive content, early access & special offers to your inbox.
             </p>
             
             {newsletterStatus === 'success' ? (
-              <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 max-w-md mx-auto border border-white/30">
-                <div className="text-5xl mb-4">🎉</div>
-                <h3 className="text-2xl font-bold mb-2">You're In!</h3>
-                <p className="opacity-90">Welcome to the VIP list! Check your inbox for a welcome email. 💕</p>
+              <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 max-w-md mx-auto border border-white/30">
+                <div className="text-3xl mb-2">🎉</div>
+                <h3 className="text-lg font-bold mb-1">You're In!</h3>
+                <p className="text-sm opacity-90">Check your inbox for a welcome email. 💕</p>
               </div>
             ) : (
               <form 
@@ -1885,7 +1646,7 @@ export default function CreatorLandingPage() {
                     setNewsletterEmail('');
                   }
                 }}
-                className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+                className="flex flex-col sm:flex-row gap-2 max-w-md mx-auto"
               >
                 <input
                   type="email"
@@ -1895,9 +1656,9 @@ export default function CreatorLandingPage() {
                     setNewsletterEmail(e.target.value);
                     if (newsletterStatus === 'error') setNewsletterStatus('');
                   }}
-                  className={`flex-1 px-6 py-4 rounded-full text-gray-800 focus:outline-none focus:ring-4 transition-all ${
+                  className={`flex-1 px-4 py-3 text-sm rounded-full text-gray-800 focus:outline-none focus:ring-2 transition-all ${
                     newsletterStatus === 'error' 
-                      ? 'ring-4 ring-red-400 focus:ring-red-400' 
+                      ? 'ring-2 ring-red-400 focus:ring-red-400' 
                       : 'focus:ring-white/50'
                   }`}
                   required
@@ -1905,7 +1666,7 @@ export default function CreatorLandingPage() {
                 <button 
                   type="submit"
                   disabled={newsletterStatus === 'loading'}
-                  className={`px-8 py-4 rounded-full font-bold transition-all shadow-lg flex items-center justify-center gap-2 ${
+                  className={`px-6 py-3 text-sm rounded-full font-bold transition-all shadow-lg flex items-center justify-center gap-2 ${
                     newsletterStatus === 'loading'
                       ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                       : 'bg-white text-purple-600 hover:bg-pink-50 hover:scale-105'
@@ -1930,7 +1691,7 @@ export default function CreatorLandingPage() {
             )}
             
             {newsletterStatus !== 'success' && (
-              <p className="mt-4 text-sm opacity-75">No spam, ever! Unsubscribe anytime.</p>
+              <p className="mt-2 text-xs opacity-75">No spam, ever! Unsubscribe anytime.</p>
             )}
           </div>
         </div>

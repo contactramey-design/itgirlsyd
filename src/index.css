@@ -39,6 +39,15 @@ body {
   animation: slide-in-from-top 0.3s ease-out;
 }
 
+/* Portfolio horizontal scroll - hide scrollbar but keep scroll */
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* Hacker/Gaming theme animations */
 @keyframes glitch {
   0% {
