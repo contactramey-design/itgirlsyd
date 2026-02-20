@@ -164,7 +164,7 @@ export default function BusinessTechGuides({ onBack }) {
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
               <a
-                href="mailto:sydney@itgirlsydcontent.com?subject=Tech Tools Consulting"
+                href="mailto:contact.ramey@gmail.com?subject=Tech Tools Consulting"
                 className="bg-white text-indigo-600 px-8 py-4 rounded-xl font-bold hover:bg-indigo-50 transition-all shadow-lg flex items-center gap-2"
               >
                 <Mail className="w-5 h-5" />

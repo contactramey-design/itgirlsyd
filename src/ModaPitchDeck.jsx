@@ -391,14 +391,14 @@ export default function ModaPitchDeck({ onBack }) {
             </p>
             <div className="flex gap-4 justify-center">
               <a
-                href="mailto:sydney@itgirlsydcontent.com?subject=MODA Investment Inquiry"
+                href="mailto:contact.ramey@gmail.com?subject=MODA Investment Inquiry"
                 className="bg-white text-purple-600 px-8 py-4 rounded-xl font-bold hover:bg-purple-50 transition-all shadow-lg flex items-center gap-2"
               >
                 <Mail className="w-5 h-5" />
                 Contact for Investment
               </a>
               <a
-                href="mailto:sydney@itgirlsydcontent.com?subject=Request MODA Full Pitch Deck"
+                href="mailto:contact.ramey@gmail.com?subject=Request MODA Full Pitch Deck"
                 className="bg-purple-700 text-white px-8 py-4 rounded-xl font-bold hover:bg-purple-800 transition-all border-2 border-white/30 flex items-center gap-2"
               >
                 <FileText className="w-5 h-5" />

@@ -240,7 +240,7 @@ Best regards,
                 
                 <div className="flex flex-col sm:flex-row items-center gap-3 justify-center md:justify-start">
                   <a
-                    href="https://www.amazon.com/dp/B0EXAMPLE?tag=itgirlsyd-20"
+                    href="https://tiktok.com/@itgirlsyd19"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group bg-gradient-to-r from-pink-500 to-purple-500 text-white px-8 py-3 rounded-xl font-bold hover:from-pink-400 hover:to-purple-400 transition-all hover:scale-105 shadow-lg flex items-center gap-2"
@@ -403,7 +403,7 @@ Best regards,
                       Secure PayPal checkout • Delivered via Scribed.ai on January 1st, 2026
                     </p>
                     <p className="text-purple-300 text-xs mt-2">
-                      Email sydney@itgirlsydcontent.com after payment with your email for Scribed invite! 💕
+                      Email contact.ramey@gmail.com after payment with your email for Scribed invite! 💕
                     </p>
                   </div>
                 </div>
@@ -706,7 +706,7 @@ function BusinessTechGuides({ onBack }) {
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
               <a
-                href="mailto:sydney@itgirlsydcontent.com?subject=Tech Tools Consulting"
+                href="mailto:contact.ramey@gmail.com?subject=Tech Tools Consulting"
                 className="bg-white text-indigo-600 px-8 py-4 rounded-xl font-bold hover:bg-indigo-50 transition-all shadow-lg flex items-center gap-2"
               >
                 <Mail className="w-5 h-5" />
@@ -801,7 +801,7 @@ Please respond with a custom quote and invoice.
     `.trim();
 
     // Create mailto link
-    const mailtoLink = `mailto:sydney@itgirlsydcontent.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    const mailtoLink = `mailto:contact.ramey@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
     
     // Open email client
     window.location.href = mailtoLink;
@@ -1149,7 +1149,7 @@ function BusinessHubPage({ onBack, onNavigateToContentForm, onNavigateToTechGuid
             <span className="text-cyan-400 font-mono font-bold">RETURN_TO_MAIN</span>
           </button>
           <a
-            href="mailto:sydney@itgirlsydcontent.com?subject=Tech/Business Inquiry - Website, Design, Bots, Lead Scrapers"
+            href="mailto:contact.ramey@gmail.com?subject=Tech/Business Inquiry - Website, Design, Bots, Lead Scrapers"
             className="flex items-center gap-2 bg-gradient-to-r from-cyan-500/30 to-purple-500/30 border-2 border-cyan-500/50 text-cyan-300 px-5 py-2.5 rounded-lg font-mono font-bold hover:border-cyan-400 transition-all"
           >
             <Briefcase className="w-4 h-4" />
@@ -1264,7 +1264,6 @@ export default function CreatorLandingPage() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [notification, setNotification] = useState('');
   const [currentPage, setCurrentPage] = useState('home'); // 'home', 'business', 'beauty', 'mediakit', 'partnerships', 'content-form', 'tech-guides', 'avatar'
-  const [showSupportPopup, setShowSupportPopup] = useState(false);
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [newsletterStatus, setNewsletterStatus] = useState(''); // 'success', 'error', 'loading'
 
@@ -1290,15 +1289,17 @@ export default function CreatorLandingPage() {
     { name: 'Pinterest', icon: TrendingUp, url: 'https://pinterest.com/itgirlsyd19', color: 'from-red-600 to-red-500', iconColor: 'text-white' },
     { name: 'Threads', icon: Activity, url: 'https://threads.net/@itgirlsyd19', color: 'from-black to-gray-900', iconColor: 'text-white' },
     { name: 'Twitter', icon: Twitter, url: 'https://twitter.com/itgirlsyd19', color: 'from-blue-400 to-blue-500', iconColor: 'text-white' },
-    { name: 'Email', icon: Mail, url: 'mailto:sydney@itgirlsydcontent.com', color: 'from-pink-500 to-rose-500', iconColor: 'text-white' }
+    { name: 'Email', icon: Mail, url: 'mailto:contact.ramey@gmail.com', color: 'from-pink-500 to-rose-500', iconColor: 'text-white' }
   ];
 
-  // Portfolio: add your website URLs here for the floating scroll at top
+  // Portfolio: websites & apps (web dev)
   const portfolioSites = [
-    { name: 'Site 1', url: 'https://example.com' },
-    { name: 'Site 2', url: 'https://example.com' },
-    // Add more: { name: 'Your Project', url: 'https://...' },
-  ].filter((s) => s.url && !s.url.includes('example.com')); // hide placeholder until you add real URLs
+    { name: 'Magic Plate', url: 'https://magicplate.info' },
+    { name: 'Notarize.LA', url: 'https://notarize.la' },
+    { name: 'Affirmations App', url: '#' },
+    { name: 'Lead Scraper App', url: '#' },
+    { name: 'Scribed.ai', url: 'https://scribed.ai' },
+  ];
 
   const contentCategories = [
     {
@@ -1427,28 +1428,6 @@ export default function CreatorLandingPage() {
       )}
 
       <div className="relative z-20 max-w-4xl mx-auto px-6 py-12">
-        {/* Website Portfolio – interactive floating scroll (add URLs in portfolioSites above) */}
-        {portfolioSites.length > 0 && (
-          <div className={`mb-10 transition-all duration-1000 relative z-20 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
-            <h3 className="text-center text-gray-500 text-sm font-medium mb-3">Websites I’ve Built</h3>
-            <div className="flex gap-4 overflow-x-auto pb-2 scroll-smooth snap-x snap-mandatory hide-scrollbar" style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}>
-              {portfolioSites.map((site, i) => (
-                <a
-                  key={i}
-                  href={site.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-shrink-0 snap-center group bg-white/90 backdrop-blur-sm border-2 border-pink-200 rounded-2xl px-6 py-4 shadow-md hover:shadow-lg hover:border-pink-400 hover:scale-[1.02] transition-all duration-300 flex items-center gap-3 min-w-[200px]"
-                >
-                  <Globe className="w-8 h-8 text-pink-500 group-hover:text-purple-500 transition-colors" />
-                  <span className="font-semibold text-gray-800 group-hover:text-pink-600 truncate">{site.name}</span>
-                  <span className="text-pink-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-                </a>
-              ))}
-            </div>
-          </div>
-        )}
-
         {/* Header Section */}
         <div className={`text-center mb-16 transition-all duration-1000 relative z-20 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
           <div className="relative inline-block mb-6" style={{ width: '128px', height: '128px', pointerEvents: 'none' }}>
@@ -1476,49 +1455,29 @@ export default function CreatorLandingPage() {
           </p>
         </div>
 
-        {/* TikTok Live Battle Feature */}
-        <div className={`mb-8 transition-all duration-1000 delay-150 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="relative bg-gradient-to-r from-black via-pink-600 to-cyan-400 rounded-2xl p-6 shadow-2xl overflow-hidden">
-            {/* Animated background */}
-            <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.1)_50%,transparent_75%)] bg-[length:250%_250%] animate-pulse pointer-events-none" />
-            
-            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-4">
-                <div className="bg-gradient-to-br from-pink-500 to-cyan-400 p-4 rounded-xl animate-pulse">
-                  <Video className="w-10 h-10 text-white" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse" />
-                    <span className="text-white font-black text-2xl uppercase tracking-wide">Live Battle</span>
-                  </div>
-                  <p className="text-pink-200 text-sm">Join my TikTok Live & support with gifts!</p>
-                </div>
-              </div>
-              
-              <div className="flex gap-3">
+        {/* Website Portfolio – interactive horizontal scroll */}
+        {portfolioSites.length > 0 && (
+          <div className={`mb-10 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <h3 className="text-center text-gray-700 text-lg font-bold mb-4">Websites I've Built</h3>
+            <div className="flex gap-4 overflow-x-auto pb-3 scroll-smooth snap-x snap-mandatory hide-scrollbar min-h-[80px]" style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}>
+              {portfolioSites.map((site, i) => (
                 <a
-                  href="https://www.tiktok.com/@itgirlsyd19/live"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-xl border-2 border-white/30 hover:border-white/60 hover:bg-white/30 transition-all cursor-pointer"
+                  key={i}
+                  href={site.url}
+                  target={site.url === '#' ? undefined : '_blank'}
+                  rel={site.url === '#' ? undefined : 'noopener noreferrer'}
+                  className={`flex-shrink-0 snap-center group rounded-2xl px-6 py-4 shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300 flex items-center gap-3 min-w-[180px] ${site.url === '#' ? 'bg-white/70 border-2 border-dashed border-pink-300 cursor-default' : 'bg-white border-2 border-pink-200 hover:border-pink-400'}`}
+                  onClick={site.url === '#' ? (e) => e.preventDefault() : undefined}
                 >
-                  <p className="text-white font-bold text-sm">Join Battle</p>
-                  <p className="text-pink-200 text-xs">Go Live Now →</p>
+                  <Globe className="w-8 h-8 text-pink-500 group-hover:text-purple-500 transition-colors flex-shrink-0" />
+                  <span className="font-semibold text-gray-800 group-hover:text-pink-600 truncate">{site.name}</span>
+                  {site.url !== '#' && <span className="text-pink-400 opacity-0 group-hover:opacity-100 transition-opacity">→</span>}
                 </a>
-                <a
-                  href="https://www.tiktok.com/coin"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-cyan-500/20 backdrop-blur-sm px-6 py-3 rounded-xl border-2 border-cyan-400/30 hover:border-cyan-400/60 hover:bg-cyan-500/30 transition-all cursor-pointer"
-                >
-                  <p className="text-white font-bold text-sm">Get Coins</p>
-                  <p className="text-cyan-200 text-xs">Discount Available</p>
-                </a>
-              </div>
+              ))}
             </div>
           </div>
-        </div>
+        )}
+
 
         {/* Compact Social Media Section - Smaller Icons */}
         <div className={`mb-10 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -1707,77 +1666,16 @@ export default function CreatorLandingPage() {
         </div>
       </div>
 
-      {/* Floating Support Button */}
-      <button
-        onClick={() => setShowSupportPopup(true)}
-        className="fixed bottom-8 right-8 z-40 bg-gradient-to-r from-pink-500 to-purple-600 text-white p-4 rounded-full shadow-lg hover:shadow-md hover:scale-110 transition-all duration-300 flex items-center gap-2 group"
+      {/* Floating Join the Live Button */}
+      <a
+        href="https://www.tiktok.com/@itgirlsyd19/live"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-8 right-8 z-40 bg-gradient-to-r from-black via-pink-600 to-cyan-400 text-white p-4 rounded-full shadow-lg hover:shadow-md hover:scale-110 transition-all duration-300 flex items-center gap-2 group"
       >
-        <Heart className="w-6 h-6 fill-white group-hover:animate-pulse" />
-        <span className="font-bold hidden sm:inline">Support Me</span>
-      </button>
-
-      {/* Support Popup Modal */}
-      {showSupportPopup && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300">
-          <div className="relative bg-gradient-to-br from-pink-500 via-rose-500 to-purple-600 rounded-3xl p-8 shadow-2xl max-w-md w-full animate-in zoom-in duration-300">
-            {/* Close Button */}
-            <button
-              onClick={() => setShowSupportPopup(false)}
-              className="absolute top-4 right-4 bg-white/20 hover:bg-white/30 text-white rounded-full p-2 transition-all hover:rotate-90 duration-300"
-            >
-              <span className="text-2xl leading-none">×</span>
-            </button>
-
-            {/* Animated sparkles background */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl">
-              {[...Array(20)].map((_, i) => (
-                <Star
-                  key={i}
-                  className="absolute text-white/20 animate-pulse"
-                  style={{
-                    left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`,
-                    animationDelay: `${Math.random() * 2}s`,
-                    fontSize: `${Math.random() * 12 + 8}px`
-                  }}
-                />
-              ))}
-            </div>
-            
-            <div className="relative z-10 text-center text-white">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <Heart className="w-10 h-10 fill-white animate-pulse" />
-                <Sparkles className="w-8 h-8 animate-pulse" />
-              </div>
-              
-              <h2 className="text-3xl font-bold mb-3">Support My Creativity</h2>
-              
-              <p className="text-base mb-6 text-white/90">
-                Love what I create? Your support helps me continue making amazing content! 💕✨
-              </p>
-              
-              <a
-                href="https://paypal.me/SydneyRamey894"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => {
-                  handleLinkClick('PayPal Support');
-                  setShowSupportPopup(false);
-                }}
-                className="group inline-flex items-center gap-2 bg-white text-pink-600 px-8 py-4 rounded-full font-bold hover:bg-pink-50 transition-all hover:scale-105 shadow-2xl"
-              >
-                <DollarSign className="w-6 h-6 group-hover:rotate-12 transition-transform" />
-                Send Support via PayPal
-                <Heart className="w-6 h-6 fill-pink-600 group-hover:scale-125 transition-transform" />
-              </a>
-              
-              <p className="mt-4 text-sm text-white/80">
-                Thank you for believing in my journey! 🙏
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
+        <Video className="w-6 h-6 group-hover:animate-pulse" />
+        <span className="font-bold hidden sm:inline">Join the Live</span>
+      </a>
     </div>
   );
 }

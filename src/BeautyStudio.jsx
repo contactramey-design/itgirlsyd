@@ -292,7 +292,7 @@ Best regards,
                       <Sparkles className="w-5 h-5" />
                     </a>
                     <p className="text-purple-300 text-xs mt-3">
-                      Secure PayPal checkout • Email me after payment with your email: sydney@itgirlsydcontent.com
+                      Secure PayPal checkout • Email me after payment with your email: contact.ramey@gmail.com
                     </p>
                     <p className="text-purple-400 text-xs mt-2">
                       I'll send you access within 24 hours! 💕

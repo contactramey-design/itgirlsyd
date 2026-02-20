@@ -1280,7 +1280,7 @@ export default function Academy({ onBack }) {
             <Heart className="w-5 h-5 text-pink-500 fill-pink-500 animate-pulse" />
           </div>
           <p className="text-gray-500 text-sm">
-            Questions? Email academy@itgirlsydcontent.com 💕
+            Questions? Email contact.ramey@gmail.com 💕
           </p>
         </div>
       </div>

@@ -610,7 +610,7 @@ export default function ShopPage({ onBack }) {
                 Get ready for exclusive IT GIRL merch! Sign up to be notified when we launch.
               </p>
               <a
-                href="mailto:sydney@itgirlsydcontent.com?subject=Notify Me - Merch Launch"
+                href="mailto:contact.ramey@gmail.com?subject=Notify Me - Merch Launch"
                 className="inline-flex items-center gap-2 bg-white text-gray-900 px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition-all hover:scale-105"
               >
                 <Mail className="w-5 h-5" />

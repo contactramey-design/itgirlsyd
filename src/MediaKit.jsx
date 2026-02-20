@@ -337,11 +337,11 @@ export default function MediaKit() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="mailto:sydney@itgirlsydcontent.com?subject=Partnership Inquiry"
+              href="mailto:contact.ramey@gmail.com?subject=Partnership Inquiry"
               className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-8 py-4 rounded-xl font-bold hover:from-pink-400 hover:to-purple-400 transition-all hover:scale-105 shadow-lg flex items-center justify-center gap-2"
             >
               <Mail className="w-5 h-5" />
-              Email: sydney@itgirlsydcontent.com
+              Email: contact.ramey@gmail.com
             </a>
             <button
               onClick={() => window.print()}

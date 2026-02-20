@@ -202,11 +202,11 @@ export default function PartnershipsPage({ onBack, onViewMediaKit }) {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="mailto:sydney@itgirlsydcontent.com?subject=Partnership Inquiry"
+              href="mailto:contact.ramey@gmail.com?subject=Partnership Inquiry"
               className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-10 py-4 rounded-xl font-bold hover:from-purple-500 hover:to-pink-500 transition-all hover:scale-105 shadow-lg flex items-center justify-center gap-2"
             >
               <Mail className="w-5 h-5" />
-              Contact: sydney@itgirlsydcontent.com
+              Contact: contact.ramey@gmail.com
             </a>
             
             <button
